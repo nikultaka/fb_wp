@@ -1,0 +1,686 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kickoff Player Translation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-17 11:53+0500\n"
+"PO-Revision-Date: 2015-08-25 21:32+0500\n"
+"Last-Translator: admin <support@kodeforest.com>\n"
+"Language-Team: kodeforest <support@kodeforest.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Loco-Target-Locale: ar_AE\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: kode-player-element.php:30
+msgid "Player Item"
+msgstr ""
+
+#: kode-player-element.php:32
+msgid "KodeForest"
+msgstr ""
+
+#: kode-player-element.php:37
+msgid "Content"
+msgstr ""
+
+#: kode-player-element.php:43
+msgid "Select Category"
+msgstr ""
+
+#: kode-player-element.php:46
+msgid "Select Category."
+msgstr ""
+
+#: kode-player-element.php:50
+msgid "Select Tag"
+msgstr ""
+
+#: kode-player-element.php:53
+msgid "Select Tag."
+msgstr ""
+
+#: kode-player-element.php:57
+msgid "Select Style"
+msgstr ""
+
+#: kode-player-element.php:60 kode-player-element.php:87
+#: kode-player-element.php:98 kode-player-element.php:108
+msgid " "
+msgstr ""
+
+#: kode-player-element.php:61
+msgid "Style 1"
+msgstr ""
+
+#: kode-player-element.php:62
+msgid "Style 2"
+msgstr ""
+
+#: kode-player-element.php:64
+msgid "Select Style."
+msgstr ""
+
+#: kode-player-element.php:69 kode-player-option.php:780
+#: kode-player-option.php:863
+msgid "Num Fetch"
+msgstr ""
+
+#: kode-player-element.php:71
+msgid "5"
+msgstr ""
+
+#: kode-player-element.php:72 kode-player-option.php:783
+msgid "Specify the number of players you want to pull out."
+msgstr ""
+
+#: kode-player-element.php:77 kode-player-option.php:792
+msgid "Num Excerpt"
+msgstr ""
+
+#: kode-player-element.php:79
+msgid "20"
+msgstr ""
+
+#: kode-player-element.php:80
+msgid "Specify the number of players description you want to pull out."
+msgstr ""
+
+#: kode-player-element.php:84 kode-player-option.php:798
+#: kode-player-option.php:869
+msgid "Order By"
+msgstr ""
+
+#: kode-player-element.php:88 kode-player-option.php:801
+#: kode-player-option.php:872
+msgid "Publish Date"
+msgstr ""
+
+#: kode-player-element.php:89 kode-player-option.php:802
+#: kode-player-option.php:873
+msgid "Title"
+msgstr ""
+
+#: kode-player-element.php:90 kode-player-option.php:803
+#: kode-player-option.php:874
+msgid "Random"
+msgstr ""
+
+#: kode-player-element.php:95 kode-player-option.php:807
+#: kode-player-option.php:878
+msgid "Order"
+msgstr ""
+
+#: kode-player-element.php:99 kode-player-option.php:810
+#: kode-player-option.php:881
+msgid "Descending Order"
+msgstr ""
+
+#: kode-player-element.php:100 kode-player-option.php:811
+#: kode-player-option.php:882
+msgid "Ascending Order"
+msgstr ""
+
+#: kode-player-element.php:105
+msgid "Pagination"
+msgstr ""
+
+#: kode-player-element.php:109
+msgid "Enable"
+msgstr ""
+
+#: kode-player-element.php:110
+msgid "Disable"
+msgstr ""
+
+#: kode-player-element.php:163
+#, php-format
+msgid ""
+"<strong>%s</strong> requires <strong><a href=\"http://bit.ly/vcomposer\" "
+"target=\"_blank\">Visual Composer</a></strong> plugin to be installed and "
+"activated on your site."
+msgstr ""
+
+#: kode-player-item.php:90 kode-player-item.php:117 kode-player-item.php:574
+msgid "View Detail"
+msgstr ""
+
+#: kode-player-item.php:175
+msgid "Select"
+msgstr ""
+
+#: kode-player-item.php:176 kode-player-option.php:755
+msgid "Player"
+msgstr ""
+
+#: kode-player-item.php:177 kode-player-option.php:696 single-boxer.php:119
+#: single-boxer.php:189 single-player.php:163 single-player.php:277
+msgid "Goals"
+msgstr ""
+
+#: kode-player-item.php:178 single-boxer.php:120 single-player.php:168
+msgid "Assist"
+msgstr ""
+
+#: kode-player-item.php:179
+msgid "OG"
+msgstr ""
+
+#: kode-player-item.php:180 single-boxer.php:122 single-player.php:178
+msgid "Penalty"
+msgstr ""
+
+#: kode-player-item.php:181
+msgid "Pos"
+msgstr ""
+
+#: kode-player-item.php:182
+msgid "YC"
+msgstr ""
+
+#: kode-player-item.php:183
+msgid "RC"
+msgstr ""
+
+#: kode-player-item.php:184
+msgid "POTM"
+msgstr ""
+
+#: kode-player-option.php:22 kode-player-option.php:271
+msgid "Page Layout"
+msgstr ""
+
+#: kode-player-option.php:35 kode-player-option.php:284
+msgid "Left Sidebar"
+msgstr ""
+
+#: kode-player-option.php:41 kode-player-option.php:290
+msgid "Right Sidebar"
+msgstr ""
+
+#: kode-player-option.php:49 kode-player-option.php:298
+msgid "Page Option"
+msgstr ""
+
+#: kode-player-option.php:52 kode-player-option.php:301
+msgid "Page Caption"
+msgstr ""
+
+#: kode-player-option.php:56 kode-player-option.php:305
+msgid "Header Background Image"
+msgstr ""
+
+#: kode-player-option.php:57 kode-player-option.php:306
+msgid "Upload"
+msgstr ""
+
+#: kode-player-option.php:62 kode-player-option.php:311
+#: kode-player-option.php:520
+msgid "Personal Information"
+msgstr ""
+
+#: kode-player-option.php:67 kode-player-option.php:316
+#: kode-player-option.php:527
+msgid "Date of Birth"
+msgstr ""
+
+#: kode-player-option.php:72 kode-player-option.php:321
+#: kode-player-option.php:534 single-boxer.php:48 single-player.php:61
+msgid "Place Of Birth"
+msgstr ""
+
+#: kode-player-option.php:77 kode-player-option.php:326
+#: kode-player-option.php:541 single-boxer.php:52 single-player.php:70
+msgid "Nationality"
+msgstr ""
+
+#: kode-player-option.php:83 kode-player-option.php:332
+#: kode-player-option.php:548 single-boxer.php:61 single-player.php:86
+msgid "Height"
+msgstr ""
+
+#: kode-player-option.php:89 kode-player-option.php:555 single-boxer.php:65
+msgid "Playing Position"
+msgstr ""
+
+#: kode-player-option.php:113 kode-player-option.php:562 single-player.php:78
+msgid "Select Team"
+msgstr ""
+
+#: kode-player-option.php:117
+msgid "Select team of the player."
+msgstr ""
+
+#: kode-player-option.php:140 kode-player-option.php:367
+msgid "Tournament Stats"
+msgstr ""
+
+#: kode-player-option.php:145 kode-player-option.php:372
+msgid "Enable Opponent"
+msgstr ""
+
+#: kode-player-option.php:150 kode-player-option.php:377
+msgid "Enable Goals"
+msgstr ""
+
+#: kode-player-option.php:155 kode-player-option.php:382
+msgid "Enable Assist"
+msgstr ""
+
+#: kode-player-option.php:160 kode-player-option.php:387
+msgid "Enable Own Goal"
+msgstr ""
+
+#: kode-player-option.php:165 kode-player-option.php:392
+msgid "Enable Penalty"
+msgstr ""
+
+#: kode-player-option.php:170 kode-player-option.php:397
+msgid "Enable Position"
+msgstr ""
+
+#: kode-player-option.php:175 kode-player-option.php:402
+msgid "Enable Yellow Card"
+msgstr ""
+
+#: kode-player-option.php:180 kode-player-option.php:407
+msgid "Enable Red Card"
+msgstr ""
+
+#: kode-player-option.php:186 kode-player-option.php:413
+msgid "Team Tournament Stats"
+msgstr ""
+
+#: kode-player-option.php:191 kode-player-option.php:418
+msgid "Enable Team Goals"
+msgstr ""
+
+#: kode-player-option.php:196 kode-player-option.php:423
+msgid "Enable Team Short On Target"
+msgstr ""
+
+#: kode-player-option.php:201 kode-player-option.php:428
+msgid "Enable Team Corner Kicks"
+msgstr ""
+
+#: kode-player-option.php:206 kode-player-option.php:433
+msgid "Enable Team Yellow Cards"
+msgstr ""
+
+#: kode-player-option.php:211 kode-player-option.php:438
+msgid "Enable Team Passing Accuracy"
+msgstr ""
+
+#: kode-player-option.php:216
+msgid "Designation"
+msgstr ""
+
+#: kode-player-option.php:221
+msgid "Facebook"
+msgstr ""
+
+#: kode-player-option.php:226
+msgid "Twitter"
+msgstr ""
+
+#: kode-player-option.php:231
+msgid "Youtube"
+msgstr ""
+
+#: kode-player-option.php:236
+msgid "Pinterest"
+msgstr ""
+
+#: kode-player-option.php:247
+msgid "Player Option"
+msgstr ""
+
+#: kode-player-option.php:338
+msgid "Weight"
+msgstr ""
+
+#: kode-player-option.php:344
+msgid "Reach"
+msgstr ""
+
+#: kode-player-option.php:349
+msgid "Stance"
+msgstr ""
+
+#: kode-player-option.php:354
+msgid "Select Trainer"
+msgstr ""
+
+#: kode-player-option.php:358
+msgid "Select Trainer of the boxer."
+msgstr ""
+
+#: kode-player-option.php:361
+msgid "Gym"
+msgstr ""
+
+#: kode-player-option.php:449
+msgid "Boxer Option"
+msgstr ""
+
+#: kode-player-option.php:475
+msgid "Player Post Type"
+msgstr ""
+
+#: kode-player-option.php:478
+msgid "Post Type Name"
+msgstr ""
+
+#: kode-player-option.php:484
+msgid "Post Type Slug"
+msgstr ""
+
+#: kode-player-option.php:490 kode-player-option.php:495
+msgid "Post Type Category"
+msgstr ""
+
+#: kode-player-option.php:501
+msgid "Post Type Tag"
+msgstr ""
+
+#: kode-player-option.php:506
+msgid "Post Type Tags"
+msgstr ""
+
+#: kode-player-option.php:517
+msgid "Player Information"
+msgstr ""
+
+#: kode-player-option.php:569 single-boxer.php:78 single-player.php:110
+msgid "Player Stats While Tournaments"
+msgstr ""
+
+#: kode-player-option.php:576 single-boxer.php:161
+msgid "Tournaments Played In"
+msgstr ""
+
+#: kode-player-option.php:588
+msgid "Player Stats Tournament"
+msgstr ""
+
+#: kode-player-option.php:591
+msgid "Player Detail Player Stats"
+msgstr ""
+
+#: kode-player-option.php:597
+msgid "Player Detail Players Lineup"
+msgstr ""
+
+#: kode-player-option.php:603 single-boxer.php:117 single-player.php:153
+msgid "Player Name"
+msgstr ""
+
+#: kode-player-option.php:610
+msgid "Player Opponent"
+msgstr ""
+
+#: kode-player-option.php:617
+msgid "Player Goals"
+msgstr ""
+
+#: kode-player-option.php:624
+msgid "Player Assist"
+msgstr ""
+
+#: kode-player-option.php:631
+msgid "Player Own Goal"
+msgstr ""
+
+#: kode-player-option.php:638
+msgid "Player Penalty"
+msgstr ""
+
+#: kode-player-option.php:645
+msgid "Player Position"
+msgstr ""
+
+#: kode-player-option.php:652 kode-player-option.php:717 single-boxer.php:124
+#: single-player.php:188 single-player.php:292
+msgid "Yellow Card"
+msgstr ""
+
+#: kode-player-option.php:659 single-boxer.php:125 single-player.php:193
+msgid "Red Card"
+msgstr ""
+
+#: kode-player-option.php:666
+msgid "Player league"
+msgstr ""
+
+#: kode-player-option.php:679 single-player.php:237
+msgid "Tournament Played In"
+msgstr ""
+
+#: kode-player-option.php:682 single-boxer.php:187 single-player.php:267
+msgid "Tournament"
+msgstr ""
+
+#: kode-player-option.php:689 single-boxer.php:118 single-boxer.php:188
+#: single-player.php:158 single-player.php:272
+msgid "Opponent"
+msgstr ""
+
+#: kode-player-option.php:703
+msgid "Shorts on Target"
+msgstr ""
+
+#: kode-player-option.php:710
+msgid "Corner Kick"
+msgstr ""
+
+#: kode-player-option.php:724 single-boxer.php:193 single-player.php:297
+msgid "Passing Accuracy"
+msgstr ""
+
+#: kode-player-option.php:760 kode-player-option.php:851 kode-player.php:88
+msgid "Category"
+msgstr ""
+
+#: kode-player-option.php:763 kode-player-option.php:854
+msgid ""
+"You can use Ctrl/Command button to select multiple categories or remove the "
+"selected category. <br><br> Leave this field blank to select all categories."
+msgstr ""
+
+#: kode-player-option.php:766 kode-player-option.php:857 kode-player.php:100
+msgid "Tag"
+msgstr ""
+
+#: kode-player-option.php:769 kode-player-option.php:860
+msgid "Will be ignored when the player filter option is enabled."
+msgstr ""
+
+#: kode-player-option.php:772
+msgid "Player Style"
+msgstr ""
+
+#: kode-player-option.php:775
+msgid "Normal View"
+msgstr ""
+
+#: kode-player-option.php:776
+msgid "Modern View"
+msgstr ""
+
+#: kode-player-option.php:786
+msgid "Num Title Fetch"
+msgstr ""
+
+#: kode-player-option.php:789
+msgid "Specify the number of player title you want to pull out."
+msgstr ""
+
+#: kode-player-option.php:815
+msgid "Enable Pagination"
+msgstr ""
+
+#: kode-player-option.php:819 kode-player-option.php:886
+msgid "Margin Bottom"
+msgstr ""
+
+#: kode-player-option.php:822 kode-player-option.php:889
+msgid "Spaces after ending of this item"
+msgstr ""
+
+#: kode-player-option.php:828
+msgid "Player Slider"
+msgstr ""
+
+#: kode-player-option.php:833
+msgid "Style"
+msgstr ""
+
+#: kode-player-option.php:836
+msgid "Layout Style 1"
+msgstr ""
+
+#: kode-player-option.php:837
+msgid "Layout Style 2"
+msgstr ""
+
+#: kode-player-option.php:841
+msgid "Player Column Size"
+msgstr ""
+
+#: kode-player-option.php:844
+msgid "2 Columns"
+msgstr ""
+
+#: kode-player-option.php:845
+msgid "3 Columns"
+msgstr ""
+
+#: kode-player-option.php:846
+msgid "4 Columns"
+msgstr ""
+
+#: kode-player-option.php:847
+msgid "6 Columns"
+msgstr ""
+
+#: kode-player-option.php:866
+msgid "Specify the number of title word you want to pull out."
+msgstr ""
+
+#: kode-player.php:51 kode-player.php:52 kode-player.php:63
+#: single-player.php:42 single-player.php:50 single-player.php:58
+#: single-player.php:66 single-player.php:75 single-player.php:83
+#: single-player.php:91 single-player.php:108 single-player.php:151
+#: single-player.php:156 single-player.php:161 single-player.php:166
+#: single-player.php:171 single-player.php:176 single-player.php:181
+#: single-player.php:186 single-player.php:191 single-player.php:196
+#: single-player.php:235 single-player.php:265 single-player.php:270
+#: single-player.php:275 single-player.php:280 single-player.php:285
+#: single-player.php:290 single-player.php:295
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: kode-player.php:53
+msgid "Add New"
+msgstr ""
+
+#: kode-player.php:54
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#: kode-player.php:55
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: kode-player.php:56
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: kode-player.php:57
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: kode-player.php:58
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: kode-player.php:59
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: kode-player.php:60
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#: kode-player.php:61
+#, php-format
+msgid "No %s found in Trash"
+msgstr ""
+
+#: kode-player.php:87
+msgid "Categories"
+msgstr ""
+
+#: kode-player.php:99
+msgid "Tags"
+msgstr ""
+
+#: single-boxer.php:41 single-player.php:44
+msgid "Personal Info"
+msgstr ""
+
+#: single-boxer.php:44 single-player.php:53
+msgid "Date Of Birth"
+msgstr ""
+
+#: single-boxer.php:57
+msgid "Team"
+msgstr ""
+
+#: single-boxer.php:121 single-player.php:173
+msgid "Own Goal"
+msgstr ""
+
+#: single-boxer.php:123 single-player.php:94 single-player.php:183
+msgid "Position"
+msgstr ""
+
+#: single-boxer.php:126 single-player.php:198
+msgid "League"
+msgstr ""
+
+#: single-boxer.php:190 single-player.php:282
+msgid "Shorts On Target"
+msgstr ""
+
+#: single-boxer.php:191 single-player.php:287
+msgid "Corner Kicks"
+msgstr ""
+
+#: single-boxer.php:192
+msgid "Yellow Cards"
+msgstr ""
+
+#: single-boxer.php:212 single-player.php:317
+msgid "Pages:"
+msgstr ""

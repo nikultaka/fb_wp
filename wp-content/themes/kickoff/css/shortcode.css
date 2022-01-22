@@ -1,0 +1,2928 @@
+/*--// ShortCode Setup //--*/
+.kd-tab {
+	float: left;
+	width: 100%;
+	margin: 0px 0px 25px 0px;
+}
+.kd-horizontal-tab .nav-tabs {
+	margin: 0px;
+}
+.kd-horizontal-tab .nav-tabs > li > a {
+	background-color: #f9f9f9;
+}
+.kd-horizontal-tab .tab-content {
+	padding: 20px 0px 0px 0px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+	background-color: #ffffff;
+}
+/* Vertical Tab */
+.kd-vertical-tab .nav-tabs {
+	float: left;
+	width: 30%;
+}
+.kd-vertical-tab .nav-tabs li {
+	width: 100%;
+}
+.kd-vertical-tab .tab-content {
+	float: left;
+	width: 70%;
+	border-left: 1px solid #eeeeee;
+	padding: 0px 0px 0px 20px;
+}
+.kd-vertical-tab .nav-tabs > li.active > a:hover {
+	border: none;
+}
+.kd-vertical-tab .nav-tabs {
+	border-bottom: 1px solid #eeeeee;
+}
+.kd-vertical-tab .nav-tabs > li.active > a, .kd-vertical-tab .nav-tabs > li.active > a:focus {
+	border: none;
+	border-top: 1px solid #eeeeee;
+	border-left: 1px solid #eeeeee;
+	background-color: #ffffff;
+}
+.kd-vertical-tab .nav-tabs > li {
+	margin: 0px;
+}
+.kd-vertical-tab .nav-tabs > li > a {
+	background-color: #f9f9f9;
+	margin: 0px;
+	border: none;
+	border-top: 1px solid #eeeeee;
+	border-left: 1px solid #eeeeee;
+	border-radius: 0px;
+}
+.kd-vertical-tab.tabs.kd-tab ul{
+	margin:0px;
+	padding:0px;
+}
+/* DropCap */
+.kd-dropcap p::first-letter {
+	font-size: 43px;
+	color: #777777;
+	float: left;
+	padding: 10px 15px 0px 0px;
+}
+/* Message Box */
+.close {
+	line-height: 26px;
+	font-size: 32px;
+}
+.genral-message {
+	background-color: #f9f9f9;
+	border: 2px solid #eeeeee;
+}
+.success-message {
+	background-color: #e4f5ba;
+	border: 2px solid #cbdaa5;
+}
+.warning-message {
+	background-color: #fdedbf;
+	border: 2px solid #e4c789;
+}
+.error-message {
+	background-color: #fcd4cb;
+	border: 2px solid #e1a197;
+}
+.information-message {
+	background-color: #e3eff7;
+	border: 2px solid #a6c4d8;
+}
+pre {
+	padding: 9.5px 25px;
+}
+/* Table ShortCode */
+.kd-table {
+	float: left;
+	width: 100%;
+	margin: 0px 0px 30px 0px;
+}
+.kd-table tr td {
+	border: none;
+	border-bottom: 1px solid #eeeeee;
+}
+.kd-table tr th {
+	color: #ffffff;
+	padding: 4px 20px;
+	border: none;
+}
+.kd-table tbody {
+	border-left: 1px solid #eeeeee;
+	border-right: 1px solid #eeeeee;
+}
+.kd-table tbody tr td {
+	padding: 10px 20px;
+}
+.kd-tableone thead {
+	background-color: #f34a53;
+}
+.kd-tabletwo thead {
+	background-color: #11b7ad;
+}
+/* Services */
+.kd-userservices article {
+	margin-bottom: 30px;
+}
+.kd-smallview i {
+	float: left;
+	width: 40px;
+	height: 40px;
+	color: #ffffff;
+	background-color: #11b7ad;
+	border-radius: 100%;
+	text-align: center;
+	font-size: 18px;
+	padding: 10px 0px 0px 0px;
+	margin: 6px 0px 0px 0px;
+}
+.kd-smallview i ~ .services-info {
+	padding: 0px 0px 0px 50px;
+}
+/* Image Frame */
+.kd-imageframe {
+	float: left;
+	width: 100%;
+	margin-bottom: 30px;
+}
+.kd-imageframe a.frame-thumb {
+	display: inline-block;
+	box-shadow: 0px 0px 4px 1px #999;
+}
+.kd-imageframe h1 {
+	font-weight: 300;
+	margin: 0px 0px 15px 0px;
+}
+.kd-imageframe span {
+	font-size: 22px;
+	color: #999999;
+	margin: 0px 0px 20px 0px;
+	display: inline-block;
+	width: 100%;
+}
+.kd-imageframe p {
+	margin: 0px 0px 10px 0px;
+}
+.frame-btn {
+	float: left;
+	padding: 10px 20px;
+	color: #ffffff;
+	text-transform: uppercase;
+	border-radius: 4px;
+	font-size: 14px;
+	position: relative;
+	margin-top: 15px;
+}
+/* List Style */
+.unorder-list li {
+	list-style: inside none disc;
+}
+.kd-list {
+	float: left;
+	width: 100%;
+	margin-bottom: 25px;
+}
+.kd-list li {
+	margin: 0px 0px 10px 0px;
+}
+.order-list li {
+	list-style: desimal inside;
+}
+.icon-list li {
+	list-style: none;
+}
+.icon-list li i {
+	margin-right: 6px;
+	color: #666;
+}
+.squareicon-list li {
+	list-style: none;
+	float: left;
+	width: 100%;
+}
+.squareicon-list li i {
+	float: left;
+	width: 25px;
+	height: 25px;
+	background-color: #333;
+	color: #ffffff;
+	margin-right: 15px;
+	border-radius: 100%;
+	text-align: center;
+	padding: 8px 0px 0px 0px;
+	font-size: 10px;
+}
+/* Accordion Setup */
+.kd-accordion {
+	float: left;
+	width: 100%;
+	margin-bottom: 25px;
+}
+.kd-accordion .accordion {
+	display: inline-block;
+	width: 100%;
+	background-color: #ffffff;
+	border: 1px solid #eeeeee;
+	padding: 15px 20px;
+	color: #444444;
+	font-size: 13px;
+	margin: 0px 0px 3px 0px;
+	position: relative;
+}
+.kd-accordion .accordion span {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 50px;
+	height: 100%;
+	color: #777777;
+	border-left: 1px solid #eeeeee;
+	font-size: 16px;
+	padding: 18px 0px 0px 0px;
+	text-align: center;
+}
+.kd-accordion .accordion.accordion-open span:before {
+	content: "\f068";
+}
+.accordion-content > p {padding: 20px;text-align: justify;}
+/* Button's */
+.kd-button, .kd-icon {
+	float: left;
+	width: 100%;
+	margin: 0px 0px 20px 0px;
+}
+.custom-btn {
+	display: inline-block;
+	vertical-align: middle;
+	background-color: #f34a53;
+	color: #ffffff;
+	padding: 8px 20px;
+	text-transform: uppercase;
+	border-radius: 4px;
+	font-weight: bold;
+}
+.kd-medium {
+	padding: 13px 26px;
+}
+.kd-large {
+	padding: 17px 26px;
+}
+/* Icon's */
+.plain-icon {
+	font-size: 36px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.plain-icon a {
+	margin-right: 20px;
+}
+.plain-icon a {
+	color: #777777;
+}
+/* Modren Icon */
+.circle-icon a {
+	display: inline-block;
+	background-color: #f24952;
+	width: 65px;
+	height: 65px;
+	color: #ffffff;
+	text-align: center;
+	font-size: 24px;
+	border-radius: 100%;
+	padding: 13px 0px;
+	margin-right: 12px;
+}
+.square-icon a {
+	display: inline-block;
+	background-color: #11b7ad;
+	width: 65px;
+	height: 65px;
+	color: #ffffff;
+	text-align: center;
+	font-size: 28px;
+	border-radius: 5px;
+	padding: 13px 0px;
+	margin-right: 12px;
+}
+/* Divider */
+.kd-divider {
+	float: left;
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+}
+.kd-divider span {
+	display: inline-block;
+	font-size:30px;
+	width: 100%;
+}
+/* Progress */
+.custom-skills {
+	float: left;
+	width: 100%;
+}
+/*.progress {
+	height: 25px;
+	border-radius: 0px;
+}*/
+.progressbar-back-text { display: none; }
+.progress-bar {
+	font-weight: bold;
+	font-size: 14px;
+	text-align: right;
+	line-height: 23px;
+	padding: 0px 10px;
+}
+.circle-progress {
+	float: left;
+	width: 25%;
+	list-style: none;
+	padding: 0px 20px 0px 0px;
+}
+.circle-progress:nth-child(4n) { padding-right: 0px; }
+.perc { line-height: 175px !important; }
+.defoult-map {
+	float: left;
+	width: 100%;
+	margin-bottom: 25px;
+}
+/*--// ShortCode Setup //--*/
+.alert{clear:both;}
+.alert i{
+}
+.check-list li{
+	list-style:none;
+	margin-bottom:10px;
+}
+.check-list li:before{
+	display:inline-block;
+	font:normal normal normal 14px/1 FontAwesome;
+	font-size:inherit;text-rendering:auto;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	transform:translate(0, 0);
+	font-family:'FontAwesome';
+}
+.demo-sep{clear:both;}
+.sep-single{height:1px;background-color:#e7e6e6;}
+.sep-double{height:6px;border-top:1px solid #e7e6e6;border-bottom:1px solid #e7e6e6;}
+.sep-dotted{border-bottom:2px dotted #e7e6e6;}
+.sep-dashed{border-bottom:2px dashed #e7e6e6;}
+.sep-shadow{background:transparent url(../images/sep-shadow.png) no-repeat top center;height:7px;width:100%;}
+.code {
+    background: none repeat scroll 0 0 ghostwhite;
+    padding: 20px;
+	clear:both;
+}
+.code p{
+	margin-bottom:0px;
+}
+.kode_shortcode-map{clear:both;}
+
+.one_third{
+	width:33.33%;
+	float:left;
+	padding:15px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+.two_third{
+	width:66.66%;
+	float:left;
+	padding:15px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+.one_half{
+	width:50%;
+	float:left;
+	padding:15px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+.one_fourth{
+	width:25%;
+	float:left;
+	padding:15px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+.three_fourth{
+	width:75%;
+	float:left;
+	padding:15px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+.fontawesome-icon {
+	padding: 19px 0px;
+	width: 65px;
+	height: 65px;
+	display: inline-block;
+	text-align: center;
+	font-size: 24px;
+	margin-right:12px;
+}
+.fontawesome-icon.circle-yes {
+	border-radius: 100%;
+}
+.fontawesome-icon.circle-no {
+	border-radius: 5px;
+}
+/* Divider */
+.kd-modrentitle .kd-divider{
+	margin:0px;
+}
+.kd-divider {
+	float: left;
+	width: 100%;
+	margin: 0px 0px 15px 0px;
+}
+.kd-divider span {
+	display: inline-block;
+}
+.divider2 span {
+	border-bottom: 1px solid #eeeeee;
+}
+.divider3 span {
+	border-bottom: 1px dotted #eeeeee;
+}
+.divider4 span {
+	border: 5px double #eeeeee;
+}
+.divider5 span {
+	border: 1px dashed #eeeeee;
+}
+/*--// ShortCode Setup //--*/
+
+/*--// Our Skill Setup //--*/
+
+.our-skills {
+	float: left;
+	width: 100%;
+}
+.heading-style3.white h2, .heading-style3.white p {
+	color: #ffffff;
+}
+.skills-title {
+	float: left;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	margin: 0 0 47px;
+}
+.skills-title h2 {
+	font-size: 48px;
+	line-height: 48px;
+	text-transform: uppercase;
+	margin: 0 0 20px;
+	color: #fff;
+}
+.skills-title p {
+	margin: 0;
+}
+.our-skills ul li {
+	list-style: none;
+}
+.progress-holder {
+	float: left;
+	width: 100%;
+}
+.progress-holder span {
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: 600;
+	color: #fff;
+	margin: 0 0 10px;
+	display: block;
+}
+.progress-holder .progress {
+	float: left;
+	width: 100%;
+	padding: 0;
+	border-radius: 10px;
+	height: auto;
+	margin: 0 0 50px;
+	text-align: left;
+}
+.progress-holder .progress .progress-bar {
+	margin: 0;
+	height: 20px;
+	padding: 0 10px;
+	text-align: right;
+	font-weight: bold;
+}
+.progress .bg-color1 {
+	background-color: #03acdc !important;
+}
+.progress .bg-color2 {
+	background-color: #ffcc0e !important;
+}
+.progress .bg-color3 {
+	background-color: #18e2ba !important;
+}
+.progress .bg-color4 {
+	background-color: #f65353 !important;
+}
+.progress .bg-color5 {
+	background-color: #564bb5 !important;
+}
+.progress .bg-color6 {
+	background-color: #52c854 !important;
+}
+.dropcap p:first-letter,.dropcap2 p:first-letter,.dropcap{
+	font-size: 40px;
+	color: #777777;
+	margin: 0px 15px 3px 0px;
+	text-transform: uppercase;
+	float: left;
+	line-height: 1;
+}
+.dropcap2 p:first-letter{
+	width: 65px;
+	height: 65px;
+	background-color: #101010;
+	color: #999;
+	text-align: center;
+	padding-top: 11px;
+}
+/* Counter */
+.kode-counter {
+	float: left;
+	width: 100%;
+}
+.kode-counter {
+	list-style: none;
+	text-align: center;
+}
+.kode-counter i {
+	color: #ffffff;
+	margin: 0px 0px 18px 0px;
+}
+.kode-counter span {
+	color: #ffffff;
+	display: block;
+	font-size: 50px;
+	font-weight: bold;
+	padding: 0px 0px 16px 0px;
+	position: relative;
+	margin-bottom: 5px;
+}
+.kode-counter span:before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 0px;
+	width: 80px;
+	height: 3px;
+	border-bottom: 2px solid #ffffff;
+	margin: 0px 0px 0px -40px;
+}
+.kode-counter small {
+	color: #ffffff;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+/* Services */
+.kode-services,.kode-services figure img {
+	float: left;
+	width: 100%;
+}
+.kode-services article {
+	margin: 0px -4px 24px 0px;
+}
+.kode-services figure {
+	float: left;
+	width: 270px;
+	position: relative;
+	overflow: hidden;
+}
+.kode-services figure:before {
+	content: '';
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-color: rgba(0,0,0,0.4);
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+.kode-services:hover figure:before {
+	opacity: 1;
+}
+.kode-services.type-2 figure ~ .kode-service-info {
+	padding: 24px 0px 0px 295px;
+}
+.kode-services .kode-service-info h2 {
+	margin: 0px 0px 8px 0px;
+}
+.kode-services .kode-service-info p { margin-bottom: 15px; }
+.kode-services .kode-service-info a.kd-readmore {
+	display: inline-block;
+	padding: 10px 16px;
+	color: #333333;
+	border-radius: 4px;
+	background-color: #e4e4e4;
+}
+.kode-services .kode-service-info a.kd-readmore:hover { color: #ffffff; }
+/*==// Services CSS Starts //==*/
+.kd-services {
+	text-align: center;
+	margin-bottom: 30px;
+	float: left;
+	width: 100%;
+}
+.kd-services i {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	border-radius: 100%;
+	color: #ffffff;
+	font-size: 45px;
+	padding: 26px 0px 0px 0px;
+	margin: 0px 0px 24px 0px;
+}
+.kd-services:hover i {
+	box-shadow: 0px 0px 0px 8px #fff inset;
+}
+.kd-services h5 {
+	text-transform: uppercase;
+	margin: 0px 0px 10px 0px;
+}
+.kd-services .kd-readmore{
+	float:none;
+	text-align:center;
+}
+.kd-services p{
+	margin:0px 0px 25px 0px;
+}
+
+
+.kd-testimonial {
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+.kd-testimonial i, .kd-testimonial p, .kd-testimonial span {
+	color: #ffffff;
+}
+.kd-testimonial p {
+	font-size: 22px;
+}
+.kd-testimonial i {
+	font-size: 80px;
+	line-height: 0.6;
+}
+.kd-testimonial .bx-wrapper .bx-pager.bx-default-pager a {
+	background-color: #91989a;
+}
+.bx-wrapper .bx-controls-direction a{
+	width:auto;
+	left:0px;
+}
+.bx-wrapper .bx-controls-direction a.bx-next{
+	right:0px;
+	left:auto
+}
+.kd-testimonial ul.bxslider{
+	float:left;
+	width:100%;
+	margin:0px;
+	padding:0px;
+}
+.kd-testimonial .bx-wrapper li{
+	padding:0px 100px;
+}
+.kd-testimonial .bx-wrapper .bx-pager.bx-default-pager a:hover, .kd-testimonial .bx-wrapper .bx-pager.bx-default-pager a.active {
+	background-color: #ffffff;
+}
+.kd-testimonial .bx-wrapper .bx-pager, .kd-testimonial .bx-wrapper .bx-controls-auto {
+	position: static;
+}
+.kode-testimonial-white .kdtwitter a,
+.kode-testimonial-white h2{
+	color:#fff;
+}
+.kode-background-video .kode-video-bg {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+	width:100%;
+	height:100%;
+}
+.kode-background-video  .container{
+	position:relative;
+}
+
+/*
+===========================================
+			SERVICES SECTION
+===========================================
+*/
+.kode-services-3{
+	float:left;
+	width:100%;
+	text-align:center;
+	background-color:#fff;
+	padding:40px 20px;
+	border-bottom:solid 3px transparent;
+	overflow:hidden;
+}
+.kode-services-3:hover{
+	box-shadow:0px 10px 15px 0px rgba(0,0,0,0.1);
+	-moz-box-shadow:0px 10px 15px 0px rgba(0,0,0,0.1);
+	-webkit-box-shadow:0px 10px 15px 0px rgba(0,0,0,0.1);
+}
+.kode-services-3 i{
+	width:100%;
+	float:left;
+	font-size:60px;
+	margin:0px 0px 15px 0px;
+}
+.kode-services-3:hover i{
+	transform:scale(4);
+	opacity:0.5
+}
+.kode-services-3 .kode-text-3{
+	position:relative;
+	z-index:10;
+}
+.kode-services-3 h2{
+	font-size:24px;
+	color:#333333;		
+}
+.kode-services-3 p{
+	line-height:24px;
+}
+.kode-services-3 a.kode-read-more{
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:14px;
+}
+
+.btn-filled{
+	display:inline-block;
+	font-size:18px;
+	text-transform:uppercase;
+	padding:10px 30px;
+	color:#fff;
+	font-weight:bold;
+}
+.btn-filled:hover{
+	background-color:#000;
+	text-decoration:none;
+	color:#fff;
+}
+
+.btn-filled-rounded{
+	display:inline-block;
+	font-size:16px;
+	text-transform:uppercase;
+	padding:5px 20px;
+	color:#fff;
+	font-weight:bold;
+	border-radius:50px;
+}
+.btn-filled-rounded:hover{
+	background-color:#000;
+	text-decoration:none;
+	color:#fff;
+}
+
+.btn-borderd{
+	display:inline-block;
+	font-size:18px;
+	text-transform:uppercase;
+	padding:10px 30px;
+	color:#fff;
+	font-weight:bold;
+	border:solid 2px #fff;
+}
+.btn-borderd:hover{
+	text-decoration:none;
+	color:#fff;
+}
+
+.kode-services-3, .kode-services-3 i, .kode-cause-list .kode-thumb img, .kode-cause-list,  .btn-borderd, .kode-event-list:before, .kode-event-list img, .kode-team-member a:before, .kode-social-icons ul li a, .kode-team-member .kode-text, .kode-blog-list, .kode-blog-list .kode-avatar, .kode-blog-list .kode-thumb img, .widget-recentpost ul li a, .widget-social-network ul li span, .widget-social-network .input-container button, .widget-social-network ul li i, .footer-nav ul li a, .kd-accordion .accordion, .kode-testimonials-cover .bx-wrapper .bx-controls-direction a, .pagination > li > a, .pagination > li > span, .kode-event-list-2, .kode-event-list-2 img, .kode-event-list-2 .kode-thumb a:before, .kode-blog-list .kode-thumb a:before, .kode-cause-list .kode-thumb a:before, .widget-categories ul li a, .widget-categories ul li:before, .widget-blog ul li a, .widget-blog ul li .kode-thumb img, .widget-blog ul li .kode-thumb a:before, .widget-tags ul li a, .widget-archive ul li a, .widget-archive ul li:before, .widget-social ul li a, .widget-flickr ul li:before, .widget-flickr ul li img, .kode-gallery-item a.like, .kode-gallery-item, .kode-gallery-item .kode-text, .kode-gallery-item a.like, .kode-gallery-item .kode-thumb a:before, .kode-gallery-item .kode-thumb img, .kode-blog-list i, .kode-contact-icon i, .kode-contact-icon, .kode-product, .kode-product .kode-text h4 a, .kode-product .kode-text h2 a, .kode-product .kode-thumb:before, .kode-product .btn-filled.cart, .kode-product .btn-filled.view, .kode-blog-detail .kode-thumb, .kode-blog-option .kode-tags a, .kode-share-blog ul li a, .kode-comments .kode-text a.reply, .kode-fund-raised ul li a, .kode-shop-detail .product-quantity .qtyminus, .kode-shop-detail .product-quantity .qtyplus, .kode-team-member, .kode-team-detail .prectic-areas ul li a, .navigation ul li a, .header-2 .nav-content .kode-donate-now a{
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+}
+
+/* Divider */
+.kd-divider {
+	float: left;
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+}
+.kd-divider{
+	display: inline-block;
+	font-size:30px;
+	width: 100%;
+}
+.div-single{
+	border-bottom: 1px solid #eeeeee;
+}
+.div-double {
+	border-bottom: 1px dotted #eeeeee;
+}
+.div-dotted{
+	border: 5px double #eeeeee;
+}
+.div-dashed{
+	border: 1px dashed #eeeeee;
+}
+.div-shadow{background:transparent url(../images/sep-shadow.png) no-repeat top center;height:7px;width:100%;}
+
+
+
+.strip-info li{list-style:none;}
+
+
+
+.header_2{
+	float:left;
+	width:100%;
+	position:absolute;
+	z-index:999;
+}
+/*===========================================*/
+
+/*
+	===============================================
+		kode_football_top_wraper start
+	===============================================
+*/
+.kode_football_top_login,
+.kode_football_top_social ul,
+.kode_football_top_wraper{
+	float:left;
+	width:100%;
+	list-style:none;
+}
+.kode_football_top_login ul{
+	padding:0px;
+	list-style:none;
+}
+.kode_football_top_social ul,
+.kode_football_regsiter{
+	padding:0px;
+	list-style:none;
+}
+.kode_football_top_wraper{
+	padding:24px 0px 25px 0px;
+	position:relative;
+}
+
+.kode_football_top_wraper:after{
+	position:absolute;
+	content:"";
+	left:0px;
+	right:0px;
+	bottom:0px;
+	border-bottom:1px solid #adadad;
+	width:44.3%;
+}
+.kode_football_top_wraper:before{
+	position:absolute;
+	content:"";
+	right:0px;
+	bottom:0px;
+	border-bottom:1px solid #adadad;
+	width:44.3%;
+}
+.kode_football_top_social{
+	float:right;
+}
+.kode_football_icon_cart li,
+.kode_football_top_social ul li{
+	float:left;
+}
+.kode_football_top_social ul li a{
+	display:inline-block;
+	margin-left:20px;
+	color:#fff;
+}
+.kode_football_icon_cart,
+.kode_football_regsiter{
+	float:left;
+}
+.kode_football_regsiter{
+	padding-right:34px;
+}
+.kode_football_regsiter li{
+	float:left;
+	margin-right:25px;
+}
+.kode_football_regsiter li:last-child{
+	margin:0px;
+}
+.kode_football_regsiter li a{
+	text-transform:uppercase;
+	color:#fff;
+	font-weight:bold;
+}
+.kode_football_icon_cart li a{
+	display:inline-block;
+	padding-right:25px;
+	color:#fff;
+}
+/*
+	===============================================
+		kode_football_top_wraper end
+	===============================================
+*/
+/*
+	===============================================
+		kode_football_top_navi_wraper start
+	===============================================
+*/
+.kode_football_top_navigation_right,
+.kode_football_top_navi_wraper{
+	float:left;
+	width:100%;
+}
+.kode_football_top_navigation ul{
+	float:right;
+}
+.kode_football_top_navigation_right,
+.kode_football_top_navigation{
+	float:right;
+	padding:22px 0px 25px 0px;;
+}
+.kode_football_top_navigation_right{
+	float:left;
+}
+.kode_football_top_navigation ul li, .kode_football_top_navigation_right ul li{
+	float:left;
+	margin-left:30px;
+}
+.kode_football_top_navigation ul li:first-child, .kode_football_top_navigation_right ul li:first-child{
+	margin:0px;
+}
+.kode_football_top_navigation_right ul{
+	float:right;
+}
+.kode_football_top_navigation_right ul li a,
+.kode_football_top_navigation ul li a{
+	text-transform:uppercase;
+	color:#fff;
+	padding:0px;
+}
+.kode_football_top_navigation ul li a{
+}
+.kode_football_top_navigation_right ul li a{
+}
+.kode_football_top_navigation ul li a.active{
+	font-weight:bold;
+}
+.kode_football_top_navigation_right ul li{
+	float:left;	
+}
+.kode_football_top_navigation_right ul li:last-child{
+	margin-right:0px;
+}
+.kode_football_top_navi_fig {
+    margin-top: -60px;
+    text-align: center;
+    width: 100%;
+}
+.kode_football_latest_heading{
+	text-align:center;
+	float:left;
+	margin-bottom:11px;
+	width:100%;
+}
+.kode_football_latest_heading h2 {
+	margin-bottom:0;
+	line-height:normal
+}
+.kode_football_latest_heading strong {
+    font-size: 39px;
+	position:relative;
+}
+.kode_football_latest_heading strong:before,
+.kode_football_latest_heading strong:after{
+	position:absolute;
+	content:"";
+    right: 45px;
+    top: 25px;
+    width: 71px;
+	border-bottom:1px solid #999999;
+}
+.kode_football_latest_heading strong:before{
+	left:54px;
+}
+.kode_football_latest_heading h2 b{
+	position:relative;
+}
+.kode_football_latest_heading strong b:after{
+	position:absolute;
+	content:"";
+    right: 45px;
+    top: 0px;
+	bottom:22px;
+    width: 71px;
+	border-bottom:1px solid #999999;
+}
+.kode_football_latest_heading strong b:before{
+	left:54px;
+	position:absolute;
+	content:"";
+    top: 0px;
+	bottom:22px;
+    width: 71px;
+	border-bottom:1px solid #999999;
+}
+/*
+	===============================================
+			kode_football_latest_wraper start
+	===============================================
+*/
+.kode_football_latest_champion ul,
+.kode_football_latest_champion{
+	text-align:center;
+}
+.kode_football_latest_champion{
+	margin-bottom:32px;
+}
+.kode_football_latest_champion h5{
+	margin-bottom:8px;
+}
+.kode_football_latest_champion ul li{
+	display:inline-block;
+	padding:0px 15px;
+	border-right:1px solid #d1d1d1;
+	line-height:17px;
+}
+.kode_football_latest_champion ul li:last-child{
+	border-right:none;
+	margin:0px 0px 0px -3px;
+}
+.kode_football_latest_compition,
+.kode_football_latest_wraper,
+.kode_football_latest_champion ul,
+.kode_football_latest_champion{
+	float:left;
+	width:100%;
+}
+.kode_football_latest_win{
+	float:right;
+}
+.kode_football_latest_win.right-side-content{
+	float:left;
+}
+.kode_football_latest_win.right-side-content .kode_football_latest_fig{
+	margin-right:0px;
+	margin-left:30px;
+}
+.kode_football_latest_win.right-side-content .kode_football_latest_eangle{
+	margin-right:0px;
+	margin-left:6px;
+	text-align:left;
+}
+.kode_football_latest_win.right-side-content  .kode_football_latest_eangle h6:after{
+	right:auto;
+	left:0;
+}
+.kode_football_latest_eangle_2,
+.kode_football_latest_eangle{
+    float: left;
+	padding:15px 0;
+	text-align:right;
+	margin-right:6px;
+}
+.kode_football_latest_eangle_2 {
+    text-align: left;
+	margin-left:5px;
+}
+.kode_football_latest_eangle_2 h6,
+.kode_football_latest_eangle  h6{
+	text-transform:uppercase;
+	margin-bottom:23px;
+	position:relative;
+}
+.kode_football_latest_eangle_2 h6:after,
+.kode_football_latest_eangle  h6:after{
+	position:absolute;
+	content:"";
+	bottom:-15px;
+	right:0px;
+	border-bottom:2px solid #999999;
+	width:126px;
+}
+.kode_football_latest_eangle_2 h6:after{
+	left:0px;
+}
+.kode_football_latest_eangle_2 span,
+.kode_football_latest_eangle span{
+	font-weight:Bold;
+}
+.kode_football_latest_fig{
+	float:left;
+	margin-right:30px;
+}
+.kode_football_latest_run_1,
+.kode_football_latest_run{
+	float:left;
+	margin:10px 0;
+}
+.kode_football_latest_run_1 span,
+.kode_football_latest_run span{
+	font-size:60px;
+	color:#333;
+	font-weight:Bold;
+}
+.kode_football_latest_run_1 span{
+	margin-right:30px;
+}
+.kode_football_latest_compition {
+	text-align:center;
+	padding:18px 0px;
+}
+.kode_football_latest_compition a{
+	display:inline-block;
+	height:54px;
+	width:54px;
+	text-align:center;
+	line-height:54px;
+	color:#fff;
+	font-size:20px;
+	font-weight:Bold;
+	position:relative;
+}
+.kode_football_latest_compition a:before{
+	position:absolute;
+	content:"";
+	top:-4px;
+	left:-4px;
+	right:-4px;
+	bottom:-4px;
+	border:1px solid #333;
+	
+}
+.kode_football_latest_p{
+	float:left;
+	width:100%;
+	text-align:center;
+	padding:42px 0px 40px 0px;
+}
+.kode_football_latest_p p {
+    padding: 0 213px;
+}
+.kode_football_latest_readmore {
+	width:340px;
+	text-align:center;
+	margin:auto;
+}
+.kode_football_latest_readmore a{
+	display:inline-block;
+	padding:19px 40px 19px 40px;
+	font-size:18px;
+	color:#333;
+}
+.kode_football_latest_compition a:hover,
+.kode_football_latest_readmore a:hover{
+	background-color:#000;
+	color:#fff;
+}
+/*
+	===============================================
+			kode_football_leader_wraper start
+	===============================================
+*/
+.kode_football_leader_wraper{
+	float: left;
+    padding-top: 30px;
+    position: relative;
+    width: 100%;
+    z-index: 999;
+}
+}
+.kode_football_leader_wraper:after{
+	background-color:#0c0c0c;
+    bottom: 30;
+    content: "";
+    left: -10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: skewX(-8deg) scale(1.1);
+    width: 67%;
+    z-index: -1;
+	min-height:602px;
+}
+.kode_football_leader_wraper:before{
+	background-image:url("images/leaderb.png");
+	background-position:center;
+	background-repeat:no-repeat;
+    bottom: 30;
+    content: "";
+    left: -60px;
+	bottom:0px;
+    position: absolute;
+    right: 0;
+    top: -30px;
+    transform: skewX(-8deg);
+	-moz-transform: skewX(-8deg);
+	-webkit-transform: skewX(-8deg);
+    width: 71%;
+    z-index: 999;
+}
+.kode_football_leader_cols{
+	float:left;
+	width:100%;
+}
+.kode_football_leader_heading{
+	float:left;
+	display:inline-block;
+	position:relative;
+	z-index:999;
+	width:100%;
+}
+.kode_football_leader_heading h2{
+	color:#fff;
+	margin-bottom:35px;
+}
+.kode_football_leader_row{
+	float:left;
+	width:70%;
+	position:relative;
+	z-index:10000;
+}
+.kode_footbal_leader_team{
+	float:left;
+	width:100%;
+	padding:12px 30px 11px 30px;
+	border-bottom:3px solid;
+	margin-bottom:25px;
+	position:relative;
+	z-index:999;
+	background-color:#212121;
+}
+.kode_footbal_leader_team h5{
+	float:left;
+	color:#fff;
+	margin-bottom:0px;
+}
+.kode_footbal_leader_team ul{
+	float:right;
+	list-style:none;
+	padding:0px;
+	margin:0px;
+	width:70%;
+}
+.kode_footbal_leader_team ul li{
+	float:left;
+	color:#fff;
+	width:20%;
+	text-align:center;
+}
+.kode_footbal_leader_team ul li h5{
+	float:none;
+	text-align:center;
+	display:block;
+}
+.kode_footbal_leader_team ul li:first-child{
+	margin-left:0px;
+}
+.kode_footbal_leader_team.team_1 li {
+}
+.kode_football_leader_fig{
+	float: right;
+	position:absolute;
+	right:0px;
+	bottom:0px;
+    width: 35%;
+    z-index: 999;
+}
+
+.kode_footbal_leader_team.team_1 {
+    background-color:#fff;
+    border-bottom: medium none;
+	margin-bottom:10px;
+	padding:16px 30px 17px 30px;
+}
+.kode_footbal_leader_team.team_1 h5{
+	font-size:16px !important;
+	color:#000000;
+}
+.kode_footbal_leader_team.team_1  li{
+	color:#000;
+}
+/*
+	===============================================
+		kode_football_leader_wraper end
+	===============================================
+*/
+/*
+	===============================================
+			kode_football_match_wraper start
+	===============================================
+*/
+
+.kode_football_match_wraper{
+	float:left;
+	width:100%;
+}
+.kode_football_match_fig{
+	float:left;
+	width:35%;
+	position:relative;
+}
+.kode_football_matck_counter:before,
+.kode_football_match_fig:before{
+	background-image:url("images/macthb.png");
+	background-position:left;
+	background-repeat:no-repeat;
+	background-size:cover;
+	position:absolute;
+	content:"";
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	opacity:0.17;
+}
+.kode_football_match_fig figure{
+	float:right;
+	margin-top:-75px;
+	z-index:999;
+	position:relative;
+}
+.kode_football_matck_counter{
+    float: left;
+	width:65%;
+	z-index:999;
+	position:relative;
+	padding:50px 0px 86px 40px;
+}
+.kode_football_matck_counter:after{
+	position:absolute;
+	content:"";
+	top:-30px;
+	left:-30px;
+	right:-49px;
+	transform:skew(-10deg);
+	bottom:0px;
+	background-color:#333;
+	z-index:-1;
+}
+.kode_football_matck_counter:before{
+	background-image:url("images/macthbb.png");
+	opacity:0.10;
+}
+.kode_football_latest_heading.heading_2 {
+    text-align: left;
+	position:relative;
+	z-index:999;
+}
+.kode_football_latest_heading.heading_2 strong{
+	position:relative;
+	left:76px;
+}
+.kode_football_latest_heading.heading_2  h2{
+	color:#fff;
+}
+.kode_countdown{
+	float:left;
+	width:100%;
+	margin:0px 0px 30px 0px;
+	position:relative;
+	z-index:999;
+	padding:0px;
+}
+.kode_countdown li{
+	float:left;
+	width:170px;
+	text-align:center;
+	padding:32px 0px;
+	display:inline-block;
+	background-color:#242425;
+	margin-right:30px;
+}
+.kode_countdown li span{
+	font-size:48px;
+	color:#fff;
+	display:inline-block;
+	line-height:normal;
+	line-height:48px;
+}
+.kode_countdown h5{
+	font-size:25px;
+	line-height:normal;
+	color:#fff;
+	margin:0px;
+}
+.kode_football_latest_view{
+	float:left;
+	width:100%;
+	position:relative;
+	z-index:999;
+}
+.kode_football_latest_view a{
+	display:inline-block;
+	border:2px solid #fff;
+	width:170px;
+	height:60px;
+	text-align:center;
+	line-height:54px;
+	font-size:18px;
+	color:#fff;
+	margin-right:36px;
+}
+/*
+	===============================================
+			kode_football_match_wraper end
+	===============================================
+*/
+/*
+	===============================================
+			kode_football_heros_wraper start
+	===============================================
+*/
+.kode_football_heros_wraper{
+	padding:60px 0px 70px 0px
+}
+.kode_football_heros_caption,
+.kode_football_heros_wraper,
+.kode_football_heros_fig{
+	float:left;
+	width:100%;
+}
+.kode_football_heros_fig figure{
+	position:relative;
+	border:3px solid;
+	border-bottom:none;
+}
+.kode_football_heros_icon{
+	position:absolute;
+	text-align:center;
+	top:120px;
+	left:0px;
+	right:0px;
+	padding:15px 0px 16px 0px;
+	z-index:999;
+	opacity:0;
+}
+.kode_football_heros_fig:hover .kode_football_heros_icon{
+	opacity:1;
+	top:150px;
+}
+.kode_football_heros_icon:before{
+	position:absolute;
+	content:"";
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	opacity:0.85;
+	z-index:-1;
+}
+.kode_football_heros_icon li{
+	display:inline-block;
+}
+.kode_football_heros_icon li a{
+	color:#333333;
+	display:inline-block;
+	margin-right:15px;
+}
+.kode_football_heros_icon li a:hover{
+	color:#000;
+}
+.kode_football_heros_caption{
+	text-align:center;
+	background-color:#333333;
+	padding:10px 0px 12px 0px;
+}
+.kode_football_heros_caption h4{
+	color:#fff;
+	margin-bottom:5px;
+}
+/*owl-carousel*/
+.kode_football_heros_wraper .item {
+    padding: 0 15px;
+}
+.kode_football_heros_wraper .owl-pagination {
+    display: none;
+}
+.kode_football_heros_wraper .owl-buttons {
+    position: absolute;
+    top: 39%;
+	left:0px;
+	right:0px;
+}
+.kode_football_heros_wraper .owl-prev {
+    left: -50px;
+    position: absolute;
+}
+.kode_football_heros_wraper .owl-next:before,
+.kode_football_heros_wraper .owl-prev:after{
+	position:absolute;
+	content:"\f104";
+	font-family: FontAwesome;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	height:39px;
+	width:39px;
+	text-align:centter;
+	line-height:39px;
+	color:#fff;
+	background-color:#333333;
+}
+.kode_football_heros_wraper .owl-next:before{
+	content:"\f105";
+}
+.kode_football_heros_wraper .owl-next{
+    right:-50px;
+    position: absolute;
+}
+.kode_football_heros_wraper .owl-theme .owl-controls .owl-buttons div{
+	background:transparent;
+}
+/*
+	===============================================
+			kode_football_heros_wraper end
+	===============================================
+*/
+/*
+	  ============================================================
+		 CRICKET  TOP BAR
+	  ============================================================
+*/
+.crkt-topbar{
+	float: left;
+	width: 100%;
+	padding: 0 50px;
+}
+.crkt-topbar ul{
+	float: left;
+	width: auto;	
+	padding:0px;
+	list-style:none;
+	margin:0px;
+}
+
+.crkt-topbar li{
+	float: left;	
+	background: #000;
+	margin: 0 -1px;
+}
+.crkt-topbar li a {
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 14px;
+    padding-bottom: 2px;
+    text-transform: capitalize;
+    padding: 12px 19px 15px;
+}
+.crkt-topbar li a i{
+	margin-left: 15px;
+}
+.crkt-topbar li:hover{
+	background: #76a425;
+}
+.crkt-search-wrap{
+	float: right;
+	width: auto;
+}
+.crkt-search{
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.crkt-search input[type="text"]{
+	float: left;
+	width: 100%;
+	font-size: 16px;
+	text-transform: capitalize;
+	height: auto;
+	padding:7px 24px 9px 10px;
+	background: transparent;
+	border:none;
+	line-height: normal;
+	color: #000;
+}
+.crkt-search input[type="text"]::-moz-placeholder{
+	color: #000;
+}
+.crkt-search input[type="text"]:focus{
+	color: #fff;
+}
+.crkt-search button{
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	display: inline-block;
+	font-size: 16px;
+	color: #000000;
+	background: transparent;
+}
+/*
+	  ============================================================
+		 CRICKET  NAVIGATION
+	  ============================================================
+*/
+.crkt-navigation-wrap{
+	float: left;
+	width: 100%;
+	background: #fff;
+	padding: 0px 50px;
+}
+.crkt-logo{
+	float: left;
+	width: auto;
+	margin-right: 120px;
+}
+.crkt-logo a{
+	display: block;
+}
+.crkt-logo a img{
+	float: left;
+	width: 100%;
+}
+.crkt-navigation{
+	float: left;
+	width: auto;
+	padding: 28px 0;
+}
+.crkt-navigation ul{
+	float: left;
+	width:auto;
+}
+.crkt-navigation li{
+	float: left;
+	width: auto;
+	margin-right: 10px;
+}
+.crkt-navigation ul ul li:before{
+	display:none;
+}
+
+
+.crkt-navigation .sub-menu > li:hover > a:before, 
+.crkt-navigation .children > li:hover > a::before{
+	color:#333;
+}
+
+
+.crkt-navigation ul ul li:hover a:after{
+	color:#000;
+}
+.crkt-navigation li:last-child{
+	margin: 0;
+}
+.crkt-navigation li:hover{
+	box-shadow:0px 0px 5px 0 rgba(0, 0, 0, 0.10);
+	-moz-box-shadow:0px 0px 5px 0 rgba(0, 0, 0, 0.10);
+	-webkit-box-shadow:0px 0px 5px 0 rgba(0, 0, 0, 0.10);
+}
+.crkt-navigation li a{
+	font-size: 16px;
+	line-height: 15px;
+	display: block;
+	padding:10px 21px 8px;
+	color: #000;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+#header-style-3 .crkt-navigation .navigation ul ul li a{
+	padding:13px 10px;
+	position:relative;
+}
+
+#header-style-3 .crkt-navigation .navigation ul ul li:hover:before{
+	color:#333;
+}
+.crkt-social{
+	float: right;
+	width: auto;
+	padding: 31px 0;
+	margin:0px;
+	list-style:none;
+}
+.crkt-social ul{
+	float: left;
+	width: 100%;
+	margin:0px;
+	padding:0px;
+}
+.crkt-social li{
+	float: left;
+	width: auto;
+}
+.crkt-social li a{
+	display: block;
+	width: 40px;
+	height: 43px;
+	line-height: 29px;
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	background:#333;
+}
+.crkt-social li a:hover{
+	box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+.crkt-facebook{
+	background: #4d67a3;
+}
+.crkt-google{
+	background: #eb4823;
+}
+.crkt-twitter{
+	background: #21769b;
+}
+.crkt-youtube{
+	background: #ce1616;
+}
+.crkt-rss{
+	background: #f77e00;
+}
+
+/*
+	  ============================================================
+		 CRICKET  LATEST NEW WRAP
+	  ============================================================
+*/
+.crkt-latestnews{
+	float: left;
+	width: 100%;
+	margin-bottom: 30px;
+}
+.crkt-news{
+	float: left;
+	width: 100%;
+	border-style: solid;
+	border-width: 0 1px 1px;
+	border-color: #e0e0e0;
+}
+.crkt-news .thumb{
+	float: left;
+	width: 50%;
+	position: relative;
+	overflow: hidden;
+	background-color: #000;
+}
+.crkt-news .thumb img{
+	float: left;
+	width: 100%;
+}
+.crkt-news:hover .thumb img{
+	opacity: 0.5;
+	webkit-transform:scale(1.1);
+		moz-transform:scale(1.1);
+			ms-transform:scale(1.1);
+				o-transform:scale(1.1);
+					transform:scale(1.1);
+}
+.crkt-cup{
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	width: auto;
+}
+.cup-name{
+	float: left;
+	width: auto;
+	text-transform: capitalize;
+	color: #000;
+	font-size: 16px;
+	line-height: 16px;
+	padding: 12px 20px;
+}
+.cup-name.crkt-date{
+	background: rgba(0, 0, 0, 0.7);
+	color: #fff;
+    padding: 12px 20px 9px;
+    line-height: 19px;
+}
+.crkt-news .text{
+	float: left;
+	width: 50%;
+	padding: 22px 25px 25px;
+}
+.crkt-news .text h4{
+	font-weight: 500;
+	line-height: 24px;
+	margin: 0;
+	position: relative;
+	padding-bottom: 13px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+.crkt-news .text h4 span{
+	display: block;
+}
+.crkt-news .text h4:before{
+	position: absolute;
+	left: 0;
+	width: 37px;
+	height: 2px;
+	content: "";
+	bottom: 0;
+}
+.crkt-news .text p{
+	margin-bottom: 0px;
+	line-height: 27px;
+}
+.crkt-icon{
+	float: right;
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	background: #cfcfcf;
+	color: #fff;
+	font-size: 18px;
+	line-height: 22px;
+}
+.crkt-icon i{
+	line-height: 30px;
+}
+/*
+	  ============================================================
+		 CRICKET  HEADINGS
+	  ============================================================
+*/
+.crkt-hd{
+	float: left;
+	width: 100%;
+	background: #000;
+	position: relative;
+	padding: 10px 20px 10px;
+}
+.crkt-hd::before {
+    bottom: 0;
+    color: #fff;
+    content: "";
+    font-family: "FontAwesome";
+    font-size: 14px;
+    height: 100%;
+    line-height: 46px;
+    padding: 0 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.crkt-hd h6{
+	color: #fff;
+	margin: 0;
+	text-transform: capitalize;
+	font-weight: normal;
+    line-height: 20px;
+	font-size:20px !important;
+}
+.crkt-hd2{
+	float: left;
+	width: 100%;
+}
+.crkt-hd2 h2{
+	font-size: 24px;
+	color: #000;
+	position: relative;
+	line-height: 22px;
+	text-transform: uppercase;
+	font-weight: normal;
+	margin: 0;
+	padding-bottom: 10px;
+}
+.crkt-hd2 h2:before{
+	position: absolute;
+	left: 0;
+	width: 102px;
+	height: 2px;
+	content: "";
+	bottom: 0;
+}
+.crkt-hd3{
+	float: left;
+	width: 100%;
+	padding: 24px 20px 24px 50px;
+	background-color: #000;
+	position: relative;
+	margin-bottom: 10px;
+	/*
+	-webkit-transform:skewX(-20deg);
+		-moz-transform:skewX(-20deg);
+			-ms-transform:skewX(-20deg);
+				-o-transform:skewX(-20deg);
+					transform:skewX(-20deg);
+				*/
+}
+.crkt-hd3:before{
+	position: absolute;
+	left: 0px;
+	top: 0;
+	bottom: 0;
+	width: 20px;
+	content: "";
+}
+.crkt-hd3 h4{
+	font-size: 30px;
+	color: #fff;
+	line-height: 24px;
+	text-transform: uppercase;
+	margin:0px;
+	/*
+	-webkit-transform:skewX(20deg);
+		-moz-transform:skewX(20deg);
+			-ms-transform:skewX(20deg);
+				-o-transform:skewX(20deg);
+					transform:skewX(20deg);
+					*/
+}
+
+/*
+	  ============================================================
+		 CRICKET  ACCOURDIAN
+	  ============================================================
+*/
+.crkt-accordian{
+	float: left;
+	width: 100%;
+	margin-bottom: 30px;
+}
+.crkt-accordian .accordion{
+	float: left;
+	width: 100%;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 18px;
+	text-transform: uppercase;
+	color: #fff;
+	position: relative;
+	padding: 16px 20px;
+	border-bottom: 1px solid #fff;
+	cursor: pointer;
+}
+.crkt-accordian .accordion.accordion-open{
+	background: #bbb;
+	border-color: transparent;
+}
+.crkt-accordian .accordion span{
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	margin: -10px 0 0 0;
+	font-size: 20px;
+	color: #fff;
+}
+.crkt-accordian .accordion-content{
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #fff;
+}
+.crkt-accordian .accordion:last-child ,
+.crkt-accordian .accordion-content:last-child{
+	border:none;
+}
+.crkt-add{
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.crkt-add img{
+	float: left;
+	width: 100%;
+}
+.add-caption{
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	outline: 1px solid rgba(255, 255, 255, 0.5);
+	outline-offset:-6px;
+	background-color: #d33021;
+	width: auto;
+	padding:58px 26px; 
+	text-align: center;
+}
+.add-caption h4{
+	font-size: 20px;
+	color: #fff;
+	text-transform: capitalize;
+	line-height: 25px;
+	position: relative;
+	padding-bottom: 27px;
+	margin-bottom: 22px;
+}
+.add-caption h4:before{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: "";
+	margin: 0 auto;
+	width: 74px;
+	height: 3px;
+}
+.add-caption h4 a{
+	color: #fff;
+}
+.add-caption h4 span{
+	display: block;
+}
+.add-caption p{
+	font-size: 16px;;
+	color: #fff;
+	margin: 0;
+	font-family: 'Andada', serif;
+	text-transform: capitalize;
+}
+.add-caption p a{
+	color: #fff;
+}
+/*
+	  ============================================================
+		 CRICKET  BOARD WRAP
+	  ============================================================
+*/
+.crkt-board{
+	float: left;
+	width: 100%;
+}
+.crkt-board .crkt-hd2{
+	margin-bottom: 30px;
+}
+.crkt-tab-wrap{
+	float: left;
+	width: 100%;
+	padding: 10px;
+	background: #e8e8e8;
+}
+.crkt-tab-wrap ul{
+	margin:0px;
+	list-style:none;
+}
+.crkt-tabnav{
+	float: left;
+	width: 100%;
+	border:none;
+}
+.crkt-tabnav li{
+	float: left;
+	width: 33.3%;
+	margin: 0 0 7px 0;
+}
+.crkt-tabnav li a {
+    border:none;
+    border-radius: 0;
+    line-height: 12px;
+    font-size: 14px;
+    color: #fff;
+    margin-right: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 12px 0;
+    position: relative;
+    background-color: #d33021;
+}
+.crkt-tabnav li a:hover{
+	background-color: #d33021;
+}
+.crkt-tabnav > li.active > a, 
+.crkt-tabnav > li.active > a:hover, 
+.crkt-tabnav > li.active > a:focus{
+	border: none;
+}
+.crkt-tabnav > li.active > a:before{
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 7px 9px 0 9px;
+	position: absolute;
+	content: "";
+	left: 0;
+	right: 0;
+	bottom: -7px;
+	margin: 0 auto;
+}
+.crkt-tabnav > li.active.results > a,
+.crkt-tabnav > li.results > a{
+	background: #d33021;
+	color: #fff;
+}
+.crkt-tabnav > li.active.results > a:before{
+	border-color: #d33021 transparent transparent transparent;	
+}
+.crkt-tabnav > li.active.fixtures > a,
+.crkt-tabnav > li.fixtures > a{
+	background: #000000;
+	color: #fff;
+}
+.crkt-tabnav > li.active.fixtures > a:before{
+	border-color: #000000 transparent transparent transparent;	
+}
+.tab-content{
+	float: left;
+	width: 100%;
+}
+.current-match{
+	float: left;
+	width: 100%;
+}
+.current-match li{
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #d1d1d1;
+	padding: 20px 0;
+}
+.current-match li:last-child{
+	padding-bottom: 10px;
+	border:none; 
+}
+.current-match li h4 {
+    font-weight: normal;
+    line-height: 17px;
+    text-transform: capitalize;
+    margin-bottom: 13px;
+	float:left;
+}
+.score-btn{
+	float: right;
+	padding: 8px 20px 6px;
+	text-transform: capitalize;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 12px;
+	color: #000;
+	border-radius: 3px;
+}
+
+/*
+	  ============================================================
+		 CRICKET  FIXTURE WRAP
+	  ============================================================
+*/
+section.crkt-fixtures-bg{
+	padding-bottom: 113px;
+}
+.crkt-fixtures-wrap{
+	float: left;
+	width: 100%;
+}
+.crkt-fixtures-hd{
+	float: left;
+	width: 100%;
+	padding: 15px 25px;
+}
+.crkt-fixtures-hd h4 {
+    float: left;
+    font-size: 36px;
+    line-height: 33px;
+    padding: 10px 0 4px;
+    width: auto;
+    text-transform: uppercase;
+	margin:0px;
+}
+.crkt-fixtures-hd .crkt-social-2{
+	color: #fff;
+	float: right;
+	width: auto;
+	margin-left: 5px;
+}
+.crkt-social-2{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+.crkt-fixtures-hd .crkt-social-2 li{
+	float: left;
+}
+.crkt-fixtures-hd .crkt-social-2 li a{
+	width: 50px;
+	height: 47px;
+	border: none;
+	text-align:center;
+	font-size: 20px;
+	line-height: 47px;
+	color: #fff;
+}
+.crkt-fixtures-hd .crkt-twitter {
+    background: #1b95e0 none repeat scroll 0 0;
+}
+.crkt-fixtures-innrwrap{
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+}
+.crkt-daterange{
+	float: left;
+	width: 100%;
+	padding: 25px;
+	position: relative;
+}
+.crkt-daterange h5 {
+    float: left;
+    font-size: 16px;
+    line-height: 12px;
+    padding: 9px 0 3px;
+    margin-right: 12px;
+}
+.crkt-daterange h4{
+	font-size: 26px;
+	float: left;
+	line-height: 24px;
+    margin-right: 12px;
+}
+.crkt-daterange h4 i{
+	font-size: 20px;
+}
+.crkt-pagination{
+	position: absolute;
+	right: 25px;
+	top: 25px;
+}
+.crkt-pagination h6{
+    float: left;
+    font-size: 16px;
+    line-height: 12px;
+    padding: 9px 0 3px;
+    margin-right: 12px;
+}
+.crkt-pagination a{
+	float: right;
+	width: 28px;
+	height: 34px;
+	line-height: 34px;
+	margin-left: 1px;
+	color: #fff;
+	position: relative;
+}
+.crkt-pagination a:before{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	content:"";
+	line-height: 34px;
+	font-family: 'FontAwesome';
+	font-size: 16px;
+	text-align: center;
+	color: #fff;
+}
+.crkt-pagination .crkt-next:before{
+	content:"";
+}
+.crkt-pagination a:hover{
+	background-color: #000;
+	color: #fff;
+}
+.crkt-dropdown{
+	float: left;
+	width: 100%;
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+.crkt-dropdown .dropdown{
+	position: relative;
+	width: auto;
+	float: left;
+	margin-right: 15px;
+}
+.crkt-dropdown .dropdown:last-child{
+	margin: 0;
+}
+.crkt-dropdown .dropdown button{
+	background-color: #f3f3f3;
+	border: 1px solid #dedede;
+	padding: 13px 22px;
+	font-size: 14px;
+	color: #000;
+	font-weight: normal;
+	line-height: 16px;
+}
+.crkt-fixtures-dec{
+	float: left;
+	width: 100%;
+}
+.crkt-fixtures-dec h6{
+	font-size: 16px;
+	float: left;
+	width: 100%;
+	background-color: #000;
+	color: #fff;
+	line-height: 16px;
+	padding:15px;
+	margin-bottom: 15px;
+}
+.crkt-fixtures-dec h6 span{
+	float: right;
+	font-size: 16px;
+	/*
+	padding-top: 2px;
+	*/
+}
+.crkt-fixtures-dec .text{
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border: 1px solid #dedede;
+	position: relative;
+	padding:20px 15px; 
+	margin-bottom: 15px;
+}
+.crkt-fixtures-dec .text:hover{
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+.crkt-fixtures-dec .text h4{
+	font-size: 24px;
+	text-transform: capitalize;
+	font-weight: normal;
+	float: left;
+	width: 100%;
+	line-height: 23px;
+	margin:0 0 12px 0;
+}
+.crkt-fixtures-dec .text p{
+	margin: 0 0 9px 0;
+	font-size: 14px;
+	color: #666666;
+	line-height: normal;
+	text-transform: capitalize;
+	font-weight: normal;
+	float: left;
+}
+.crkt-fixtures-dec .text p a{
+	color: #666;
+}
+.crkt-fixtures-dec .text span{
+	margin: 0;
+	font-size: 14px;
+	color: #666666;
+	line-height: 17px;
+	text-transform: capitalize;
+	font-weight: normal;
+	float: left;
+	width: 100%;
+}
+.crkt-fixtures-link{
+	position: absolute;
+	right: 15px;
+	bottom: 25px;
+}
+.crkt-fixtures-link a{
+	float: left;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight:bold;
+	border:1px solid #dedede;
+	background-color: #f5f5f5;
+	padding: 10px 25px;
+	margin-left: 15px;
+	line-height: 16px;
+}
+.crkt-fixtures-link a:first-child{
+	margin: 0;
+}
+.crkt-fixtures-link a:hover{
+	color: #fff;
+}
+.crkt-fixtures-more{
+	float: left;
+	width: 100%;
+	text-align: center;
+	padding: 35px 0 25px;
+}
+.crkt-fixtures-more a{
+	display: inline-block;
+	font-size: 16px;
+	text-transform:uppercase;
+	line-height: 15px;
+	padding: 20px 40px;
+	color:#fff;
+	font-weight:bold;
+}
+.crkt-fixtures-more a:hover{
+	color: #fff;
+	background-color: #000;
+}
+
+
+
+.crt-piont-table-bg{
+	position: relative;
+	background-image: url(extra-images/crt-piont-table-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.crt-piont-table-bg:before{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: #1a1a1a;
+	opacity: 0.85;
+	content: "";
+}
+.crkt-event-wrap{
+	float: left;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.4);
+	padding: 20px 10px; 
+	margin-bottom: 30px;
+}
+.crkt-event{
+	float: left;
+	width: 100%;
+	margin-bottom: 24px
+}
+.crkt-event-wrap .crkt-event:last-child{
+	margin-bottom: 4px;
+}
+.crkt-event .thumb{
+	float: left;
+	width: 101px;
+	border: 2px solid;
+}
+.crkt-event .text{
+	float: none;
+	overflow: hidden;
+	width: auto;
+	padding: 0 0 0 10px;
+}
+.crkt-event .text h5{
+	font-size: 16px;
+	line-height: 13px;
+	text-transform: capitalize;
+	margin-bottom: 18px;
+}
+.crkt-event .text span{
+	float: left;
+	font-size: 16px;
+	color: #fff;
+	width: 100%;
+	line-height: 15px;
+	margin-bottom: 8px;
+}
+.crkt-event .text p{
+	color: #fff;
+	margin: 0;
+	line-height: 24px;
+}
+.crkt-table {
+	border:none;
+}
+.crkt-table thead th {
+    border: medium none;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.crkt-table tbody tr {
+	border-top: 1px solid #fff;
+}
+.crkt-table tbody tr td{
+	border: none;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+}
+.crkt-table thead th {
+    padding-top: 0;
+}
+.crkt-table thead th, .crkt-table tbody tr td {
+    height: 41.8px;
+    line-height: normal;
+    padding: 2px 0 0;
+    vertical-align: middle;
+}
+.crkt-table thead tr:hover{
+	background-color: transparent;
+}
+.crkt-table tr:hover{
+	background-color: #666;
+}
+
+/*
+	  ============================================================
+		 CRICKET  MID BAR
+	  ============================================================
+*/
+.cricket-social-profile span{
+	
+}
+.crkt-midbar{
+	float: left;
+	width: 100%;
+	padding: 30px 0 25px;
+}
+.input-dec{
+	float: left;
+	width: 100%;
+}
+.input-dec p{
+	margin:0px;
+}
+.input-dec span{
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #000;
+	float: left;
+	line-height: 21px;
+	float: left;
+	margin-right: 15px;
+	padding: 11px 0 7px;
+	font-weight:bold;
+}
+.input-dec input[type="text"]{
+	float: left;
+	width: 222px;
+	height: 44px !important;
+	line-height: 22px;
+	border: 1px solid #000;
+	font-size: 16px;
+	background: transparent;
+	padding:10px 15px;
+	margin-right: 10px;
+}
+.input-dec #kode-submit-form .thbg-color{
+	background:#333 !important;
+	height:44px;
+	padding:10px 20px;
+}
+.input-dec input[type="text"]::-moz-placeholder{
+	color: #000;
+}
+.input-dec button{
+	float: left;
+	font-size: 16px;
+	padding:13px 45px 12px;
+	color: #fff;
+	background: #000;
+	text-transform: uppercase;
+	line-height: 14px;
+}
+.input-dec button:hover{
+	color: #000;
+	background-color: #fff;
+}
+.crkt-social-2{
+	float: left;
+	width: 100%;
+}
+.crkt-social-2{
+	float: left;
+	width: 100%;
+	text-align: right;
+	margin:2px 0px;
+}
+.crkt-social-2 li{
+	display: inline-block;
+	width: auto;
+	margin-left: 13px;
+}
+.crkt-social-2 li:first-child{
+	margin:0; 
+}
+.cricket-social-profile{
+	float:right;
+	text-align:right;
+}
+.cricket-social-profile span,
+.crkt-social-2 li span{
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #000;
+	float: left;
+	line-height: 21px;
+	padding: 11px 0 7px;
+	font-weight:bold;
+}
+.cricket-social-profile .crkt-social-2{
+	width:auto;
+	margin-left:20px;
+}
+.cricket-social-profile span{
+	float:left;
+}
+.crkt-social-2 li a{
+	float: left;
+	width: 39px;
+	height: 39px;
+	text-align: center;
+	line-height: 25px;
+	border: 1px solid #000;
+	font-size: 16px;
+	color: #000;
+}
+.crkt-social-2 li a:hover{
+	color: #fff;
+	background-color: #000;
+	box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.3);
+}
+/*
+	  ============================================================
+		 CRICKET POST WRAP
+	  ============================================================
+*/
+.crkt-posts{
+	float: left;
+	width: 100%;
+	margin-bottom: 30px;
+}
+.crkt-posts .thumb{
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.crkt-posts .thumb img{
+	float: left;
+	width: 100%;
+}
+.crkt-posts .bx-wrapper .bx-pager{
+	display:none;
+}
+.post-caption{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding:0 20px 20px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+4,0.65+99 */
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0) 4%, rgba(0,0,0,0.65) 99%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0.65) 99%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0.65) 99%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+}
+
+.post-caption small{
+	float: left;
+	width: auto;
+	font-size: 16px;
+	color: #fff;
+	line-height: 15px;
+	font-weight: normal;
+	padding: 12px 15px 9px;
+	text-transform: capitalize;
+	margin-bottom: 20px;
+}
+.post-caption h5{
+	float: left;
+	width: 100%;
+	font-size: 36px !important;
+	color: #fff;
+	line-height: 44px;
+	margin-bottom: 22px;
+	text-transform: capitalize;
+}
+.post-caption h5 a{
+	display: inline-block;
+	color: #fff;
+}
+.post-caption h5 span{
+	display: block;
+}
+.post-caption p{
+	float: left;
+	width: auto;
+	font-size: 20px;
+	color: #fff;
+	line-height: 20px;
+	text-transform: capitalize;
+	margin: 0;
+}
+.crkt-slider{
+	float: left;
+	width: 100%;
+}
+.crkt-slider ul{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+.crkt-slider .bx-wrapper .bx-controls-direction a {
+
+    height: 50px;
+    right: 20px;
+    outline: 0 none;
+    position: absolute;
+    text-decoration: none;
+    bottom: 20px;
+    top: auto;
+    margin: 0;
+    width: 30px;
+}
+.crkt-slider .bx-wrapper .bx-controls-direction a:before{
+	display:none;
+}
+.crkt-slider .bx-wrapper .bx-controls-direction a:hover{
+	box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3)inset;
+}
+.crkt-slider .bx-wrapper .bx-controls-direction .bx-prev{
+	left: auto;
+	right: 51px;
+}
+.crkt-slider .bx-wrapper .bx-controls-direction .bx-prev:before{
+	content: "";
+}
+.crkt-slider .bx-wrapper .bx-controls-direction .bx-next:before{
+	content: "";
+}
+.crkt-slider .bx-wrapper .bx-controls-direction a:before{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	margin: -11px auto 0;
+	color: #000;
+	font-size: 20px;
+	content: "";
+	font-family:'FontAwesome';
+	text-align: center;
+}
+.footer-layout-7.crkt-footer .kode_football_footer_logo p{
+	color:#fff;
+}
+.footer-layout-7.crkt-footer h3{
+	font-size:30px !important;
+	margin-bottom:12px;
+	color:#fff;
+}
+/*
+	  ============================================================
+		 CRICKET  FOOTER
+	  ============================================================
+*/
+.crkt-footer{
+	float: left;
+	width: 100%;
+	background-image: url(extra-images/crkt-footer-bg.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: relative;
+}
+.crkt-footer:before{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: #000;
+	opacity: 0.85;
+	content: "";
+}
+.crkt-main-footer{
+	float: left;
+	width: 100%;
+	padding: 59px 0 65px;
+}
+.widget h4{
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 30px;
+	margin: 0;
+}
+.widget-crkt-text h4{
+	margin-bottom: 11px;
+}
+.widget-crkt-text .text{
+	float: left;
+	width: 100%;
+}
+.widget-crkt-text p{
+	color: #999999;
+	margin-bottom: 17px;
+	line-height: 24px;
+}
+.widget-crkt-text ul{
+	float: left;
+	width: 100%;
+}
+.widget-crkt-text ul li{
+	float: left;
+	width: auto;
+	font-size: 16px;
+	color: #999;
+	margin-right: 30px;
+}
+.widget-crkt-text ul li i{
+	color: #fff;
+	margin-right: 10px;
+}
+.widget-crkt-text ul li:last-child{
+	margin: 0;
+}
+.widget-crktgallery h4{
+	margin-bottom: 17px;
+}
+.widget-crktgallery ul{
+	float: left;
+	width: 100%;
+}
+.widget-crktgallery ul li{
+	float: left;
+	width: auto;
+	margin: 0 0 0 13px;
+}
+.widget-crktgallery ul li img{
+	float: left;
+	width: 100%;
+}
+.widget-crktgallery ul li:hover img{
+	opacity: 0.5;
+}
+.widget-crktgallery ul li:first-child{
+	margin-left: 0;
+}
+.crkt-copyright{
+	float: left;
+	width: 100%;
+	border-top: 1px solid #999999;
+	padding: 27px 0 31px;
+	position: relative;
+}
+.crkt-copyright p{
+	float: left;
+	width: auto;
+	color: #999;
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+}
+.crkt-copyright p a{
+	color: #fff;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+.crkt-copyright span{
+	float: right;
+	width: auto;
+	color: #999;
+	font-size: 16px;
+	line-height: 1.8;
+	font-family: 'Open Sans', sans-serif;
+}
+.topbtn2{
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+}
+.footer-layout-7.crkt-footer .col-md-6.widget .flickr_badge_image{
+	width:70px;
+	height:auto;
+	overflow:hidden;
+}
+.footer-layout-7.crkt-footer .col-md-6.widget .flickr_badge_image img{
+	height:auto;
+}
+.footer-layout-7.crkt-footer .inner-element p{
+	color:#fff;
+}
+.footer-layout-7.crkt-footer .kode-form-list{margin:0px;padding:0px;}
+.footer-layout-7.crkt-footer .kode-form-list li{float:left;margin-right:20px;}
+.footer-layout-7.crkt-footer .kode-form-list strong{
+	display:none;
+}
+.footer-layout-7.crkt-footer .kode-form-list li i{
+	background:#fff;
+}
+
+.kode_football_footer_social_icon ul{
+	margin:0px;
+}
+
+.kode-recent-blog ul, ul.recent-posts{
+	margin:0px;
+}
+.kode-cricket .kode-table tbody tr{
+	background-color:#fff;
+}
+.kode-cricket .kode-table tbody tr:hover{
+	background-color:#eee !important;
+}
+.kode-cricket .kode-table tbody tr:nth-child(2n){
+	background-color:#f7f6f6;
+}
+.kode-cricket .kode-table tbody tr td{
+	color:#333;
+}
+.kode-cricket .kode-table tbody tr td{
+	border-color:#eee;
+}
+.kode-cricket .kode-table{
+	box-shadow:none;
+}

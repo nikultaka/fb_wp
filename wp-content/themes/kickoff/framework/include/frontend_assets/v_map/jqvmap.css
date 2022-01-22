@@ -1,0 +1,179 @@
+.jqvmap-label
+{
+	position: absolute;
+	display: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background: #292929;
+	color: white;
+	font-family: sans-serif, Verdana;
+	font-size: smaller;
+	padding: 3px;
+  pointer-events:none;
+}
+.jqvmap-pin {
+  pointer-events:none;
+}
+.jqvmap-zoomin, .jqvmap-zoomout
+{
+	position: absolute;
+	left: 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background: #000000;
+	padding: 3px;
+	color: white;
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+	line-height: 10px;
+	text-align: center;
+}
+.jqvmap-zoomin
+{
+	top: 10px;
+}
+.jqvmap-zoomout
+{
+	top: 30px;
+}
+.jqvmap-region
+{
+  cursor: pointer;
+}
+.jqvmap-ajax_response
+{
+  width: 100%;
+  height: 500px;
+}
+
+
+
+/*
+==============================================================
+			COUNTRIES AND CITIES LIST
+==============================================================
+*/
+.gray-bg{
+	background-color:#f5f5f5;
+}
+.top-locations{
+	float:left;
+	width:100%;
+	background-color:#f9f9f9;
+	background-image:url(images/bg-map.png);
+	background-position:center center;
+}
+.hotel-cities {
+	float: left;
+	width: 100%;
+	margin: 0px 0px 30px 0px;
+}
+.hotel-cities-2{
+	background-color:#fff;
+	padding:15px ;
+	border-bottom:solid 1px;
+}
+.hotel-cities .div-header {
+	float: left;
+	width: 100%;
+	margin-bottom:10px;
+	position:relative;
+}
+.hotel-cities-2 .div-header{
+}
+.hotel-cities-2 .div-header:before{
+	content:"";
+	position:absolute;
+	left:-15px;
+	top:8px;
+	bottom:8px;
+	background-color:#f5f5f5;
+	right:-15px;
+}
+.hotel-cities .div-header .thumb {
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+	overflow: hidden;
+	margin-right: 10px;
+	float: left;
+	position:relative;
+}
+.hotel-cities-2 .div-header .thumb {
+	border:solid 2px #fff;
+	box-shadow:0px 0px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow:0px 0px 3px 0px rgba(0,0,0,0.2);
+	-webkit-box-shadow:0px 0px 3px 0px rgba(0,0,0,0.2);
+}
+.hotel-cities .div-header .thumb img {
+	width: 100%;
+	border-radius: 100%;
+}
+.hotel-cities .div-header h4 {
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 11px 0px;
+	display: inline-block;
+	position:relative;
+}
+.cities-list {
+	float: left;
+	list-style: none;
+	margin: 0px 0px 10px 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+.cities-list li {
+	float: left;
+	width: 30%;
+}
+.cities-list li a {
+	display: inline-block;
+	position: relative;
+	font-size: 14px;
+	color: #666;
+	padding: 8px 10px 8px 20px;
+}
+.cities-list li a:hover {
+	text-decoration: none;
+	padding: 8px 0px 8px 25px;
+}
+.cities-list li a:before {
+	content: "";
+	position: absolute;
+	left: 0px;
+	top: 50%;
+	margin-top: -3px;
+	height: 6px;
+	width: 6px;
+	border-radius: 10px;
+}
+.hotel-cities .view-all {
+	float: left;
+	width: 100%;
+	padding: 10px 20px;
+	border: solid 1px #eee;
+}
+.hotel-cities-2 .view-all{
+	padding:0px;
+	border:none;
+}
+.hotel-cities .view-all a {
+	display: inline-block;
+	float: left;
+	font-weight: bold;
+	color: #999999;
+}
+.hotel-cities .view-all span {
+	float: right;
+	font-weight: bold;
+	color: #999999;
+}
+.cities-list li a:before{
+	background-color:#F37731;
+}

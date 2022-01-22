@@ -1,8 +1,12 @@
 var $ = jQuery;
 $(document).ready(function () {
+
+  
   $("#leagueModal").on("hidden.bs.modal", function (event) {
     $("#leagueformdata")[0].reset();
   });
+  $('.date-time-picker').datetimepicker();
+  $(".xdsoft_datetimepicker").css("z-index", "9999999999999999999");
 
   loadleaguetable();
   $("#leagueformdata").validate({
@@ -136,7 +140,35 @@ function leaguerecord_edit(id) {
   });
 }
 
-//////////////////////////  round  /////////////////////
+
+/*************************** 
+end of Get League
+start of League List
+ **************************/
+
+
+function get_all_league_list() {
+
+  $.ajax({
+      type: "POST",
+      url: ajaxurl,
+      data:{
+          'action' : "Aleague_list_controller::get_league_list"
+      },
+      success: function (responce) {
+          var data = JSON.parse(responce);
+          if (data.status == 1) {
+              $("#league_list_div").append(data.event_string);
+          }   
+      }
+  });
+}
+
+
+/*************************** 
+end of Get League List
+start of round
+ **************************/
 
 function leagueround(id) {
   $("#hdnleagueid").val(id);
@@ -281,9 +313,11 @@ function editround_record(id) {
   });
 }
 
-//////////////////////////  round  /////////////////////
 
-//////////////////////////  match  /////////////////////
+/*************************** 
+end of round
+start of match
+ **************************/
 
 function leaguematch(id,roundEmpty) {
 $("#hmhdnleagueid").val(id);
@@ -295,7 +329,9 @@ if(roundEmpty == 0){
 }
 
 $("#matchmodal").modal("show");
+
 $("#matchformdata")[0].reset();
+// $('.date-time-picker').datetimepicker();
 loadmatchtable();
 } 
 
@@ -307,12 +343,14 @@ $("#save_Btnmatch").click(function () {
         round: "required",
         team1: "required",
         team2: "required",
+        enddate: "required",
         mstatus: "required",
       },
       messages: {
         round: "Round Name is Required",
         team1: "Team 1 is Required",
         team2: "Team 2 is Required",
+        enddate: "Date is Required",
         mstatus: "Status is Required",
       },
       submitHandler: function () {
@@ -333,6 +371,7 @@ $("#save_Btnmatch").click(function () {
               $("#round").val("");
               $("#team1").val("");
               $("#team2").val("");
+              $("#enddate").val("");
               $("#mstatus").val("");
               $("#hmid").val("");    
               loadmatchtable();
@@ -376,13 +415,14 @@ $("#save_Btnmatch").click(function () {
         { mData: "round" },
         { mData: "team1" },
         { mData: "team2" },
-        { mData: "mstatus" },
+        { mData: "enddate" },
+        { mData: "mstatus"},
         { mData: "action" },
       ],
       order: [[0, "asc"]],
       columnDefs: [
         {
-          targets: [3],
+          targets: [4],
           orderable: false,
         },
       ],
@@ -440,6 +480,7 @@ $("#save_Btnmatch").click(function () {
           $("#round").val(result.round);
           $("#team1").val(result.team1);
           $("#team2").val(result.team2);
+          $("#enddate").val(result.enddate);
           $("#status").val(result.status);
           loadmatchtable();
         }
@@ -448,4 +489,151 @@ $("#save_Btnmatch").click(function () {
   }
   
 
-//////////////////////////  match  /////////////////////
+
+/*************************** 
+end of match
+start of score
+ **************************/
+
+  
+  $("#save_Btnmatchscore").click(function () {
+      console.log($("#matchscoreformdata").serialize());
+    
+      $("#matchscoreformdata").validate({
+        rules: {
+          team1score: "required",
+          team2score: "required",
+        },
+        messages: {
+          team1score: "Team 1 Score is Required",
+          team2score: "Team 2 Score is Required",
+        },
+        submitHandler: function () {
+          $.ajax({
+            url: ajaxurl,
+            type: "POST",
+            data: $("#matchscoreformdata").serialize(),
+    
+            success: function (responce) {
+              var data = JSON.parse(responce);
+              if (data.status == 1) {
+                Swal.fire({
+                  icon: "success",
+                  title: data.msg,
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            },
+          });
+        },
+      });
+    });
+    
+    function loadmatchscoretable(matchid) {
+      $("#hdnmatchid").val(matchid);
+      $.ajax({
+        url: ajaxurl,
+        type: "POST",
+        data: {
+          matchid: matchid,
+          action: "league_controller::loadmatchscore_Datatable",
+        },
+        success: function (responce) {
+          var data = JSON.parse(responce);
+          if (data.status == 1) {
+            var result = data.recoed;
+            $("#matchscoremodal").modal("show");      
+            $("#matchscoreformdata")[0].reset();
+            $("#matchmodal").modal("hide");  
+            $("#hmsid").val(result.id);
+            $("#team1score").val(result.team1score);
+            $("#team2score").val(result.team2score);
+            $("#teamname1").html(result.teamname1);
+            $("#teamname2").html(result.teamname2);
+          }
+        },
+      });
+    }
+  
+  
+  
+    function deletematchscore_record(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You are sure to delete this record !",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: ajaxurl,
+            type: "POST",
+            data: {
+              id: id,
+              action: "league_controller::deletematchscore_record",
+            },
+            success: function (responce) {
+              var data = JSON.parse(responce);
+              if (data.status == 1) {
+                Swal.fire("Deleted!", "Your record has been deleted.", "success");
+                loadmatchscoretable();
+              }
+            },
+          });
+        }
+      });
+    }
+
+
+/*************************** 
+end of score
+start of leaderboard
+ **************************/
+
+function leagueleaderboard(id) {
+  $("#lbhdnleagueid").val(id);
+  $("#leaderboardModal").modal("show");
+  loadleaderboardtable();
+}
+
+function loadleaderboardtable(){
+  console.log("hello");
+  var lbhdnleagueid = $("#lbhdnleagueid").val();
+  $("#leaderboarddata-table").dataTable({
+    paging: true,
+    pageLength: 10,
+    bProcessing: true,
+    serverSide: true,
+    bDestroy: true,
+    ajax: {
+      url: ajaxurl,
+      type: "POST",
+      data: {
+        action: "league_controller::loadleaderboard_Datatable",
+        lbhdnleagueid: lbhdnleagueid
+      },
+    },
+    aoColumns: [
+      // { mData: "id" },
+      { mData: "id" },
+      { mData: "score" },
+    ],
+    order: [[0, "asc"]],
+    columnDefs: [
+      {
+        targets: [1],
+        orderable: false,
+      },
+    ],
+  });
+}
+/*************************** 
+end of leaderboard
+ **************************/
+
+
+ 

@@ -1,0 +1,15 @@
+.elementor-column-gap-no .wpha-item-holder .wpha-listing-item .columns{
+	padding:0px;
+}
+.elementor-column-gap-narrow > .elementor-row > .elementor-column > .elementor-element-populated .wpha-item-holder .wpha-listing-item .columns{
+	padding:0px 5px;
+}
+.elementor-column-gap-extended > .elementor-row > .elementor-column > .elementor-element-populated .wpha-item-holder .wpha-listing-item .columns{
+	padding:0px 15px;
+}
+.elementor-column-gap-wide > .elementor-row > .elementor-column > .elementor-element-populated .wpha-item-holder .wpha-listing-item .columns{
+	padding:0px 20px;
+}
+.elementor-column-gap-wider > .elementor-row > .elementor-column > .elementor-element-populated .wpha-item-holder .wpha-listing-item .columns{
+	padding:0px 30px;
+}

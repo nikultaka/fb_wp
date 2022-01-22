@@ -1,0 +1,734 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kickoff Player Translation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-17 11:57+0500\n"
+"PO-Revision-Date: 2015-08-25 21:32+0500\n"
+"Last-Translator: admin <support@kodeforest.com>\n"
+"Language-Team: kodeforest <support@kodeforest.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Loco-Target-Locale: ar_AE\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: kode-team-element.php:30
+msgid "Team Item"
+msgstr ""
+
+#: kode-team-element.php:32
+msgid "KodeForest"
+msgstr ""
+
+#: kode-team-element.php:37
+msgid "Content"
+msgstr ""
+
+#: kode-team-element.php:43
+msgid "Select Category"
+msgstr ""
+
+#: kode-team-element.php:46
+msgid "Select Category."
+msgstr ""
+
+#: kode-team-element.php:50
+msgid "Select Tag"
+msgstr ""
+
+#: kode-team-element.php:53
+msgid "Select Tag."
+msgstr ""
+
+#: kode-team-element.php:57 kode-team-option.php:294
+msgid "Select Style"
+msgstr ""
+
+#: kode-team-element.php:60 kode-team-element.php:87 kode-team-element.php:98
+#: kode-team-element.php:108
+msgid " "
+msgstr ""
+
+#: kode-team-element.php:61
+msgid "Style 1"
+msgstr ""
+
+#: kode-team-element.php:62
+msgid "Style 2"
+msgstr ""
+
+#: kode-team-element.php:64
+msgid "Select Style."
+msgstr ""
+
+#: kode-team-element.php:69 kode-team-option.php:235 kode-team-option.php:399
+msgid "Num Fetch"
+msgstr ""
+
+#: kode-team-element.php:71
+msgid "5"
+msgstr ""
+
+#: kode-team-element.php:72 kode-team-option.php:238 kode-team-option.php:305
+msgid "Specify the number of teams you want to pull out."
+msgstr ""
+
+#: kode-team-element.php:77 kode-team-option.php:241
+msgid "Num Excerpt"
+msgstr ""
+
+#: kode-team-element.php:79
+msgid "20"
+msgstr ""
+
+#: kode-team-element.php:80
+msgid "Specify the number of teams description you want to pull out."
+msgstr ""
+
+#: kode-team-element.php:84 kode-team-option.php:247 kode-team-option.php:308
+#: kode-team-option.php:405
+msgid "Order By"
+msgstr ""
+
+#: kode-team-element.php:88 kode-team-option.php:250 kode-team-option.php:311
+#: kode-team-option.php:408
+msgid "Publish Date"
+msgstr ""
+
+#: kode-team-element.php:89 kode-team-option.php:251 kode-team-option.php:312
+#: kode-team-option.php:409
+msgid "Title"
+msgstr ""
+
+#: kode-team-element.php:90 kode-team-option.php:252 kode-team-option.php:313
+#: kode-team-option.php:410
+msgid "Random"
+msgstr ""
+
+#: kode-team-element.php:95 kode-team-option.php:256 kode-team-option.php:317
+#: kode-team-option.php:414
+msgid "Order"
+msgstr ""
+
+#: kode-team-element.php:99 kode-team-option.php:259 kode-team-option.php:320
+#: kode-team-option.php:417
+msgid "Descending Order"
+msgstr ""
+
+#: kode-team-element.php:100 kode-team-option.php:260 kode-team-option.php:321
+#: kode-team-option.php:418
+msgid "Ascending Order"
+msgstr ""
+
+#: kode-team-element.php:105
+msgid "Pagination"
+msgstr ""
+
+#: kode-team-element.php:109
+msgid "Enable"
+msgstr ""
+
+#: kode-team-element.php:110
+msgid "Disable"
+msgstr ""
+
+#: kode-team-element.php:163
+#, php-format
+msgid ""
+"<strong>%s</strong> requires <strong><a href=\"http://bit.ly/vcomposer\" "
+"target=\"_blank\">Visual Composer</a></strong> plugin to be installed and "
+"activated on your site."
+msgstr ""
+
+#: kode-team-item.php:88 kode-team-item.php:141 kode-team-item.php:533
+msgid "View Detail"
+msgstr ""
+
+#: kode-team-item.php:194 kode-team-item.php:218 kode-team-option.php:210
+msgid "Team"
+msgstr ""
+
+#: kode-team-item.php:195
+msgid "Matches"
+msgstr ""
+
+#: kode-team-item.php:196 single-team.php:131 single-team.php:185
+msgid "Goals"
+msgstr ""
+
+#: kode-team-item.php:197
+msgid "Won"
+msgstr ""
+
+#: kode-team-item.php:198
+msgid "Lost"
+msgstr ""
+
+#: kode-team-item.php:199
+msgid "Draw"
+msgstr ""
+
+#: kode-team-item.php:200
+msgid "Pts"
+msgstr ""
+
+#: kode-team-item.php:219
+msgid "w"
+msgstr ""
+
+#: kode-team-item.php:220
+msgid "d"
+msgstr ""
+
+#: kode-team-item.php:221
+msgid "l"
+msgstr ""
+
+#: kode-team-item.php:222
+msgid "pts"
+msgstr ""
+
+#: kode-team-item.php:285
+msgid "Leadersboard"
+msgstr ""
+
+#: kode-team-option.php:22
+msgid "Page Layout"
+msgstr ""
+
+#: kode-team-option.php:35
+msgid "Left Sidebar"
+msgstr ""
+
+#: kode-team-option.php:41
+msgid "Right Sidebar"
+msgstr ""
+
+#: kode-team-option.php:49
+msgid "Page Option"
+msgstr ""
+
+#: kode-team-option.php:52
+msgid "Page Caption"
+msgstr ""
+
+#: kode-team-option.php:56
+msgid "Header Background Image"
+msgstr ""
+
+#: kode-team-option.php:57 kode-team-option.php:346 kode-team-option.php:351
+msgid "Upload"
+msgstr ""
+
+#: kode-team-option.php:61
+msgid "Upload Team Logo"
+msgstr ""
+
+#: kode-team-option.php:62
+msgid "Set As Team Logo"
+msgstr ""
+
+#: kode-team-option.php:67 kode-team-option.php:535 single-team.php:87
+msgid "Association"
+msgstr ""
+
+#: kode-team-option.php:72 kode-team-option.php:542
+msgid "Head Coach"
+msgstr ""
+
+#: kode-team-option.php:77 kode-team-option.php:549 single-team.php:79
+msgid "Captain"
+msgstr ""
+
+#: kode-team-option.php:81
+msgid "Select captain of the team."
+msgstr ""
+
+#: kode-team-option.php:84 kode-team-option.php:556 single-team.php:95
+msgid "Ranking"
+msgstr ""
+
+#: kode-team-option.php:89
+msgid "Facebook"
+msgstr ""
+
+#: kode-team-option.php:94
+msgid "Twitter"
+msgstr ""
+
+#: kode-team-option.php:99
+msgid "Youtube"
+msgstr ""
+
+#: kode-team-option.php:104
+msgid "Pinterest"
+msgstr ""
+
+#: kode-team-option.php:110
+msgid "Tournament Stats"
+msgstr ""
+
+#: kode-team-option.php:115
+msgid "Enable Opponent"
+msgstr ""
+
+#: kode-team-option.php:120
+msgid "Enable Goals"
+msgstr ""
+
+#: kode-team-option.php:125
+msgid "Enable Assist"
+msgstr ""
+
+#: kode-team-option.php:130
+msgid "Enable Own Goal"
+msgstr ""
+
+#: kode-team-option.php:135
+msgid "Enable Penalty"
+msgstr ""
+
+#: kode-team-option.php:140
+msgid "Enable Position"
+msgstr ""
+
+#: kode-team-option.php:145
+msgid "Enable Yellow Card"
+msgstr ""
+
+#: kode-team-option.php:150
+msgid "Enable Red Card"
+msgstr ""
+
+#: kode-team-option.php:156
+msgid "Team Tournament Stats"
+msgstr ""
+
+#: kode-team-option.php:161
+msgid "Enable Team Goals"
+msgstr ""
+
+#: kode-team-option.php:166
+msgid "Enable Team Short On Target"
+msgstr ""
+
+#: kode-team-option.php:171
+msgid "Enable Team Corner Kicks"
+msgstr ""
+
+#: kode-team-option.php:176
+msgid "Enable Team Yellow Cards"
+msgstr ""
+
+#: kode-team-option.php:181
+msgid "Enable Team Passing Accuracy"
+msgstr ""
+
+#: kode-team-option.php:192
+msgid "Team Option"
+msgstr ""
+
+#: kode-team-option.php:215 kode-team-option.php:282 kode-team-option.php:355
+#: kode-team-option.php:387 kode-team-option.php:442 kode-team.php:87
+msgid "Category"
+msgstr ""
+
+#: kode-team-option.php:218 kode-team-option.php:285 kode-team-option.php:358
+#: kode-team-option.php:364 kode-team-option.php:390 kode-team-option.php:445
+msgid ""
+"You can use Ctrl/Command button to select multiple categories or remove the "
+"selected category. <br><br> Leave this field blank to select all categories."
+msgstr ""
+
+#: kode-team-option.php:221 kode-team-option.php:288 kode-team-option.php:361
+#: kode-team-option.php:393 kode-team.php:99
+msgid "Tag"
+msgstr ""
+
+#: kode-team-option.php:224 kode-team-option.php:291 kode-team-option.php:396
+msgid "Will be ignored when the team filter option is enabled."
+msgstr ""
+
+#: kode-team-option.php:227
+msgid "Team Style"
+msgstr ""
+
+#: kode-team-option.php:230
+msgid "Normal View"
+msgstr ""
+
+#: kode-team-option.php:231
+msgid "Modern View"
+msgstr ""
+
+#: kode-team-option.php:264
+msgid "Enable Pagination"
+msgstr ""
+
+#: kode-team-option.php:268 kode-team-option.php:325 kode-team-option.php:373
+#: kode-team-option.php:422 kode-team-option.php:448
+msgid "Margin Bottom"
+msgstr ""
+
+#: kode-team-option.php:271 kode-team-option.php:328 kode-team-option.php:425
+msgid "Spaces after ending of this item"
+msgstr ""
+
+#: kode-team-option.php:277
+msgid "Points Table"
+msgstr ""
+
+#: kode-team-option.php:297
+msgid "Style Full"
+msgstr ""
+
+#: kode-team-option.php:298
+msgid "Style Small"
+msgstr ""
+
+#: kode-team-option.php:302
+msgid "Top Number of Teams"
+msgstr ""
+
+#: kode-team-option.php:334
+msgid "Leader Board"
+msgstr ""
+
+#: kode-team-option.php:339
+msgid "Title Num Length (Word)"
+msgstr ""
+
+#: kode-team-option.php:342
+msgid ""
+"This is a number of word (decided by spaces) that you want to show on the "
+"event title. <strong>Use 0 to hide the excerpt, -1 to show full posts and "
+"use the wordpress more tag</strong>."
+msgstr ""
+
+#: kode-team-option.php:345
+msgid "Background Pattern"
+msgstr ""
+
+#: kode-team-option.php:350
+msgid "Player Image"
+msgstr ""
+
+#: kode-team-option.php:367
+msgid "Number Fetch"
+msgstr ""
+
+#: kode-team-option.php:370
+msgid "Write number of fetch teams on the leader board."
+msgstr ""
+
+#: kode-team-option.php:376 kode-team-option.php:451
+msgid "Spaces after ending of this item Note:Donot write px with it."
+msgstr ""
+
+#: kode-team-option.php:382
+msgid "Team Slider"
+msgstr ""
+
+#: kode-team-option.php:402
+msgid "Specify the number of title word you want to pull out."
+msgstr ""
+
+#: kode-team-option.php:431
+msgid "Cric Points Table"
+msgstr ""
+
+#: kode-team-option.php:436
+msgid "Points Table Title"
+msgstr ""
+
+#: kode-team-option.php:439
+msgid "Add Next Event Title Here."
+msgstr ""
+
+#: kode-team-option.php:475
+msgid "Team Post Type"
+msgstr ""
+
+#: kode-team-option.php:478
+msgid "Post Type Name"
+msgstr ""
+
+#: kode-team-option.php:484
+msgid "Post Type Slug"
+msgstr ""
+
+#: kode-team-option.php:490 kode-team-option.php:495
+msgid "Post Type Category"
+msgstr ""
+
+#: kode-team-option.php:501
+msgid "Post Type Tag"
+msgstr ""
+
+#: kode-team-option.php:507
+msgid "Post Type Tags"
+msgstr ""
+
+#: kode-team-option.php:518
+msgid "Team Settings"
+msgstr ""
+
+#: kode-team-option.php:521 single-team.php:50
+msgid "General Setting"
+msgstr ""
+
+#: kode-team-option.php:528 single-team.php:58
+msgid "Team Name"
+msgstr ""
+
+#: kode-team-option.php:570
+msgid "Team Detail Table"
+msgstr ""
+
+#: kode-team-option.php:573
+msgid "Team Detail Team Stats"
+msgstr ""
+
+#: kode-team-option.php:579
+msgid "Team Detail Players Lineup"
+msgstr ""
+
+#: kode-team-option.php:585
+msgid "Tournament Setting"
+msgstr ""
+
+#: kode-team-option.php:592
+msgid "Opponent Setting"
+msgstr ""
+
+#: kode-team-option.php:599
+msgid "Goals Setting"
+msgstr ""
+
+#: kode-team-option.php:606
+msgid "Shorts on Target Setting"
+msgstr ""
+
+#: kode-team-option.php:613
+msgid "Corner Kick Setting"
+msgstr ""
+
+#: kode-team-option.php:620
+msgid "Yellow Card Setting"
+msgstr ""
+
+#: kode-team-option.php:627
+msgid "Passing Accuracy Setting"
+msgstr ""
+
+#: kode-team-option.php:641
+msgid "Team Player Detail Table"
+msgstr ""
+
+#: kode-team-option.php:644 single-team.php:175
+msgid "Player Name"
+msgstr ""
+
+#: kode-team-option.php:651
+msgid "Player Opponent"
+msgstr ""
+
+#: kode-team-option.php:658
+msgid "Player Goal"
+msgstr ""
+
+#: kode-team-option.php:665
+msgid "Player Assist"
+msgstr ""
+
+#: kode-team-option.php:672
+msgid "Player Own Goal"
+msgstr ""
+
+#: kode-team-option.php:679
+msgid "Player Penalty"
+msgstr ""
+
+#: kode-team-option.php:686
+msgid "Player Position"
+msgstr ""
+
+#: kode-team-option.php:693
+msgid "Player Yellow Card"
+msgstr ""
+
+#: kode-team-option.php:700
+msgid "Player Red Card"
+msgstr ""
+
+#: kode-team-option.php:707
+msgid "Player League"
+msgstr ""
+
+#: kode-team.php:50 kode-team.php:51 kode-team.php:62 single-team.php:48
+#: single-team.php:55 single-team.php:63 single-team.php:71 single-team.php:84
+#: single-team.php:92 single-team.php:119 single-team.php:124
+#: single-team.php:129 single-team.php:134 single-team.php:139
+#: single-team.php:144 single-team.php:149 single-team.php:173
+#: single-team.php:178 single-team.php:183 single-team.php:188
+#: single-team.php:193 single-team.php:198 single-team.php:203
+#: single-team.php:208 single-team.php:213 single-team.php:218
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: kode-team.php:52
+msgid "Add New"
+msgstr ""
+
+#: kode-team.php:53
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#: kode-team.php:54
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: kode-team.php:55
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: kode-team.php:56
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: kode-team.php:57
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: kode-team.php:58
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: kode-team.php:59
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#: kode-team.php:60
+#, php-format
+msgid "No %s found in Trash"
+msgstr ""
+
+#: kode-team.php:86
+msgid "Categories"
+msgstr ""
+
+#: kode-team.php:98
+msgid "Tags"
+msgstr ""
+
+#: single-team.php:66
+msgid "Header Coach"
+msgstr ""
+
+#: single-team.php:110
+msgid "Team Stats"
+msgstr ""
+
+#: single-team.php:121
+msgid "Tournament"
+msgstr ""
+
+#: single-team.php:126
+msgid "opponent"
+msgstr ""
+
+#: single-team.php:136
+msgid "Shorts On Target"
+msgstr ""
+
+#: single-team.php:141
+msgid "Corner Kicks"
+msgstr ""
+
+#: single-team.php:146
+msgid "Team Yellow Cards"
+msgstr ""
+
+#: single-team.php:151
+msgid "Passing Accuracy"
+msgstr ""
+
+#: single-team.php:167
+msgid "Players Line up"
+msgstr ""
+
+#: single-team.php:180
+msgid "opponent Name"
+msgstr ""
+
+#: single-team.php:190
+msgid "Assist"
+msgstr ""
+
+#: single-team.php:195
+msgid "Own Goal"
+msgstr ""
+
+#: single-team.php:200
+msgid "Penalty"
+msgstr ""
+
+#: single-team.php:205
+msgid "Position"
+msgstr ""
+
+#: single-team.php:210
+msgid "Yellow Card"
+msgstr ""
+
+#: single-team.php:215
+msgid "Red Card"
+msgstr ""
+
+#: single-team.php:220
+msgid "League"
+msgstr ""
+
+#: single-team_dd.php:58
+msgid "Phone Number:"
+msgstr ""
+
+#: single-team_dd.php:59
+msgid "Email:"
+msgstr ""
+
+#: single-team_dd.php:60 single-team_dd.php:61
+msgid "Website:"
+msgstr ""
+
+#: single-team_dd.php:62
+msgid "Twitter:"
+msgstr ""
+
+#: single-team_dd.php:63
+msgid "Youtube:"
+msgstr ""
+
+#: single-team_dd.php:64
+msgid "Pinterest:"
+msgstr ""

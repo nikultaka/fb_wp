@@ -1,0 +1,36 @@
+.kode-logo{ margin-top: 32px; }
+.kode-logo{ margin-bottom: 37px; }
+.navigation ul > li > a, .navbar-nav > li > a{color: #000000;}
+.navigation ul > li::before, .navbar-nav > li::before{background: #dd3333;}
+.navigation ul > li:hover a, .navbar-nav > li:hover{color: #ffffff;}
+.navigation .sub-menu, .navigation .children, .navbar-nav .children{background: #000000;}
+.navigation ul li ul li::before, .navbar-nav li ul li::before{background: #81d742;}
+.navigation .sub-menu, .navigation .children, .navbar-nav .children{color: #ffa5a5;}
+body h1, body h2, body h3, body h4, body h5, body h6{ font-family: Arial, Helvetica, sans-serif; }
+body{ font-family: Arial, Helvetica, sans-serif; }
+.navigation ul > li > a{ font-family: Arial, Helvetica, sans-serif; }
+body{ font-size: 14px; }
+h1{ font-size: 30px; }
+h2{ font-size: 25px; }
+h3{ font-size: 20px; }
+h4{ font-size: 18px; }
+h5{ font-size: 16px; }
+h6{ font-size: 15px; }
+body{background-color: #ffffff;  }
+.logo{margin-bottom: 37px;  }
+.logo{margin-top: 32px;  }
+.kode-rating::before, .rating-box::before,.rating-box::before, .thcolor,.thcolorhover:hover,.kode-blog-list ul li:hover .kode-blog-info h2 a,.footer-nav ul li a:hover,
+.top-nav ul li a:hover,.services-view-two ul li:hover h2,.upcoming_event_widget ul li:hover .event-widget-info a,
+.kode-content .widget-recentpost ul li:hover h6 a,#koderespond form p i,.kode-postoption li a,.kode-team ul li:hover h4 a,.kode-actionbtn a:hover,
+.kode-blog-list.kode-box-blog ul li:hover h5 a , .widget_rss ul li a.rsswidget{color: #dd9933 !important;  }
+.navbar-nav .children > li:hover > a,.kd-accordion .accordion.accordion-open, .thbg-color,.thbg-colorhover:hover,.kode-topbar:before,.kode-causes-box ul li:hover .cause-inner-caption,
+.gallery-link a:hover,.kode-team figure figcaption ul li:hover a,.team-network ul li:hover a,.kode-blog-list ul li figcaption time,
+#footer-widget .widget-text:before,.main-navbaar .navbar-nav > li:before,
+.services-view-two ul li:hover i,.services-view-two ul li:hover h2:before,.services-view-two ul li:hover .service-btn,
+.pagination a:hover,.pagination span,.widget_archive ul li:hover,.kode-content .widget-recentpost ul li:hover time,
+#koderespond form p input[type="submit"]:hover,.kode-postsection a:hover,.player-nav li.active a,
+.kode-services.services-three ul li i,.widget_categories ul li:hover,.widget-recentpost ul li:hover time,.widget-text ul li:hover i,
+.with-circle ul li i,.kode-causes-list .kode-main-action a,.kode-blog-list.kode-box-blog ul li:hover .box-icon, .widget_calendar table tr td:hover, .widget_calendar table thead, .widget_pages ul li:hover > a, .widget_meta ul li a:hover, .widget_recent_comments ul li .comment-author-link a, .widget_recent_entries ul li a:hover, .widget-search input[type="submit"]:hover, .tagcloud a, .widget_nav_menu ul li:hover > a, .comment-form input[type="submit"], #kodecomments ul li .text a.comment-reply-link:hover, .kode-search label, .event-table:hover .event-cell h2, .kode-caption .kode-linksection, .kode-ux:hover .box-icon, .widget-recentpost ul li:hover .datetime, .kode-ux:hover figcaption .cause-inner-caption, .kode-blog-list figcaption .datetime, .kode-blog-list figcaption .datetime, #footer-widget .kode-widget-bg-footer:before, .kode-services.with-circle i, #theme_bg_color, .kode-pagination a:hover, .kode-pagination span, .kode-pro-info a.added_to_cart, .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt, .woocommerce .cart .button, .woocommerce .cart input.button, .kode-services.services-three i, .dl-menuwrapper button, .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .widget_kode_flickr_widget a:after{background-color: #dd9933 !important;  }
+.th-bordercolor,.th-bordercolorhover:hover,.detail-thumb,.kode-couses-numbers ul li span,.kode-shop-list ul li figure,
+.kode-blog-list.kode-grid-blog ul li figure,.kode-blog-list.kode-mediium-blog figure, .widget_text img:hover, #kodecomments ul li .text a.comment-reply-link:hover, .widget-recentpost ul li:hover .datetime, .team-network ul li:hover a, .kode-pagination a:hover, .kode-pagination span, .blog-more:hover, .kode-icons .kode-team-network li a:hover, .kode-postsection a:hover{border-color: #dd9933 !important;  }
+.table thead{background-color: #dd9933 !important;  }

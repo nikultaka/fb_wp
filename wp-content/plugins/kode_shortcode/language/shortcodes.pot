@@ -1,0 +1,1542 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kickoff Importer Translation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-13 17:20+0500\n"
+"PO-Revision-Date: 2015-08-25 21:32+0500\n"
+"Last-Translator: admin <support@kodeforest.com>\n"
+"Language-Team: kodeforest <support@kodeforest.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Loco-Target-Locale: ar_AE\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: shortcodes.php:592
+msgid "Days"
+msgstr ""
+
+#: shortcodes.php:597
+msgid "Hours"
+msgstr ""
+
+#: shortcodes.php:602
+msgid "Minutes"
+msgstr ""
+
+#: shortcodes.php:607
+msgid "Seconds"
+msgstr ""
+
+#: tinymce/config.php:114
+msgid "Alert Type"
+msgstr ""
+
+#: tinymce/config.php:115
+msgid "Select the type of alert message"
+msgstr ""
+
+#: tinymce/config.php:125 tinymce/config.php:215 tinymce/config.php:262
+#: tinymce/config.php:1010 tinymce/config.php:1266 tinymce/config.php:1302
+#: tinymce/config.php:2359 tinymce/config.php:2407
+msgid "Select Icon"
+msgstr ""
+
+#: tinymce/config.php:126 tinymce/config.php:216 tinymce/config.php:263
+#: tinymce/config.php:1011 tinymce/config.php:1267 tinymce/config.php:1303
+#: tinymce/config.php:2360 tinymce/config.php:2408
+msgid "Click an icon to select, click again to deselect"
+msgstr ""
+
+#: tinymce/config.php:132 tinymce/config.php:2414
+msgid "Alert Content"
+msgstr ""
+
+#: tinymce/config.php:133 tinymce/config.php:2415
+msgid "Insert the alert's content"
+msgstr ""
+
+#: tinymce/config.php:168
+msgid "Alert Shortcode"
+msgstr ""
+
+#: tinymce/config.php:181 tinymce/config.php:238 tinymce/config.php:296
+#: tinymce/config.php:480 tinymce/config.php:577 tinymce/config.php:730
+#: tinymce/config.php:797 tinymce/config.php:902
+msgid "Size"
+msgstr ""
+
+#: tinymce/config.php:182 tinymce/config.php:239
+msgid "Select the size of social icons"
+msgstr ""
+
+#: tinymce/config.php:191
+msgid "TimeLine Shortcode"
+msgstr ""
+
+#: tinymce/config.php:200
+msgid "Year"
+msgstr ""
+
+#: tinymce/config.php:201
+msgid "Add Year of the timeline here"
+msgstr ""
+
+#: tinymce/config.php:205 tinymce/config.php:385 tinymce/config.php:434
+#: tinymce/config.php:1611 tinymce/config.php:1721 tinymce/config.php:2112
+#: tinymce/config.php:2137 tinymce/config.php:2278 tinymce/config.php:2402
+#: tinymce/functions/kode-blog-element.php:91
+#: tinymce/functions/kode-igni-element.php:98
+#: tinymce/functions/kode-news-element.php:90
+#: tinymce/functions/kode-woo-element.php:90
+msgid "Title"
+msgstr ""
+
+#: tinymce/config.php:206
+msgid "Add title of the timeline here"
+msgstr ""
+
+#: tinymce/config.php:210 tinymce/config.php:1733
+msgid "Description"
+msgstr ""
+
+#: tinymce/config.php:211
+msgid "Add description of the timeline here"
+msgstr ""
+
+#: tinymce/config.php:221 tinymce/config.php:268
+msgid "Class"
+msgstr ""
+
+#: tinymce/config.php:222 tinymce/config.php:269
+msgid "Add class of the icon"
+msgstr ""
+
+#: tinymce/config.php:226 tinymce/config.php:284
+msgid "Social Icon Item"
+msgstr ""
+
+#: tinymce/config.php:248
+msgid "Social Icons Shortcode"
+msgstr ""
+
+#: tinymce/config.php:257 tinymce/config.php:1727
+msgid "Link"
+msgstr ""
+
+#: tinymce/config.php:258
+msgid "Add link or url of the destination"
+msgstr ""
+
+#: tinymce/config.php:273
+msgid "Select Target"
+msgstr ""
+
+#: tinymce/config.php:274
+msgid "Select the type on animation to use on the shortcode"
+msgstr ""
+
+#: tinymce/config.php:297 tinymce/config.php:481 tinymce/config.php:578
+#: tinymce/config.php:731 tinymce/config.php:798 tinymce/config.php:903
+msgid "Select the size of shortcode element"
+msgstr ""
+
+#: tinymce/config.php:308 tinymce/config.php:492 tinymce/config.php:589
+#: tinymce/config.php:640 tinymce/config.php:742 tinymce/config.php:809
+#: tinymce/config.php:911
+msgid "Header Title"
+msgstr ""
+
+#: tinymce/config.php:309 tinymce/config.php:493 tinymce/config.php:590
+#: tinymce/config.php:641 tinymce/config.php:743 tinymce/config.php:810
+#: tinymce/config.php:912
+msgid "Add header title here"
+msgstr ""
+
+#: tinymce/config.php:314 tinymce/config.php:498 tinymce/config.php:607
+#: tinymce/config.php:747 tinymce/config.php:814 tinymce/config.php:916
+#: tinymce/functions/kode-blog-element.php:43
+#: tinymce/functions/kode-igni-element.php:51
+#: tinymce/functions/kode-news-element.php:43
+#: tinymce/functions/kode-woo-element.php:43
+msgid "Select Category"
+msgstr ""
+
+#: tinymce/config.php:315 tinymce/config.php:499 tinymce/config.php:608
+#: tinymce/config.php:748 tinymce/config.php:815 tinymce/config.php:917
+msgid "Select category to fetch its items"
+msgstr ""
+
+#: tinymce/config.php:321 tinymce/config.php:505 tinymce/config.php:614
+#: tinymce/config.php:754 tinymce/config.php:831 tinymce/config.php:923
+msgid "Fetch number of items/posts"
+msgstr ""
+
+#: tinymce/config.php:322 tinymce/config.php:506 tinymce/config.php:615
+#: tinymce/config.php:755 tinymce/config.php:832 tinymce/config.php:924
+msgid "Select number of items/posts to show on page"
+msgstr ""
+
+#: tinymce/config.php:329 tinymce/config.php:513 tinymce/config.php:601
+#: tinymce/config.php:761 tinymce/config.php:839
+msgid "Number of Characters"
+msgstr ""
+
+#: tinymce/config.php:330 tinymce/config.php:514 tinymce/config.php:762
+#: tinymce/config.php:840
+msgid "Add Number of Characters to show under each post/items"
+msgstr ""
+
+#: tinymce/config.php:335 tinymce/config.php:519 tinymce/config.php:929
+#: tinymce/functions/kode-blog-element.php:107
+#: tinymce/functions/kode-igni-element.php:114
+#: tinymce/functions/kode-news-element.php:106
+#: tinymce/functions/kode-woo-element.php:106
+msgid "Pagination"
+msgstr ""
+
+#: tinymce/config.php:336 tinymce/config.php:520 tinymce/config.php:930
+msgid "Do you want to turn on pagination."
+msgstr ""
+
+#: tinymce/config.php:344 tinymce/config.php:528
+msgid "Orderby"
+msgstr ""
+
+#: tinymce/config.php:345 tinymce/config.php:529
+msgid "Show post order by."
+msgstr ""
+
+#: tinymce/config.php:356 tinymce/config.php:540 tinymce/config.php:866
+#: tinymce/functions/kode-blog-element.php:97
+#: tinymce/functions/kode-igni-element.php:104
+#: tinymce/functions/kode-news-element.php:96
+#: tinymce/functions/kode-woo-element.php:96
+msgid "Order"
+msgstr ""
+
+#: tinymce/config.php:357 tinymce/config.php:541 tinymce/config.php:867
+msgid "Select your posts/item order."
+msgstr ""
+
+#: tinymce/config.php:366 tinymce/config.php:462 tinymce/config.php:550
+#: tinymce/config.php:621 tinymce/config.php:679 tinymce/config.php:767
+#: tinymce/config.php:876 tinymce/config.php:939
+msgid "Item Margin"
+msgstr ""
+
+#: tinymce/config.php:367 tinymce/config.php:463 tinymce/config.php:551
+#: tinymce/config.php:622 tinymce/config.php:680 tinymce/config.php:768
+#: tinymce/config.php:877 tinymce/config.php:940
+msgid "Select margin from bottom"
+msgstr ""
+
+#: tinymce/config.php:373
+msgid "Albums Shortcode"
+msgstr ""
+
+#: tinymce/config.php:386 tinymce/config.php:435 tinymce/config.php:2403
+msgid "Add title here"
+msgstr ""
+
+#: tinymce/config.php:390 tinymce/config.php:663 tinymce/config.php:973
+msgid "Select Text Color"
+msgstr ""
+
+#: tinymce/config.php:391
+msgid "Set the text color of the progress bar."
+msgstr ""
+
+#: tinymce/config.php:395 tinymce/config.php:673 tinymce/config.php:697
+msgid "Select Filled Color"
+msgstr ""
+
+#: tinymce/config.php:396 tinymce/config.php:698
+msgid "Set the filled color of the progress bar."
+msgstr ""
+
+#: tinymce/config.php:400 tinymce/config.php:668 tinymce/config.php:702
+msgid "Select Unfilled Color"
+msgstr ""
+
+#: tinymce/config.php:401 tinymce/config.php:703
+msgid "Set the unfilled color of the progress bar."
+msgstr ""
+
+#: tinymce/config.php:406
+msgid "Filled Amount"
+msgstr ""
+
+#: tinymce/config.php:407
+msgid "Add Filled here"
+msgstr ""
+
+#: tinymce/config.php:411
+msgid "Progress bar Shortcode"
+msgstr ""
+
+#: tinymce/config.php:423 tinymce/config.php:1674
+msgid "Style"
+msgstr ""
+
+#: tinymce/config.php:424
+msgid "Select heading style"
+msgstr ""
+
+#: tinymce/config.php:439
+msgid "Select title Color"
+msgstr ""
+
+#: tinymce/config.php:440
+msgid "Set the title color of the heading title."
+msgstr ""
+
+#: tinymce/config.php:445
+msgid "Caption"
+msgstr ""
+
+#: tinymce/config.php:446
+msgid "Add caption text here"
+msgstr ""
+
+#: tinymce/config.php:450
+msgid "Select caption Color"
+msgstr ""
+
+#: tinymce/config.php:451
+msgid "Set the caption color of the heading caption."
+msgstr ""
+
+#: tinymce/config.php:456 tinymce/config.php:1413 tinymce/config.php:2175
+#: tinymce/functions/kode-blog-element.php:37
+#: tinymce/functions/kode-igni-element.php:37
+#: tinymce/functions/kode-news-element.php:37
+#: tinymce/functions/kode-woo-element.php:37
+msgid "Content"
+msgstr ""
+
+#: tinymce/config.php:457
+msgid "Add Content text here"
+msgstr ""
+
+#: tinymce/config.php:469
+msgid "Heading Shortcode"
+msgstr ""
+
+#: tinymce/config.php:557
+msgid "Blog Shortcode"
+msgstr ""
+
+#: tinymce/config.php:594
+msgid "Select Feature Post"
+msgstr ""
+
+#: tinymce/config.php:595
+msgid "Select feature post/item"
+msgstr ""
+
+#: tinymce/config.php:602
+msgid "Add Number of Characters to show under feature post/items"
+msgstr ""
+
+#: tinymce/config.php:628
+msgid "Recent Posts Shortcode"
+msgstr ""
+
+#: tinymce/config.php:645
+msgid "Select Event"
+msgstr ""
+
+#: tinymce/config.php:646
+msgid "Select Event to show its counter"
+msgstr ""
+
+#: tinymce/config.php:652
+msgid "Add Width of Counter"
+msgstr ""
+
+#: tinymce/config.php:653
+msgid "Add width in pixels of counter circles"
+msgstr ""
+
+#: tinymce/config.php:658
+msgid "Add Height of Counter"
+msgstr ""
+
+#: tinymce/config.php:659
+msgid "Add height in pixels of counter circles"
+msgstr ""
+
+#: tinymce/config.php:664
+msgid "Set the color of the circle text."
+msgstr ""
+
+#: tinymce/config.php:669
+msgid "Set the unfilled color of the circle."
+msgstr ""
+
+#: tinymce/config.php:674
+msgid "Set the filled color of the circle."
+msgstr ""
+
+#: tinymce/config.php:686
+msgid "Event Counter Circle Shortcode"
+msgstr ""
+
+#: tinymce/config.php:708 tinymce/config.php:2371
+msgid "Value"
+msgstr ""
+
+#: tinymce/config.php:709 tinymce/config.php:2372
+msgid "Add Value here"
+msgstr ""
+
+#: tinymce/config.php:714
+msgid "Unit"
+msgstr ""
+
+#: tinymce/config.php:715
+msgid "Add Filled unit here"
+msgstr ""
+
+#: tinymce/config.php:719
+msgid "Skill Circle Shortcode"
+msgstr ""
+
+#: tinymce/config.php:774
+msgid "News/Blog Slider Shortcode"
+msgstr ""
+
+#: tinymce/config.php:820
+msgid "Item Scope"
+msgstr ""
+
+#: tinymce/config.php:821
+msgid "Select the item scope of shortcode element"
+msgstr ""
+
+#: tinymce/config.php:883
+msgid "Event Shortcode"
+msgstr ""
+
+#: tinymce/config.php:946
+msgid "Teams Shortcode"
+msgstr ""
+
+#: tinymce/config.php:959 tinymce/config.php:1123 tinymce/config.php:1185
+msgid "Button URL"
+msgstr ""
+
+#: tinymce/config.php:960
+msgid "Add the button's url ex: http://example.com"
+msgstr ""
+
+#: tinymce/config.php:964
+msgid "Button Target"
+msgstr ""
+
+#: tinymce/config.php:965 tinymce/config.php:1828
+msgid "_self = open in same window <br />_blank = open in new window"
+msgstr ""
+
+#: tinymce/config.php:974
+msgid "Set the color of the Button text."
+msgstr ""
+
+#: tinymce/config.php:978
+msgid "Select Background Color"
+msgstr ""
+
+#: tinymce/config.php:979
+msgid "Set the color of the Button background."
+msgstr ""
+
+#: tinymce/config.php:983
+msgid "Button Size"
+msgstr ""
+
+#: tinymce/config.php:984
+msgid "Select the button's size"
+msgstr ""
+
+#: tinymce/config.php:994
+msgid "Button's Text"
+msgstr ""
+
+#: tinymce/config.php:995
+msgid "Add the text that will display in the button"
+msgstr ""
+
+#: tinymce/config.php:999
+msgid "Button Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1016 tinymce/config.php:1324
+msgid "Icon Color"
+msgstr ""
+
+#: tinymce/config.php:1017 tinymce/config.php:1325 tinymce/config.php:1330
+#: tinymce/config.php:1335 tinymce/config.php:1352
+msgid "Leave blank for default"
+msgstr ""
+
+#: tinymce/config.php:1021 tinymce/config.php:1308
+msgid "Icon in Circle"
+msgstr ""
+
+#: tinymce/config.php:1022
+msgid "Choose to display the icon in a circle"
+msgstr ""
+
+#: tinymce/config.php:1028
+msgid "Checklist Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1037
+msgid "List Item Content"
+msgstr ""
+
+#: tinymce/config.php:1038
+msgid "Add list item content"
+msgstr ""
+
+#: tinymce/config.php:1042
+msgid "Add New List Item"
+msgstr ""
+
+#: tinymce/config.php:1056
+msgid "Dropcap color"
+msgstr ""
+
+#: tinymce/config.php:1062
+msgid "Dropcap Letter"
+msgstr ""
+
+#: tinymce/config.php:1063
+msgid "Add the letter to be used as dropcap"
+msgstr ""
+
+#: tinymce/config.php:1068
+msgid "Dropcap Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1079
+msgid "Add Action Class"
+msgstr ""
+
+#: tinymce/config.php:1080
+msgid "Add class of the action."
+msgstr ""
+
+#: tinymce/config.php:1085
+msgid "Title Text of action"
+msgstr ""
+
+#: tinymce/config.php:1086
+msgid "Add title of the action."
+msgstr ""
+
+#: tinymce/config.php:1091
+msgid "Choose color"
+msgstr ""
+
+#: tinymce/config.php:1096 tinymce/functions/kode-blog-element.php:57
+#: tinymce/functions/kode-igni-element.php:65
+#: tinymce/functions/kode-news-element.php:57
+#: tinymce/functions/kode-woo-element.php:57
+msgid "Select Style"
+msgstr ""
+
+#: tinymce/config.php:1106 tinymce/config.php:1168 tinymce/config.php:1251
+msgid "Alignment"
+msgstr ""
+
+#: tinymce/config.php:1117 tinymce/config.php:1157
+msgid "Button Text"
+msgstr ""
+
+#: tinymce/config.php:1118 tinymce/config.php:1130
+msgid "Add button text of the action."
+msgstr ""
+
+#: tinymce/config.php:1124 tinymce/config.php:1136 tinymce/config.php:1186
+msgid "Add button URL of the action."
+msgstr ""
+
+#: tinymce/config.php:1129
+msgid "Button Text Second"
+msgstr ""
+
+#: tinymce/config.php:1135
+msgid "Button URL Second"
+msgstr ""
+
+#: tinymce/config.php:1140 tinymce/config.php:1190
+msgid "Call to Action Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1151
+msgid "Button Class"
+msgstr ""
+
+#: tinymce/config.php:1152
+msgid "Add button class here."
+msgstr ""
+
+#: tinymce/config.php:1158
+msgid "Add Button Text Here."
+msgstr ""
+
+#: tinymce/config.php:1163 tinymce/config.php:1285
+msgid "Button Text color"
+msgstr ""
+
+#: tinymce/config.php:1179
+msgid "Button Background color"
+msgstr ""
+
+#: tinymce/config.php:1201 tinymce/config.php:1246
+msgid "Social Network Class"
+msgstr ""
+
+#: tinymce/config.php:1202 tinymce/config.php:1247
+msgid "Add social network class here."
+msgstr ""
+
+#: tinymce/config.php:1207
+msgid "Social Network Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1216 tinymce/config.php:1970 tinymce/config.php:2011
+#: tinymce/config.php:2063
+msgid "Insert Tab Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1223 tinymce/config.php:1977 tinymce/config.php:2018
+msgid "client Image"
+msgstr ""
+
+#: tinymce/config.php:1229 tinymce/config.php:1983 tinymce/config.php:2024
+msgid "Add link for client"
+msgstr ""
+
+#: tinymce/config.php:1230 tinymce/config.php:1984 tinymce/config.php:2025
+msgid "link for client"
+msgstr ""
+
+#: tinymce/config.php:1234 tinymce/config.php:1988
+msgid "Add Client"
+msgstr ""
+
+#: tinymce/config.php:1261
+msgid "List Items Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1273
+msgid "Title "
+msgstr ""
+
+#: tinymce/config.php:1274 tinymce/config.php:1280
+msgid "Add title here."
+msgstr ""
+
+#: tinymce/config.php:1279
+msgid "Caption "
+msgstr ""
+
+#: tinymce/config.php:1290
+msgid "Add Item"
+msgstr ""
+
+#: tinymce/config.php:1314
+msgid "Size of Icon"
+msgstr ""
+
+#: tinymce/config.php:1329
+msgid "Icon Circle Background Color"
+msgstr ""
+
+#: tinymce/config.php:1334
+msgid "Icon Circle Border Color"
+msgstr ""
+
+#: tinymce/config.php:1339
+msgid "FontAwesome Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1351 tinymce/config.php:1750 tinymce/config.php:2051
+msgid "Background Color"
+msgstr ""
+
+#: tinymce/config.php:1356
+msgid "Backgrond Image"
+msgstr ""
+
+#: tinymce/config.php:1361
+msgid "Background Repeat"
+msgstr ""
+
+#: tinymce/config.php:1372
+msgid "Background Position"
+msgstr ""
+
+#: tinymce/config.php:1388
+msgid "Background Scroll"
+msgstr ""
+
+#: tinymce/config.php:1399
+msgid "Padding Top"
+msgstr ""
+
+#: tinymce/config.php:1400 tinymce/config.php:1407
+msgid "In pixels"
+msgstr ""
+
+#: tinymce/config.php:1406
+msgid "Padding Bottom"
+msgstr ""
+
+#: tinymce/config.php:1414
+msgid "Add content"
+msgstr ""
+
+#: tinymce/config.php:1418
+msgid "Fullwidth Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1430
+msgid "Map Type"
+msgstr ""
+
+#: tinymce/config.php:1431
+msgid "Select the type of google map to display"
+msgstr ""
+
+#: tinymce/config.php:1442
+msgid "Map Width"
+msgstr ""
+
+#: tinymce/config.php:1443
+msgid "Map Width in Percentage or Pixels"
+msgstr ""
+
+#: tinymce/config.php:1448
+msgid "Map Height"
+msgstr ""
+
+#: tinymce/config.php:1449
+msgid "Map Height in Percentage or Pixels"
+msgstr ""
+
+#: tinymce/config.php:1454
+msgid "Zoom Level"
+msgstr ""
+
+#: tinymce/config.php:1460
+msgid "Scrollwheel on Map"
+msgstr ""
+
+#: tinymce/config.php:1466
+msgid "Show Scale Control on Map"
+msgstr ""
+
+#: tinymce/config.php:1472
+msgid "Show Pan Control on Map"
+msgstr ""
+
+#: tinymce/config.php:1479
+msgid "Address"
+msgstr ""
+
+#: tinymce/config.php:1480
+msgid ""
+"Add address to the location which will show up on map. For multiple "
+"addresses, separate addresses by using the | symbol. <br />ex: Address 1|"
+"Address 2|Address 3"
+msgstr ""
+
+#: tinymce/config.php:1484
+msgid "Google Map Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1498
+msgid "Email"
+msgstr ""
+
+#: tinymce/config.php:1499
+msgid "Add paypal email where you want to receive donation."
+msgstr ""
+
+#: tinymce/config.php:1504
+msgid "Process Page URL"
+msgstr ""
+
+#: tinymce/config.php:1505
+msgid "Process page URL where you want to store any value to database."
+msgstr ""
+
+#: tinymce/config.php:1510
+msgid "Thank you page"
+msgstr ""
+
+#: tinymce/config.php:1515
+msgid "Donation Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1527
+msgid "Highlight Text Color"
+msgstr ""
+
+#: tinymce/config.php:1528 tinymce/config.php:1533
+msgid "Pick a highlight color"
+msgstr ""
+
+#: tinymce/config.php:1532
+msgid "Highlight Background Color"
+msgstr ""
+
+#: tinymce/config.php:1539
+msgid "Content to Higlight"
+msgstr ""
+
+#: tinymce/config.php:1540
+msgid "Add your content to be highlighted"
+msgstr ""
+
+#: tinymce/config.php:1545
+msgid "Highlight Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1558
+msgid "Full Image"
+msgstr ""
+
+#: tinymce/config.php:1563
+msgid "Thumbnail Image"
+msgstr ""
+
+#: tinymce/config.php:1569
+msgid "Alt Text"
+msgstr ""
+
+#: tinymce/config.php:1575
+msgid "Lightbox Description"
+msgstr ""
+
+#: tinymce/config.php:1580
+msgid "Lightbox Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1593
+msgid "Picture"
+msgstr ""
+
+#: tinymce/config.php:1599
+msgid "Picture Link URL"
+msgstr ""
+
+#: tinymce/config.php:1605
+msgid "Name"
+msgstr ""
+
+#: tinymce/config.php:1617
+msgid "Email Address"
+msgstr ""
+
+#: tinymce/config.php:1623
+msgid "Facebook Profile Link"
+msgstr ""
+
+#: tinymce/config.php:1629
+msgid "Twitter Profile Link"
+msgstr ""
+
+#: tinymce/config.php:1635
+msgid "LinkedIn Profile Link"
+msgstr ""
+
+#: tinymce/config.php:1641
+msgid "Dribbble Profile Link"
+msgstr ""
+
+#: tinymce/config.php:1646 tinymce/config.php:1827
+msgid "Link Target"
+msgstr ""
+
+#: tinymce/config.php:1647
+msgid "_self = open in same window <br /> _blank = open in new window"
+msgstr ""
+
+#: tinymce/config.php:1656
+msgid "Profile Description"
+msgstr ""
+
+#: tinymce/config.php:1661
+msgid "Member Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1688
+msgid "Margin Top"
+msgstr ""
+
+#: tinymce/config.php:1695
+msgid "Margin Bottom"
+msgstr ""
+
+#: tinymce/config.php:1701
+msgid "Separator Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1715
+msgid "Tagline"
+msgstr ""
+
+#: tinymce/config.php:1739
+msgid "Link to Share"
+msgstr ""
+
+#: tinymce/config.php:1745
+msgid "Choose Image to Share on Pinterest"
+msgstr ""
+
+#: tinymce/config.php:1751
+msgid "Leave blank for default color"
+msgstr ""
+
+#: tinymce/config.php:1755 tinymce/config.php:1804 tinymce/config.php:2117
+msgid "Sharing Box Shortcode"
+msgstr ""
+
+#: tinymce/config.php:1769
+msgid "SoundCloud Url"
+msgstr ""
+
+#: tinymce/config.php:1774
+msgid "Show Comments"
+msgstr ""
+
+#: tinymce/config.php:1780
+msgid "Autoplay"
+msgstr ""
+
+#: tinymce/config.php:1787
+msgid "Color"
+msgstr ""
+
+#: tinymce/config.php:1793 tinymce/config.php:2200 tinymce/config.php:2242
+msgid "Width"
+msgstr ""
+
+#: tinymce/config.php:1799 tinymce/config.php:2206 tinymce/config.php:2248
+msgid "Height"
+msgstr ""
+
+#: tinymce/config.php:1817
+msgid "Color Scheme"
+msgstr ""
+
+#: tinymce/config.php:1837
+msgid "RSS Link"
+msgstr ""
+
+#: tinymce/config.php:1843
+msgid "Facebook Link"
+msgstr ""
+
+#: tinymce/config.php:1849
+msgid "Twitter Link"
+msgstr ""
+
+#: tinymce/config.php:1855
+msgid "Dribbble Link"
+msgstr ""
+
+#: tinymce/config.php:1861
+msgid "Google+ Link"
+msgstr ""
+
+#: tinymce/config.php:1867
+msgid "LinkedIn Link"
+msgstr ""
+
+#: tinymce/config.php:1873
+msgid "Blogger Link"
+msgstr ""
+
+#: tinymce/config.php:1879
+msgid "Tumblr Link"
+msgstr ""
+
+#: tinymce/config.php:1885
+msgid "Reddit Link"
+msgstr ""
+
+#: tinymce/config.php:1891
+msgid "Yahoo Link"
+msgstr ""
+
+#: tinymce/config.php:1897
+msgid "Deviantart Link"
+msgstr ""
+
+#: tinymce/config.php:1903
+msgid "Vimeo Link"
+msgstr ""
+
+#: tinymce/config.php:1909
+msgid "Youtube Link"
+msgstr ""
+
+#: tinymce/config.php:1915
+msgid "Pinterst Link"
+msgstr ""
+
+#: tinymce/config.php:1921
+msgid "Digg Link"
+msgstr ""
+
+#: tinymce/config.php:1927
+msgid "Flickr Link"
+msgstr ""
+
+#: tinymce/config.php:1933
+msgid "Forrst Link"
+msgstr ""
+
+#: tinymce/config.php:1939
+msgid "Myspace Link"
+msgstr ""
+
+#: tinymce/config.php:1945
+msgid "Skype Link"
+msgstr ""
+
+#: tinymce/config.php:1950
+msgid "Show Custom Social Icon"
+msgstr ""
+
+#: tinymce/config.php:1951
+msgid "Show the custom social icon specified in Theme Options"
+msgstr ""
+
+#: tinymce/config.php:1956
+msgid "Social Links Shortcode"
+msgstr ""
+
+#: tinymce/config.php:2000
+msgid "Gallery Column"
+msgstr ""
+
+#: tinymce/config.php:2001
+msgid "Select gallery column to show it in grid view."
+msgstr ""
+
+#: tinymce/config.php:2029
+msgid "Add Gallery"
+msgstr ""
+
+#: tinymce/config.php:2041 tinymce/config.php:2295
+msgid "Layout"
+msgstr ""
+
+#: tinymce/config.php:2057
+msgid "Inactive Color"
+msgstr ""
+
+#: tinymce/config.php:2070
+msgid "Tab Title"
+msgstr ""
+
+#: tinymce/config.php:2071
+msgid "Title of the tab"
+msgstr ""
+
+#: tinymce/config.php:2076
+msgid "Tab Content"
+msgstr ""
+
+#: tinymce/config.php:2077
+msgid "Add the tabs content"
+msgstr ""
+
+#: tinymce/config.php:2081
+msgid "Add Tab"
+msgstr ""
+
+#: tinymce/config.php:2094
+msgid "Title Size"
+msgstr ""
+
+#: tinymce/config.php:2100
+msgid "Select Alignment"
+msgstr ""
+
+#: tinymce/config.php:2130
+msgid "Insert Toggles Shortcode"
+msgstr ""
+
+#: tinymce/config.php:2142
+msgid "Open by Default"
+msgstr ""
+
+#: tinymce/config.php:2149
+msgid "Accordion Content"
+msgstr ""
+
+#: tinymce/config.php:2154
+msgid "Add Accordion"
+msgstr ""
+
+#: tinymce/config.php:2169
+msgid "Tooltip Text"
+msgstr ""
+
+#: tinymce/config.php:2180
+msgid "Tooltip Shortcode"
+msgstr ""
+
+#: tinymce/config.php:2194 tinymce/config.php:2236
+msgid "Video ID"
+msgstr ""
+
+#: tinymce/config.php:2211 tinymce/config.php:2253
+msgid "Autoplay Video"
+msgstr ""
+
+#: tinymce/config.php:2212 tinymce/config.php:2254
+msgid "Set to yes to make video autoplaying"
+msgstr ""
+
+#: tinymce/config.php:2218 tinymce/config.php:2260
+msgid "AdditionalAPI Parameter"
+msgstr ""
+
+#: tinymce/config.php:2223 tinymce/config.php:2265
+msgid "Vimeo Shortcode"
+msgstr ""
+
+#: tinymce/config.php:2284
+msgid "caption"
+msgstr ""
+
+#: tinymce/config.php:2290
+msgid "Email ID"
+msgstr ""
+
+#: tinymce/config.php:2296
+msgid "Select the newsletter layout."
+msgstr ""
+
+#: tinymce/config.php:2304
+msgid "Newsletter Shortcode"
+msgstr ""
+
+#: tinymce/config.php:2314
+msgid "Insert Columns Shortcode"
+msgstr ""
+
+#: tinymce/config.php:2323
+msgid "Column Type"
+msgstr ""
+
+#: tinymce/config.php:2324
+msgid "Select the width of the column"
+msgstr ""
+
+#: tinymce/config.php:2335
+msgid "Last Column"
+msgstr ""
+
+#: tinymce/config.php:2342
+msgid "Column Content"
+msgstr ""
+
+#: tinymce/config.php:2343
+msgid "Insert the column content"
+msgstr ""
+
+#: tinymce/config.php:2347
+msgid "Add Column"
+msgstr ""
+
+#: tinymce/config.php:2365
+msgid "Select Color"
+msgstr ""
+
+#: tinymce/config.php:2366
+msgid "Set the fact color."
+msgstr ""
+
+#: tinymce/config.php:2377
+msgid "Sub Text"
+msgstr ""
+
+#: tinymce/config.php:2378
+msgid "Add Sub Text here"
+msgstr ""
+
+#: tinymce/config.php:2382
+msgid "Project Facts Shortcode"
+msgstr ""
+
+#: tinymce/config.php:2392
+msgid "Services Style"
+msgstr ""
+
+#: tinymce/config.php:2393
+msgid "Select the type of services element"
+msgstr ""
+
+#: tinymce/config.php:2419
+msgid "Services Shortcode"
+msgstr ""
+
+#: tinymce/config.php:2431
+msgid "Type"
+msgstr ""
+
+#: tinymce/config.php:2432
+msgid "Select the table style"
+msgstr ""
+
+#: tinymce/config.php:2440
+msgid "Number of Columns"
+msgstr ""
+
+#: tinymce/config.php:2451
+msgid "Table Shortcode"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:30
+msgid "Blog Item"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:32
+#: tinymce/functions/kode-igni-element.php:32
+#: tinymce/functions/kode-news-element.php:32
+#: tinymce/functions/kode-woo-element.php:32
+msgid "KodeForest"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:46
+#: tinymce/functions/kode-igni-element.php:54
+#: tinymce/functions/kode-news-element.php:46
+#: tinymce/functions/kode-woo-element.php:46
+msgid "Select Category."
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:50
+#: tinymce/functions/kode-news-element.php:50
+#: tinymce/functions/kode-woo-element.php:50
+msgid "Select Tag"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:53
+#: tinymce/functions/kode-igni-element.php:61
+#: tinymce/functions/kode-news-element.php:53
+#: tinymce/functions/kode-woo-element.php:53
+msgid "Select Tag."
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:60
+#: tinymce/functions/kode-blog-element.php:89
+#: tinymce/functions/kode-blog-element.php:100
+#: tinymce/functions/kode-blog-element.php:110
+#: tinymce/functions/kode-igni-element.php:68
+#: tinymce/functions/kode-igni-element.php:96
+#: tinymce/functions/kode-igni-element.php:107
+#: tinymce/functions/kode-igni-element.php:117
+#: tinymce/functions/kode-news-element.php:60
+#: tinymce/functions/kode-news-element.php:88
+#: tinymce/functions/kode-news-element.php:99
+#: tinymce/functions/kode-news-element.php:109
+#: tinymce/functions/kode-woo-element.php:60
+#: tinymce/functions/kode-woo-element.php:88
+#: tinymce/functions/kode-woo-element.php:99
+#: tinymce/functions/kode-woo-element.php:109
+msgid " "
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:61
+msgid "Blog Small"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:62
+msgid "Blog Grid"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:63
+msgid "Blog Medium"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:64
+msgid "Blog Full"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:66
+#: tinymce/functions/kode-igni-element.php:73
+#: tinymce/functions/kode-news-element.php:65
+#: tinymce/functions/kode-woo-element.php:65
+msgid "Select Style."
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:71
+#: tinymce/functions/kode-igni-element.php:78
+#: tinymce/functions/kode-news-element.php:70
+#: tinymce/functions/kode-woo-element.php:70
+msgid "Num Fetch"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:73
+#: tinymce/functions/kode-igni-element.php:46
+#: tinymce/functions/kode-igni-element.php:80
+#: tinymce/functions/kode-news-element.php:72
+#: tinymce/functions/kode-woo-element.php:72
+msgid "5"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:74
+msgid "Specify the number of blog you want to pull out."
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:79
+#: tinymce/functions/kode-igni-element.php:86
+#: tinymce/functions/kode-news-element.php:78
+#: tinymce/functions/kode-woo-element.php:78
+msgid "Num Excerpt"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:81
+#: tinymce/functions/kode-igni-element.php:88
+#: tinymce/functions/kode-news-element.php:80
+#: tinymce/functions/kode-woo-element.php:80
+msgid "20"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:82
+msgid "Specify the number of blog description you want to pull out."
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:86
+#: tinymce/functions/kode-igni-element.php:93
+#: tinymce/functions/kode-news-element.php:85
+#: tinymce/functions/kode-woo-element.php:85
+msgid "Order By"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:90
+#: tinymce/functions/kode-igni-element.php:97
+#: tinymce/functions/kode-news-element.php:89
+#: tinymce/functions/kode-woo-element.php:89
+msgid "Publish Date"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:92
+#: tinymce/functions/kode-igni-element.php:99
+#: tinymce/functions/kode-news-element.php:91
+#: tinymce/functions/kode-woo-element.php:91
+msgid "Random"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:101
+#: tinymce/functions/kode-igni-element.php:108
+#: tinymce/functions/kode-news-element.php:100
+#: tinymce/functions/kode-woo-element.php:100
+msgid "Descending Order"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:102
+#: tinymce/functions/kode-igni-element.php:109
+#: tinymce/functions/kode-news-element.php:101
+#: tinymce/functions/kode-woo-element.php:101
+msgid "Ascending Order"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:111
+#: tinymce/functions/kode-igni-element.php:118
+#: tinymce/functions/kode-news-element.php:110
+#: tinymce/functions/kode-woo-element.php:110
+msgid "Enable"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:112
+#: tinymce/functions/kode-igni-element.php:119
+#: tinymce/functions/kode-news-element.php:111
+#: tinymce/functions/kode-woo-element.php:111
+msgid "Disable"
+msgstr ""
+
+#: tinymce/functions/kode-blog-element.php:164
+#: tinymce/functions/kode-igni-element.php:174
+#: tinymce/functions/kode-news-element.php:163
+#: tinymce/functions/kode-woo-element.php:163
+#, php-format
+msgid ""
+"<strong>%s</strong> requires <strong><a href=\"http://bit.ly/vcomposer\" "
+"target=\"_blank\">Visual Composer</a></strong> plugin to be installed and "
+"activated on your site."
+msgstr ""
+
+#: tinymce/functions/kode-igni-element.php:30
+msgid "Crowd Item"
+msgstr ""
+
+#: tinymce/functions/kode-igni-element.php:44
+msgid "Num Title Fetch"
+msgstr ""
+
+#: tinymce/functions/kode-igni-element.php:47
+msgid ""
+"Specify the number of title of post in ignitiondeck you want to pull out."
+msgstr ""
+
+#: tinymce/functions/kode-igni-element.php:58
+msgid "Select Project Type"
+msgstr ""
+
+#: tinymce/functions/kode-igni-element.php:69
+#: tinymce/functions/kode-woo-element.php:61
+msgid "2 Column Grid"
+msgstr ""
+
+#: tinymce/functions/kode-igni-element.php:70
+#: tinymce/functions/kode-woo-element.php:62
+msgid "3 Column Grid"
+msgstr ""
+
+#: tinymce/functions/kode-igni-element.php:71
+#: tinymce/functions/kode-woo-element.php:63
+msgid "4 Column Grid"
+msgstr ""
+
+#: tinymce/functions/kode-igni-element.php:81
+msgid "Specify the number of igni you want to pull out."
+msgstr ""
+
+#: tinymce/functions/kode-igni-element.php:89
+msgid "Specify the number of igni description you want to pull out."
+msgstr ""
+
+#: tinymce/functions/kode-news-element.php:30
+msgid "News Item"
+msgstr ""
+
+#: tinymce/functions/kode-news-element.php:61
+msgid "News Grid"
+msgstr ""
+
+#: tinymce/functions/kode-news-element.php:62
+msgid "News Medium"
+msgstr ""
+
+#: tinymce/functions/kode-news-element.php:63
+msgid "News Timeline"
+msgstr ""
+
+#: tinymce/functions/kode-news-element.php:73
+msgid "Specify the number of news you want to pull out."
+msgstr ""
+
+#: tinymce/functions/kode-news-element.php:81
+msgid "Specify the number of news description you want to pull out."
+msgstr ""
+
+#: tinymce/functions/kode-woo-element.php:30
+msgid "Woo Item"
+msgstr ""
+
+#: tinymce/functions/kode-woo-element.php:73
+msgid "Specify the number of woo you want to pull out."
+msgstr ""
+
+#: tinymce/functions/kode-woo-element.php:81
+msgid "Specify the number of woo description you want to pull out."
+msgstr ""
+
+#: twitter-widget/twitter-widget.php:26
+msgid "Kodeforest Twitter"
+msgstr ""
+
+#: twitter-widget/twitter-widget.php:27
+msgid "A widget that show twitter feeds."
+msgstr ""
+
+#: twitter-widget/twitter-widget.php:97
+msgid "Title :"
+msgstr ""
+
+#: twitter-widget/twitter-widget.php:103
+msgid "Twitter username :"
+msgstr ""
+
+#: twitter-widget/twitter-widget.php:109
+msgid "Show Count :"
+msgstr ""
+
+#: twitter-widget/twitter-widget.php:115
+msgid "Consumer Key :"
+msgstr ""
+
+#: twitter-widget/twitter-widget.php:121
+msgid "Consumer Secret :"
+msgstr ""
+
+#: twitter-widget/twitter-widget.php:127
+msgid "Access Token :"
+msgstr ""
+
+#: twitter-widget/twitter-widget.php:133
+msgid "Access Token Secret :"
+msgstr ""
+
+#: twitter-widget/twitter-widget.php:139
+msgid "Cache Time (hour) :"
+msgstr ""
+
+#: twitter-widget/twitteroauth.php:1193
+msgid "right now"
+msgstr ""
+
+#: twitter-widget/twitteroauth.php:1195
+msgid "seconds ago"
+msgstr ""
+
+#: twitter-widget/twitteroauth.php:1197
+msgid "about 1 minute ago"
+msgstr ""
+
+#: twitter-widget/twitteroauth.php:1199
+msgid "minutes ago"
+msgstr ""
+
+#: twitter-widget/twitteroauth.php:1201
+msgid "about 1 hour ago"
+msgstr ""
+
+#: twitter-widget/twitteroauth.php:1203
+msgid "hours ago"
+msgstr ""
+
+#: twitter-widget/twitteroauth.php:1205
+msgid "yesterday"
+msgstr ""
+
+#: twitter-widget/twitteroauth.php:1207
+msgid "days ago"
+msgstr ""
+
+#: twitter-widget/twitteroauth.php:1209
+msgid "over a year ago"
+msgstr ""

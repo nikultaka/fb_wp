@@ -1,0 +1,279 @@
+body {
+	direction: rtl;
+}
+.owl-stage, .owl-carousel .owl-stage-outer, .flexslider, .owl-carousel {
+	direction: ltr;
+}
+#footer-widget .kode-widget-bg-footer:before {
+	right: auto;
+	left: -15px;
+}
+.kode-donate-btn {
+	margin-left: 17px !important;
+	margin-right: 10px;
+	float: left;
+}
+.kode-main-action a, .kode-actionbtn {
+	float: left;
+}
+.navigation .menu .sub-menu li a::before, .navigation .sub-menu li a::before, .navbar-nav .children li a::before {
+	padding: 0 0 0 14px;
+	content: "\f104";
+}
+.kode-main-action span, .kode-classic-action h2, .kode-navigation-wrapper, .navigation .menu ul li a, .navigation ul > li, .box-icon, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .kode-email, .logo, .navbar-default, .kode-maininfo ul li, .kode-services ul li i, .kode-testimonial figure, .widget-recentpost ul li time, .widget_categories ul li a:before, .kode-parallex-info-two span, .upcoming_event_widget figure, .widget_archive ul li a, .widget_archive ul li a:before, .kode-blog-options li, .kode-admin-post figure, #kodecomments ul li figure, #kodecomments ul li .text a, #kodecomments ul li .text .replay-btn, .kode-couses-numbers ul li span, .event-widget-info time i, .event-morebtn, .kode-ev-btn a, .voluntree-info figure, .voluntree-detail ul li i, .widget_categories ul li a, .widget-recentpost ul li .datetime {
+	float: right;
+}
+.flickr_badge_beacon {
+	display: none;
+}
+.kode-team-network, .footer-nav, .kode-rightsection, .short-strip, .kode-head-info, .kode-breadcrumb {
+	float: left;
+}
+/* Header */
+.kode-topbar:before {
+	left: auto;
+	right: 0px;
+}
+.logo {
+	margin: 13px 15px 13px 0px;
+}
+.kode-donate-btn {
+	margin-left: 0px;
+	margin-right: 10px;
+}
+.navbar-nav .children li a:before, .widget_categories ul li a:before {
+	-webkit-transform: scale(-1);
+	-moz-transform: scale(-1);
+	-ms-transform: scale(-1);
+	-o-transform: scale(-1);
+	transform: scale(-1);
+}
+.kode-maininfo ul li {
+	margin-right: 0px;
+	margin-left: 22px;
+}
+.kode-services ul li h2 {
+	margin-left: 0px;
+	margin-right: 60px;
+}
+.kode-services ul li h2:before {
+	left: auto;
+	right: 0px;
+}
+.kode-testimonial figure ~ .testimonial-info {
+	padding: 10px 192px 0 20px;
+}
+/* Content */
+.kode-breadcrumb li:before {
+	right: auto;
+	left: 3px;
+	top: 2px;
+}
+.upcoming_event_widget figure ~ .event-widget-info {
+	padding: 0 87px 0 0px;
+}
+.widget_archive ul li a:before {
+	margin-right: 0px;
+	margin-left: 14px;
+}
+.kode-content .widget-recentpost ul li time ~ .post-info {
+	padding: 0 75px 0 0px;
+}
+.kode-blog-options li {
+	margin-right: 0px;
+	margin-left: 20px;
+}
+blockquote:before {
+	left: auto;
+	right: 0px;
+	float:right;
+	margin:0px 0px 0px 20px;
+}
+blockquote {
+	padding: 10px 0px 0 0px;
+}
+.kode-admin-post figure ~ .admin-info {
+	padding: 0 142px 0 0px;
+}
+.admin-info h4:before {
+	left: auto;
+	right: 0px;
+}
+#kodecomments ul li figure ~ .text {
+	padding: 0 136px 0 0px;
+}
+.short-time span {
+	margin-right: 0px;
+	margin-left: 20px;
+}
+.short-time span i {
+	margin-right: 0px;
+	margin-left: 10px;
+}
+#koderespond form p i, #koderespond form p.kd-phone i, #koderespond form p.kd-textarea i {
+	right: auto;
+	left: 20px;
+}
+#kodecomments .children > li {
+	padding: 0 150px 0 0px;
+}
+.kode-couses-numbers ul li span ~ .numbers-info {
+	padding: 0 97px 0 0px;
+}
+.event-widget-info time i {
+	padding: 6px 0px 0 8px;
+}
+.short-info ul li {
+	padding: 0px 40px 0px 0px;
+}
+.short-info ul li i {
+	left: auto;
+	right: 0px;
+}
+.kode-ev-btn a {
+	float: none !important;
+}
+.voluntree-info figure ~ .voluntree-detail {
+	padding: 0 375px 0 0px;
+}
+.voluntree-detail h2:before {
+	left: auto;
+	right: 0px;
+}
+.voluntree-detail ul li i {
+	margin-right: 0px;
+	margin-left: 15px;
+}
+.kode-spacer {
+	padding-left: 0px;
+	padding-right: 80px;
+}
+/* Footer */
+#footer-widget .widget-text::before {
+	right: auto;
+	left: -15px;
+}
+.widget-recentpost ul li time ~ p {
+	padding: 0 76px 0 0px;
+}
+.widget_categories ul li a:before {
+	margin: 0 0px 0 10px;
+}
+.kode-newslatter form input[type="submit"] {
+	right: auto;
+	left: 6px;
+}
+.kode-widget-title h2::before {
+	left: auto;
+	right: 0px;
+}
+.kode-search label {
+	right: auto;
+	left: 0;
+}
+.widget-search .kode-search input[type="text"]{
+	padding:4px 10px 4px 35px
+}
+.kode-pro-info i {
+	right: auto;
+	left: 0px;
+}
+
+.widget-recentpost ul li .datetime ~ .post-info{
+	padding:0px 75px 0 0px;
+}
+#footer-widget h3.widget-title::before, .kode-widget-title h2::before{
+	left:auto;
+	right:0px;
+}
+.newslatter-info{
+	float:right;
+}
+.kode-newslatter form{
+	float:right;
+	padding:0px 20px 0px 0px;
+}
+.kode-newslatter form input[type="text"]{
+	float:right;
+}
+.kode-newslatter form input[type="submit"]{
+	float:left;
+}
+.newslatter-info{
+	text-align:right;
+}
+.kode-testimonial figure ~ .testi-info{
+	padding:13px 110px 0px 0px;
+	text-align:right;
+}
+.kode-testimonial .testimonial-info{
+	text-align:right;
+}
+.kode-testimonial .testimonial-info:before{
+	border-left:15px solid transparent;
+	border-right:none;
+	left:auto;
+	right:70px;
+}
+.kode-classic-action h2 i{
+	margin:0px 0px 0px 12px;
+}
+.navigation .menu .sub-menu, .navigation .sub-menu, .navigation .children, .navbar-nav .children{
+	left:auto;
+	right:0px;
+}
+.kode-circle-services i ~ h2{
+	padding:9px 82px 0 0;
+}
+.kode-circle-services i{
+	float:right;
+}
+.kd-accordion .accordion span{
+	left:0px;
+	right:auto;
+	border-left:none;
+	border-right:1px solid #eeeeee;
+}
+.widget_kode_contact_widget i{
+	float:right;
+	margin:0px 0px 0px 18px;
+}
+.widget_kode_contact_widget span, .widget_kode_contact_widget a{
+	float:right;
+}
+.widget-title:before{
+	left:auto;
+	right:0px;
+}
+.kode-blog-post li i{
+	margin:4px 0px 0px 8px;
+	float:right;
+}
+.kode-blog-list ul li{
+	float:right;
+}
+.kode-blog-post ul{
+	float:right;
+}
+.kode-blog-post li a{
+	float:right;
+}
+.navigation .menu .sub-menu .sub-menu, .navigation .sub-menu .sub-menu, .navbar-nav .children .children{
+	left:auto;
+	right:100%;
+}
+.kode-postoption li i{
+	margin:0px 0px 0px 9px;
+}
+.kode-blog-full .datetime, .kode-editor time{
+	float:right;
+}
+.kode-editor .left-spacer, .kode-blog-full .kode-blog-info{
+	padding:0px 100px 0px 0px;
+}
+.kode-postoption li{
+	float:right;
+}
+.kode-innsec ul li.kode-image-event{
+	float:right;
+}

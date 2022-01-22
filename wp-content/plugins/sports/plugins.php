@@ -17,8 +17,8 @@
      * License:     GPL v2 or later
      */
 
-    include_once("sports_controller.php");
-    ob_start();
+
+    
 
     register_activation_hook(__FILE__, 'sportsCreateTable');
     function sportsCreateTable()
@@ -27,6 +27,10 @@
         global $sports_table_name;
         global $league_table_name;
         global $round_table_name;
+        global $score_table_name;
+        global $leaderboard_table_name;
+
+
 
         $sports_table_name = $wpdb->prefix . 'sports';
         $charset_collate = $wpdb->get_charset_collate();
@@ -70,19 +74,52 @@
         `leagueid` int(11) NOT NULL,
         `round` VARCHAR(50) NOT NULL,
         `team1` VARCHAR(50) NOT NULL,
-        `team2` VARCHAR(50) NOT NULL,   
+        `team2` VARCHAR(50) NOT NULL, 
+        `enddate` DATETIME NOT NULL,  
         `mstatus` VARCHAR(50) NOT NULL,       
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;";
 
-        if ($wpdb->get_var("SHOW TABLES LIKE '$sports_table_name'") != $sports_table_name ||
-        $wpdb->get_var("SHOW TABLES LIKE '$league_table_name'") != $league_table_name || 
-        $wpdb->get_var("SHOW TABLES LIKE '$round_table_name'") != $round_table_name ||
-        $wpdb->get_var("SHOW TABLES LIKE '$match_table_name'") != $match_table_name) {
+
+        $score_table_name = $wpdb->prefix . 'score';
+        $charset_collate = $wpdb->get_charset_collate();
+        $sqlScore = "CREATE TABLE `$score_table_name` (
+        `id` int(11) NOT NULL auto_increment,
+        `matchid` int(11) NOT NULL,
+        `team1score` VARCHAR(50) NOT NULL,
+        `team2score` VARCHAR(50) NOT NULL,         
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+        PRIMARY KEY  id (id)) $charset_collate;";   
+        
+
+        $leaderboard_table_name = $wpdb->prefix . 'leaderboard';
+        $charset_collate = $wpdb->get_charset_collate();
+        $sqlleaderboard = "CREATE TABLE `$leaderboard_table_name` (
+        `id` int(11) NOT NULL auto_increment,
+        `leagueid` int(11) NOT NULL,
+        `score` VARCHAR(50) NOT NULL,       
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+        PRIMARY KEY  id (id)) $charset_collate;"; 
+
+
+        if (
+            $wpdb->get_var("SHOW TABLES LIKE '$sports_table_name'") != $sports_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$league_table_name'") != $league_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$round_table_name'") != $round_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$match_table_name'") != $match_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$score_table_name'") != $score_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$leaderboard_table_name'") != $leaderboard_table_name) {
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             dbDelta($sql);
             dbDelta($sqlLeague);
             dbDelta($sqlRound);
             dbDelta($sqlMatch);
+            dbDelta($sqlScore);
+            dbDelta($sqlleaderboard);
         }
     }
+    // include_once("sports_controller.php");
+    // include_once("frontend/league_controller.php");
+    include_once(dirname(__FILE__) . "/sports_controller.php");
+    include_once(dirname(__FILE__) . "/frontend/league_controller.php");
+

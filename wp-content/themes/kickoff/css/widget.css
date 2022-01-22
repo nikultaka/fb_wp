@@ -1,0 +1,1769 @@
+aside .widget {
+	float: left;
+	width: 100%;
+	margin-bottom: 30px;
+}
+.kode-sidebar-element .widget {
+	margin-bottom: 30px;
+}
+.widget-title {
+	position: relative;
+	padding-bottom: 7px;
+	font-weight: normal;
+	margin-bottom:20px;
+	text-transform: uppercase;
+}
+.widget-title:before {
+	content: '';
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	width: 46px;
+	height: 2px;
+	background-color: #777777;
+}
+/* Widget Search */
+.widget-search .kode-search input[type="text"] {
+	border: 1px solid #e6e6e6;
+	height: 40px;
+	padding: 4px 35px 4px 10px;
+	border-radius: 0px;
+	font-weight: normal;
+	color: #666;
+	text-transform: inherit;
+	width:100%;
+}
+.kode-sidebar .kode-search::after, .kode-sidebar .kode-search::before{
+	display: none;
+}
+.widget-search input[type="submit"] {
+	padding: 0px;
+}
+.kode-search{
+	float:left;
+	width:100%;
+	position:relative;
+}
+
+
+
+.kode-search label {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	margin: 0px;
+	height:100%;
+	padding:9px 20px;
+	cursor:pointer;
+}
+.kode-search label:hover{
+	background-color:#000;
+}
+.kode-search label:before {
+	content: "\f002";
+	font-family: 'FontAwesome';
+	color: #fff;
+}
+
+/* Widget Upcoming */
+.upcoming_event_widget ul li {
+	float: left;
+	width: 100%;
+	list-style: none;
+	border-bottom: 1px solid #e3e3e3;
+	padding: 0px 0px 10px 0px;
+	margin: 0px 0px 15px 0px;
+}
+.upcoming_event_widget .widget-thumb {
+	float: left;
+	width: 100%;
+}
+.upcoming_event_widget figure {
+	float: left;
+	position: relative;
+}
+.upcoming_event_widget figure figcaption {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	padding: 5px;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	-webkit-transform: scale(0);
+	-moz-transform: scale(0);
+	-ms-transform: scale(0);
+	-o-transform: scale(0);
+	transform: scale(0);
+}
+.upcoming_event_widget ul li:hover figcaption {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
+}
+.upcoming_event_widget figure figcaption a {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	color: #ffffff;
+	text-align: center;
+	position: relative;
+}
+.upcoming_event_widget figure figcaption a i {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	top: 50%;
+	margin: -6px 0px 0px 0px;
+}
+.upcoming_event_widget figure ~ .event-widget-info {
+	padding: 0px 0px 0px 90px;
+}
+.event-widget-info a {
+	font-size: 13px;
+	color: #666666;
+	font-weight: bold;
+	text-transform: uppercase;
+	display: inline-block;
+	line-height: 1.5;
+}
+.event-widget-info time {
+	display: block;
+	color: #999999;
+	font-size: 13px;
+}
+.event-widget-info time i {
+	float: left;
+	padding: 6px 8px 0px 0px;
+}
+/* Category */
+.widget_archive ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	width: 100%;
+}
+.widget_archive ul li {
+	float: left;
+	width: 100%;
+	text-align: right;
+	padding: 10px 10px 10px 20px;
+	border-bottom: 1px solid #e3e3e3;
+	position: relative;
+}
+.widget_archive ul li:hover {
+	padding: 10px 10px 10px 25px
+}
+.widget_archive ul li a {
+	color: #666666;
+	float: left;
+	text-transform: uppercase;
+	display: block;
+}
+.widget_archive ul li:hover a, .widget_archive ul li:hover, .widget_archive ul li:hover a:before {
+	color: #ffffff;
+}
+.widget_archive ul li a:before {
+	content: "\f105";
+	font-family: FontAwesome;
+	font-size: 14px;
+	color: #666666;
+	position: absolute;
+	left: 0px;
+	top: 50%;
+	margin-top: -10px;
+}
+.widget_archive ul li:hover a:before {
+	left: 10px;
+}
+/* Recent Post */
+.kode-content .widget-recentpost ul li {
+	border-color: #e3e3e3;
+}
+.kode-content .widget-recentpost ul li .datetime {
+	border-color: #666;
+	color: #666;
+}
+.kode-content .widget-recentpost ul li:hover .datetime {
+	color: #ffffff;
+}
+.post-info h6 {
+	margin: 0px;	
+}
+.widget-recentpost ul li .datetime ~ .post-info {
+	padding: 0px 0px 0px 75px;
+}
+
+.kode-widget.kode-sidebar-element .recent-posts .datetime{
+	color:#000;
+}
+.recent-posts .datetime {
+	color: #fff;
+}
+.widget-recentpost .recent-posts {
+	margin: 0px;
+	padding: 0px;
+}
+.tagcloud a {
+	float: left;
+	padding: 7px 15px 7px 24px;
+	color: #fff;
+	margin: 0px 6px 6px 0px;
+	text-transform: uppercase;
+	font-size: 12px !important;
+	position: relative;
+	border-radius: 3px;
+}
+.tagcloud a:before {
+	content: "";
+	height: 6px;
+	width: 6px;
+	border-radius: 100%;
+	background-color: #fff;
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	margin-top: -3px;
+}
+.tagcloud a:hover {
+	background-color: #000;
+	color: #ffffff;
+}
+.kode-sidebar.kode-left-sidebar .kode-widget,
+.kode-sidebar.kode-right-sidebar .kode-widget {
+	margin-bottom: 30px;
+	float: left;
+	width: 100%;
+	padding:0px
+}
+.flickr_badge_image {
+	float: left;
+	padding:5px;
+	width:33.33%
+}
+footer .flickr_badge_image{
+	width:25%
+}
+.kode-right-sidebar .flickr_badge_image, .kode-sidebar-element .flickr_badge_image{
+	width:30%
+}
+.flickr_badge_image img{
+	margin:0px;
+	float:left;
+	width:100%;
+}
+.flickr_badge_image a{
+	float:left;
+	width:100%;
+}
+
+
+/*--// Twitter Widget CSS Starts //--*/
+.widget_kode_twitter_widget .twitter-widget {
+	list-style: none;
+	overflow-x:hidden;
+	padding: 20px;
+	border: solid 1px #eee;
+	margin: 0px;
+	height: 250px;
+}
+.twitter-widget li:last-child {
+	margin: 0px;
+}
+.twitter-widget li {
+	margin: 0px 0px 10px 0px;
+	padding: 0px 0px 0px 30px;
+	position: relative;
+}
+.twitter-widget li:before{
+	content: "\f099";
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	font-size: 20px;
+	color: #13d5ec;
+	font-family: FontAwesome;
+}
+.twitter-widget .kode-twitter-text, .twitter-widget p {
+	color: #aaaaaa;
+	margin: 0px 0px 4px 0px;
+}
+.twitter-widget p a {
+	color: #ffffff;
+}
+.twitter-widget div.kode-twitter-time {
+	color: #ffffff;
+	text-transform: capitalize;
+}
+.twitter-widget i {
+	color: #767676;
+	margin-right: 6px;
+}
+/* RecentPost */
+.widget-recentpost ul li {
+	float: left;
+	width: 100%;
+	list-style: none;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+}
+.widget-recentpost ul li p {
+	margin-bottom: 0px;
+}
+.widget-recentpost ul li .datetime {
+	border: 2px solid #e2e2e2;
+	width: 56px;
+	height: 56px;
+	float: left;
+	color: #999;
+	border-radius: 100%;
+	font-size: 16px;
+	font-weight: 600;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 5px 0px 0px 0px;
+	margin: 3px 0px 0px 0px;
+}
+.widget-recentpost ul li:hover .datetime{
+	color:#fff;
+}
+.widget-recentpost ul li .datetime span {
+	font-size: 14px;
+	display: block;
+	line-height: 0.6;
+}
+.widget-recentpost ul li p {
+	font-size: 13px;
+	line-height: 20px;
+}
+.widget-recentpost ul li .datetime ~ p {
+	padding: 0px 0px 0px 76px;
+}
+/* Gallery Widget */
+.widget-gallery ul {
+	margin: 0px 0px 0px -10px;
+}
+.widget-gallery ul li {
+	list-style: none;
+	float: left;
+	width: 33.333%;
+	padding: 0px 0px 10px 10px;
+}
+.widget-gallery ul li:hover img {
+	opacity: 0.4;
+}
+.widget-gallery ul li a, .widget-gallery ul li a img {
+	float: left;
+	width: 100%;
+}
+/* Categories */
+.widget_categories li li:last-child,
+.widget_nav_menu li li:last-child,
+.widget_pages li li:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+.widget_categories ul li {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid rgba(0,0,0,0.2);	
+	padding: 8px 0 9px;
+	list-style: none;
+	text-align: right
+}
+.widget_categories ul li:hover {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.widget_categories ul li a {
+	float: left;
+}
+.widget_categories ul li:hover a, .widget_categories ul li:hover a:before, .widget_categories ul li:hover {
+	color: #ffffff;
+}
+.widget_categories ul li a:before {
+	content: "\f105";
+	font-family: FontAwesome;
+	float: left;
+	margin: 0px 10px 0px 0px;
+	color: #333;
+}
+/* CALENDER*/
+.widget_calendar {
+}
+.widget_calendar table tr td {
+	padding: 10px 5px;
+	text-align: center;
+}
+.widget_calendar table tr td:hover {
+	color: #fff;
+}
+.widget_calendar table td.pad:hover {
+	background: none;
+}
+.widget_calendar table thead th {
+	padding: 10px 5px;
+	text-align: center;
+	color: #fff;
+}
+.widget_calendar caption {
+	font-size: 20px;
+	text-align: center;
+	padding: 10px 10px;
+	text-transform: uppercase;
+}
+/* PAGES*/
+.widget_pages {
+}
+.widget_pages ul, .widget_recent_entries ul, .widget_nav_menu ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+.widget_pages ul ul, .widget_nav_menu ul ul {
+	padding-left: 20px;
+	margin: 5px 0px 0px 0px;
+}
+.widget_pages ul li, .widget_recent_entries ul li, .widget_nav_menu ul li {
+	float: left;
+	width: 100%;
+}
+.widget_nav_menu ul li, .widget_nav_menu ul ul li:first-child {
+	border-top: dotted 1px #ccc;
+}
+.widget_nav_menu ul li:first-child {
+	border: none;
+}
+.widget_pages ul li a, .widget_recent_entries ul li a, .widget_nav_menu ul li a {
+	display: block;
+	padding: 8px 15px;
+	position: relative;
+}
+.widget_pages ul li:hover > a, .widget_recent_entries ul li:hover a, .widget_nav_menu ul li:hover > a {
+	padding: 8px 15px 8px 20px;
+	color: #fff;
+}
+.widget_pages ul li a:before, .widget_recent_entries ul li a:before, .widget_nav_menu ul li a:before {
+	content: "\f0da";
+	position: absolute;
+	left: 0px;
+	top: 50%;
+	font-size: 14px;
+	color: #333;
+	font-family: FontAwesome;
+	margin-top: -9px;
+}
+.widget_pages ul li:hover > a:before, .widget_recent_entries ul li:hover a:before, .widget_nav_menu ul li:hover > a:before {
+	left: 10px;
+	color: #fff !important;
+}
+/* META WIDGET*/
+.widget_meta {
+}
+.widget_meta ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	width: 100%;
+}
+.widget_meta ul li {
+	float: left;
+	width: 100%;
+	border-top: dotted 1px #999;
+}
+.widget_meta ul li:first-child {
+	border: none;
+}
+.widget_meta ul li a {
+	display: block;
+	padding: 8px 0px;
+}
+.widget_meta ul li a:hover {
+	padding: 8px 8px;
+	color: #fff;
+}
+/* RECENT COMMENTS*/
+.widget_recent_comments {
+}
+.widget_recent_comments ul {
+	float: left;
+	width: 100%;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+.widget_recent_comments ul li {
+	float: left;
+	width: 100%;
+	padding: 3px 0px;
+	border-top: solid 1px #CCC;
+	font-size: 12px;
+}
+.widget_recent_comments ul li .comment-author-link a {
+	text-transform: uppercase;
+	padding: 3px 5px;
+	border-radius: 3px;
+	color: #fff;
+	margin:5px 0px 5px 0px;
+	display:inline-block;
+}
+/* RSS WIDGET*/
+.widget_rss {
+}
+.widget_rss ul {
+	list-style: none;
+	margin: 0px;
+	float: left;
+	width: 100%;
+}
+.widget_rss ul li {
+	float: left;
+	width: 100%;
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: solid 1px #ccc;
+}
+.widget_rss ul li:first-child {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+.widget_rss ul li a.rsswidget {
+}
+.widget_rss ul li a.rss-date {
+	margin-left: 10px;
+}
+/* TEXT WIDGET*/
+.widget_text {
+}
+.widget_text img {
+	padding: 10px;
+	float: left;
+	width: 100%;
+	border: solid 1px #CCC;
+	margin: 0px 0px 10px 0px;
+}
+.widget_text img:hover {
+}
+.widget_text strong {
+	margin-bottom: 10px;
+}
+/* FOOTER WIDGETS*/
+#footer-widget .widget_calendar caption {
+	color: #CCC;
+	padding: 5px 0px;
+}
+#footer-widget .widget_calendar #calendar_wrap {
+	background-color: #111;
+}
+#footer-widget .widget_archive select, #footer-widget .widget_categories select, #footer-widget .widget_text select, #footer-widget .widget_search input[type='text'] {
+	background-color: #111;
+	border: solid 1px #333;
+}
+#footer-widget .kode-search label:before {
+	color: #CCC;
+}
+#footer-widget .widget_pages ul li a:before, #footer-widget .widget_recent_entries ul li a:before, #footer-widget .widget_nav_menu ul li a:before, #footer-widget .widget_pages ul li a, #footer-widget .widget_recent_entries ul li a, #footer-widget .widget_nav_menu ul li a{
+	color: #CCC;
+}
+#footer-widget .widget_pages ul li a:hover, #footer-widget .widget_recent_entries ul li a:hover, #footer-widget .widget_nav_menu ul li a:hover{
+	color:#fff;
+}
+#footer-widget .widget_recent_comments ul li, #footer-widget .widget_meta ul li, #footer-widget .widget_rss ul li, #footer-widget .widget_nav_menu ul li, #footer-widget .widget_archive ul li, #footer-widget .widget_categories ul li {
+	border-color: rgba(255,255,255,0.15);
+}
+#footer-widget label {
+	color: #ccc;
+}
+#footer-widget .widget_rss ul li, #footer-widget  .widget_categories ul li a:before, #footer-widget .widget_categories ul li a{
+	color: #fff
+}
+
+/*COMMENTS FORM*/
+.comment-form {
+	float: left;
+	width: 100%;
+}
+.comment-form input[type='text'] {
+	width: 100%;
+}
+.comment-form p {
+	float: left;
+	width: 49%;
+	margin-left: 2%;
+	margin-bottom:20px;
+}
+.comment-form p:first-child {
+	margin-left: 0px;
+}
+.comment-form .comment-form-rating, .comment-form .comment-form-comment{
+	margin-left:0px;
+	width:100%;
+}
+.comment-form p.full-width-kode, .comment-form p.kode-textarea, .comment-form p.form-submit {
+	width: 100%;
+	margin-left: 0px;
+}
+.comment-form input[type="submit"] {
+	border-radius: 0px;
+	color: #fff;
+	padding: 14px 20px;
+}
+.comment-form textarea {
+	height: 200px;
+}
+.comment-form input[type="submit"]:hover {
+	background-color: #000;
+}
+/*COMMENTS*/
+
+#kodecomments {
+	float: left;
+	width: 100%;
+}
+#kodecomments > ul > ul {
+	margin: 0px;
+}
+.commentlist > .children > li,
+#kodecomments > ul > li {
+	float: left;
+	width: 100%;
+	list-style: none;
+}
+#kodecomments > ul > li {
+	border-bottom: 1px solid #ebebeb;
+	margin-bottom: 25px;
+	padding-bottom: 12px;
+}
+#kodecomments ul li figure {
+	float: left;
+	width: 60px;
+	height: 60px;
+	overflow: hidden;
+	border-radius: 100%;
+}
+#kodecomments ul li figure img {
+	border-radius: 100%;
+	width: 100%;
+}
+#kodecomments ul li figure ~ .text {
+	padding: 0px 0px 0px 80px;
+	float: none;
+	width: auto;
+}
+#kodecomments ul li .text h6 {
+	margin: 0px 0px 10px 0px;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+#kodecomments ul li .text a {
+	float: left;
+}
+#kodecomments ul .kode-edit-reply p.edit-link{
+	padding:0px;
+	float:right;
+	margin:0px;
+}
+p.edit-link a,
+#kodecomments ul li .text a.comment-reply-link{
+	border: 1px solid #dddddd;
+    border-radius: 4px;
+    color: #777777;
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-transform: uppercase;
+}
+#kodecomments ul li .text a.comment-reply-link:hover{
+	color:#fff;
+}
+#kodecomments ul li .text .replay-btn {
+	float: left;
+	padding: 6px 24px 6px 24px;
+	color: #777777;
+	font-weight: bold;
+	font-size: 15px;
+	text-transform: uppercase;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+}
+#kodecomments ul li .text .replay-btn:hover {
+	color: #ffffff;
+}
+#kodecomments ul li .text p {
+	margin-top: 8px;
+	margin-bottom: 25px;
+	display: list-item;
+}
+.short-time {
+	float: left;
+	width: 100%;
+	font-size: 12px;
+}
+.short-time span {
+	color: #999;
+	text-transform: uppercase;
+	margin-right: 20px;
+}
+.short-time span i {
+	margin-right: 5px;
+}
+#kodecomments .children li {
+	margin-bottom: 0px;
+}
+#kodecomments .children > li {
+	padding: 0 0 0 80px;
+	float: left;
+	width: 100%;
+}
+#kodecomments .kode-title-comment-c a {
+    font-size: 16px;
+    font-weight: bold;
+}
+#kodecomments ul ul.children li {
+	border-top: 1px solid #ebebeb;
+	margin-top: 25px;
+	padding-top: 25px;
+	list-style:none;
+}
+
+/*FLICKR GALLERY*/
+.widget_kode_flickr_widget{
+}
+.widget_kode_flickr_widget a{
+	display:block;
+	position:relative;
+	float:left;
+}
+.widget_kode_flickr_widget a:before{
+	content:"\f067";
+	position:absolute;
+	left:0px;
+	top:50%;
+	width:100%;
+	text-align:center;
+	margin-top:-9px;
+	color:#fff;
+	font-family:FontAwesome;
+	opacity:0; 
+	font-size:20px;
+	line-height:20px;
+	z-index:10;
+}
+.widget_kode_flickr_widget a:hover:before{
+	opacity:1;
+}
+.widget_kode_flickr_widget a:after{
+	content:"";
+	position:absolute;
+	left:0px;
+	top:0px;
+	height:100%;
+	width:100%;
+	opacity:0;
+}
+.widget_kode_flickr_widget a:hover:after{
+	opacity:0.7
+}
+.widget_kode_flickr_widget img{
+	width:100%;
+	height:auto;
+}
+
+/*UPCOMING EVENT*/
+.widget_em_widget{
+}
+.widget_em_widget ul{
+	float:left;
+	width:100%;
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+.widget_em_widget ul li{
+	font-size:14px;
+	font-weight:normal;
+	
+}
+.widget_em_widget ul li a{
+	display:block;
+	clear:both;
+	padding:5px 8px;
+	color:#333;
+	background-color:#efeeee;
+}
+.widget_em_widget ul ul li a{
+	background-color:transparent;
+}
+.widget_em_widget ul ul li{
+	font-size:12px;
+	padding:5px 0px;
+	list-style-position:inside;
+}
+.widget_em_widget ul ul{
+	padding:5px 0px 5px 20px;
+	list-style:decimal;
+}
+
+
+/*.widget_product_categories{
+}
+.widget_product_categories ul{
+	list-style:none;
+	margin:0px;
+	padding:0px;
+	float:left;
+	width:100%
+}*/
+
+/*CSS TRANSITION*/
+
+.widget_archive ul li a, .widget_archive ul li, .widget_archive ul li a:before, .widget_calendar table tr td, .widget_categories ul li a, .widget_categories ul li, .widget_categories ul li a:before, .widget_pages ul li a, .widget_pages ul li a:before, .widget_meta ul li a, .widget_recent_entries ul li a:before, .widget_recent_entries ul li a, .tagcloud a, .widget_nav_menu ul li a:before, .widget_nav_menu ul li a, .widget_nav_menu ul li, .comment-form input[type="submit"], #kodecomments ul li .text a.comment-reply-link, .kode-search label, .widget-recentpost ul li .datetime, .kode-blog-list figcaption .datetime, .woocommerce .cart .button, .woocommerce .cart input.button, .widget_kode_flickr_widget a:after {
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+}
+.kode-sidebar-element [class*="col-md-"] {
+	padding:0px;
+	width:100%;
+}
+.check-list ul{
+	margin:0px;
+	padding:0px;
+}
+.kode-thumb .kode-bxslider .bxslider li{margin:0px !important}
+.kode-form-list,
+.social-links1.small{
+	padding:0px;
+	margin:0px;
+}
+
+
+
+
+
+/*WOOCOMMERCE PRODUCTS*/
+
+.woocommerce-content{
+	float:left;
+	width:100%;
+}
+.woocommerce-content ul.products{
+	list-style:none;
+	margin:0px 0px 0px -1.6%;
+	padding:0px;
+}
+.woocommerce-content ul.products li{
+	display:inline-block;
+	width:23%;
+	margin:0px 0px 2% 1.7%;
+	vertical-align:top;
+	padding:10px 10px 20px 10px;
+	border:solid 1px rgba(0,0,0,0.2);
+	background-color:#fff;
+	transition:all 0.3s ease-in-out;
+	-moz-transition:all 0.3s ease-in-out;
+	-webkit-transition:all 0.3s ease-in-out;
+	text-align:center;
+	position:relative;
+	overflow:hidden;
+}
+.woocommerce ul.products li img{
+	transition:all 0.3s ease-in-out;
+	-moz-transition:all 0.3s ease-in-out;
+	-webkit-transition:all 0.3s ease-in-out;
+}
+.woocommerce ul.products li:hover img{
+	opacity:0.5;
+}
+.woocommerce-content ul.products li:hover{
+	box-shadow:0px 0px 10px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow:0px 0px 10px 0px rgba(0,0,0,0.2);
+	-webkit-box-shadow:0px 0px 10px 0px rgba(0,0,0,0.2);
+	
+}
+.woocommerce-content ul.products .star-rating{
+	position:absolute;
+	top:20px;
+	left:20px;
+}
+.woocommerce-content ul.products li .added_to_cart{
+	background: red none repeat scroll 0 0;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    padding: 39px 40px 10px;
+    position: absolute;
+    right: -50px;
+    text-transform: uppercase;
+    top: -10px;
+    transform: rotate(45deg);
+    white-space: nowrap;
+}
+.woocommerce ul.products li.product h3{
+	font-size:18px;
+	margin:0px 0px 5px 0px;
+	text-transform:uppercase;
+}
+.woocommerce ul.products li .button:hover {
+	background-color:#000 !important;
+}
+.woocommerce .star-rating span::before{
+	color:#ffc000
+}
+.woocommerce ul.products li.product span.onsale{
+	height:50px;
+	width:50px;
+	z-index:10;
+	right:10px;
+	top:10px;
+	left:auto;
+	background-color:red;
+}
+.woocommerce div.product div.images{
+	float:left;
+	width:30%;
+	margin:0px 0px 20px 0px;
+}
+.woocommerce div.product div.images div.thumbnails{
+	margin:20px -5px 0px -5px;
+}
+.woocommerce div.product div.images div.thumbnails a.zoom{
+	float:left;
+	width:33.333%;
+	padding:0px 5px 0px 5px;
+}
+.woocommerce div.product div.summary {
+    float: left;
+    margin-bottom: 20px;
+    width: 70%;
+	padding: 0px 0px 0px 30px;
+}
+.woocommerce-tabs{
+	float:left;
+	width:100%;
+}
+
+.woocommerce-content-item .related{
+	float:left;
+	width:100%;
+}
+
+.woocommerce-ordering{
+	float:right;
+	width:25%;
+	margin:0px 0px 20px 0px;
+}
+.woocommerce-result-count{
+	float:left;
+}
+div.wpcf7-validation-errors{width:100%;float:left;}
+
+
+.widget_kode_recent_comment_widget{
+
+}
+.kode-widget > ul{
+	margin: 0px;
+}
+.kode-recent-comment-widget{
+	float: left;
+	width: 100%;
+}
+.kode-recent-comment-widget .recent-comment-widget-thumbnail{
+	float: right;
+	width: auto;
+}
+.kode-recent-comment-widget .recent-comment-widget-content{
+	float: none;
+	padding: 0px 70px 0px 0px;
+	margin: 15px 0px;
+}
+/* RecentBlog Widget */
+.kode-recent-blog ul li figure {
+	float: left;
+	width: 100%;
+}
+.kode-recent-blog > ul > li {
+	float: left;
+	width: 100%;
+	list-style: none;
+	border-bottom: 1px solid #dedede;
+	padding: 0px 0px 11px 0px;
+	margin: 0px 0px 20px 0px;
+}
+.kode-recent-blog > ul > li:last-child {
+	margin-bottom: 0px;
+	border: none;
+	padding: 0px;
+}
+.kode-recent-blog > ul > li:hover img { opacity: 0.6; }
+.kode-recent-thumb { float: right; }
+.kode-recent-thumb ~ figcaption {
+	padding: 0px 108px 0px 0px;
+}
+.kode-recent-blog figcaption ul {
+	margin: 0px;
+	display: inline-block;
+}
+.kode-recent-blog figcaption ul li {
+	display: inline-block;
+	color: #666666;
+	padding: 0px 10px;
+	border-left: 1px solid #919191;
+	line-height: 1;
+}
+.kode-recent-blog figcaption ul li:first-child {
+	padding-left: 0px;
+	border: none;
+}
+.kode-recent-blog figcaption ul li:last-child { padding-right: 0px; }
+/* Recent News */
+.widget-recent-news .medium-title h6 { margin: 0px; }
+.widget-recent-news .medium-title h6 a {
+	color: #666666;
+	text-transform: uppercase;
+}
+.widget-recent-news .medium-info time {
+	background-color: #333333;
+	color: #fff;
+	border: 3px solid #333333;
+	height: 70px;
+	padding: 13px 0px 0px 0px;
+}
+.widget-recent-news .kode-blog-options li a {
+	color: #666666;
+}
+
+.tab-widget {
+	float: left;
+	border: 1px solid #e0e0e0;
+	box-shadow: 0px 2px 0px 0px #000,0px 2px 0px 0px #000 inset;
+	width:100%;
+}
+.widget-tabnav {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e0e0e0;
+	margin: 0px
+}
+.widget-tabnav li {
+	display: inline-block;
+	list-style: none;
+	margin-left: 10px;
+}
+.widget-tabnav li a {
+	font-size: 18px;
+	color: #5c5c5c;
+	padding: 13px 12px;
+	display: inline-block;
+	position: relative;
+}
+.widget-tabnav li a:before {
+	content: '';
+	position: absolute;
+	bottom: -4px;
+	left: 0px;
+	width: 100%;
+	height: 0px;
+	opacity: 0;
+}
+.widget-tabnav li:hover a:before,.widget-tabnav li.active a:before {
+	opacity: 1;
+	height: 4px;
+}
+.match-widget {
+	float: left;
+	margin: 0px;
+	width: 100%;
+	padding: 0px 14px 0px 14px;
+}
+.match-widget li {
+	list-style: none;
+	padding: 18px 0px;
+	border-bottom: 1px solid #e0e0e0;
+	float: left;
+	width: 100%;
+}
+.match-widget li:last-child { border-bottom: none; }
+.kode-cell {
+	display: inline-block;
+	vertical-align: middle;
+	width: 33.333%;
+	margin: 0px -4px 0px 0px;
+	text-align: center;
+}
+.kode-cell small {
+	display: block;
+	line-height: 1;
+	font-size: 14px;
+	margin-top: 8px;
+}
+.kode-vs {
+	display: inline-block;
+	width: 32px;
+	height: 25px;
+	border: 1px solid #dcdcdc;
+	color: #ffffff;
+	background-color: #2a2a2a;
+	line-height: 1;
+	padding: 4px 0px 0px 0px;
+}
+.kode_football_ipl_wraper{
+	float:left;
+	width:100%;
+	padding:70px 0px 104px 0px;
+}
+.kode_football_ipl_list{
+	float:left;
+	width:100%;
+	overflow:hidden;
+	position:relative;
+	background-color:#1d1d1e;
+}
+.kode_football_ipl_cols{
+	float:left;
+	width:70%;
+}
+.kode_football_ipl_cols ul{
+	float:left;
+	width:100%;
+}
+.kode_football_ipl_cols .kode_football_ipl_compition{
+	float:left;
+	width:100%;
+	border-bottom:5px solid #0c0c0c;
+	position:relative;
+	z-index:999;
+}
+.kode_football_ipl_cols .kode_football_ipl_compition:before{
+	position:absolute;
+	content:"";
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	opacity:0.70;
+	z-index:-1;
+}
+.kode_football_ipl_cols .kode_football_ipl_compition:hover:before{
+	z-index:-1;
+	position:absolute;
+}
+.kode_football_ipl_cols .kode_football_ipl_compition:last-child{
+	border-bottom:none;
+}
+.kode_football_ipl_compition{
+	float:left;
+	width:100%;
+	padding:3px 0px;
+}
+.kode_football_ipl_compition h4 {
+    float: left;
+	color:#fff;
+	width:30%;
+	text-align:center;
+	font-size:40px !important;
+	padding:17px 0px;
+	margin:0px;
+}
+.kode_football_ipl_caption {
+    float: right;
+	width:70%;
+	padding:13px 0px;
+}
+.kode_football_ipl_tabedeta {
+    float: left;
+    width: 100%;
+}
+.kode_football_ipl_tabs .nav.nav-tabs {
+    float: left;
+    width: 70%;
+}
+.kode_football_ipl_tabs .nav.nav-tabs a {
+    float: left;
+    width: 100%;
+	padding:0px;
+}
+.kode_football_ipl_tabs .nav-tabs > li > a:hover {
+    border-color:none;
+}
+.kode_football_ipl_tabs .nav.nav-tabs > li {
+    float: left;
+    width: 100%;
+	margin-bottom:4px;
+}
+.kode_football_ipl_tabs .nav.nav-tabs > li:last-child {
+    margin: 0;
+}
+.kode_football_ipl_row h5 {
+    display: inline-block;
+    float: left;
+	color:#fff;
+	margin:0px;
+}
+.kode_football_ipl_row h3{
+	float:left;
+	padding:0px 30px;
+	margin-top:-6px;
+	color:#fff;
+}
+.kode_football_ipl_date{
+	float:left;
+	width:100%;
+	list-style:none;
+	margin:0px;
+}
+.kode_football_ipl_date  > li{
+	display:inline-block;
+	padding:0px 11px;
+	border-right:1px solid #fff;
+	color:#fff;
+	line-height:16px;
+}
+.kode_football_ipl_date  >  li:last-child{
+	border-right:none;
+}
+.kode_football_ipl_fixture{
+	float:left;
+	width:30%;
+	padding:188px 0px;
+	position:relative;
+	z-index:999;
+}
+.kode_football_ipl_fixture:before{
+	bottom: 0;
+    content: "";
+	left:0px;
+	right:0px;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+	transform:skewX(10deg) scale(1.5) translateX(14px);
+	-moz-transform:skewX(10deg) scale(1.5) translateX(14px);
+	-webkit-transform:skewX(10deg) scale(1.5) translateX(14px);
+}
+.kode_football_ipl_fixture:after{
+	position:absolute;
+	content:"";
+	top:0px;
+	right:0px;
+	bottom:0px;
+	background-image:url("../images/g.png");
+	background-position:right;
+	background-repeat:no-repeat;
+	background-size:cover;
+	width:100%;
+	z-index:-1;
+	transform:skewX(10deg) scale(1.5) translateX(14px);
+	-moz-transform:skewX(10deg) scale(1.5) translateX(14px);
+	-webkit-transform:skewX(10deg) scale(1.5) translateX(14px);
+}	
+.kode_football_ipl_fixture h3{
+	margin-bottom:25px;
+	position:relative;
+}
+.kode_football_ipl_fixture h3:before{
+	position:absolute;
+	content:"";
+	bottom:-17px;
+	left:0px;
+	right:0px;
+	border-bottom:2px solid #000;
+	width:64px;
+}
+.kode_football_ipl_fixture p{
+	color:#000000;
+	position:relative;
+	padding:0px 8px 0px 0px;
+}
+
+/*
+	===============================================
+			kode_football_heros_wraper end
+	===============================================
+*/
+/*
+	===============================================
+			kode_football_product_wraper start
+	===============================================
+*/
+.kode_football_product_wraper{
+	background-image:url("images/productb.png");
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	position:relative;
+	padding:63px 0px 66px 0px;
+}
+.kode_football_product_wraper:before{
+	position:absolute;
+	content:"";
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	background-color:#1a1a1a;
+	opacity:0.80;
+}
+.kode_football_latest_heading.product_hdg{
+	position:relative;
+}
+.kode_football_latest_heading.product_hdg h2{
+	color:#fff;
+}
+.kode_football_product_star,
+.kode_football_product_caption,
+.kode_football_product_wraper,
+.kode_football_product_fig{
+	float:left;
+	width:100%;
+}
+.kode_football_product_fig figure{
+	position:relative;
+	border:2px solid transparent;
+	margin-bottom:14px;
+	overflow:hidden;
+}
+.kode_football_product_icon,
+.kode_football_product_icon{
+	position:absolute;
+	text-align:center;
+	padding:10px 0px;
+	bottom:-50px;
+	left:0px;
+	right:0px;
+	opacity:0;
+	margin:0px;
+}
+.kode_football_product_fig:hover .kode_football_product_icon{
+	bottom:30px;
+	opacity:1;
+}
+.kode_football_product_icon li{
+	display:inline-block;
+}
+.kode_football_product_icon li a{
+	display:inline-block;
+	height:36px;
+	width:36px;
+	text-align:center;
+	line-height:32px;
+	border:2px solid #000000;
+	color:#000000;
+	margin-right:1px;
+}
+.kode_football_product_icon li a.active,
+.kode_football_product_icon li a:hover{
+	background-color:#000;
+	color:#fff;
+}
+.kode_football_product_star,
+.kode_football_product_caption{
+	text-align:center;
+	margin:0px;
+}
+.kode_football_product_caption h5{
+	color:#fff;
+	margin-bottom:7px;
+}
+.kode_football_product_caption h5 a{
+	color:#fff;
+}
+.kode_football_product_caption span{
+	color:#999;
+	font-size:20px;
+	display:inline-block;
+	margin-bottom:8px;
+}
+.kode_football_product_star li{
+	display:inline-block;
+}
+.kode_football_product_star a{
+    display: inline-block;
+    margin: 0 -2px;
+}
+.kode_football_product_star a:hover{
+	color:#000;
+}
+
+/*
+	===============================================
+			kode_football_product_wraper end
+	===============================================
+*/
+/*
+	===============================================
+		kode_football_news_wraper start
+	===============================================
+*/
+.kode_football_news_wraper{
+	padding:62px 0px 122px 0px;
+}
+.kode_football_news_icon,
+.kode_football_news_caption,
+.kode_football_news_wraper,
+.kode_football_news_fig{
+	float:left;
+	width:100%;
+}
+.kode_football_news_fig{
+	text-align:center;
+}
+.kode_football_news_fig:hover{
+	box-shadow: 0 0 16px 1px #b7b7b7;
+}
+.kode_football_news_fig figure{
+	position:relative;
+}
+.kode_football_news_fig figure:before{
+	position:absolute;
+	content:"";
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 71px 71px 0 0;
+	border-color: #ffcc33 transparent transparent transparent;
+	opacity:0;
+}
+.kode_football_news_fig:hover figure:before{
+	opacity:0.90;
+}
+.kode_football_news_fig .kode_football_news_search{
+	position:absolute;
+	top:13px;
+	left:-17px;
+	color:#fff;
+	opacity:0;
+}
+.kode_football_news_fig:hover .kode_football_news_search{
+	left:13px;
+	opacity:1;
+}
+.kode_football_news_fig .kode_football_news_search:hover{
+	color:#000;
+}
+.kode_football_news_caption{
+	position:relative;
+	z-index:999;
+	padding-bottom:23px;
+	background-color:#333;
+}
+.kode_football_news_caption:before{
+	position:absolute;
+	content:"";
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	background-image:url("images/newsb.jpg");
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	z-index:-1;
+}
+.kode_football_news_caption span{
+	height:60px;
+	width:52px;
+	display:inline-block;
+	text-align:center;
+	padding:5px 0px;
+	color:#333;
+	line-height:25px;
+	position:relative;
+	margin-top:-30px;
+	margin-bottom:26px;
+}
+.kode_football_news_caption span:before{
+	position:absolute;
+	content:"";
+	top:-5px;
+	left:-5px;
+	right:-5px;
+	bottom:-5px;
+	border:1px solid ;
+}
+.kode_football_news_caption h5{
+	color:#fff;
+	line-height:24px;
+	margin-bottom:10px;
+}
+.kode_football_news_caption h5 a{
+	color:#fff;
+}
+.kode_football_news_caption p{
+	font-weight:bold;
+}
+.kode_football_news_icon{
+	padding:5px 20px 5px 16px;
+}
+.kode_football_news_icon a{
+	float:left;
+	display:inline-block;
+	color:#000000;
+	font-weight:600;
+}
+.kode_football_news_icon a:hover{
+	color:#fff;
+}
+.kode_football_news_icon > span{
+	float:right;
+	color:#000000;
+}
+.kode_football_news_icon > span i{
+	color:#000000;
+	margin:0px 10px; 
+}
+/*bxslider*/
+.kode_football_news_wraper .bx-wrapper .bx-controls-direction a{
+	color:transparent;
+}
+.kode_football_news_wraper  .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #666 none repeat scroll 0 0;
+    border-radius: 5px;
+    display: block;
+    height: 10px;
+    margin: 0 5px;
+    outline: 0 none;
+    text-indent: -9999px;
+    width: 10px;
+}
+.kode_football_news_wraper .bx-pager.bx-default-pager a.active{
+	
+}
+.kode_football_news_wraper .bx-wrapper .bx-controls-direction a:hover{
+	border:1px solid #c22b2a;
+}
+.kode_football_news_wraper  .bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto {
+    bottom:-62px;
+    position: absolute;
+    width: 100%;
+}
+.kode_football_news_wraper  .bx-wrapper{
+	margin:0px;
+}
+ul.product-listing{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+.kode_football_news_fig .kode-blog-thumbnail iframe{
+	margin:0px;
+}
+.kode_football_heros_fig figure{
+	margin-bottom:0px;
+}
+.kode_football_heros_icon{
+	padding:0px;
+	margin:0px;
+	list-style:none;
+}
+.kode-newslatter *::-moz-placeholder{
+	color:#fff;
+}
+.kode_football_footer_wraper{
+	float:left;
+	width:100%;
+	position:relative;
+	z-index:999;
+}
+.kode_football_footer_wraper:after{
+	position:absolute;
+	content:"";
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	height:100%;
+	z-index:-1;
+}
+.kode_football_footer_wraper:before{
+	position:absolute;
+	content:"";
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	height:100%;
+}
+.kode_football_footer_social_icon ul,
+.kode_football_footer_social_icon,
+.kode_football_footer_newsleter form,
+.kode_football_footer_newsleter,
+.kode_football_footer_gallery ul,
+.kode_football_footer_gallery,
+.kode_football_footer_information ul,
+.kode_football_footer_information,
+.kode_football_footer_logo,
+.kode_football_footer_caption{
+	float:left;
+	width:100%;
+}
+.kode_football_footer_caption h3{
+	color:#fff;
+	font-weight:500;
+	margin-bottom:30px;
+}
+.kode_football_footer_logo figure{
+	margin-bottom:25px;
+}
+.kode_football_footer_logo{
+    margin-top: -6px;
+}
+.kode_football_footer_newsleter,
+.kode_football_footer_information {
+    margin-top: -10px;
+}
+.kode_football_footer_logo p{
+	color:#999;
+	font-size:14px;
+}
+.kode_football_footer_information ul  li{
+	
+}
+.kode_football_footer_information ul  li a{
+	display:inline-block;
+	color:#999999;
+	font-size:16px;
+	margin-bottom:11px;
+}
+.kode_football_footer_information ul  li a:hover{
+	padding-left:10px;
+}
+.kode_football_footer_gallery ul li{
+	float:left;
+	margin:0px 10px 10px 0px;
+	overflow:hidden;
+}
+.kode_football_footer_gallery img{
+    transform: scale(1.0);
+	-moz-transform: scale(1.0);
+	-webkit-transform: scale(1.0);
+}
+.kode_football_footer_gallery img:hover {
+    transform: scale(1.4);
+	-moz-transform: scale(1.4);
+	-webkit-transform: scale(1.4);
+}
+.kode_football_footer_gallery li:nth-child(3){
+    margin-right: 0;
+}
+.kode_football_footer_gallery li:last-child{
+    margin-right: 0;
+}
+.kode_football_footer_search{
+	float:left;
+	width:100%;
+	margin-bottom:20px;
+}
+.kode_football_footer_search:nth-child(2) {
+    margin-bottom: 25px;
+}
+.kode_football_footer_search label{
+	font-size:16px;
+	color:#fff;
+}
+.kode_football_footer_search input{
+	width:100%;
+	height:40px;
+	background:none;
+	border:1px solid #fff;
+	padding:0px 15px;
+	color:#474747;
+}
+.kode_football_footer_search input:focus{
+	box-shadow:0 0 9px 1px #fff;
+	color:#ffcc33;
+}
+.kode_footer_newslater_submit{
+	float:left;
+	width:100%;
+	text-align:center;
+	padding:7px 0px 7px 0px;
+	text-transform:uppercase;
+	color:#fff;
+	font-size:16px;
+	font-weight:600;
+}
+.kode_footer_newslater_submit:hover{
+	background-color:#000;
+	color:#fff;
+}
+.kode_football_footer_social_icon{
+	text-align:center;
+	position:relative;
+	z-index:999;
+	padding-top:36px;
+}
+.kode_football_footer_social_icon ul li{
+	display:inline-block;
+}
+.kode_football_footer_social_icon ul li a{
+	display:inline-block;
+	height:43px;
+	width:43px;
+	text-align:center;
+	line-height:43px;
+	border-radius:100%;
+	border:1px solid #ffcc33;
+	color:#fff;
+	margin:0px 4px;
+}
+.kode_football_footer_social_icon ul li a:hover{
+	color:#000000;
+}
+.kode_football_copyright_caption,
+.kode_football_copyright_wraper{
+	float:left;
+	width:100%;
+	background-color:#000000;
+	padding:10px 0px 10px 0px;
+}
+.kode_football_copyright_caption{
+	text-align:center;
+}
+.kode_football_copyright_caption p{
+	color:#fff;
+	font-size:16px;
+	font-weight:600;
+}
+.dropdown-menu > li > a{
+	text-transform:capitalize;
+}
+
+.footer-bottom-1 .widget h3{
+	color:#fff;
+	margin-bottom:20px;
+}
+.kode-pagination span.em-pagination{
+	display:inline;
+	border: none;
+}
+.em-pagination a.next, 
+.em-pagination span{
+	width:45px;
+}
+.em-pagination a.next:hover,
+.em-pagination a:hover{
+	border-width:1px;
+	background-color:#d30024;
+	border-color:#d30024;
+}
+.kode-pagination span.em-pagination{
+	background:none !important;
+}

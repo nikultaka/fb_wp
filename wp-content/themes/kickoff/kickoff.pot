@@ -1,0 +1,4632 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: KickOff Wordpress Theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-24 17:19+0500\n"
+"PO-Revision-Date: 2015-08-25 21:32+0500\n"
+"Last-Translator: admin <support@kodeforest.com>\n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Loco-Target-Locale: ar_AE\n"
+"X-Generator: Poedit 2.0.8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:15
+msgid "Are you lost Some Where?"
+msgstr ""
+
+#: 404.php:16
+msgid "You can go back to Home Page and search what you are looking for!"
+msgstr ""
+
+#: 404.php:21 framework/include/kode_front_func/kode_header.php:482
+#: framework/include/kode_front_func/kode_header.php:562 search.php:80
+#: searchform.php:6
+msgid "Type keywords..."
+msgstr ""
+
+#: comments.php:16 comments.php:18
+msgid "Recent Comments"
+msgstr ""
+
+#: comments.php:30
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:31
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:32
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:46
+msgid "Leave a Reply"
+msgstr ""
+
+#: comments.php:47
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: comments.php:48
+msgid "Cancel Reply"
+msgstr ""
+
+#: comments.php:49
+msgid "Post Comment"
+msgstr ""
+
+#: comments.php:54
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: comments.php:57
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+
+#: comments.php:62 comments.php:63
+msgid "Name*"
+msgstr ""
+
+#: comments.php:65 comments.php:66
+msgid "Email*"
+msgstr ""
+
+#: comments.php:68 comments.php:69
+#: framework/include/custom_widgets/contact-widget.php:63
+msgid "Website"
+msgstr ""
+
+#: comments.php:72
+msgid "Comments"
+msgstr ""
+
+#: footer.php:13
+msgid "Subscribe Our Monthly Newsletter"
+msgstr ""
+
+#: footer.php:34 footer.php:36
+msgid "Subscribe"
+msgstr ""
+
+#: footer.php:35
+msgid "Subscribe Email"
+msgstr ""
+
+#: footer.php:43
+msgid "Follow Us"
+msgstr ""
+
+#: framework/include/custom_widgets/about-rugby-widget.php:26
+msgid "Kodeforest About Us Widget"
+msgstr ""
+
+#: framework/include/custom_widgets/about-rugby-widget.php:27
+msgid "A widget that shows About us information."
+msgstr ""
+
+#: framework/include/custom_widgets/about-rugby-widget.php:76
+#: framework/include/custom_widgets/contact-widget.php:89
+#: framework/include/custom_widgets/flickr-widget.php:76
+#: framework/include/custom_widgets/kode-tabs-widget.php:186
+#: framework/include/custom_widgets/newsletter-widget.php:80
+#: framework/include/custom_widgets/popular-post-widget.php:92
+#: framework/include/custom_widgets/recent-comment.php:91
+#: framework/include/custom_widgets/recent-post-widget.php:98
+#: framework/include/custom_widgets/rugby-flickr-widget.php:78
+msgid "Title :"
+msgstr ""
+
+#: framework/include/custom_widgets/about-rugby-widget.php:81
+#: framework/include/custom_widgets/contact-widget.php:94
+msgid "Contact Logo :"
+msgstr ""
+
+#: framework/include/custom_widgets/about-rugby-widget.php:86
+#: framework/include/custom_widgets/contact-widget.php:99
+msgid "Description :"
+msgstr ""
+
+#: framework/include/custom_widgets/contact-widget.php:26
+msgid "Kodeforest Contact Widget"
+msgstr ""
+
+#: framework/include/custom_widgets/contact-widget.php:27
+msgid "A widget that show contact us information."
+msgstr ""
+
+#: framework/include/custom_widgets/contact-widget.php:60
+msgid "Address"
+msgstr ""
+
+#: framework/include/custom_widgets/contact-widget.php:61
+msgid "Phone"
+msgstr ""
+
+#: framework/include/custom_widgets/contact-widget.php:62
+msgid "Email"
+msgstr ""
+
+#: framework/include/custom_widgets/contact-widget.php:104
+msgid "Address :"
+msgstr ""
+
+#: framework/include/custom_widgets/contact-widget.php:109
+msgid "Phone :"
+msgstr ""
+
+#: framework/include/custom_widgets/contact-widget.php:114
+msgid "Email :"
+msgstr ""
+
+#: framework/include/custom_widgets/contact-widget.php:119
+msgid "Website :"
+msgstr ""
+
+#: framework/include/custom_widgets/contact-widget.php:125
+msgid "Social Icons:"
+msgstr ""
+
+#: framework/include/custom_widgets/flickr-widget.php:26
+msgid "Kodeforest Flickr Widget (KodeForest)"
+msgstr ""
+
+#: framework/include/custom_widgets/flickr-widget.php:27
+msgid "A widget that show image from flickr"
+msgstr ""
+
+#: framework/include/custom_widgets/flickr-widget.php:82
+#: framework/include/custom_widgets/rugby-flickr-widget.php:84
+msgid "Flickr ID :"
+msgstr ""
+
+#: framework/include/custom_widgets/flickr-widget.php:88
+#: framework/include/custom_widgets/kode-tabs-widget.php:206
+#: framework/include/custom_widgets/popular-post-widget.php:111
+#: framework/include/custom_widgets/recent-comment.php:110
+#: framework/include/custom_widgets/recent-post-widget.php:117
+#: framework/include/custom_widgets/rugby-flickr-widget.php:90
+msgid "Num Fetch :"
+msgstr ""
+
+#: framework/include/custom_widgets/flickr-widget.php:94
+#: framework/include/custom_widgets/rugby-flickr-widget.php:96
+msgid "Order By :"
+msgstr ""
+
+#: framework/include/custom_widgets/flickr-widget.php:96
+#: framework/include/custom_widgets/flickr-widget.php:97
+#: framework/include/custom_widgets/popular-post-widget.php:100
+#: framework/include/custom_widgets/popular-post-widget.php:104
+#: framework/include/custom_widgets/rugby-flickr-widget.php:98
+#: framework/include/custom_widgets/rugby-flickr-widget.php:99
+msgid " selected "
+msgstr ""
+
+#: framework/include/custom_widgets/flickr-widget.php:96
+#: framework/include/custom_widgets/rugby-flickr-widget.php:98
+msgid "Latest"
+msgstr ""
+
+#: framework/include/custom_widgets/flickr-widget.php:97
+#: framework/include/custom_widgets/rugby-flickr-widget.php:99
+#: framework/include/kf_pagebuilder.php:484
+#: framework/include/kf_pagebuilder.php:560
+#: framework/include/kf_pagebuilder.php:654
+#: framework/include/kf_pagebuilder.php:731
+#: framework/include/kode_front_func/kode-woo-options.php:991
+msgid "Random"
+msgstr ""
+
+#: framework/include/custom_widgets/kode-tabs-widget.php:26
+msgid "Kodeforest Tabs Widget"
+msgstr ""
+
+#: framework/include/custom_widgets/kode-tabs-widget.php:27
+#: framework/include/custom_widgets/recent-post-widget.php:27
+msgid "A widget that show latest posts"
+msgstr ""
+
+#: framework/include/custom_widgets/kode-tabs-widget.php:51
+msgid "Live"
+msgstr ""
+
+#: framework/include/custom_widgets/kode-tabs-widget.php:52
+msgid "Fixture"
+msgstr ""
+
+#: framework/include/custom_widgets/kode-tabs-widget.php:85
+#: framework/include/custom_widgets/kode-tabs-widget.php:144
+#: framework/include/kode_front_func/kode-events-options.php:1967
+#: framework/include/kode_front_func/kode-events-options.php:2021
+#: single-event.php:91 taxonomy-event-categories.php:87
+msgid "All Day"
+msgstr ""
+
+#: framework/include/custom_widgets/kode-tabs-widget.php:100
+#: framework/include/custom_widgets/kode-tabs-widget.php:159
+#: framework/include/kode_front_func/kode-events-options.php:1864
+#: framework/include/kode_front_func/kode-events-options.php:2180
+#: taxonomy-event-categories.php:82
+msgid "vs"
+msgstr ""
+
+#: framework/include/custom_widgets/kode-tabs-widget.php:192
+#: framework/include/custom_widgets/popular-post-widget.php:98
+#: framework/include/custom_widgets/recent-comment.php:97
+#: framework/include/custom_widgets/recent-post-widget.php:104
+msgid "Category :"
+msgstr ""
+
+#: framework/include/custom_widgets/kode-tabs-widget.php:194
+#: framework/include/custom_widgets/popular-post-widget.php:100
+#: framework/include/custom_widgets/recent-comment.php:99
+#: framework/include/custom_widgets/recent-post-widget.php:106
+#: framework/include/kode_front_func/kode-events-options.php:2527
+msgid "All"
+msgstr ""
+
+#: framework/include/custom_widgets/newsletter-widget.php:26
+msgid "Kodeforest Newsletter Widget"
+msgstr ""
+
+#: framework/include/custom_widgets/newsletter-widget.php:27
+msgid "A widget about newsletter widget."
+msgstr ""
+
+#: framework/include/custom_widgets/popular-post-widget.php:26
+msgid "Kodeforest Popular Post Widget"
+msgstr ""
+
+#: framework/include/custom_widgets/popular-post-widget.php:27
+msgid "A widget that show popular posts ( by comment )"
+msgstr ""
+
+#: framework/include/custom_widgets/recent-comment.php:26
+msgid "Kodeforest Recent Comment Widget"
+msgstr ""
+
+#: framework/include/custom_widgets/recent-comment.php:27
+msgid "A widget that show lastest comment"
+msgstr ""
+
+#: framework/include/custom_widgets/recent-post-widget.php:26
+msgid "Kodeforest Recent Post Widget"
+msgstr ""
+
+#: framework/include/custom_widgets/rugby-flickr-widget.php:26
+msgid "Kodeforest Rugby Flickr Widget (KodeForest)"
+msgstr ""
+
+#: framework/include/custom_widgets/rugby-flickr-widget.php:27
+msgid "A widget that show Rugby image from flickr"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid "<div class=\"bx-loading\" />"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid "<div class=\"bx-controls\" />"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid "<div class=\"bx-pager\" />"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid "<a class=\"bx-next\" href=\"\">"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid "<a class=\"bx-prev\" href=\"\">"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid "<div class=\"bx-controls-direction\" />"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid "<div class=\"bx-controls-auto-item\"><a class=\"bx-start\" href=\"\">"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid "<div class=\"bx-controls-auto-item\"><a class=\"bx-stop\" href=\"\">"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid "<div class=\"bx-controls-auto\" />"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid ".bx-clone"
+msgstr ""
+
+#: framework/include/frontend_assets/bxslider/jquery.bxslider.min.js:10
+msgid ".bx-caption"
+msgstr ""
+
+#: framework/include/frontend_assets/default/js/jquery.countdown.js:1
+#: framework/include/frontend_assets/default/js/jquery.countdown_bk.js:1
+msgid "."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:59
+#: framework/include/kf_pagebuilder.php:106
+#: framework/include/kode_front_func/kode-events-options.php:54
+#: framework/include/kode_front_func/kode-igni-options.php:141
+#: framework/include/kode_front_func/kode-post-options.php:118
+#: framework/include/kode_meta/kf_pagebuilder_scripts.php:21
+msgid "Page Option"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:62
+msgid "Show Sub Header"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:68
+#: framework/include/kf_pagebuilder.php:909
+msgid "Page Caption"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:73
+#: framework/include/kode_front_func/kode-igni-options.php:153
+msgid "Header Background Image"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:74
+#: framework/include/kf_pagebuilder.php:207
+#: framework/include/kf_themeoption.php:447
+#: framework/include/kode_front_func/kode-events-options.php:1144
+#: framework/include/kode_front_func/kode-events-options.php:1174
+#: framework/include/kode_front_func/kode-igni-options.php:154
+#: framework/include/kode_meta/kf_theme_meta.php:1069
+msgid "Upload"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:130
+msgid "Content & Post Options"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:131
+msgid "- Select Content Element -"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:134
+msgid "Column"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:140
+msgid "Section"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:145
+#: framework/include/kf_pagebuilder.php:260
+#: framework/include/kf_pagebuilder.php:339
+#: framework/include/kf_pagebuilder.php:409
+#: framework/include/kf_pagebuilder.php:512
+#: framework/include/kf_pagebuilder.php:588
+#: framework/include/kf_pagebuilder.php:680
+#: framework/include/kf_pagebuilder.php:807
+#: framework/include/kf_pagebuilder.php:864
+#: framework/include/kf_pagebuilder.php:892
+#: framework/include/kf_pagebuilder.php:946
+#: framework/include/kf_pagebuilder.php:1084
+msgid "Page Item ID"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:148
+#: framework/include/kf_pagebuilder.php:263
+#: framework/include/kf_pagebuilder.php:342
+#: framework/include/kf_pagebuilder.php:412
+#: framework/include/kf_pagebuilder.php:515
+#: framework/include/kf_pagebuilder.php:591
+#: framework/include/kf_pagebuilder.php:683
+#: framework/include/kf_pagebuilder.php:810
+#: framework/include/kf_pagebuilder.php:867
+#: framework/include/kf_pagebuilder.php:895
+#: framework/include/kf_pagebuilder.php:949
+#: framework/include/kf_pagebuilder.php:1087
+msgid "please add the page item id."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:151
+#: framework/include/kf_pagebuilder.php:266
+#: framework/include/kf_pagebuilder.php:345
+#: framework/include/kf_pagebuilder.php:415
+#: framework/include/kf_pagebuilder.php:518
+#: framework/include/kf_pagebuilder.php:594
+#: framework/include/kf_pagebuilder.php:686
+#: framework/include/kf_pagebuilder.php:813
+#: framework/include/kf_pagebuilder.php:870
+#: framework/include/kf_pagebuilder.php:898
+#: framework/include/kf_pagebuilder.php:952
+#: framework/include/kf_pagebuilder.php:1090
+msgid "Page Item Class"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:154
+#: framework/include/kf_pagebuilder.php:269
+#: framework/include/kf_pagebuilder.php:348
+#: framework/include/kf_pagebuilder.php:418
+#: framework/include/kf_pagebuilder.php:521
+#: framework/include/kf_pagebuilder.php:597
+#: framework/include/kf_pagebuilder.php:689
+#: framework/include/kf_pagebuilder.php:816
+#: framework/include/kf_pagebuilder.php:873
+#: framework/include/kf_pagebuilder.php:901
+#: framework/include/kf_pagebuilder.php:955
+#: framework/include/kf_pagebuilder.php:1093
+msgid "please add the page item class."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:157
+#: framework/include/tgm_library/tgm-activation.php:2634
+msgid "Type"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:160
+#: framework/include/kf_pagebuilder.php:206
+#: framework/include/kf_themeoption.php:334
+#: framework/include/kode_front_func/kode-events-options.php:1143
+msgid "Background Image"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:161
+msgid "Predefined Pattern"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:162
+msgid "Video Background"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:163
+msgid "Color Background"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:164
+msgid "Google Map"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:170
+msgid "Container"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:173
+msgid "Full Width"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:174
+msgid "Container (inside 1170px)"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:176
+msgid ""
+"Select container width, container full width section will be full width."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:180
+msgid "Google Map Shortcode"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:184
+msgid "Add google map shortcode to add background."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:187
+#: framework/include/kode_front_func/kode-post-options.php:134
+#: framework/include/kode_front_func/kode-post-options.php:147
+msgid "Video URL"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:191
+msgid "add video url for the parallax video background for mp4"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:194
+msgid "Video Type"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:197
+msgid "Video Type Mp4 "
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:198
+msgid "Video Type Ogg "
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:199
+msgid "Video Type Webm "
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:202
+msgid "Select video background type."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:212
+msgid "Transparent Background"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:217
+msgid "Horizontal Moving Background"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:222
+msgid "Overlay Color"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:228
+msgid "Opacity"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:232
+msgid "add opacity to the background image. for example from .01 to 1"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:235
+msgid "Background Speed"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:239
+msgid ""
+"Fill 0 if you don't want the background to scroll and 1 when you want the "
+"background to have the same speed as the scroll bar"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:240
+msgid "*** only allow the number between -1 to 1"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:243
+msgid "Padding Top"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:245
+msgid "Spaces before starting any content in this section"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:248
+msgid "Padding Bottom"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:250
+msgid "Spaces after ending of the content in this section"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:255
+msgid "Fancy Heading"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:272
+msgid "Alignment"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:275
+msgid "Left"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:276
+msgid "Right"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:277
+msgid "Center"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:281
+msgid "Heading Style"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:284
+#: framework/include/kf_pagebuilder.php:830
+#: framework/include/kode_front_func/kode-woo-options.php:909
+#: framework/include/kode_front_func/kode-woo-options.php:970
+msgid "Style 1"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:285
+#: framework/include/kf_pagebuilder.php:831
+#: framework/include/kode_front_func/kode-woo-options.php:910
+#: framework/include/kode_front_func/kode-woo-options.php:971
+msgid "Style 2"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:286
+#: framework/include/kf_pagebuilder.php:832
+msgid "Style 3"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:287
+#: framework/include/kf_pagebuilder.php:833
+msgid "Style 4"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:291
+#: framework/include/kf_pagebuilder.php:483
+#: framework/include/kf_pagebuilder.php:559
+#: framework/include/kf_pagebuilder.php:653
+#: framework/include/kf_pagebuilder.php:730
+#: framework/include/kf_pagebuilder.php:823
+#: framework/include/kode_front_func/kode-woo-options.php:990
+msgid "Title"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:294
+msgid "Add heading title here."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:297
+msgid "Title Color"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:302
+msgid "Caption"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:307
+msgid "Caption Color"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:312
+msgid "Description"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:317
+msgid "Description Color"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:322
+msgid "Line Color"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:327
+#: framework/include/kf_pagebuilder.php:361
+#: framework/include/kf_pagebuilder.php:500
+#: framework/include/kf_pagebuilder.php:576
+#: framework/include/kf_pagebuilder.php:667
+#: framework/include/kf_pagebuilder.php:744
+#: framework/include/kf_pagebuilder.php:852
+#: framework/include/kf_pagebuilder.php:880
+#: framework/include/kf_pagebuilder.php:918
+#: framework/include/kf_pagebuilder.php:931
+#: framework/include/kf_pagebuilder.php:989
+#: framework/include/kf_pagebuilder.php:1110
+#: framework/include/kode_front_func/kode-events-options.php:985
+#: framework/include/kode_front_func/kode-events-options.php:1017
+#: framework/include/kode_front_func/kode-events-options.php:1064
+#: framework/include/kode_front_func/kode-events-options.php:1111
+#: framework/include/kode_front_func/kode-events-options.php:1153
+#: framework/include/kode_front_func/kode-events-options.php:1184
+#: framework/include/kode_front_func/kode-events-options.php:1217
+#: framework/include/kode_front_func/kode-igni-options.php:85
+#: framework/include/kode_front_func/kode-woo-options.php:941
+#: framework/include/kode_front_func/kode-woo-options.php:1003
+msgid "Margin Bottom"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:329
+#: framework/include/kode_front_func/kode-igni-options.php:88
+#: framework/include/kode_front_func/kode-woo-options.php:944
+#: framework/include/kode_front_func/kode-woo-options.php:1006
+msgid "Spaces after ending of this item"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:334
+#: framework/include/kf_pagebuilder.php:352
+msgid "Accordion"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:355
+msgid "On Load Open"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:358
+msgid ""
+"0 will close all tab as an initial state, 1 will open the first tab and so "
+"on."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:363
+#: framework/include/kf_pagebuilder.php:502
+#: framework/include/kf_pagebuilder.php:578
+#: framework/include/kf_pagebuilder.php:669
+#: framework/include/kf_pagebuilder.php:746
+#: framework/include/kf_pagebuilder.php:854
+#: framework/include/kf_pagebuilder.php:882
+#: framework/include/kf_pagebuilder.php:920
+#: framework/include/kf_pagebuilder.php:933
+#: framework/include/kf_pagebuilder.php:991
+#: framework/include/kf_pagebuilder.php:1112
+msgid "Spaces after ending of this item Note: Donot write px with it."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:369
+#: framework/include/kf_themeoption.php:1249
+msgid "Sidebar"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:375
+msgid "Select Widget Area"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:378
+msgid "You can select Widget Area of your choice."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:383
+msgid "Header"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:389
+msgid "Header Style"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:398
+msgid "Header Style 1"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:404
+msgid "Blog"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:421
+#: framework/include/kf_pagebuilder.php:524
+#: framework/include/kf_pagebuilder.php:608
+#: framework/include/kf_pagebuilder.php:692
+#: framework/include/kode_front_func/kode-events-options.php:929
+#: framework/include/kode_front_func/kode-events-options.php:1005
+#: framework/include/kode_front_func/kode-events-options.php:1037
+#: framework/include/kode_front_func/kode-events-options.php:1084
+#: framework/include/kode_front_func/kode-events-options.php:1137
+#: framework/include/kode_front_func/kode-events-options.php:1178
+#: framework/include/kode_front_func/kode-events-options.php:1205
+#: framework/include/kode_front_func/kode-igni-options.php:26
+#: framework/include/kode_front_func/kode-woo-options.php:882
+#: framework/include/kode_front_func/kode-woo-options.php:955
+#: header-title.php:139
+msgid "Category"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:424
+#: framework/include/kf_pagebuilder.php:527
+#: framework/include/kf_pagebuilder.php:612
+#: framework/include/kf_pagebuilder.php:696
+msgid "Select categories to fetch its posts."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:427
+#: framework/include/kf_pagebuilder.php:530
+#: framework/include/kf_pagebuilder.php:615
+#: framework/include/kf_pagebuilder.php:699
+#: framework/include/kode_front_func/kode-events-options.php:935
+#: framework/include/kode_front_func/kode-events-options.php:1011
+#: framework/include/kode_front_func/kode-events-options.php:1043
+#: framework/include/kode_front_func/kode-events-options.php:1090
+#: framework/include/kode_front_func/kode-woo-options.php:888
+#: framework/include/kode_front_func/kode-woo-options.php:961
+#: header-title.php:142
+msgid "Tag"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:430
+#: framework/include/kf_pagebuilder.php:533
+#: framework/include/kf_pagebuilder.php:619
+#: framework/include/kf_pagebuilder.php:703
+msgid "Select tags to fetch its posts."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:433
+msgid "Blog Style"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:437
+msgid "Blog Grid Modern"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:438
+#: framework/include/kf_themeoption.php:673
+msgid "Blog Grid"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:439
+msgid "Blog Cricket"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:440
+#: framework/include/kf_themeoption.php:674
+msgid "Blog Full"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:445
+msgid "Blog Size"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:448
+#: framework/include/kf_themeoption.php:682
+msgid "2 Column"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:449
+#: framework/include/kf_themeoption.php:683
+msgid "3 Column"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:450
+#: framework/include/kf_themeoption.php:684
+msgid "4 Column"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:456
+#: framework/include/kf_pagebuilder.php:963
+msgid "Thumbnail Size"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:461
+#: framework/include/kf_pagebuilder.php:537
+#: framework/include/kf_pagebuilder.php:629
+#: framework/include/kf_pagebuilder.php:706
+msgid "Num Title (Character)"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:464
+#: framework/include/kf_pagebuilder.php:540
+#: framework/include/kf_pagebuilder.php:632
+#: framework/include/kf_pagebuilder.php:709
+msgid "This is a number of characters that you want to show on the post title."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:467
+#: framework/include/kf_pagebuilder.php:543
+#: framework/include/kf_pagebuilder.php:635
+#: framework/include/kf_pagebuilder.php:712
+#: framework/include/kode_front_func/kode-events-options.php:941
+#: framework/include/kode_front_func/kode-igni-options.php:48
+#: framework/include/kode_front_func/kode-woo-options.php:894
+msgid "Num Excerpt (Word)"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:470
+#: framework/include/kf_pagebuilder.php:546
+#: framework/include/kf_pagebuilder.php:638
+#: framework/include/kf_pagebuilder.php:715
+msgid ""
+"This is a number of characters that you want to show on the post description."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:473
+#: framework/include/kf_pagebuilder.php:549
+#: framework/include/kf_pagebuilder.php:641
+#: framework/include/kf_pagebuilder.php:718
+#: framework/include/kode_front_func/kode-events-options.php:947
+#: framework/include/kode_front_func/kode-igni-options.php:55
+#: framework/include/kode_front_func/kode-woo-options.php:900
+#: framework/include/kode_front_func/kode-woo-options.php:980
+msgid "Num Fetch"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:476
+#: framework/include/kf_pagebuilder.php:552
+#: framework/include/kf_pagebuilder.php:645
+#: framework/include/kf_pagebuilder.php:722
+#: framework/include/kode_front_func/kode-events-options.php:950
+#: framework/include/kode_front_func/kode-igni-options.php:58
+#: framework/include/kode_front_func/kode-woo-options.php:903
+msgid "Specify the number of posts you want to pull out."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:479
+#: framework/include/kf_pagebuilder.php:555
+#: framework/include/kf_pagebuilder.php:600
+#: framework/include/kf_pagebuilder.php:648
+#: framework/include/kf_pagebuilder.php:725
+#: framework/include/kode_front_func/kode-woo-options.php:986
+msgid "Order By"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:482
+#: framework/include/kf_pagebuilder.php:558
+#: framework/include/kf_pagebuilder.php:652
+#: framework/include/kf_pagebuilder.php:729
+#: framework/include/kode_front_func/kode-woo-options.php:989
+msgid "Publish Date"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:488
+#: framework/include/kf_pagebuilder.php:564
+#: framework/include/kf_pagebuilder.php:658
+#: framework/include/kf_pagebuilder.php:735
+#: framework/include/kode_front_func/kode-events-options.php:973
+#: framework/include/kode_front_func/kode-igni-options.php:73
+#: framework/include/kode_front_func/kode-woo-options.php:929
+#: framework/include/kode_front_func/kode-woo-options.php:995
+msgid "Order"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:491
+#: framework/include/kf_pagebuilder.php:567
+#: framework/include/kf_pagebuilder.php:662
+#: framework/include/kf_pagebuilder.php:739
+#: framework/include/kode_front_func/kode-events-options.php:976
+#: framework/include/kode_front_func/kode-igni-options.php:76
+#: framework/include/kode_front_func/kode-woo-options.php:932
+#: framework/include/kode_front_func/kode-woo-options.php:998
+msgid "Descending Order"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:492
+#: framework/include/kf_pagebuilder.php:568
+#: framework/include/kf_pagebuilder.php:663
+#: framework/include/kf_pagebuilder.php:740
+#: framework/include/kode_front_func/kode-events-options.php:977
+#: framework/include/kode_front_func/kode-igni-options.php:77
+#: framework/include/kode_front_func/kode-woo-options.php:933
+#: framework/include/kode_front_func/kode-woo-options.php:999
+msgid "Ascending Order"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:496
+#: framework/include/kf_pagebuilder.php:572
+#: framework/include/kf_pagebuilder.php:985
+#: framework/include/kode_front_func/kode-igni-options.php:81
+#: framework/include/kode_front_func/kode-woo-options.php:937
+msgid "Enable Pagination"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:507
+msgid "Blog List"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:583
+msgid "Blog Post Slider"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:603
+msgid "Slider (Multiple Posts)"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:604
+msgid "Single Post with Feature Img"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:622
+msgid "Select Post"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:626
+msgid "Select post from the list."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:675
+msgid "Player State"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:802
+msgid "Service"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:819
+msgid "Icon Class"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:827
+msgid "Item Style"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:834
+msgid "Cricket Style"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:838
+#: framework/include/kf_pagebuilder.php:876
+msgid "Content Text"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:842
+msgid "Link"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:844
+msgid "Please add link here for services."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:847
+msgid "Text Link"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:849
+msgid "Please add text here for services link."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:859
+msgid "Simple Column"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:887
+msgid "Content"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:904
+msgid "Show Title"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:913
+msgid "Show Content (From Default Editor)"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:926
+msgid "Divider"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:941
+msgid "Gallery"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:968
+msgid "Gallery Image Columns"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:974
+msgid "Num Fetch (Per Page)"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:976
+msgid "Leave this field blank to fetch all image without pagination."
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:980
+msgid "Show Caption"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:1079
+#: framework/include/kode_front_func/kode-post-options.php:136
+msgid "Slider"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:1101
+msgid "Slider Type"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:1104
+msgid "Flex slider"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:1105
+#: framework/include/kf_themeoption.php:1084
+msgid "BX Slider"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:1106
+#: framework/include/kf_themeoption.php:1137
+msgid "Nivo Slider"
+msgstr ""
+
+#: framework/include/kf_pagebuilder.php:1125
+#: framework/include/kode_meta/kf_pagebuilder_backend.php:22
+msgid "Page Builder Options"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:23
+msgid "Option"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:42
+msgid "Sport Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:46
+msgid "Game Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:49
+msgid "Select Game Mode"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:52
+msgid "Soccer"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:54
+msgid "Select your game mode."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:93
+msgid "General Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:97
+msgid "Header & TopBar"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:100
+msgid "Upload Logo"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:101
+msgid "Set As Logo"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:106
+msgid "Logo Width"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:114
+msgid "Logo Height"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:122
+msgid "Logo Top Margin"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:130
+msgid "Logo Bottom Margin"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:138
+msgid "Upload Favicon ( .ico file )"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:139
+msgid "Select Icon"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:147
+msgid "Navigation Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:150
+msgid "Enable Header All Pages"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:155
+msgid "Select Header"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:157
+msgid ""
+"There are 4 Different Header Styles Available here. Click on the Drop Down "
+"menu and select the Header Style here from of your choice."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:166
+msgid "Enable Latest News"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:172
+msgid "Top News Title Text"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:176
+msgid ""
+"Add Top News title text here to show before slider for example: Latest News."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:179
+msgid "Latest News"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:183
+msgid "Select Category to Fetch its Posts."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:186
+msgid "Enable Sticky"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:192
+msgid "Sticky Menu Starts"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:195
+msgid ""
+"Please add class or id of section or element from where sticky menu starts "
+"for example: #kode-parallax-wrapper-3."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:198
+msgid "Enable Top Bar"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:201
+msgid "Click here to enable / disable the top bar from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:204
+msgid "Enable Top Bar login"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:207
+msgid "Click here to enable / disable the top bar login from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:210
+msgid "Enable One Page Header Nav"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:225
+msgid "Breadcrumbs"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:233
+msgid "Navigation Styling"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:236
+msgid "Navigation Text Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:243
+msgid "Navigation Text Hover BG"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:250
+msgid "Navigation Text Hover Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:257
+msgid "Navigation DropDown BG"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:264
+msgid "Navigation DropDown Text Hover"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:271
+msgid "Navigation DropDown Text Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:282
+msgid "Style & Layouts"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:285
+msgid "Color Scheme Color One"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:292
+msgid "Color Scheme Color Two"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:299
+msgid "Color Scheme Color Three"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:306
+msgid "Website Layout"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:310
+msgid "Full Style"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:311
+msgid "Boxed Style"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:315
+msgid "Body Background Style"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:319
+#: framework/include/kf_themeoption.php:326
+msgid "Body Background Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:320
+msgid "Body Background Image"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:321
+msgid "Body Background Pattern"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:340
+msgid "Background Pattern"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:367
+msgid "Body Background Position"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:371
+msgid "Scroll"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:372
+msgid "Fixed"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:377
+msgid "Nice Scroll"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:383
+msgid "Enable RTL"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:389
+msgid "Enable Responsive"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:395
+msgid "Default Video Ratio"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:398
+msgid "Please only fill number/number as default video ratio"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:401
+msgid "Player Detail Table "
+msgstr ""
+
+#: framework/include/kf_themeoption.php:404
+msgid ""
+"Click here to turn Off the player detail matches , tournament detail table "
+"from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:407
+msgid "Page Author"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:409
+#: framework/include/kf_themeoption.php:755
+msgid "You can enable or disable the about author box from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:415
+msgid "Footer Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:418
+msgid "Show Footer"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:424
+msgid "Select Footer"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:426
+msgid ""
+"There are 3 Different Footer Styles Available here. Click on the Drop Down "
+"menu and select the Footer Style here from of your choice."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:434
+msgid "Footer Background Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:440
+msgid "Footer Background Opacity"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:443
+msgid "Adjust footer background opacity from 0 to 1."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:446
+msgid "Footer Background Image"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:452
+#: framework/include/kf_themeoption.php:478
+msgid "Footer Layout"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:472
+msgid "Show Newsletter"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:475
+msgid "Click here to Turn On / off the footer Newsletter."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:488
+msgid "Show Copyright"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:491
+msgid "Click here to Turn On / off the Copyright area."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:494
+msgid "Copyright Text"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:497
+msgid "Enter the copyright text here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:502
+msgid "Sub Header"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:505
+msgid "Default Page Title Background"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:512
+msgid "Default Post Title Background"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:519
+msgid "Default Search Archive Title Header Background"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:526
+msgid "Default 404 Title Background"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:603
+msgid "System Diagnostic Information"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:606
+msgid "Server Configuration"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:615
+msgid "Import/Export Option"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:618
+msgid "Export Option"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:620
+msgid ""
+"Here you can copy/download your themes current option settings. Keep this "
+"safe as you can use it as a backup should anything go wrong. Or you can use "
+"it to restore your settings on this site (or any other site). You also have "
+"the handy option to copy the link to yours sites settings. Which you can "
+"then use to duplicate on another site."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:622
+msgid "Export"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:626
+msgid "Import Option"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:628
+msgid ""
+"WARNING! This will overwrite any existing options, please proceed with "
+"caution!"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:630
+msgid "Import"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:639
+msgid "Blog Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:643
+msgid "Index Search - Archive Style"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:646
+msgid "Index Search - Archive Sidebar Template"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:658
+msgid "Search - Archive Sidebar Left"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:664
+msgid "Search - Archive Sidebar Right"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:670
+#: framework/include/kf_themeoption.php:679
+msgid "Search - Archive Blog Style"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:689
+msgid "Column size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:693
+msgid "Select the column width of content."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:696
+msgid "Search - Archive Num Excerpt (Word)"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:700
+msgid ""
+"This is a number of word (decided by spaces) that you want to show on the "
+"post excerpt. Use 0 to hide the excerpt, -1 to show full posts and use the "
+"wordpress more tag."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:705
+msgid "Blog Single"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:719
+#: framework/include/kode_front_func/kode-post-options.php:40
+msgid "Single Default Sidebar"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:729
+#: framework/include/kode_front_func/kode-post-options.php:50
+msgid "Single Default Sidebar Left"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:735
+#: framework/include/kode_front_func/kode-post-options.php:56
+msgid "Single Default Sidebar Right"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:741
+msgid "Single Post Feature Image"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:743
+msgid ""
+"If you do not want to set a featured image (in case of sound post type : "
+"Audio player, in case of video post type : Video Player) kindly disable it "
+"here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:747
+msgid "Single Post Date"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:749
+msgid ""
+"Using this option you can show/hide extra information about the blog or "
+"post,  Date."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:753
+#: framework/include/kode_front_func/kode-post-options.php:62
+msgid "Single Post Author"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:759
+msgid "Single Post Comments"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:761
+msgid ""
+"Using this option you can show/hide extra information about the blog or "
+"post,  Comments."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:765
+msgid "Single Meta"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:767
+msgid ""
+"Using this option you can show/hide Post Meta information about the blog or "
+"post,  Tags."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:771
+msgid "Single Next / Previous Button"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:773
+msgid ""
+"Using this option you can turn on/off the navigation arrows when viewing the "
+"blog single page."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:782
+msgid "Event Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:786
+msgid "Event Single"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:789
+msgid "Single Team Performance Table One"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:791
+msgid "You can switch On/Off the Team Performance Table One."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:795
+msgid "Single Team Performance Table Two"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:797
+msgid "You can switch On/Off the Team Performance Table Two."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:801
+msgid "Single Player Line Up Table One"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:803
+msgid "You can switch On/Off the Player Line Up Table One."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:807
+msgid "Single Player Line Up Table Two"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:809
+msgid "You can switch On/Off the Player Line Up Table Two."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:813
+msgid "Single Booking Events"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:815
+msgid "You can switch On/Off the Booking for the Events from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:819
+msgid "Single Booking Comments"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:821
+msgid "You can switch On/Off the Comments Section of the Events from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:830
+msgid "Woo Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:834
+msgid "WooCommerce Single"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:837
+msgid "Woo Post Title"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:839
+msgid ""
+"Using this option to show/hide Woocommerce Product Titles at the Product "
+"Details page"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:843
+msgid "Woo Post Price"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:845
+msgid ""
+"Using this option to show/hide Woocommerce Products Prices at the Product "
+"Details page"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:849
+msgid "Woo Post Variable Price"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:851
+msgid ""
+"Using this option to show/hide Woocommerce Variables Products Prices at the "
+"Product Details page"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:855
+msgid "Woo Post Related"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:857
+msgid ""
+"Using this option to show/hide Woocommerce Related Products at the Product "
+"Details page"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:861
+msgid "Woo Post SKU"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:863
+msgid ""
+"Using this option to show/hide Woocommerce SKU Number at the Product Details "
+"page"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:867
+msgid "Woo Post Category"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:869
+msgid ""
+"Using this option to show/hide Woocommerce Products Category at the Product "
+"Details page"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:873
+msgid "Woo Post Tags"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:875
+msgid ""
+"Using this option to show/hide Woocommerce Products Tags at the Product "
+"Details page"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:879
+msgid "Woo Post Out of Stock Icon"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:881
+msgid "Using this option to show/hide Woocommerce Out Of Stock text"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:885
+msgid "Woo Post Sale Icon"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:887
+msgid "Using this option to show/hide Woocommerce Products Sale Icon"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:893
+msgid "WooCommerce Listing"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:896
+msgid "Woo List Cart Button"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:898
+msgid ""
+"Using this option to show/hide Woocommerce Products Cart Icon at the listing "
+"page"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:902
+msgid "Woo List Title"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:904
+msgid ""
+"Using this option to show/hide Woocommerce Products  Titles at the listing "
+"page"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:908
+msgid "Woo List Price"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:910
+msgid ""
+"Using this option to show/hide Woocommerce Products Prices at the listing "
+"page"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:920
+msgid "Products Per Row"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:932
+msgid "All Products Sidebar"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:934
+msgid "You can select the Shop layout Side bar layout from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:944
+msgid "All Products Sidebar Left"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:946
+msgid "You can select the left side bar for your shop page from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:951
+msgid "All Products Sidebar Right"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:953
+msgid "You can select the right side bar for your shop page from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:964
+msgid "Social Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:977
+msgid "Font Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:981
+msgid "Font Family"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:984
+msgid "Navigation Font"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:987
+msgid "Please Select the Navigation Font Family from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:992
+msgid "Header Font"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:995
+msgid "Please Select the Heading Font Family from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1000
+msgid "Content Font"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1003
+msgid "Please Select the Body / Content Font Family from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1012
+msgid "Font Size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1016
+msgid "Content Size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1019
+msgid ""
+"This option will let you increase / decrease the Content Size of the site."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1024
+msgid "H1 Size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1027
+msgid "This option will let you increase / decrease the H1 Size of the site."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1032
+msgid "H2 Size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1035
+msgid "This option will let you increase / decrease the H2 Size of the site."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1040
+msgid "H3 Size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1043
+msgid "This option will let you increase / decrease the H3 Size of the site."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1048
+msgid "H4 Size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1051
+msgid "This option will let you increase / decrease the H4 Size of the site."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1056
+msgid "H5 Size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1059
+msgid "This option will let you increase / decrease the H5 Size of the site."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1064
+msgid "H6 Size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1067
+msgid "This option will let you increase / decrease the H6 Size of the site."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1080
+msgid "Slider Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1087
+msgid "BX Slider Effect"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1089
+msgid "You can select the BX slide effect from the dropdown menu."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1091
+#: framework/include/kf_themeoption.php:1117
+msgid "Fade"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1092
+#: framework/include/kf_themeoption.php:1118
+msgid "Slide"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1096
+msgid "BX Slider Pause Time"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1098
+msgid "You can select the BX slide pause time from the dropdown menu."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1102
+msgid "BX Slider Animation Speed"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1104
+msgid "You can select the BX slide speed from the dropdown menu."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1110
+msgid "Flex Slider"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1113
+msgid "Flex Slider Effect"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1115
+msgid "You can select the Flex slide effect from the dropdown menu."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1122
+msgid "Flex Slider Pause Time"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1124
+msgid "You can select the Flex slide pause time from the dropdown menu."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1128
+msgid "Flex Slider Animation Speed"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1130
+msgid "You can select the Flex slide speed from the dropdown menu."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1140
+msgid "Nivo Slider Effect"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1142
+msgid "You can select the nivo slide effect from the dropdown menu."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1144
+msgid "sliceDownRight"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1145
+msgid "sliceDownLeft"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1146
+msgid "sliceUpRight"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1147
+msgid "sliceUpLeft"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1148
+msgid "sliceUpDown"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1149
+msgid "sliceUpDownLeft"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1150
+msgid "fold"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1151
+msgid "fade"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1152
+msgid "boxRandom"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1153
+msgid "boxRain"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1154
+msgid "boxRainReverse"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1155
+msgid "boxRainGrow"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1156
+msgid "boxRainGrowReverse"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1160
+msgid "Nivo Slider Pause Time"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1162
+msgid "You can select the nivo slide pause time from the dropdown menu."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1166
+msgid "Nivo Slider Animation Speed"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1168
+msgid "You can select the nivo slide speed from the dropdown menu."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1174
+msgid "Slider Caption"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1177
+msgid "Caption Title Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1180
+msgid "You can select the Caption Title Color on the slider from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1184
+msgid "Caption Title Background Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1187
+msgid "You can select the Caption background Color on the slider from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1191
+msgid "Caption Title Size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1196
+msgid "You can select the Caption Title font size on the slider from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1202
+msgid "Caption Description Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1205
+msgid "You can select the Caption Description Color on the slider from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1209
+msgid "Caption Description Size"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1214
+msgid "You can select the Caption Font Size on the slider from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1219
+msgid "Caption Button Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1222
+msgid "You can select the Caption Button Color on the slider from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1226
+msgid "Caption Button Border Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1229
+msgid "You can select the Caption Button Border Color on the slider from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1233
+msgid "Caption Button Background Color"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1236
+msgid ""
+"You can select the Caption Button Background Color on the slider from here."
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1245
+msgid "Sidebar Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1250
+msgid ""
+"Enter a name for new sidebar. It must be a valid name which starts with a "
+"letter. Then Click on the Add Button to create the Custom Sidebar"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1253
+msgid "Sidebar Name"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1254
+msgid "type sidebar name"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1263
+#: framework/include/kf_themeoption.php:1267
+msgid "API Settings"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1270
+msgid "Mail Chimp API"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1276
+msgid "MailChimp List ID"
+msgstr ""
+
+#: framework/include/kf_themeoption.php:1281
+msgid "Google Map Api"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_blogging.php:273
+#: framework/include/kode_front_func/kode-igni-options.php:488
+msgid "Comment"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_blogging.php:622
+#: single/content-aside.php:14 single/content-aside.php:16
+#: single/content-full.php:48 single/content-grid-modern.php:19
+#: single/content-grid-news.php:33 single/content-grid.php:32
+#: single/content-link.php:12 single/content-link.php:57
+#: single/content-medium.php:40 single/content-quote.php:11
+#: single/thumbnail-audio.php:12 single/thumbnail-gallery.php:8
+#: single/thumbnail-image.php:8 single/thumbnail-video.php:13
+msgid "Read More"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_blogging.php:665
+#: framework/include/kode_front_func/elements/kf_blogging.php:694
+#: single/content-full.php:40 single/content-grid-news.php:25
+#: single/content-grid.php:24 single/content-link.php:49
+#: single/content-medium.php:27 single/content-small.php:25
+msgid "Pages:"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_blogging.php:834
+msgid "View more"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_blogging.php:888
+msgid "ICC Test Player Rankings ..."
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_blogging.php:919
+msgid "Popular Posts"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:34
+msgid "Delicius"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:35
+#: framework/include/kode_front_func/elements/kf_media_center.php:153
+msgid "Digg"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:36
+#: framework/include/kode_front_func/elements/kf_media_center.php:154
+msgid "Facebook"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:37
+msgid "Flickr"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:38
+#: framework/include/kode_front_func/elements/kf_media_center.php:155
+msgid "Google Plus"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:39
+#: framework/include/kode_front_func/elements/kf_media_center.php:156
+msgid "Linkedin"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:40
+#: framework/include/kode_front_func/elements/kf_media_center.php:158
+msgid "Pinterest"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:41
+msgid "Skype"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:42
+#: framework/include/kode_front_func/elements/kf_media_center.php:160
+msgid "Stumble Upon"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:43
+msgid "Tumblr"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:44
+#: framework/include/kode_front_func/elements/kf_media_center.php:161
+msgid "Twitter"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:45
+msgid "Vimeo"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:46
+msgid "Youtube"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:47
+#: framework/include/kode_front_func/elements/kf_media_center.php:162
+msgid "Instagram"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:57
+#: framework/include/kode_front_func/elements/kf_media_center.php:64
+msgid "Social Profile"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:157
+msgid "My Space"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:159
+msgid "Reddit"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:165
+msgid "Social Shares"
+msgstr ""
+
+#: framework/include/kode_front_func/elements/kf_media_center.php:168
+msgid "Enable Social Share"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:156
+msgid "No Value Selected"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:267
+msgid "&lsaquo; Previous"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:268
+msgid "Next &rsaquo;"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:280
+msgid "Homepage"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:408
+msgid "Page"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:413
+msgid "Search results for:"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:463
+#: framework/include/kode_front_func/kf_function_utility.php:874
+msgid "Please Sign in"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:531
+msgid "--"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:595
+#: single-event.php:125 single-event.php:239
+msgid "Matches"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:601
+msgid "Fights"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:623
+msgid "Wrong username or password."
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:625
+msgid "Login successful, Now Redirecting..."
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:639
+#: framework/include/kode_front_func/kf_function_utility.php:741
+msgid "Sending user info, please wait..."
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:653
+#: framework/include/kode_front_func/kode_header.php:286
+msgid "Login"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:663
+msgid "You Are Already Signed In"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:664
+#: framework/include/kode_front_func/kode_header.php:117
+#: framework/include/kode_front_func/kode_header.php:200
+#: framework/include/kode_front_func/kode_header.php:683
+#: framework/include/kode_front_func/kode_header.php:788
+msgid "Welcome "
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:667
+#: framework/include/kode_front_func/kode_header.php:118
+#: framework/include/kode_front_func/kode_header.php:201
+#: framework/include/kode_front_func/kode_header.php:287
+#: framework/include/kode_front_func/kode_header.php:684
+#: framework/include/kode_front_func/kode_header.php:789
+msgid "Logout"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:673
+msgid "LOGIN TO"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:674
+#: framework/include/kode_front_func/kf_function_utility.php:780
+msgid "Your Account"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:682
+msgid "Forget Password?"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:722
+msgid "Please verify the details you are providing."
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:724
+msgid "Your request submitted successfully, Redirecting you to login page!"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:753
+msgid "Register"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:764
+msgid "Sign up not allowed by admin."
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:765
+msgid "Please contact admin for the registration."
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:779
+msgid "Register TO"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:862
+msgid "Not Attending"
+msgstr ""
+
+#: framework/include/kode_front_func/kf_function_utility.php:865
+msgid "Attend This Event"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-demo-options.php:13
+msgid "Load Demo Page"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-demo-options.php:27
+msgid "Homepage 1"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-demo-options.php:32
+msgid "Save Settings"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-demo-options.php:41
+msgid ""
+"*This option allow you to set page item to following pages with one click. "
+"Note that to use this option will replace all your current page item setting "
+"in this page and <strong>This Can't Be Undone</strong>. ( Images are not "
+"included. )"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:25
+#: framework/include/kode_front_func/kode-igni-options.php:112
+#: framework/include/kode_front_func/kode-post-options.php:88
+msgid "Page Layout"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:28
+#: framework/include/kode_front_func/kode-igni-options.php:115
+#: framework/include/kode_front_func/kode-post-options.php:91
+msgid "Sidebar Template"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:39
+#: framework/include/kode_front_func/kode-igni-options.php:126
+#: framework/include/kode_front_func/kode-post-options.php:103
+msgid "Left Sidebar"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:45
+#: framework/include/kode_front_func/kode-igni-options.php:132
+#: framework/include/kode_front_func/kode-post-options.php:109
+msgid "Right Sidebar"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:57
+#: framework/include/kode_front_func/kode-igni-options.php:144
+#: framework/include/kode_front_func/kode-post-options.php:121
+msgid "Post Title"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:59
+#: framework/include/kode_front_func/kode-igni-options.php:146
+msgid ""
+"Leave this field blank to use the default title from admin panel > general > "
+"blog style section."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:62
+#: framework/include/kode_front_func/kode-igni-options.php:149
+#: framework/include/kode_front_func/kode-post-options.php:126
+msgid "Post Caption"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:67
+msgid "Team First Detail"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:72
+#: framework/include/kode_front_func/kode-events-options.php:350
+msgid "Select Team First"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:78
+#: framework/include/kode_front_func/kode-events-options.php:165
+msgid "Select Team for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:81
+#: framework/include/kode_front_func/kode-events-options.php:168
+#: framework/include/kode_front_func/kode-events-options.php:357
+#: framework/include/kode_front_func/kode-events-options.php:435
+msgid "Number of Goals Scored"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:84
+#: framework/include/kode_front_func/kode-events-options.php:171
+msgid "Number of Goal Scored by Team."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:87
+#: framework/include/kode_front_func/kode-events-options.php:174
+#: framework/include/kode_front_func/kode-events-options.php:364
+#: framework/include/kode_front_func/kode-events-options.php:442
+msgid "Total Shots"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:90
+#: framework/include/kode_front_func/kode-events-options.php:177
+msgid "Number of total shorts by Team."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:93
+#: framework/include/kode_front_func/kode-events-options.php:180
+#: framework/include/kode_front_func/kode-events-options.php:371
+#: framework/include/kode_front_func/kode-events-options.php:449
+msgid "Shots on target"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:96
+#: framework/include/kode_front_func/kode-events-options.php:183
+msgid "Number of shorts on target by Team."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:99
+#: framework/include/kode_front_func/kode-events-options.php:186
+#: framework/include/kode_front_func/kode-events-options.php:378
+#: framework/include/kode_front_func/kode-events-options.php:456
+msgid "Ball possession"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:102
+#: framework/include/kode_front_func/kode-events-options.php:189
+msgid "Ball Possession by Team in percentage for example: 60%."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:105
+#: framework/include/kode_front_func/kode-events-options.php:192
+#: framework/include/kode_front_func/kode-events-options.php:385
+#: framework/include/kode_front_func/kode-events-options.php:463
+msgid "Corner kicks"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:108
+#: framework/include/kode_front_func/kode-events-options.php:195
+msgid "Number of corner kicks taken by Team."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:111
+#: framework/include/kode_front_func/kode-events-options.php:198
+#: framework/include/kode_front_func/kode-events-options.php:392
+#: framework/include/kode_front_func/kode-events-options.php:470
+msgid "Fouls committed"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:114
+#: framework/include/kode_front_func/kode-events-options.php:201
+msgid "Number of fouls committed by Team."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:117
+#: framework/include/kode_front_func/kode-events-options.php:204
+#: framework/include/kode_front_func/kode-events-options.php:399
+#: framework/include/kode_front_func/kode-events-options.php:477
+msgid "Offsides"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:120
+#: framework/include/kode_front_func/kode-events-options.php:207
+msgid "Number of offsides taken by Team."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:123
+#: framework/include/kode_front_func/kode-events-options.php:210
+#: framework/include/kode_front_func/kode-events-options.php:406
+#: framework/include/kode_front_func/kode-events-options.php:484
+msgid "Saves"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:126
+#: framework/include/kode_front_func/kode-events-options.php:213
+msgid "Number of saves done by Team."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:129
+#: framework/include/kode_front_func/kode-events-options.php:216
+#: framework/include/kode_front_func/kode-events-options.php:413
+#: framework/include/kode_front_func/kode-events-options.php:491
+msgid "Yellow cards"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:132
+#: framework/include/kode_front_func/kode-events-options.php:219
+msgid "Number of Yellow Cards Shown to Team."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:135
+#: framework/include/kode_front_func/kode-events-options.php:222
+#: framework/include/kode_front_func/kode-events-options.php:420
+#: framework/include/kode_front_func/kode-events-options.php:498
+msgid "Red cards"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:138
+#: framework/include/kode_front_func/kode-events-options.php:225
+msgid "Number of Red Cards Shown to Team."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:142
+#: framework/include/kode_front_func/kode-events-options.php:229
+msgid "Players Line Up"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:148
+msgid "Players Lineup"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:154
+msgid "Team Second Detail"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:159
+#: framework/include/kode_front_func/kode-events-options.php:428
+msgid "Select Team Second"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:234
+msgid "Players Line up"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:240
+msgid "Tournament Stats"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:245
+msgid "Enable Opponent"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:250
+msgid "Enable Goals"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:255
+msgid "Enable Assist"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:260
+msgid "Enable Own Goal"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:265
+msgid "Enable Penalty"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:270
+msgid "Enable Position"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:275
+msgid "Enable Yellow Card"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:280
+msgid "Enable Red Card"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:286
+msgid "Team Tournament Stats"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:291
+msgid "Enable Team Goals"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:296
+msgid "Enable Team Short On Target"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:301
+msgid "Enable Team Corner Kicks"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:306
+msgid "Enable Team Yellow Cards"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:311
+msgid "Enable Team Passing Accuracy"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:322
+msgid "Kodeforest Event Option"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:347
+msgid "Fixture Settings"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:354
+msgid "Enter Team member string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:361
+msgid "Enter Goal scored by team first text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:368
+msgid "Enter total number of shots by team first text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:375
+msgid "Enter shorts on target by team first text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:382
+#: framework/include/kode_front_func/kode-events-options.php:389
+msgid ""
+"Enter ball possession team first scored by team first text string for the "
+"fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:396
+msgid "Enter fouls comitted scored by team first text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:403
+msgid "Enter offside team first text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:410
+msgid "Enter saves team first text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:417
+msgid "Enter yellow cards team first text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:424
+msgid "Enter red card first text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:432
+msgid "Enter Second team text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:439
+msgid "Enter goals scored second team text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:446
+msgid "Enter total shorts second team text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:453
+msgid "Enter shorts on target second team text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:460
+msgid "Enter ball possession team second text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:467
+msgid "Enter corner Kicks team second text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:474
+msgid "Enter fouls committed by team second text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:481
+msgid "Enter offside team second text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:488
+msgid "Enter saves team text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:495
+msgid "Enter yellow card team second text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:502
+msgid "Enter red card team second text string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:510
+msgid "Team 1 Performance Table"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:513
+msgid "Team Performance 1"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:517
+#: framework/include/kode_front_func/kode-events-options.php:580
+msgid "Enter Team Performance string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:520
+msgid "Team 1"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:524
+msgid "Enter Team 1 name string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:527
+msgid "Team 1 Match"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:531
+msgid "Enter Match for the team 1 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:534
+msgid "Goal Team 1"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:538
+msgid "Enter Goal 1 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:541
+msgid "Won Team 1"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:545
+msgid "Enter Won Team 1 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:548
+msgid "Lost Team 1"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:552
+msgid "Enter Lost Team 1 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:555
+msgid "Team 1 Draw"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:559
+msgid "Enter Daw Team 1 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:562
+msgid "Team 1 Points"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:566
+msgid "Enter PTS+/- Team 1 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:573
+msgid "Team 2 Performance Table"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:576
+msgid "Team Performance 2"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:583
+#: framework/include/kode_front_func/kode-events-options.php:618
+msgid "Team 2"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:587
+msgid "Enter Team 2 name string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:590
+msgid "Team 2 Match"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:594
+msgid "Enter Match for the team 2 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:597
+#: framework/include/kode_front_func/kode-igni-options.php:323
+msgid "Goal"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:601
+msgid "Enter Goal 2 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:604
+msgid "Won Team 2"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:608
+msgid "Enter Won Team 2 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:611
+msgid "Lost Team 2"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:615
+msgid "Enter Lost Team 2 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:622
+msgid "Enter Daw Team 2 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:625
+msgid "Team 2 Points"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:629
+msgid "Enter PTS+/- Team 2 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:635
+#: framework/include/kode_front_func/kode-events-options.php:638
+msgid "Team 1 Player Line Up"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:642
+msgid "Enter Team 1 Players Line up string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:645
+#: framework/include/kode_front_func/kode-events-options.php:659
+msgid "Team 1 Player Name"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:649
+msgid "Enter Team 1 Players Name up string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:652
+msgid "Team 1 Player Opponent"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:656
+msgid "Enter Team 1 Opponent string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:663
+msgid "Enter Team 1 Goal string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:666
+msgid "Team 1 Assist"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:670
+msgid "Enter Assist Team 1 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:673
+msgid "Team 1 Own Goal"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:677
+msgid "Enter Own Goal team 1 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:680
+msgid "Team 1 Penalty"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:684
+msgid "Enter Team 1 Penalty string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:687
+msgid "Team 1 Player Position"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:691
+msgid "Enter Team 1 Position string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:694
+msgid "Team 1 yellow card"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:698
+msgid "Enter Team 1 Yellow Card string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:701
+msgid "Team 1 Red Card"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:705
+msgid "Enter Team 1 Red Card string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:712
+#: framework/include/kode_front_func/kode-events-options.php:715
+msgid "Team 2 Player Line Up"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:719
+msgid "Enter Team 2 Players Line up string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:722
+#: framework/include/kode_front_func/kode-events-options.php:736
+msgid "Team 2 Player Name"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:726
+msgid "Enter Team 2 Players Name up string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:729
+msgid "Team 2 Player Opponent"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:733
+msgid "Enter Team 2 Opponent string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:740
+msgid "Enter Team 2 Goal string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:743
+msgid "Team 2 Assist"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:747
+msgid "Enter Assist Team 2 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:750
+msgid "Team 2 Own Goal"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:754
+msgid "Enter Own Goal team 2 string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:757
+msgid "Team 2 Penalty"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:761
+msgid "Enter Team 2 Penalty string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:764
+msgid "Team 2 Player Position"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:768
+msgid "Enter Team 2 Position string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:771
+msgid "Team 2 yellow card"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:775
+msgid "Enter Team 2 Yellow Card string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:778
+msgid "Team 2 Red Card"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:782
+msgid "Enter Team 2 Red Card string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:789
+msgid "Team 1 Result Table"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:792
+msgid "Team Result Table 1"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:796
+msgid "Enter Team 1 Result Tornument string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:799
+msgid "Team Result Table 1 opponent"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:803
+msgid "Enter Team 1 Result Opponent string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:806
+msgid "Team Result Table 1 Goals"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:810
+msgid "Enter Team 1 Result Goals string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:813
+msgid "Team Result Table 1 Shorts On Target"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:817
+msgid "Enter Team 1 Result Shorts On Target string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:820
+msgid "Team Result Table 1 Corner Kick"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:824
+msgid "Enter Team 1 Result Corner Kick string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:827
+msgid "Team Result Table 1 Yellow Card"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:831
+msgid "Enter Team 1 Result Yellow Card string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:834
+msgid "Team Result Table 1 Red Card"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:838
+msgid "Enter Team 1 Result Red Card string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:844
+msgid "Team 2 Result Table"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:847
+msgid "Team Result Table 2"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:851
+msgid "Enter Team 2 Result Tornument string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:854
+msgid "Team Result Table 2 opponent"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:858
+msgid "Enter Team 2 Result Opponent string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:861
+msgid "Team Result Table 2 Goals"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:865
+msgid "Enter Team 2 Result Goals string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:868
+msgid "Team Result Table 2 Shorts On Target"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:872
+msgid "Enter Team 2 Result Shorts On Target string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:875
+msgid "Team Result Table 2 Corner Kick"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:879
+msgid "Enter Team 2 Result Corner Kick string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:882
+msgid "Team Result Table 2 Yellow Card"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:886
+msgid "Enter Team 2 Result Yellow Card string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:889
+msgid "Team Result Table 2 Red Card"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:893
+msgid "Enter Team 2 Result Red Card string for the fixture."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:918
+msgid "Events"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:923
+#: framework/include/kode_front_func/kode-events-options.php:999
+msgid "Title Num Length (Word)"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:926
+#: framework/include/kode_front_func/kode-events-options.php:1002
+msgid ""
+"This is a number of word (decided by spaces) that you want to show on the "
+"event title. <strong>Use 0 to hide the excerpt, -1 to show full posts and "
+"use the wordpress more tag</strong>."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:932
+#: framework/include/kode_front_func/kode-events-options.php:938
+#: framework/include/kode_front_func/kode-events-options.php:1008
+#: framework/include/kode_front_func/kode-events-options.php:1014
+#: framework/include/kode_front_func/kode-events-options.php:1040
+#: framework/include/kode_front_func/kode-events-options.php:1046
+#: framework/include/kode_front_func/kode-events-options.php:1087
+#: framework/include/kode_front_func/kode-events-options.php:1093
+#: framework/include/kode_front_func/kode-events-options.php:1140
+#: framework/include/kode_front_func/kode-events-options.php:1181
+#: framework/include/kode_front_func/kode-events-options.php:1208
+#: framework/include/kode_front_func/kode-igni-options.php:29
+#: framework/include/kode_front_func/kode-woo-options.php:885
+#: framework/include/kode_front_func/kode-woo-options.php:891
+#: framework/include/kode_front_func/kode-woo-options.php:958
+msgid ""
+"You can use Ctrl/Command button to select multiple categories or remove the "
+"selected category. <br><br> Leave this field blank to select all categories."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:944
+#: framework/include/kode_front_func/kode-igni-options.php:52
+#: framework/include/kode_front_func/kode-woo-options.php:897
+msgid ""
+"This is a number of word (decided by spaces) that you want to show on the "
+"post excerpt. <strong>Use 0 to hide the excerpt, -1 to show full posts and "
+"use the wordpress more tag</strong>."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:953
+msgid "Event Style"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:956
+msgid "Match Grid Modern"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:957
+msgid "Match Table View"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:958
+msgid "Match Full View"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:959
+msgid "New Rugby"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:964
+msgid "Match Scope"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:967
+msgid "Past Matches"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:968
+msgid "Upcoming Matches"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:969
+msgid "All Matches"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:988
+msgid "Spaces after ending of this item Note: Donot Write px with it."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:994
+msgid "Upcoming Event"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1020
+#: framework/include/kode_front_func/kode-events-options.php:1067
+#: framework/include/kode_front_func/kode-events-options.php:1114
+#: framework/include/kode_front_func/kode-events-options.php:1156
+#: framework/include/kode_front_func/kode-events-options.php:1187
+#: framework/include/kode_front_func/kode-events-options.php:1220
+msgid "Spaces after ending of this item Note:Donot write px with it."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1026
+msgid "Live Result"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1031
+#: framework/include/kode_front_func/kode-events-options.php:1078
+msgid "Header Title"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1034
+#: framework/include/kode_front_func/kode-events-options.php:1081
+msgid "This is header title which will manage header title."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1049
+msgid "Show Fixtures Tab"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1052
+msgid "Current Fixtures"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1053
+msgid "Fixture Results"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1054
+msgid "Upcomming Fixtures"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1058
+#: framework/include/kode_front_func/kode-events-options.php:1105
+msgid "Number Fetch"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1061
+#: framework/include/kode_front_func/kode-events-options.php:1108
+msgid "Show number of matches in each tab."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1073
+msgid "Fixtures"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1096
+msgid "Fixture Scope"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1099
+msgid "All Fixtures"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1100
+msgid "Past Fixtures"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1101
+msgid "Future Fixtures"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1120
+msgid "Next Fixtures"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1125
+msgid "Header Title Right"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1128
+msgid "Header Title of right side."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1131
+msgid "Header Description Right"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1134
+msgid "Header Description of right side."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1148
+msgid "Background Color"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1162
+msgid "Next Match"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1167
+msgid "Next Event Title"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1170
+#: framework/include/kode_front_func/kode-events-options.php:1202
+msgid "Add Next Event Title Here."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1173
+msgid "Player Left Image"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1194
+#: framework/include/kode_front_func/kode-events-options.php:1199
+msgid "Event List"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1211
+msgid "Number Of Events"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1214
+msgid "Show number of events in list view."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1741
+msgid "Upcoming Match"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1742
+msgid "Date"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1743
+msgid "Venue"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1744
+msgid "Booking"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:1869
+#: framework/include/kode_front_func/kode-events-options.php:2185
+msgid "Match Between Both Big Teams Starts"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:2061
+msgid "VS"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:2163
+#: header-title.php:151
+msgid "Year"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:2164
+#: header-title.php:148
+msgid "Month"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:2165
+msgid "Week"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:2166
+msgid "Days"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:2167
+msgid "Minutes"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:2168
+msgid "Hours"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-events-options.php:2169
+msgid "Seconds"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:15
+msgid "Crowd Funding"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:20
+msgid "Title Character Fetch"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:23
+msgid "Specify the number of title character you want to pull out."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:32
+msgid "Project Types"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:35
+msgid ""
+"You can use Ctrl/Command button to select multiple project types or remove "
+"the selected type. <br><br> Leave this field blank to select all categories."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:38
+msgid "Listing View"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:41
+msgid "Simple View"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:42
+msgid "Advance View"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:43
+msgid "Advance View List"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:62
+msgid "Project View"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:65
+msgid "2 Column Grid"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:66
+msgid "3 Column Grid"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:67
+msgid "4 Column Grid"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:165
+#: framework/include/kode_front_func/kode-post-options.php:165
+msgid "Kodeforest Post Option"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:310
+msgid "Raised"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-igni-options.php:327
+msgid "Donate Now"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-post-options.php:21
+msgid "Blog General"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-post-options.php:34
+msgid "Single Post Thumbnail Size"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-post-options.php:123
+msgid "Post title"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-post-options.php:130
+msgid "Select Post Media"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-post-options.php:133
+#: framework/include/kode_front_func/kode-post-options.php:141
+msgid "Audio URL"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-post-options.php:135
+msgid "Feature Image"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-post-options.php:138
+msgid "Select post media type."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-post-options.php:144
+msgid ""
+"Add audio url, it could be uploaded mp3 , wav or add soundcloud track or "
+"profile url."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-post-options.php:150
+msgid "Add video url, it could be uploaded video track or youtube, vimeo."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:69
+#: framework/include/kode_front_func/kode-woo-options.php:128
+#: framework/include/kode_front_func/kode-woo-options.php:232
+msgid "Categories"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:75
+#: framework/include/kode_front_func/kode-woo-options.php:134
+#: framework/include/kode_front_func/kode-woo-options.php:238
+msgid "Add To Cart"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:341
+#: framework/include/kode_front_func/kode-woo-options.php:369
+msgid "New"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:504
+msgid "Remove from Wishlist"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:527
+#: framework/include/kode_front_func/kode-woo-options.php:676
+msgid "Invalid Paramenters!"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:655
+msgid "Remove from favorties"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:877
+msgid "Woo"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:906
+#: framework/include/kode_front_func/kode-woo-options.php:967
+msgid "Woo Style"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:919
+msgid "Woo Column Size"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:922
+msgid "Column 2"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:923
+msgid "Column 3"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:924
+msgid "Column 4"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:950
+msgid "Woo Slider"
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:964
+msgid "Will be ignored when the woo filter option is enabled."
+msgstr ""
+
+#: framework/include/kode_front_func/kode-woo-options.php:983
+msgid "Specify the number of title word you want to pull out."
+msgstr ""
+
+#: framework/include/kode_front_func/kode_header.php:111
+#: framework/include/kode_front_func/kode_header.php:211
+#: framework/include/kode_front_func/kode_header.php:677
+#: framework/include/kode_front_func/kode_header.php:782
+msgid "Cart"
+msgstr ""
+
+#: framework/include/kode_front_func/kode_header.php:574
+msgid "Call Us With Hotline 24/7"
+msgstr ""
+
+#: framework/include/kode_front_func/kode_header.php:575
+msgid "(123) 878 545"
+msgstr ""
+
+#: framework/include/kode_meta/kf_pagebuilder_backend.php:32
+msgid "Click and Drop Element Here"
+msgstr ""
+
+#: framework/include/kode_meta/kf_pagebuilder_backend.php:134
+msgid "Add Content Item"
+msgstr ""
+
+#: framework/include/kode_meta/kf_pagebuilder_backend.php:216
+msgid "Page Builder Section"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:183
+#: framework/include/kode_meta/kf_theme_meta.php:277
+#: framework/include/kode_meta/kf_theme_meta.php:414
+#: framework/include/kode_meta/kf_theme_meta.php:507
+msgid "Ailier Gauche"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:184
+#: framework/include/kode_meta/kf_theme_meta.php:278
+#: framework/include/kode_meta/kf_theme_meta.php:415
+#: framework/include/kode_meta/kf_theme_meta.php:508
+msgid "Ailier Droit"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:185
+#: framework/include/kode_meta/kf_theme_meta.php:279
+#: framework/include/kode_meta/kf_theme_meta.php:416
+#: framework/include/kode_meta/kf_theme_meta.php:509
+msgid "Gardien de but"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:186
+#: framework/include/kode_meta/kf_theme_meta.php:280
+#: framework/include/kode_meta/kf_theme_meta.php:417
+#: framework/include/kode_meta/kf_theme_meta.php:510
+msgid "Arrière Gauche"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:187
+#: framework/include/kode_meta/kf_theme_meta.php:281
+#: framework/include/kode_meta/kf_theme_meta.php:418
+#: framework/include/kode_meta/kf_theme_meta.php:511
+msgid "Arrière Droit"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:188
+#: framework/include/kode_meta/kf_theme_meta.php:282
+#: framework/include/kode_meta/kf_theme_meta.php:419
+#: framework/include/kode_meta/kf_theme_meta.php:512
+msgid "Pivot"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:189
+#: framework/include/kode_meta/kf_theme_meta.php:283
+#: framework/include/kode_meta/kf_theme_meta.php:420
+#: framework/include/kode_meta/kf_theme_meta.php:513
+msgid "Demi centre"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:190
+#: framework/include/kode_meta/kf_theme_meta.php:284
+#: framework/include/kode_meta/kf_theme_meta.php:421
+#: framework/include/kode_meta/kf_theme_meta.php:514
+msgid "Left winger"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:191
+#: framework/include/kode_meta/kf_theme_meta.php:285
+#: framework/include/kode_meta/kf_theme_meta.php:422
+#: framework/include/kode_meta/kf_theme_meta.php:515
+msgid "Right winger"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:192
+#: framework/include/kode_meta/kf_theme_meta.php:286
+#: framework/include/kode_meta/kf_theme_meta.php:423
+#: framework/include/kode_meta/kf_theme_meta.php:516
+msgid "Goalkeeper"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:193
+#: framework/include/kode_meta/kf_theme_meta.php:287
+#: framework/include/kode_meta/kf_theme_meta.php:424
+#: framework/include/kode_meta/kf_theme_meta.php:517
+msgid "Left Back"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:194
+#: framework/include/kode_meta/kf_theme_meta.php:288
+#: framework/include/kode_meta/kf_theme_meta.php:425
+#: framework/include/kode_meta/kf_theme_meta.php:518
+msgid "Right Back"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:195
+#: framework/include/kode_meta/kf_theme_meta.php:289
+#: framework/include/kode_meta/kf_theme_meta.php:426
+#: framework/include/kode_meta/kf_theme_meta.php:519
+msgid "Centre midfielder"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:196
+#: framework/include/kode_meta/kf_theme_meta.php:290
+#: framework/include/kode_meta/kf_theme_meta.php:427
+#: framework/include/kode_meta/kf_theme_meta.php:520
+msgid "Centre back"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:623
+msgid "Import Now"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:624
+msgid "Live URL"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:639
+msgid "Add"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:1067
+msgid "Insert Image"
+msgstr ""
+
+#: framework/include/kode_meta/kf_theme_meta.php:1087
+msgid "Sample Font"
+msgstr ""
+
+#: framework/include/kode_meta/kf_themeoptions_html.php:21
+msgid "Custom Option"
+msgstr ""
+
+#: framework/include/kode_meta/kf_themeoptions_html.php:22
+msgid "Custom Menu"
+msgstr ""
+
+#: framework/include/kode_meta/kf_themeoptions_html.php:86
+msgid "Invalid Nonce"
+msgstr ""
+
+#: framework/include/kode_meta/kf_themeoptions_html.php:87
+#: framework/include/kode_meta/kf_themeoptions_html.php:106
+#: framework/include/kode_meta/kf_themeoptions_html.php:113
+msgid "Please refresh the page and try this again."
+msgstr ""
+
+#: framework/include/kode_meta/kf_themeoptions_html.php:100
+msgid "Save Options Complete"
+msgstr ""
+
+#: framework/include/kode_meta/kf_themeoptions_html.php:105
+msgid "Save Options Failed"
+msgstr ""
+
+#: framework/include/kode_meta/kf_themeoptions_html.php:112
+msgid "Cannot Retrieve Options"
+msgstr ""
+
+#: framework/include/kode_meta/kf_themeoptions_html.php:161
+msgid "Save Changes"
+msgstr ""
+
+#: framework/include/kode_meta/kf_themeoptions_html.php:167
+msgid "Reset Default"
+msgstr ""
+
+#: framework/include/kode_meta/kode_google_fonts.php:85
+msgid "Default Fonts"
+msgstr ""
+
+#: framework/include/kode_meta/kode_google_fonts.php:93
+msgid "Google Font"
+msgstr ""
+
+#: framework/include/kode_meta/wp_customizer.php:63
+#: framework/include/kode_meta/wp_customizer.php:78
+msgid "Color :"
+msgstr ""
+
+#: framework/include/tgm_library/kode-activation.php:126
+#: framework/include/tgm_library/tgm-activation.php:334
+msgid "Install Required Plugins"
+msgstr ""
+
+#: framework/include/tgm_library/kode-activation.php:127
+#: framework/include/tgm_library/tgm-activation.php:335
+msgid "Install Plugins"
+msgstr ""
+
+#: framework/include/tgm_library/kode-activation.php:128
+#: framework/include/tgm_library/tgm-activation.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: framework/include/tgm_library/kode-activation.php:129
+#: framework/include/tgm_library/tgm-activation.php:340
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: framework/include/tgm_library/kode-activation.php:131
+#: framework/include/tgm_library/tgm-activation.php:343
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:136
+#: framework/include/tgm_library/tgm-activation.php:349
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:141
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %1$s "
+"plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:146
+#: framework/include/tgm_library/tgm-activation.php:355
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:151
+#: framework/include/tgm_library/tgm-activation.php:361
+#, php-format
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:156
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %1$s plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:161
+#: framework/include/tgm_library/tgm-activation.php:367
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:166
+#: framework/include/tgm_library/tgm-activation.php:373
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:171
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %1$s "
+"plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:176
+#: framework/include/tgm_library/tgm-activation.php:378
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:181
+#: framework/include/tgm_library/tgm-activation.php:383
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:186
+#: framework/include/tgm_library/tgm-activation.php:388
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:190
+#: framework/include/tgm_library/tgm-activation.php:392
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: framework/include/tgm_library/kode-activation.php:191
+#: framework/include/tgm_library/tgm-activation.php:394
+#: framework/include/tgm_library/tgm-activation.php:3244
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: framework/include/tgm_library/kode-activation.php:192
+#: framework/include/tgm_library/tgm-activation.php:395
+#: framework/include/tgm_library/tgm-activation.php:3037
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/kode-activation.php:193
+#: framework/include/tgm_library/tgm-activation.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: framework/include/tgm_library/kode-activation.php:194
+#: framework/include/tgm_library/tgm-activation.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: framework/include/tgm_library/kode-activation.php:195
+#: framework/include/tgm_library/tgm-activation.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: framework/include/tgm_library/kode-activation.php:196
+#: framework/include/tgm_library/tgm-activation.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:393
+#: framework/include/tgm_library/tgm-activation.php:912
+#: framework/include/tgm_library/tgm-activation.php:2618
+#: framework/include/tgm_library/tgm-activation.php:3665
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:402
+msgid "Dismiss this notice"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:607
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:608
+msgid "Update Required"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:1019
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:1019
+#: framework/include/tgm_library/tgm-activation.php:1022
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:1022
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:1206
+#: framework/include/tgm_library/tgm-activation.php:3033
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2067
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2358
+msgid "Required"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2361
+msgid "Recommended"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2377
+msgid "WordPress Repository"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2380
+msgid "External Source"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2383
+msgid "Pre-Packaged"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2400
+msgid "Not Installed"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2404
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2406
+msgid "Active"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2412
+msgid "Required Update not Available"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2415
+msgid "Requires Update"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2418
+msgid "Update recommended"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2427
+#, php-format
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2473
+#, php-format
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/tgm-activation.php:2477
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/tgm-activation.php:2481
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/tgm-activation.php:2485
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: framework/include/tgm_library/tgm-activation.php:2567
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2575
+msgid "Installed version:"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2583
+msgid "Minimum required version:"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2595
+msgid "Available version:"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2618
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2632
+msgid "Plugin"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2633
+msgid "Source"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2638
+msgid "Version"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2639
+msgid "Status"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2688
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2693
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2699
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2769
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2802
+msgid "Install"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2808
+msgid "Update"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2811
+msgid "Activate"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2842
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2844
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2885
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2887
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:2993
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3019
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3243
+msgid "Plugin activation failed."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3583
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3586
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3588
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3592
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3594
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3594
+#: framework/include/tgm_library/tgm-activation.php:3602
+msgid "Show Details"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3594
+#: framework/include/tgm_library/tgm-activation.php:3602
+msgid "Hide Details"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3595
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3597
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3600
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3602
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3603
+msgid "All installations have been completed."
+msgstr ""
+
+#: framework/include/tgm_library/tgm-activation.php:3605
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: framework/kf_framework.php:105 framework/kf_framework.php:124
+msgid "full size (Real Images)"
+msgstr ""
+
+#: framework/kf_framework.php:114
+msgid "0"
+msgstr ""
+
+#: framework/kf_function_regist.php:218
+msgid "Main Navigation Responsive"
+msgstr ""
+
+#: framework/kf_function_regist.php:219
+msgid "Main Navigation Left"
+msgstr ""
+
+#: framework/kf_function_regist.php:220
+msgid "Main Navigation Right"
+msgstr ""
+
+#: functions.php:96
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: functions.php:112
+msgid "Pingback :"
+msgstr ""
+
+#: functions.php:112
+msgid "(Edit)"
+msgstr ""
+
+#: functions.php:122
+msgid "at"
+msgstr ""
+
+#: functions.php:127
+msgid "Edit"
+msgstr ""
+
+#: functions.php:129
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: functions.php:131
+msgid "Reply"
+msgstr ""
+
+#: header-title.php:122
+msgid "404"
+msgstr ""
+
+#: header-title.php:136
+msgid "Search Results"
+msgstr ""
+
+#: header-title.php:145
+msgid "Day"
+msgstr ""
+
+#: header-title.php:154
+msgid "By"
+msgstr ""
+
+#: header-title.php:160
+msgid "Shop"
+msgstr ""
+
+#: search.php:73
+msgid "Not Found"
+msgstr ""
+
+#: search.php:74
+msgid "OPS, PAGE NOT FOUND"
+msgstr ""
+
+#: search.php:75
+msgid ""
+"Nothing matched your search criteria. Please try again with different "
+"keywords."
+msgstr ""
+
+#: single-event.php:88
+msgid "to"
+msgstr ""
+
+#: single-event.php:109 single-event.php:118 single-event.php:123
+#: single-event.php:128 single-event.php:133 single-event.php:138
+#: single-event.php:143 single-event.php:148 single-event.php:223
+#: single-event.php:232 single-event.php:237 single-event.php:242
+#: single-event.php:247 single-event.php:252 single-event.php:257
+#: single-event.php:262 single-event.php:340 single-event.php:384
+#: single-event.php:389 single-event.php:394 single-event.php:399
+#: single-event.php:404 single-event.php:409 single-event.php:414
+#: single-event.php:419 single-event.php:424 single-event.php:451
+#: single-event.php:493 single-event.php:498 single-event.php:503
+#: single-event.php:508 single-event.php:513 single-event.php:518
+#: single-event.php:523 single-event.php:528 single-event.php:533
+#: single-event.php:572 single-event.php:577 single-event.php:582
+#: single-event.php:587 single-event.php:592 single-event.php:597
+#: single-event.php:602 single-event.php:628 single-event.php:633
+#: single-event.php:638 single-event.php:643 single-event.php:648
+#: single-event.php:653 single-event.php:658
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: single-event.php:111 single-event.php:225
+msgid "Team Performance"
+msgstr ""
+
+#: single-event.php:120 single-event.php:234
+msgid "Team"
+msgstr ""
+
+#: single-event.php:130 single-event.php:244 single-event.php:396
+#: single-event.php:505 single-event.php:584 single-event.php:640
+#: taxonomy-event-categories.php:119 taxonomy-event-categories.php:160
+msgid "Goals"
+msgstr ""
+
+#: single-event.php:135 single-event.php:249
+msgid "Won"
+msgstr ""
+
+#: single-event.php:140 single-event.php:254
+msgid "Lost"
+msgstr ""
+
+#: single-event.php:145 single-event.php:259
+msgid "Draw"
+msgstr ""
+
+#: single-event.php:150 single-event.php:264
+msgid "PTS+/-"
+msgstr ""
+
+#: single-event.php:342 single-event.php:453
+msgid "Player Line Up"
+msgstr ""
+
+#: single-event.php:386 single-event.php:495
+msgid "Player Name"
+msgstr ""
+
+#: single-event.php:391 single-event.php:500
+msgid "Opponent"
+msgstr ""
+
+#: single-event.php:401 single-event.php:510
+msgid "Assist"
+msgstr ""
+
+#: single-event.php:406 single-event.php:515
+msgid "Own Goals"
+msgstr ""
+
+#: single-event.php:411 single-event.php:520
+msgid "Penalty"
+msgstr ""
+
+#: single-event.php:416 single-event.php:525
+msgid "Position"
+msgstr ""
+
+#: single-event.php:421 single-event.php:530 single-event.php:599
+#: single-event.php:655
+msgid "Yellow Card"
+msgstr ""
+
+#: single-event.php:426 single-event.php:535
+msgid "Red Card"
+msgstr ""
+
+#: single-event.php:574 single-event.php:630 taxonomy-event-categories.php:118
+#: taxonomy-event-categories.php:159
+msgid "Tournament"
+msgstr ""
+
+#: single-event.php:579 single-event.php:635
+msgid "opponent"
+msgstr ""
+
+#: single-event.php:589 single-event.php:645
+msgid "Short On Target"
+msgstr ""
+
+#: single-event.php:594 single-event.php:650
+msgid "Corner Kick"
+msgstr ""
+
+#: single-event.php:604 single-event.php:660
+msgid "Red Cards"
+msgstr ""
+
+#: single-event.php:685
+msgid "Booking Form"
+msgstr ""
+
+#: single/content-grid-news.php:9
+msgid "by:"
+msgstr ""
+
+#: single/content-grid-news.php:15
+msgid "Posted on"
+msgstr ""
+
+#: single/thumbnail-audio.php:59 single/thumbnail-image.php:26
+msgid "Sticky Post"
+msgstr ""
+
+#: taxonomy-event-categories.php:92
+msgid ""
+"Mauris vel varius felis. Duis feugiat interdum nibh, nec consequat erat "
+"dapibus sit amet. Ut at nibh varius, dignissim magna non, interdum urna. "
+"Maecenas enean.."
+msgstr ""
+
+#: taxonomy-event-categories.php:120 taxonomy-event-categories.php:161
+msgid "Shorts On Target"
+msgstr ""
+
+#: taxonomy-event-categories.php:121 taxonomy-event-categories.php:162
+msgid "Corner Kicks"
+msgstr ""
+
+#: taxonomy-event-categories.php:122 taxonomy-event-categories.php:163
+msgid "Yellow Cards"
+msgstr ""
+
+#: taxonomy-event-categories.php:123 taxonomy-event-categories.php:164
+msgid "Passing Accuracy"
+msgstr ""

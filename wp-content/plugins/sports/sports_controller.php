@@ -19,7 +19,6 @@ function sports_admin_menu()
         'league', // slug
         'league' // callback 
     );
- 
 }
 
 function sports()
@@ -43,6 +42,7 @@ function league()
     $roundtable = $wpdb->prefix . "round";
     $querym = "SELECT * FROM " . $roundtable . " WHERE RSTATUS = 'active'";
     $roundsql = $wpdb->get_results($querym);
+
 
     wp_enqueue_script('script', plugins_url('/Script/league_script.js', __FILE__));
     include(dirname(__FILE__) . "/html/leagueform.php");
@@ -253,8 +253,8 @@ class league_controller
         $data = array();
         $sportstable = $wpdb->prefix . "sports";
         $leaguetable = $wpdb->prefix . "league";
-        $result_sql = "SELECT ".$leaguetable.".*,".$sportstable.".name as sport_name FROM ".$leaguetable;
-        $result_sql .= " LEFT JOIN ".$sportstable." on ".$sportstable.".id = ".$leaguetable.".sports";
+        $result_sql = "SELECT " . $leaguetable . ".*," . $sportstable . ".name as sport_name FROM " . $leaguetable;
+        $result_sql .= " LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports";
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
@@ -309,9 +309,11 @@ class league_controller
             $roundEmpty = 0;
             if ($row->round == 'yes') {
                 $action .=  " <button  class='btn btn-sm btn-secondary' id='leaguerounds' onclick='leagueround(" . $row->id . ")'><i class='fa fa-flag-checkered' aria-hidden='true'></i> Rounds</button>";
-            $roundEmpty = 1;
+                $roundEmpty = 1;
             }
-            $action .=  " <button  class='btn btn-sm btn-info leaguematchClass' id='leaguematch' onclick='leaguematch(\"".$row->id."\",\"".$roundEmpty."\")'><i class='fa fa-futbol-o' aria-hidden='true'></i> Matches</button>";
+            $action .=  " <button  class='btn btn-sm btn-primary leaguematchClass' id='leaguematch' onclick='leaguematch(\"" . $row->id . "\",\"" . $roundEmpty . "\")'><i class='fa fa-futbol-o' aria-hidden='true'></i> Matches</button>";
+            $action .=  " <button  class='btn btn-sm btn-warning text-grey' id='leagueleaderboard' onclick='leagueleaderboard(" . $row->id . ")'><i class='fa fa-group' aria-hidden='true'></i> LeaderBoard</button>";
+
 
             $temp['action'] = $action;
             $data[] = $temp;
@@ -335,7 +337,7 @@ class league_controller
         global $wpdb;
         $deleteId = $_POST['id'];
         $leaguetable = $wpdb->prefix . "league";
-       
+
         $result['status'] = 0;
 
         $delete_sql = $wpdb->delete($leaguetable, array('id' => $deleteId));
@@ -346,7 +348,7 @@ class league_controller
         echo json_encode($result);
         exit();
     }
-     function delete_all_data($leagueid)
+    function delete_all_data($leagueid)
     {
         global $wpdb;
         $roundtable = $wpdb->prefix . "round";
@@ -354,9 +356,9 @@ class league_controller
 
         $matchtable = $wpdb->prefix . "match";
         $wpdb->delete($matchtable, array('leagueid' => $leagueid));
-            return true;
-        }
-    
+        return true;
+    }
+
 
     function editleague_record()
     {
@@ -377,13 +379,13 @@ class league_controller
 
     /***********  round  ****************************************************************************************************/
 
-    
+
     function roundinsert_data()
     {
-     
+
         global $wpdb;
         $updateId = $_POST['hrid'];
-       
+
         $data['status'] = 0;
         $data['msg'] = "Error Data Not insert";
 
@@ -406,16 +408,18 @@ class league_controller
             $data['status'] = 1;
             $data['msg'] = "Round inserted successfully";
         } else {
-            $wpdb->update($roundtable, array(
-                'rname'             => $rname,
-                'scoremultiplier'   => $scoremultiplier,
-                'scoretype'         => $scoretype,
-                'leagueid'          =>  $hdnleagueid,
-                'rstatus'           => $rstatus,
+            $wpdb->update(
+                $roundtable,
+                array(
+                    'rname'             => $rname,
+                    'scoremultiplier'   => $scoremultiplier,
+                    'scoretype'         => $scoretype,
+                    'leagueid'          =>  $hdnleagueid,
+                    'rstatus'           => $rstatus,
                 ),
                 array('id'  => $updateId)
             );
-        
+
             $data['status'] = 1;
             $data['msg'] = "Round updated successfully";
         }
@@ -430,8 +434,8 @@ class league_controller
         $data = array();
         $hdnleagueid = $_POST['hdnleagueid'];
         $roundtable = $wpdb->prefix . "round";
-        $result_sql = "SELECT * FROM " . $roundtable . " WHERE leagueid = ".$hdnleagueid."";
-    
+        $result_sql = "SELECT * FROM " . $roundtable . " WHERE leagueid = " . $hdnleagueid . "";
+
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
             $result_sql .= "AND (rname LIKE '%" . $search . "%')
@@ -482,7 +486,7 @@ class league_controller
             $temp['rstatus'] = strtoupper($row->rstatus);
             $action = "<button  class='btn btn-sm btn-success'  onclick='editround_record(" . $row->id . ")'><i class='fa fa-pencil-square' aria-hidden='true'> Edit</i></button>
                        <button  class='btn btn-sm btn-danger' onclick='deleteround_record(" . $row->id . ")'><i class='fa fa-trash' aria-hidden='true'></i> Delete</button>";
-            $temp['action'] = $action; 
+            $temp['action'] = $action;
             $data[] = $temp;
             $id = "";
         }
@@ -506,14 +510,14 @@ class league_controller
         $roundtable = $wpdb->prefix . "round";
         $result['status'] = 0;
 
-        $delete_sql = $wpdb->delete($roundtable, array('id' => $deleteId));      
+        $delete_sql = $wpdb->delete($roundtable, array('id' => $deleteId));
         if ($delete_sql) {
             $result['status'] = 1;
         }
         echo json_encode($result);
         exit();
     }
- 
+
 
     function editround_record()
     {
@@ -533,25 +537,26 @@ class league_controller
 
     /***********  round  ****************************************************************************************************/
 
-    
+
     /***********  match  ****************************************************************************************************/
-    
+
     function matchinsert_data()
     {
-     
+
         global $wpdb;
         $updateId = $_POST['hmid'];
 
-       
+
         $data['status'] = 0;
         $data['msg'] = "Error Data Not insert";
 
         $round = $_POST['round'];
         $team1 = $_POST['team1'];
         $team2 = $_POST['team2'];
+        $enddate = $_POST['enddate'];
         $mstatus = $_POST['mstatus'];
         $hdnleagueid = $_POST['hmhdnleagueid'];
-      
+
         $matchtable = $wpdb->prefix . "match";
 
         if ($updateId == '') {
@@ -560,21 +565,25 @@ class league_controller
                 'team1'             => $team1,
                 'team2'             => $team2,
                 'leagueid'          => $hdnleagueid,
+                'enddate'           => $enddate,
                 'mstatus'           => $mstatus,
             ));
             $data['status'] = 1;
             $data['msg'] = "Match added successfully";
         } else {
-            $wpdb->update($matchtable, array(
-                'round'             => $round,
-                'team1'             => $team1,
-                'team2'             => $team2,
-                'leagueid'          => $hdnleagueid,
-                'mstatus'           => $mstatus,
+            $wpdb->update(
+                $matchtable,
+                array(
+                    'round'             => $round,
+                    'team1'             => $team1,
+                    'team2'             => $team2,
+                    'leagueid'          => $hdnleagueid,
+                    'enddate'           => $enddate,
+                    'mstatus'           => $mstatus,
                 ),
                 array('id'  => $updateId)
             );
-        
+
             $data['status'] = 1;
             $data['msg'] = "Match updated successfully";
         }
@@ -590,14 +599,15 @@ class league_controller
         $hdnleagueid = $_POST['hmhdnleagueid'];
         $matchtable = $wpdb->prefix . "match";
         $roundtable = $wpdb->prefix . "round";
-        $result_sql = "SELECT ".$matchtable.".*,".$roundtable.".rname as roundname FROM ".$matchtable;
-        $result_sql .= " LEFT JOIN ".$roundtable." on ".$roundtable.".id = ".$matchtable.".round WHERE ".$matchtable.".leagueid = ".$hdnleagueid."";
+        $result_sql = "SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname FROM " . $matchtable;
+        $result_sql .= " LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable . ".leagueid = " . $hdnleagueid . "";
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
             $result_sql .= "AND (roundname LIKE '%" . $search . "%')
                                 OR (team1 LIKE '%" . $search . "%')
                                 OR (team2 LIKE '%" . $search . "%')
+                                OR (enddate LIKE '%" . $search . "%')
                                 OR (mstatus LIKE '%" . $search . "%')";
         }
         $columns = array(
@@ -605,7 +615,201 @@ class league_controller
             1 => 'roundname',
             2 => 'team1',
             3 => 'team2',
-            4 => 'mstatus',
+            4 => 'enddate',
+            5 => 'mstatus',
+        );
+
+        if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
+            $order_by = $columns[$requestData['order'][0]['column']];
+            $result_sql .= " ORDER BY " . $order_by;
+        } else {
+            $result_sql .= "ORDER BY a.id DESC";
+        }
+        if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
+            $result_sql .= " " . $requestData['order'][0]['dir'];
+        } else {
+            $result_sql .= " DESC ";
+        }
+
+        $result = $wpdb->get_results($result_sql, OBJECT);
+        $totalData = 0;
+        $totalFiltered = 0;
+        if (count($result) > 0) {
+            $totalData = count($result);
+            $totalFiltered = count($result);
+        }
+        // This is for pagination
+        if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
+            $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
+        }
+        $list_data = $wpdb->get_results($result_sql, "OBJECT");
+        $arr_data = array();
+        $arr_data = $result;
+
+        foreach ($list_data as $row) {
+
+            $temp['id'] = $row->id;
+            $temp['round'] = $row->roundname;
+            $temp['team1'] = $row->team1;
+            $temp['team2'] = $row->team2;
+            $temp['enddate'] = $row->enddate;
+            $temp['mstatus'] = strtoupper($row->mstatus);
+            $action = "<button  class='btn btn-sm btn-success'  onclick='editmatch_record(" . $row->id . ")'><i class='fa fa-pencil-square' aria-hidden='true'> Edit</i></button>
+                       <button  class='btn btn-sm btn-danger' onclick='deletematch_record(" . $row->id . ")'><i class='fa fa-trash' aria-hidden='true'></i> Delete</button>";
+            $action .=  " <button  class='btn btn-sm btn-primary' id='loadmatchscoretable' onclick='loadmatchscoretable(" . $row->id . ")'><i class='fa fa-bar-chart' aria-hidden='true'></i> Add Result</button>";
+
+            $temp['action'] = $action;
+            $data[] = $temp;
+            $id = "";
+        }
+
+        $resultRound = "SELECT * FROM " . $roundtable . " where leagueid = " . $hdnleagueid;
+        $roundData = $wpdb->get_results($resultRound, "OBJECT");
+        $json_data = array(
+            "draw" => intval($requestData['draw']),
+            "recordsTotal" => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data" => $data,
+            "sql" => $result_sql,
+            "round" => $roundData
+        );
+
+        echo json_encode($json_data);
+        exit(0);
+    }
+
+    function deletematch_record()
+    {
+        global $wpdb;
+        $deleteId = $_POST['id'];
+        $matchtable = $wpdb->prefix . "match";
+        $result['status'] = 0;
+
+        $delete_sql = $wpdb->delete($matchtable, array('id' => $deleteId));
+        if ($delete_sql) {
+            $result['status'] = 1;
+        }
+        echo json_encode($result);
+        exit();
+    }
+
+
+    function editmatch_record()
+    {
+        global $wpdb;
+        $editId = $_POST['id'];
+        $result['status'] = 0;
+        $matchtable = $wpdb->prefix . "match";
+
+        $edit_sql = $wpdb->get_results("SELECT * FROM $matchtable WHERE id = '$editId' ");
+        if ($edit_sql > 0) {
+            $result['status'] = 1;
+            $result['recoed'] = $edit_sql[0];
+        }
+        echo json_encode($result);
+        exit();
+    }
+
+
+    
+
+    /***********  match  ****************************************************************************************************/
+
+    /***********  matchscore  ****************************************************************************************************/
+
+    function matchscoreinsert_data()
+    {
+
+        global $wpdb;
+        $updateId = $_POST['hmsid'];
+
+        $data['status'] = 0;
+        $data['msg'] = "Error Data Not insert";
+
+        $team1score = $_POST['team1score'];
+        $team2score = $_POST['team2score'];
+        $hdnmatchid = $_POST['hdnmatchid'];
+
+        $matchscoretable = $wpdb->prefix . "score";
+
+        if ($updateId == '') {
+            $wpdb->insert($matchscoretable, array(
+                'team1score'             => $team1score,
+                'team2score'             => $team2score,
+                'matchid'                => $hdnmatchid,
+            ));
+
+            $data['status'] = 1;
+            $data['msg'] = "Match Score added successfully";
+        } else {
+            $wpdb->update(
+                $matchscoretable,
+                array(
+                    'team1score'             => $team1score,
+                    'team2score'             => $team2score,
+                    'matchid'                => $hdnmatchid,
+                ),
+                array('id'  => $updateId)
+            );
+
+            $data['status'] = 1;
+            $data['msg'] = "Match Score updated successfully";
+        }
+
+        echo  json_encode($data);
+        exit;
+    }
+
+    function loadmatchscore_Datatable()
+    {
+        global $wpdb;
+        $matchid = $_POST['matchid'];
+        $matchtable = $wpdb->prefix . "match";
+        $matchscoretable = $wpdb->prefix . "score";
+        //  $result_sql = $wpdb->get_results("SELECT * FROM " . $matchscoretable . " WHERE matchid = ".$matchid."");
+        $result_sql = $wpdb->get_results("SELECT " . $matchscoretable . ".*," . $matchtable . ".team1 as teamname1 ," . $matchtable . ".team2 as teamname2 FROM " . $matchscoretable . " LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $matchscoretable . ".matchid WHERE matchid = " . $matchid . "");
+        $result['status'] = 1;
+        $result['recoed'] = $result_sql[0];
+        echo json_encode($result);
+        exit();
+    }
+
+    function deletematchscore_record()
+    {
+        global $wpdb;
+        $deleteId = $_POST['id'];
+        $matchscoretable = $wpdb->prefix . "score";
+        $result['status'] = 0;
+
+        $delete_sql = $wpdb->delete($matchscoretable, array('id' => $deleteId));
+        if ($delete_sql) {
+            $result['status'] = 1;
+        }
+        echo json_encode($result);
+        exit();
+    }
+
+
+    /***********  matchscore  ****************************************************************************************************/
+
+    /***********  leaderboard  ****************************************************************************************************/
+
+    function loadleaderboard_Datatable()
+    {
+        global $wpdb;
+        $requestData = $_POST;
+        $data = array();
+        $lbhdnleagueid = $_POST['lbhdnleagueid'];
+        $leaderboardtable = $wpdb->prefix . "leaderboard";
+        $result_sql = "SELECT * FROM " . $leaderboardtable . "";
+        if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
+            $search = $requestData['search']['value'];
+            $result_sql .= "AND (id LIKE '%" . $search . "%')
+                            OR (score LIKE '%" . $search . "%')";
+        }
+        $columns = array(
+            0 => 'id',
+            1 => 'score',
         );
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
@@ -637,87 +841,54 @@ class league_controller
 
         foreach ($list_data as $row) {
             $temp['id'] = $row->id;
-            $temp['round'] = $row->roundname;
-            $temp['team1'] = $row->team1;
-            $temp['team2'] = $row->team2;
-            $temp['mstatus'] = strtoupper($row->mstatus);
-            $action = "<button  class='btn btn-sm btn-success'  onclick='editmatch_record(" . $row->id . ")'><i class='fa fa-pencil-square' aria-hidden='true'> Edit</i></button>
-                       <button  class='btn btn-sm btn-danger' onclick='deletematch_record(" . $row->id . ")'><i class='fa fa-trash' aria-hidden='true'></i> Delete</button>";
-            $temp['action'] = $action;
+            $temp['score'] = $row->score;
             $data[] = $temp;
             $id = "";
         }
 
-        $resultRound = "SELECT * FROM ".$roundtable." where leagueid = ".$hdnleagueid;
-        $roundData = $wpdb->get_results($resultRound, "OBJECT");
         $json_data = array(
             "draw" => intval($requestData['draw']),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-            "sql" => $result_sql,
-            "round" => $roundData
+            "sql" => $result_sql
         );
 
         echo json_encode($json_data);
         exit(0);
     }
 
-    function deletematch_record()
-    {
-        global $wpdb;
-        $deleteId = $_POST['id'];
-        $matchtable = $wpdb->prefix . "match";
-        $result['status'] = 0;
-
-        $delete_sql = $wpdb->delete($matchtable, array('id' => $deleteId));      
-        if ($delete_sql) {
-            $result['status'] = 1;
-        }
-        echo json_encode($result);
-        exit();
-    }
- 
-
-    function editmatch_record()
-    {
-        global $wpdb;
-        $editId = $_POST['id'];
-        $result['status'] = 0;
-        $matchtable = $wpdb->prefix . "match";
-
-        $edit_sql = $wpdb->get_results("SELECT * FROM $matchtable WHERE id = '$editId' ");
-        if ($edit_sql > 0) {
-            $result['status'] = 1;
-            $result['recoed'] = $edit_sql[0];
-        }
-        echo json_encode($result);
-        exit();
-    }
-
-    /***********  match  ****************************************************************************************************/
 
 
-
+    /***********  leaderboard  ****************************************************************************************************/
 }
 
 $league_controller = new league_controller();
 
+//League
 add_action('wp_ajax_league_controller::leagueinsert_data', array($league_controller, 'leagueinsert_data'));
 add_action('wp_ajax_league_controller::loadleague_Datatable', array($league_controller, 'loadleague_Datatable'));
 add_action('wp_ajax_league_controller::deleteleague_record', array($league_controller, 'deleteleague_record'));
 add_action('wp_ajax_league_controller::editleague_record', array($league_controller, 'editleague_record'));
 
-
+//Round
 add_action('wp_ajax_league_controller::roundinsert_data', array($league_controller, 'roundinsert_data'));
 add_action('wp_ajax_league_controller::loadround_Datatable', array($league_controller, 'loadround_Datatable'));
 add_action('wp_ajax_league_controller::deleteround_record', array($league_controller, 'deleteround_record'));
 add_action('wp_ajax_league_controller::editround_record', array($league_controller, 'editround_record'));
 
-
+//Match
 add_action('wp_ajax_league_controller::matchinsert_data', array($league_controller, 'matchinsert_data'));
 add_action('wp_ajax_league_controller::loadmatch_Datatable', array($league_controller, 'loadmatch_Datatable'));
 add_action('wp_ajax_league_controller::deletematch_record', array($league_controller, 'deletematch_record'));
 add_action('wp_ajax_league_controller::editmatch_record', array($league_controller, 'editmatch_record'));
+
+//MatchScore
+add_action('wp_ajax_league_controller::matchscoreinsert_data', array($league_controller, 'matchscoreinsert_data'));
+add_action('wp_ajax_league_controller::loadmatchscore_Datatable', array($league_controller, 'loadmatchscore_Datatable'));
+add_action('wp_ajax_league_controller::deletematchscore_record', array($league_controller, 'deletematchscore_record'));
+
+//LeaderBoard
+add_action('wp_ajax_league_controller::loadleaderboard_Datatable', array($league_controller, 'loadleaderboard_Datatable'));
 
 /**********************************************************************************************************************************/

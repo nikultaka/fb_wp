@@ -4,7 +4,9 @@ $(document).ready(function () {
   
   $("#leagueModal").on("hidden.bs.modal", function (event) {
     $("#leagueformdata")[0].reset();
+    $("#hlid").val("");
   });
+  $("#hlid").val("");
   $('.date-time-picker').datetimepicker();
   $(".xdsoft_datetimepicker").css("z-index", "9999999999999999999");
 
@@ -174,6 +176,7 @@ function leagueround(id) {
   $("#hdnleagueid").val(id);
   $("#roundModal").modal("show");
   $("#roundformdata")[0].reset();
+  $("#hrid").val("");
   loadroundtable();
 }
 
@@ -321,6 +324,7 @@ start of match
 
 function leaguematch(id,roundEmpty) {
 $("#hmhdnleagueid").val(id);
+$("#hmid").val("");
 
 if(roundEmpty == 0){
   $("#roundNameDivId").hide();
@@ -400,16 +404,16 @@ $("#save_Btnmatch").click(function () {
           hmhdnleagueid: hmhdnleagueid
         }
       },
-      initComplete: function(settings,msg) {
-        console.log(msg);
-          var roundString = '<option value="">----Round----</option>';
-          if(msg.round.length > 0) {
-              for(var n=0; n<msg.round.length; n++) {
-                  roundString+='<option value="'+msg.round[n].id+'">'+msg.round[n].rname+'</option>';
-              }
-          }
-          $("#round").html(roundString);
-      },
+      // initComplete: function(settings,msg) {
+      //   console.log(msg);
+      //     var roundString = '<option value="">----Round----</option>';
+      //     if(msg.round.length > 0) {
+      //         for(var n=0; n<msg.round.length; n++) {
+      //             roundString+='<option value="'+msg.round[n].id+'">'+msg.round[n].rname+'</option>';
+      //         }
+      //     }
+      //     $("#round").html(roundString);
+      // },
       aoColumns: [
         // { mData: "id" },
         { mData: "round" },
@@ -476,8 +480,10 @@ $("#save_Btnmatch").click(function () {
         $("#submit").css("backgmatch", "blue");
         if (data.status == 1) {
           var result = data.recoed;
+          console.log(result);
           $("#hmid").val(result.id);
-          $("#round").val(result.round);
+          $('#round').val(result.round);
+          console.log(result.roundname)
           $("#team1").val(result.team1);
           $("#team2").val(result.team2);
           $("#enddate").val(result.enddate);

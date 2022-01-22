@@ -700,8 +700,11 @@ class league_controller
         $editId = $_POST['id'];
         $result['status'] = 0;
         $matchtable = $wpdb->prefix . "match";
+        $roundtable = $wpdb->prefix . "round";
 
-        $edit_sql = $wpdb->get_results("SELECT * FROM $matchtable WHERE id = '$editId' ");
+        // $edit_sql = $wpdb->get_results("SELECT * FROM $matchtable WHERE id = '$editId' ");
+        $edit_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname FROM " . $matchtable." LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable.".id = '$editId' ");
+
         if ($edit_sql > 0) {
             $result['status'] = 1;
             $result['recoed'] = $edit_sql[0];

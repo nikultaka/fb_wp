@@ -3,7 +3,9 @@ var $ = jQuery;
 $(document).ready(function () {
     $('#registerModal').on('hidden.bs.modal', function(event) {
         $('#formdata')[0].reset();
+        $('#hid').val('');
      });
+     $('#hid').val('');
      
     loaddatatable();
         $("form").validate({

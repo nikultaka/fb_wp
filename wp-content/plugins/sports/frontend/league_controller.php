@@ -1,10 +1,10 @@
 <?php
-
-class Aleague_list_controller
+class league_list_Controller
 {
 
     function league_list_short_code()
     {
+
         ob_start();
         wp_enqueue_script('script', plugins_url('../Script/league_script.js', __FILE__));
         include(dirname(__FILE__) . "/html/leaguelist.php");
@@ -13,44 +13,41 @@ class Aleague_list_controller
         print $s;
     }
 
-    function get_league_list()
+    public function get_league_list()
     {
-        echo json_encode(array('status'=>1));
-        die;
-        // echo '<pre>';
-        // print_r("hellllllllllllllllllllllllllllll");
-        // die;
-        // global $wpdb;
-        // $result['status'] = 0;
-        // $leaguetable = $wpdb->prefix . "league";
 
-        // $get_sql = $wpdb->get_results("SELECT * FROM $leaguetable WHERE status = 'active' ");
-        // echo '<pre>';
-        // print_r($get_sql);
-        // print_r("helloooooooo");
+        global $wpdb;
+        $sportId = $_POST['id'];
+        $result['status'] = 0;
+        $leaguetable = $wpdb->prefix . "league";
 
-        // $league_string  = '';
-        // if(!empty($get_sql))
-        // {
-        //     foreach($get_sql as $league){
-        //         $league_string .= '';
-        //     }
-        // }
+        $result_sql = $wpdb->get_results("SELECT * FROM $leaguetable WHERE sports = '$sportId' ");
 
-        // if ($get_sql > 0) {
-        //     $result['status'] = 1;
-        //     $result['league_string'] = $league_string;
-        // }
-        // echo json_encode($result);
-        // exit();
+
+        $league_string  = '';
+
+        if (!empty($result_sql)) {
+            foreach ($result_sql as $league) {
+                $basematchlink = home_url("/matches/?id=" . $league->id);
+                $league_string .= '<div class="card-body col-sm-4">
+              <h3 class="card-title"> <a class="btn btn-block btn-lg" href=' . $basematchlink . ' type="button">' . $league->name . '</a></h3>
+              </div>';
+            }
+        }
+
+        if ($result_sql > 0) {
+            $result['status'] = 1;
+            $result['league_string'] = $league_string;
+        }
+        echo json_encode($result);
+        exit();
     }
-
 }
 
-$league_list_Controller = new Aleague_list_controller();
+$league_list_Controller = new league_list_Controller();
 
-add_action('wp_ajax_nopriv_Aleague_list_Controller::get_league_list', array($league_list_Controller, 'get_league_list'));
-add_action('wp_ajax_A league_list_Controller::get_league_list', array($league_list_Controller, 'get_league_list'));
+add_action('wp_ajax_nopriv_league_list_Controller::get_league_list', array($league_list_Controller, 'get_league_list'));
+add_action('wp_ajax_league_list_Controller::get_league_list', array($league_list_Controller, 'get_league_list'));
 
 
 add_shortcode('league_list_short_code', array($league_list_Controller, 'league_list_short_code'));

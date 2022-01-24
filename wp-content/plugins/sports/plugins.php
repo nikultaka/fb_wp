@@ -121,5 +121,8 @@
     // include_once("sports_controller.php");
     // include_once("frontend/league_controller.php");
     include_once(dirname(__FILE__) . "/sports_controller.php");
+    include_once(dirname(__FILE__) . "/frontend/sport_controller.php");
     include_once(dirname(__FILE__) . "/frontend/league_controller.php");
+    include_once(dirname(__FILE__) . "/frontend/match_controller.php");
 
+ 

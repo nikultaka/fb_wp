@@ -14,87 +14,144 @@ class match_list_Controller
 
     public function get_match_list()
     {
-       
         global $wpdb;
-        $requestData = $_POST;
         $matchId = $_POST['id'];
-        $data = array();
+        $result['status'] = 0;
+        $sportstable = $wpdb->prefix . "sports";
+        $leaguetable = $wpdb->prefix . "league";
         $matchtable = $wpdb->prefix . "match";
         $roundtable = $wpdb->prefix . "round";
 
-        $result_sql = "SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname FROM " . $matchtable;
-        $result_sql .= " LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable . ".leagueid = " . $matchId . "";
+        $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname ," . $leaguetable . ".name as leaguename ," . $sportstable . ".name as sportname
+        FROM " . $matchtable . " 
+        LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round 
+        LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid 
+        LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
+        WHERE " . $matchtable . ".leagueid = " . $matchId . " and MSTATUS = 'active'");
 
-        if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
-            $search = $requestData['search']['value'];
-            $result_sql .= "AND (roundname LIKE '%" . $search . "%')
-                                OR (team1 LIKE '%" . $search . "%')
-                                OR (team2 LIKE '%" . $search . "%')";
-        }
-        $columns = array(
-            0 => 'id',
-            1 => 'roundname',
-            2 => 'team1',
-            3 => 'team2',
-        );
 
-        if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
-            $order_by = $columns[$requestData['order'][0]['column']];
-            $result_sql .= " ORDER BY " . $order_by;
-        } else {
-            $result_sql .= "ORDER BY a.id DESC";
-        }
-        if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
-            $result_sql .= " " . $requestData['order'][0]['dir'];
-        } else {
-            $result_sql .= " DESC ";
-        }
+        $match_string  = '';
 
-        $result = $wpdb->get_results($result_sql, OBJECT);
-        $totalData = 0;
-        $totalFiltered = 0;
-        if (count($result) > 0) {
-            $totalData = count($result);
-            $totalFiltered = count($result);
-        }
-        // This is for pagination
-        if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
-            $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
-        }
-        $list_data = $wpdb->get_results($result_sql, "OBJECT");
-        $arr_data = array();
-        $arr_data = $result;
+        if (!empty($result_sql)) {
+            foreach ($result_sql as $match) {
+                //     $match_string .= '<div class="card-body col-sm-4">
+                //   <h3 class="card-title"><button  class="btn btn-sm btn-primary" onclick="loadmatchscoretable(' . $match->id . ')">Add Result</button>
+                //   </h3>
+                //   </div>';
 
-        foreach ($list_data as $row) {
 
-            $temp['id'] = $row->id;
-            $temp['round'] = $row->roundname;
-            $temp['team1'] = $row->team1;
-            $temp['team2'] = $row->team2;
-            $data[] = $temp;
-            $id = "";
+
+                $match_string .= '<div class="elementor-column elementor-col-50" data-id="3867c19" data-element_type="column">
+                                      <div class="elementor-widget-wrap elementor-element-populated">
+                                          <div class="elementor-element">
+                                              <div class="elementor-widget-container">
+                                                  <div class="kode-inner-fixer">
+                                                      <div class="kode-team-match"> 
+                                                              <span class="kode-subtitle col-sm-4">sport<h3>' . $match->sportname . '</h3></span>
+                                                              <span class="kode-subtitle col-sm-4 ">League<h3>' . $match->leaguename . '</h3></span>
+                                                              <span class="kode-subtitle col-sm-4">Round<h3>' . $match->roundname . '</h3><br></span>     
+                                                          <ul>
+                                                              <li><span >Team 1<h1>' . $match->team1 . '</h1></span>
+                                                              <button  class="btn  btn-lg" onclick="join_team(' . $match->t1id . ','.$match->id.')">JOIN</button>
+                                                              </li>
+
+                                                              <li><span ><h2>Vs</h2></span></li>
+                                                              <li><span >Team 2<h1>' . $match->team2 . '</h1></span>
+                                                              <button  class="btn  btn-lg" onclick="join_team(' . $match->t2id . ','.$match->id.')">JOIN</button>
+                                                              </li>
+                                                          </ul>
+
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>';
+            }
         }
 
-
-        $json_data = array(
-            "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval($totalData),
-            "recordsFiltered" => intval($totalFiltered),
-            "data" => $data,
-            "sql" => $result_sql,
-        
-        );
-
-        echo json_encode($json_data);
-        exit(0);
+        if ($result_sql > 0) {
+            $result['status'] = 1;
+            $result['match_string'] = $match_string;
+        }
+        echo json_encode($result);
+        exit();
     }
 
-    
+    function add_team_join()
+    {
+ 
+        global $wpdb;
+        $userid = get_current_user_id();      
+        $teamId = $_POST['tid'];
+        $matchId = $_POST['id'];
+
+        $result['status'] = 0;
+        $sportstable = $wpdb->prefix . "sports";
+        $matchtable = $wpdb->prefix . "match";
+
+        $result_sql = $wpdb->get_row("SELECT " . $matchtable . ".*," . $sportstable . ".id as sportid
+        FROM " . $matchtable . " 
+        LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $matchtable . ".leagueid 
+        WHERE " . $matchtable . ".id = " . $matchId . " and MSTATUS = 'active'");
+
+        $sportid = $result_sql->sportid;
+        $leagueid =$result_sql->leagueid;
+        
+        $jointeamtable = $wpdb->prefix . "jointeam";
+        $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".matchid = $matchId ");
+
+        $updateId =$result_teamsql->id;
+
+        $data['status'] = 0;
+        $data['msg'] = "Error Data Not insert";
+
+      
+
+
+
+        if ($updateId == '') {
+            $wpdb->insert($jointeamtable, array(
+                'userid'             => $userid,
+                'sportid'            => $sportid,
+                'leagueid'           => $leagueid,
+                'matchid'            => $matchId,
+                'teamid'             => $teamId,
+
+            ));
+
+            $data['status'] = 1;
+            $data['msg'] = "Join Team successfully";
+        } else {
+            $wpdb->update(
+                $jointeamtable,
+                array(
+                    'userid'             => $userid,
+                    'sportid'            => $sportid,
+                    'leagueid'           => $leagueid,
+                    'matchid'            => $matchId,
+                    'teamid'             => $teamId,
+                ),
+                array('id'  => $updateId)
+            );
+
+            $data['status'] = 1;
+            $data['msg'] = "Joined Team successfully2";
+        }
+
+        echo json_encode($data);
+        exit;
+
+    }
 }
 
 $match_list_Controller = new match_list_Controller();
 
 add_action('wp_ajax_nopriv_match_list_Controller::get_match_list', array($match_list_Controller, 'get_match_list'));
 add_action('wp_ajax_match_list_Controller::get_match_list', array($match_list_Controller, 'get_match_list'));
+
+add_action('wp_ajax_match_list_Controller::add_team_join', array($match_list_Controller, 'add_team_join'));
+add_action('wp_ajax_nopriv_match_list_Controller::add_team_join', array($match_list_Controller, 'add_team_join'));
+
 
 add_shortcode('match_list_short_code', array($match_list_Controller, 'match_list_short_code'));

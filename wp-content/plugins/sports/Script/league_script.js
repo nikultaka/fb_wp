@@ -657,10 +657,65 @@ start of League List
 end of Get League List
 start of Match List
  **************************/
-
 function match_list(id) {
+  $.ajax({
+    type: "POST",
+    url: ajaxurl,
+    datatype : 'json',
+    data:{
+      id: id,
+      action: "match_list_Controller::get_match_list",
+    },
+    success: function (responce) {
+      var data = JSON.parse(responce);
+      if (data.status == 1) {
+        $("#matchlistdata").append(data.match_string);
+    }            
+    }
+});
+}
 
-  $("#matchlistdata-table").dataTable({    
+
+/*************************** 
+end of Match List
+start of Join Team
+ **************************/
+
+function join_team(tid,id) {
+  $.ajax({
+    type: "POST",
+    url: ajaxurl,
+    datatype : 'json',
+    data:{
+      tid,tid,
+      id: id,
+      action: "match_list_Controller::add_team_join",
+    },
+    success: function (responce) {
+      var data = JSON.parse(responce);
+      console.log(data)
+      if (data.status == 1) {
+        Swal.fire({
+          icon: "success",
+          title: data.msg,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }          
+    }
+});
+}
+
+
+
+
+/*************************** 
+end of Join Team
+start of My Score
+ **************************/
+
+function my_score_list(id) {
+  $("#myscoredata-table").dataTable({    
     paging: true,
     pageLength: 10,
     bProcessing: true,
@@ -673,19 +728,21 @@ function match_list(id) {
       datatype: "json",
       data: {
         id: id,
-        action: "match_list_Controller::get_match_list",
+        action: "my_score_Controller::get_my_score",
       },
     },
     aoColumns: [
       // { mData: "id" },
+      { mData: "sport" },
+      { mData: "league" },
       { mData: "round" },
-      { mData: "team1" },
-      { mData: "team2" },
+      { mData: "team" },
+      { mData: "yourscore" },
     ],
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [2],
+        targets: [5],
         orderable: false,
       },
     ],
@@ -694,5 +751,5 @@ function match_list(id) {
 
 
 /*************************** 
-end of Match List
+end of My Score
  **************************/

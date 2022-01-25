@@ -74,7 +74,9 @@
         `leagueid` int(11) NOT NULL,
         `round` VARCHAR(50) NOT NULL,
         `team1` VARCHAR(50) NOT NULL,
-        `team2` VARCHAR(50) NOT NULL, 
+        `team2` VARCHAR(50) NOT NULL,
+        `t1id` int(1) DEFAULT 1,
+        `t2id` int(1) DEFAULT 0,
         `enddate` DATETIME NOT NULL,  
         `mstatus` VARCHAR(50) NOT NULL,       
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
@@ -101,6 +103,19 @@
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;"; 
 
+        $jointeam_table_name = $wpdb->prefix . 'jointeam';
+        $charset_collate = $wpdb->get_charset_collate();
+        $sqljointeam = "CREATE TABLE `$jointeam_table_name` (
+        `id` int(11) NOT NULL auto_increment,
+        `userid` int(11) NOT NULL,
+        `sportid` int(11) NOT NULL,
+        `leagueid` int(11) NOT NULL,
+        `roundid` int(11) NOT NULL,
+        `matchid` int(11) NOT NULL,
+        `teamid` int(11) NOT NULL,     
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+        PRIMARY KEY  id (id)) $charset_collate;"; 
+
 
         if (
             $wpdb->get_var("SHOW TABLES LIKE '$sports_table_name'") != $sports_table_name ||
@@ -108,7 +123,8 @@
             $wpdb->get_var("SHOW TABLES LIKE '$round_table_name'") != $round_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$match_table_name'") != $match_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$score_table_name'") != $score_table_name ||
-            $wpdb->get_var("SHOW TABLES LIKE '$leaderboard_table_name'") != $leaderboard_table_name) {
+            $wpdb->get_var("SHOW TABLES LIKE '$leaderboard_table_name'") != $leaderboard_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$jointeam_table_name'") != $jointeam_table_name) {
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             dbDelta($sql);
             dbDelta($sqlLeague);
@@ -116,6 +132,8 @@
             dbDelta($sqlMatch);
             dbDelta($sqlScore);
             dbDelta($sqlleaderboard);
+            dbDelta($sqljointeam);
+
         }
     }
     // include_once("sports_controller.php");
@@ -124,5 +142,6 @@
     include_once(dirname(__FILE__) . "/frontend/sport_controller.php");
     include_once(dirname(__FILE__) . "/frontend/league_controller.php");
     include_once(dirname(__FILE__) . "/frontend/match_controller.php");
+    include_once(dirname(__FILE__) . "/frontend/myscore_controller.php");
 
  

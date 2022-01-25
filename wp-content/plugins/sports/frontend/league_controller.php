@@ -18,11 +18,11 @@ class league_list_Controller
 
         global $wpdb;
         $sportId = $_POST['id'];
+       
         $result['status'] = 0;
         $leaguetable = $wpdb->prefix . "league";
 
-        $result_sql = $wpdb->get_results("SELECT * FROM $leaguetable WHERE sports = '$sportId' ");
-
+        $result_sql = $wpdb->get_results("SELECT * FROM $leaguetable WHERE sports = '$sportId' and STATUS = 'active'");
 
         $league_string  = '';
 

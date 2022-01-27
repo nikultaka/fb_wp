@@ -64,15 +64,6 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-3">
-                            <label for="round">Is Round <b>?</b> :</label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="radio" name="round" id="roundyes" value="yes">Yes ~
-                            <input type="radio" name="round" id="roundno" value="no">No
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3">
                             <label for="status">Status :</label>
                         </div>
                         <div class="col-sm-9">
@@ -103,7 +94,6 @@
             <!-- <th>ID</th> -->
             <th width="15%">Sport Name</th>
             <th>League Name</th>
-            <th>Round</th>
             <th>Status</th>
             <th>Actions</th>
         </thead>
@@ -139,7 +129,7 @@
 
                         <div class="col-md-2">
                             <label for="scoremultiplier">Score Multiplier :</label>
-                            <input type="number" class="form-control" id="scoremultiplier" name="scoremultiplier" required>
+                            <input type="number" class="form-control" id="scoremultiplier" name="scoremultiplier"  min="0" required>
                         </div>
 
                         <!-- <div class="col"> -->
@@ -216,12 +206,7 @@
 
                         <div class="col-md-3" id="roundNameDivId">
                             <label for="round"><b>Round</b></label>
-                            <select class="form-control" id="round" name="round" required>
-                                <option value="">----Round----</option>
-                                <?php foreach ($roundsql as $round) { ?>
-                                    <option class="custom-select" value='<?php echo $round->id ?>'><?php echo $round->rname ?></option>
-                                <?php } ?>
-                            </select>
+                            <select class="form-control" id="round" name="round" required></select>
                         </div>
                         <div class="col-md-4">
                             <label for="name"><b>Team 1</b></label>

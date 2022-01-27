@@ -48,7 +48,6 @@
         `id` int(11) NOT NULL auto_increment,
         `sports` VARCHAR(50) NOT NULL,
         `name` VARCHAR(50) NOT NULL,
-        `round` ENUM('yes','no') NOT NULL,
         `status` VARCHAR(50) NOT NULL,       
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;";
@@ -98,6 +97,7 @@
         $charset_collate = $wpdb->get_charset_collate();
         $sqlleaderboard = "CREATE TABLE `$leaderboard_table_name` (
         `id` int(11) NOT NULL auto_increment,
+        `userid` int(11) NOT NULL,
         `leagueid` int(11) NOT NULL,
         `score` VARCHAR(50) NOT NULL,       
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
@@ -143,5 +143,6 @@
     include_once(dirname(__FILE__) . "/frontend/league_controller.php");
     include_once(dirname(__FILE__) . "/frontend/match_controller.php");
     include_once(dirname(__FILE__) . "/frontend/myscore_controller.php");
+    include_once(dirname(__FILE__) . "/frontend/leaderboard_controller.php");
 
  

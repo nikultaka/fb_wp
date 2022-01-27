@@ -60,7 +60,7 @@ class match_list_Controller
                                                               <button  class="btn  btn-lg" onclick="join_team(' . $match->t2id . ','.$match->id.')">JOIN</button>
                                                               </li>
                                                           </ul>
-
+                                                       
                                                       </div>
                                                   </div>
                                               </div>
@@ -106,9 +106,6 @@ class match_list_Controller
         $data['status'] = 0;
         $data['msg'] = "Error Data Not insert";
 
-      
-
-
 
         if ($updateId == '') {
             $wpdb->insert($jointeamtable, array(
@@ -121,7 +118,7 @@ class match_list_Controller
             ));
 
             $data['status'] = 1;
-            $data['msg'] = "Join Team successfully";
+           
         } else {
             $wpdb->update(
                 $jointeamtable,
@@ -136,7 +133,7 @@ class match_list_Controller
             );
 
             $data['status'] = 1;
-            $data['msg'] = "Joined Team successfully2";
+        
         }
 
         echo json_encode($data);

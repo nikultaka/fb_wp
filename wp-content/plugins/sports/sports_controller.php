@@ -40,7 +40,8 @@ function league()
     $pagessql = $wpdb->get_results($query);
 
     $roundtable = $wpdb->prefix . "round";
-    $querym = "SELECT * FROM " . $roundtable . " WHERE RSTATUS = 'active'";
+    $leagueid = $_GET['id'];
+    $querym = "SELECT * FROM " . $roundtable . " WHERE leagueid=".$leagueid."  RSTATUS = 'active'";
     $roundsql = $wpdb->get_results($querym);
 
 
@@ -214,7 +215,6 @@ class league_controller
 
         $sports = $_POST['sports'];
         $name = $_POST['name'];
-        $round = $_POST['round'];
         $status = $_POST['status'];
         $leaguetable = $wpdb->prefix . "league";
 
@@ -222,7 +222,6 @@ class league_controller
             $wpdb->insert($leaguetable, array(
                 'sports'         => $sports,
                 'name'           => $name,
-                'round'          => $round,
                 'status'         => $status,
 
             ));
@@ -234,7 +233,6 @@ class league_controller
                 array(
                     'sports'     => $sports,
                     'name'       => $name,
-                    'round'      => $round,
                     'status'     => $status
                 ),
                 array('id'  => $updateId)
@@ -260,15 +258,13 @@ class league_controller
             $search = $requestData['search']['value'];
             $result_sql .= "AND (sport_name LIKE '%" . $search . "%')
                                 OR (name LIKE '%" . $search . "%')
-                                OR (round LIKE '%" . $search . "%')
                                 OR (status LIKE '%" . $search . "%')";
         }
         $columns = array(
             0 => 'id',
             1 => 'sport_name',
             2 => 'name',
-            3 => 'round',
-            4 => 'status',
+            3 => 'status',
         );
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
@@ -306,12 +302,8 @@ class league_controller
             $temp['status'] = strtoupper($row->status);
             $action = "<button  class='btn btn-sm btn-success'  onclick='leaguerecord_edit(" . $row->id . ")'><i class='fa fa-edit' aria-hidden='true'> Edit</i></button>
                        <button  class='btn btn-sm btn-danger' onclick='leaguerecord_delete(" . $row->id . ")'><i class='fa fa-trash' aria-hidden='true'></i> Delete</button>";
-            $roundEmpty = 0;
-            if ($row->round == 'yes') {
-                $action .=  " <button  class='btn btn-sm btn-secondary' id='leaguerounds' onclick='leagueround(" . $row->id . ")'><i class='fa fa-flag-checkered' aria-hidden='true'></i> Rounds</button>";
-                $roundEmpty = 1;
-            }
-            $action .=  " <button  class='btn btn-sm btn-primary leaguematchClass' id='leaguematch' onclick='leaguematch(\"" . $row->id . "\",\"" . $roundEmpty . "\")'><i class='fa fa-futbol-o' aria-hidden='true'></i> Matches</button>";
+            $action .=  " <button  class='btn btn-sm btn-secondary' id='leaguerounds' onclick='leagueround(" . $row->id . ")'><i class='fa fa-flag-checkered' aria-hidden='true'></i> Rounds</button>";
+            $action .=  " <button  class='btn btn-sm btn-primary leaguematchClass' id='leaguematch' onclick='leaguematch(" . $row->id . ")'><i class='fa fa-futbol-o' aria-hidden='true'></i> Matches</button>";
             $action .=  " <button  class='btn btn-sm btn-warning text-grey' id='leagueleaderboard' onclick='leagueleaderboard(" . $row->id . ")'><i class='fa fa-group' aria-hidden='true'></i> LeaderBoard</button>";
 
 
@@ -674,6 +666,11 @@ class league_controller
             "round" => $roundData
         );
 
+        // $roundtable = $wpdb->prefix . "round";
+        // $leagueid = $_GET['id'];
+        // $querym = "SELECT * FROM " . $roundtable . " WHERE leagueid=".$hdnleagueid."  RSTATUS = 'active'";
+        // $roundsql = $wpdb->get_results($querym);
+
         echo json_encode($json_data);
         exit(0);
     }
@@ -803,15 +800,23 @@ class league_controller
         $requestData = $_POST;
         $data = array();
         $lbhdnleagueid = $_POST['lbhdnleagueid'];
-        $leaderboardtable = $wpdb->prefix . "leaderboard";
-        $result_sql = "SELECT * FROM " . $leaderboardtable . "";
+        $leaderboard = $wpdb->prefix . "leaderboard";
+        $leaguetable = $wpdb->prefix . "league";
+        $usertable = $wpdb->prefix . "users";
+
+        $result_sql = "SELECT " . $leaderboard . ".*," . $leaguetable . ".name as leaguename," . $usertable . ".display_name as username
+        FROM " . $leaderboard . " 
+        LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $leaderboard . ".leagueid
+        LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $leaderboard . ".userid 
+        WHERE " . $leaderboard . ".id = " . $lbhdnleagueid . " ";
+
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
-            $result_sql .= "AND (id LIKE '%" . $search . "%')
+            $result_sql .= "AND (username LIKE '%" . $search . "%')
                             OR (score LIKE '%" . $search . "%')";
         }
         $columns = array(
-            0 => 'id',
+            0 => 'username',
             1 => 'score',
         );
 
@@ -843,7 +848,7 @@ class league_controller
         $arr_data = $result;
 
         foreach ($list_data as $row) {
-            $temp['id'] = $row->id;
+            $temp['username'] = $row->username;
             $temp['score'] = $row->score;
             $data[] = $temp;
             $id = "";

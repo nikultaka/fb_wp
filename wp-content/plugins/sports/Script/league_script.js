@@ -13,13 +13,11 @@ $(document).ready(function () {
     rules: {
       sports: "required",
       name: "required",
-      round: "required",
       status: "required",
     },
     messages: {
       sports: "Select Sport First",
       name: "Name is Required",
-      round: "Select Yes or No",
       status: "Status is Required",
     },
     submitHandler: function () {
@@ -39,7 +37,6 @@ $(document).ready(function () {
             });
             $("#sports").val("");
             $("#name").val("");
-            $("#round").val("");
             $("#status").val("");
             $("#hlid").val("");
             loadleaguetable();
@@ -69,14 +66,13 @@ function loadleaguetable() {
       // { mData: "id" },
       { mData: "sports" },
       { mData: "name" },
-      { mData: "round" },
       { mData: "status" },
       { mData: "action" },
     ],
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [4],
+        targets: [3],
         orderable: false,
       },
     ],
@@ -132,7 +128,6 @@ function leaguerecord_edit(id) {
         $("#hlid").val(result.id);
         $("#sports").val(result.sports);
         $("#name").val(result.name);
-        $("#round" + result.round)[0].checked = true;
         $("#status").val(result.status);
         loadleaguetable();
       }
@@ -294,15 +289,10 @@ end of round
 start of match
  **************************/
 
-function leaguematch(id, roundEmpty) {
+function leaguematch(id) {
   $("#hmhdnleagueid").val(id);
-  $("#hmid").val("");
 
-  if (roundEmpty == 0) {
-    $("#roundNameDivId").hide();
-  } else {
-    $("#roundNameDivId").show();
-  }
+  $("#hmid").val("");
 
   $("#matchmodal").modal("show");
 
@@ -376,16 +366,16 @@ function loadmatchtable() {
         hmhdnleagueid: hmhdnleagueid,
       },
     },
-    // initComplete: function(settings,msg) {
-    //   console.log(msg);
-    //     var roundString = '<option value="">----Round----</option>';
-    //     if(msg.round.length > 0) {
-    //         for(var n=0; n<msg.round.length; n++) {
-    //             roundString+='<option value="'+msg.round[n].id+'">'+msg.round[n].rname+'</option>';
-    //         }
-    //     }
-    //     $("#round").html(roundString);
-    // },
+    initComplete: function(settings,msg) {
+      console.log(msg);
+        var roundString = '<option value="">----Round----</option>';
+        if(msg.round.length > 0) {
+            for(var n=0; n<msg.round.length; n++) {
+                roundString+='<option value="'+msg.round[n].id+'">'+msg.round[n].rname+'</option>';
+            }
+        }
+        $("#round").html(roundString);
+    },
     aoColumns: [
       // { mData: "id" },
       { mData: "round" },
@@ -452,12 +442,11 @@ function editmatch_record(id) {
         console.log(result);
         $("#hmid").val(result.id);
         $("#round").val(result.round);
-        console.log(result.roundname);
         $("#team1").val(result.team1);
         $("#team2").val(result.team2);
         $("#enddate").val(result.enddate);
         $("#status").val(result.status);
-        loadmatchtable();
+        //loadmatchtable();
       }
     },
   });
@@ -570,7 +559,6 @@ function leagueleaderboard(id) {
 }
 
 function loadleaderboardtable() {
-  console.log("hello");
   var lbhdnleagueid = $("#lbhdnleagueid").val();
   $("#leaderboarddata-table").dataTable({
     paging: true,
@@ -587,8 +575,7 @@ function loadleaderboardtable() {
       },
     },
     aoColumns: [
-      // { mData: "id" },
-      { mData: "id" },
+      { mData: "username" },
       { mData: "score" },
     ],
     order: [[0, "asc"]],
@@ -624,7 +611,7 @@ function get_all_sport_list() {
       success: function (responce) {
         var data = JSON.parse(responce);
         if (data.status == 1) {
-          $("#sportlistdata").append(data.sport_string);
+          $("#sportlistdata").append(data.match_string);
       }            
       }
   });
@@ -680,31 +667,60 @@ function match_list(id) {
 end of Match List
 start of Join Team
  **************************/
-
 function join_team(tid,id) {
-  $.ajax({
-    type: "POST",
-    url: ajaxurl,
-    datatype : 'json',
-    data:{
-      tid,tid,
-      id: id,
-      action: "match_list_Controller::add_team_join",
-    },
-    success: function (responce) {
-      var data = JSON.parse(responce);
-      console.log(data)
-      if (data.status == 1) {
-        Swal.fire({
-          icon: "success",
-          title: data.msg,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }          
-    }
+Swal.fire({
+  title: "Are You Sure to Join This Team ?",
+  text: "",
+  icon: "info",
+  showCancelButton: true,
+  confirmButtonColor: "#24890d",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, Join it!",
+}).then((result) => {
+  if (result.isConfirmed) {
+    $.ajax({
+      type: "POST",
+      url: ajaxurl,
+      datatype : 'json',
+      data:{
+        tid,tid,
+        id: id,
+        action: "match_list_Controller::add_team_join",
+      },
+      success: function (responce) {
+        var data = JSON.parse(responce);
+        if (data.status == 1) {
+          Swal.fire("You Joined Team Successfully.");
+          $("#joinbutton").append("You Joined This Match");
+        }
+      },
+    });
+  }
 });
 }
+// function join_team(tid,id) {
+//   $.ajax({
+//     type: "POST",
+//     url: ajaxurl,
+//     datatype : 'json',
+//     data:{
+//       tid,tid,
+//       id: id,
+//       action: "match_list_Controller::add_team_join",
+//     },
+//     success: function (responce) {
+//       var data = JSON.parse(responce);
+//       if (data.status == 1) {
+//         Swal.fire({
+//           icon: "success",
+//           title: data.msg,
+//           showConfirmButton: false,
+//           timer: 1500,
+//         });
+//       }          
+//     }
+// });
+// }
 
 
 
@@ -714,8 +730,8 @@ end of Join Team
 start of My Score
  **************************/
 
-function my_score_list(id) {
-  $("#myscoredata-table").dataTable({    
+function my_score_list() {
+  $("#myscoredata-table").dataTable({
     paging: true,
     pageLength: 10,
     bProcessing: true,
@@ -727,7 +743,6 @@ function my_score_list(id) {
       url: ajaxurl,
       datatype: "json",
       data: {
-        id: id,
         action: "my_score_Controller::get_my_score",
       },
     },
@@ -742,7 +757,7 @@ function my_score_list(id) {
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [5],
+        targets: [4],
         orderable: false,
       },
     ],
@@ -752,4 +767,78 @@ function my_score_list(id) {
 
 /*************************** 
 end of My Score
+start of Leaderboard List
+ **************************/
+
+function leader_board_list() {
+  $("#leaderboardlistdata-table").dataTable({
+    paging: true,
+    pageLength: 10,
+    bProcessing: true,
+    serverSide: true,
+    bDestroy: true,
+    ajax: {
+   
+      type: "POST",
+      url: ajaxurl,
+      datatype: "json",
+      data: {
+        action: "leader_board_Controller::get_leader_board",
+      },
+    },
+    aoColumns: [
+      // { mData: "id" },
+      { mData: "league" },
+      { mData: "action" },
+    ],
+    order: [[0, "asc"]],
+    columnDefs: [
+      {
+        targets: [1],
+        orderable: false,
+      },
+    ],
+  });
+}
+
+/*************************** 
+end of Leaderboard List
+start of Load Leaderboard List
+ **************************/
+
+function load_leader_board_list(id) {
+  $("#loadleaderboardlistdata-table").dataTable({
+    paging: true,
+    pageLength: 10,
+    bProcessing: true,
+    serverSide: true,
+    bDestroy: true,
+    ajax: {
+   
+      type: "POST",
+      url: ajaxurl,
+      datatype: "json",
+      data: {
+        id:id,
+        action: "leader_board_Controller::load_leader_board",
+      },
+    },
+    aoColumns: [
+      // { mData: "id" },
+      { mData: "leaguename" },
+      { mData: "username" },
+      { mData: "userscore" },
+    ],
+    order: [[0, "asc"]],
+    columnDefs: [
+      {
+        targets: [2],
+        orderable: false,
+      },
+    ],
+  });
+}
+
+/*************************** 
+end of Load Leaderboard List
  **************************/

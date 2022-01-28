@@ -106,6 +106,8 @@ class my_score_Controller
             $data[] = $temp;
             $id = "";
         }
+        // $a=array($temp['yourscore']);
+        // array_push($a);         
 
 
         $json_data = array(

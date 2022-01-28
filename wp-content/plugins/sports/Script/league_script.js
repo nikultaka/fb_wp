@@ -611,7 +611,7 @@ function get_all_sport_list() {
       success: function (responce) {
         var data = JSON.parse(responce);
         if (data.status == 1) {
-          $("#sportlistdata").append(data.match_string);
+          $("#sportlistdata").append(data.sport_string);
       }            
       }
   });

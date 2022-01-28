@@ -32,15 +32,8 @@ class match_list_Controller
 
         $match_string  = '';
 
-        if (!empty($result_sql)) {
+        if (count($result_sql)>0) {
             foreach ($result_sql as $match) {
-                //     $match_string .= '<div class="card-body col-sm-4">
-                //   <h3 class="card-title"><button  class="btn btn-sm btn-primary" onclick="loadmatchscoretable(' . $match->id . ')">Add Result</button>
-                //   </h3>
-                //   </div>';
-
-
-
                 $match_string .= '<div class="elementor-column elementor-col-50" data-id="3867c19" data-element_type="column">
                                       <div class="elementor-widget-wrap elementor-element-populated">
                                           <div class="elementor-element">
@@ -68,6 +61,10 @@ class match_list_Controller
                                       </div>
                                   </div>';
             }
+        }else{
+            $match_string .='<div class="card-body col-sm-4">
+            <h1 class="card-title"> No Matches Found !</h1>
+            </div>';
         }
 
         if ($result_sql > 0) {
@@ -97,6 +94,7 @@ class match_list_Controller
 
         $sportid = $result_sql->sportid;
         $leagueid =$result_sql->leagueid;
+        $roundid =$result_sql->round;
         
         $jointeamtable = $wpdb->prefix . "jointeam";
         $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".matchid = $matchId ");
@@ -112,12 +110,14 @@ class match_list_Controller
                 'userid'             => $userid,
                 'sportid'            => $sportid,
                 'leagueid'           => $leagueid,
+                'roundid'            => $roundid,
                 'matchid'            => $matchId,
                 'teamid'             => $teamId,
 
             ));
 
             $data['status'] = 1;
+            $data['msg'] = "You Joined Team Successfully";
            
         } else {
             $wpdb->update(
@@ -126,6 +126,7 @@ class match_list_Controller
                     'userid'             => $userid,
                     'sportid'            => $sportid,
                     'leagueid'           => $leagueid,
+                    'roundid'            => $roundid,
                     'matchid'            => $matchId,
                     'teamid'             => $teamId,
                 ),
@@ -133,6 +134,7 @@ class match_list_Controller
             );
 
             $data['status'] = 1;
+            $data['msg'] = "You Joined Team Successfully2";
         
         }
 

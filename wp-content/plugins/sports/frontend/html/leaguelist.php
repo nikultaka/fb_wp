@@ -4,6 +4,7 @@
     <div id="leaguelistdata" >
     </div>
 </div>
+<button class="btn btn-sm" onclick="history.back()">Go Back</button>
 
 <script type="text/javascript">
     var $ = jQuery;

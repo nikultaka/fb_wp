@@ -44,6 +44,8 @@ class my_score_Controller
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid";
+
+    
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
             $result_sql .= "AND (a.sportname LIKE '%" . $search . "%')
@@ -99,11 +101,8 @@ class my_score_Controller
             $temp['round'] = $row->roundname;
             $temp['team'] = $row->teamname;
             $temp['yourscore'] = $row->scoretype == 'added' ?
-                "+ ".$row->scoremultiplier * $row->teamscore :
-                "- ".$row->scoremultiplier * $row->teamscore;
-                // echo '<pre>';
-                // print_r($temp);
-                // die;
+                "+ " . $row->scoremultiplier * $row->teamscore :
+                "- " . $row->scoremultiplier * $row->teamscore; 
             $data[] = $temp;
             $id = "";
         }

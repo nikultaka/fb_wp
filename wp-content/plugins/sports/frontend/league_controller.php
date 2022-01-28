@@ -18,7 +18,7 @@ class league_list_Controller
 
         global $wpdb;
         $sportId = $_POST['id'];
-       
+
         $result['status'] = 0;
         $leaguetable = $wpdb->prefix . "league";
 
@@ -26,14 +26,21 @@ class league_list_Controller
 
         $league_string  = '';
 
-        if (!empty($result_sql)) {
-            foreach ($result_sql as $league) {
+        if (count($result_sql)>0) {
+            foreach ($result_sql as $league) {            
                 $basematchlink = home_url("/matches/?id=" . $league->id);
                 $league_string .= '<div class="card-body col-sm-4">
               <h3 class="card-title"> <a class="btn btn-block btn-lg" href=' . $basematchlink . ' type="button">' . $league->name . '</a></h3>
               </div>';
             }
+         
+        }else{
+            $league_string .='<div class="card-body col-sm-4">
+            <h1 class="card-title"> No Leagues Found !</h1>
+            </div>';
         }
+       
+   
 
         if ($result_sql > 0) {
             $result['status'] = 1;

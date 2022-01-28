@@ -20,7 +20,6 @@ class sport_list_Controller
 
         $get_sql = $wpdb->get_results("SELECT * FROM " . $sportstable . " WHERE STATUS = 'active'");
 
-
         $sport_string  = '';
 
         if (!empty($get_sql)) {          

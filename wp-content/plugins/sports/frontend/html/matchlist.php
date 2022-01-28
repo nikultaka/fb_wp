@@ -3,8 +3,9 @@
 <div class="row d-grid gap-3">
 	<div id="matchlistdata">
 	</div>
-
+ 
 </div>
+<button class="btn btn-sm" onclick="history.back()">Go Back</button>
 
 	<script type="text/javascript">
 		var $ = jQuery;

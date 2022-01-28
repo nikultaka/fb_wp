@@ -393,7 +393,7 @@ class league_controller
                 'rname'             => $rname,
                 'scoremultiplier'   => $scoremultiplier,
                 'scoretype'         => $scoretype,
-                'leagueid'          =>  $hdnleagueid,
+                'leagueid'          => $hdnleagueid,
                 'rstatus'           => $rstatus,
 
             ));
@@ -406,7 +406,7 @@ class league_controller
                     'rname'             => $rname,
                     'scoremultiplier'   => $scoremultiplier,
                     'scoretype'         => $scoretype,
-                    'leagueid'          =>  $hdnleagueid,
+                    'leagueid'          => $hdnleagueid,
                     'rstatus'           => $rstatus,
                 ),
                 array('id'  => $updateId)

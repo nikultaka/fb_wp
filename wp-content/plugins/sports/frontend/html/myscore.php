@@ -2,7 +2,7 @@
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
 <div class="container-fluid mt-5">
-    <h2>My Score Table</h2>
+    <h2>Total Points  : <span id="totalScore"></span></h2>
 <table class="table" id="myscoredata-table"> 
 		<thead>
 			<!-- <th>ID</th> -->
@@ -10,7 +10,7 @@
 			<th>League</th>
 			<th>Round</th>
             <th>Team</th>
-            <th>Your score</th>
+            <th>Points</th>
 		</thead>
 </table>
 <div>

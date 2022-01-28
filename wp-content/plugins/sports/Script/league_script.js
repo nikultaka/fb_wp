@@ -744,7 +744,10 @@ function my_score_list() {
       datatype: "json",
       data: {
         action: "my_score_Controller::get_my_score",
-      },
+      }
+    },
+    initComplete:function(settings, json){
+      $("#totalScore").text(json.score);
     },
     aoColumns: [
       // { mData: "id" },

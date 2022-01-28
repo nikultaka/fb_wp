@@ -45,6 +45,19 @@ class my_score_Controller
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid";
 
+        //echo $result_sql; die;
+        $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
+        $toalScore = 0;
+        foreach ($totalScoreResult as $row) {
+            $temp['yourscore'] = $row->scoretype == 'added' ?
+                "+ " . $row->scoremultiplier * $row->teamscore :
+                "- " . $row->scoremultiplier * $row->teamscore; 
+            if($row->scoretype == 'added') {
+                $toalScore+=$row->scoremultiplier * $row->teamscore;
+            } else {
+                $toalScore-=$row->scoremultiplier * $row->teamscore;
+            }     
+        }
     
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
@@ -120,7 +133,8 @@ class my_score_Controller
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-            "sql" => $result_sql
+            "sql" => $result_sql,
+            "score" => $toalScore,
         );
 
         echo json_encode($json_data);

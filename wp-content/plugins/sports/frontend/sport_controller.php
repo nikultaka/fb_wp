@@ -22,13 +22,17 @@ class sport_list_Controller
 
         $sport_string  = '';
 
-        if (!empty($get_sql)) {          
+        if (count($get_sql)>0) {
             foreach ($get_sql as $sport) {
-            $baseleaguelink = home_url("/leagues/?id=". $sport->id);
-            $sport_string .= '<div class="card-body col-sm-4">
-              <h3 class="card-title"> <a class="btn btn-block btn-lg" href='.$baseleaguelink.' type="button">' . $sport->name . '</a></h3>
+                $baseleaguelink = home_url("/leagues/?id=" . $sport->id);
+                $sport_string .= '<div class="card-body col-sm-4">
+              <h3 class="card-title"> <a class="btn btn-block btn-lg" href=' . $baseleaguelink . ' type="button">' . $sport->name . '</a></h3>
               </div>';
             }
+        } else {
+            $sport_string .= '<div class="card-body col-sm-4">
+            <h1 class="card-title"> No Sports Found !</h1>
+            </div>';
         }
 
         if ($get_sql > 0) {
@@ -38,8 +42,6 @@ class sport_list_Controller
         echo json_encode($result);
         exit();
     }
-
-    
 }
 
 $sport_list_Controller = new sport_list_Controller();

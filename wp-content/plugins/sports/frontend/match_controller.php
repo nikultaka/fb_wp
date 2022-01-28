@@ -84,17 +84,18 @@ class match_list_Controller
         $matchId = $_POST['id'];
 
         $result['status'] = 0;
-        $sportstable = $wpdb->prefix . "sports";
+        $leaguetable = $wpdb->prefix . "league";
         $matchtable = $wpdb->prefix . "match";
 
-        $result_sql = $wpdb->get_row("SELECT " . $matchtable . ".*," . $sportstable . ".id as sportid
+        $result_sql = $wpdb->get_row("SELECT " . $matchtable . ".*," . $leaguetable . ".sports as sportid
         FROM " . $matchtable . " 
-        LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $matchtable . ".leagueid 
+        LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid 
         WHERE " . $matchtable . ".id = " . $matchId . " and MSTATUS = 'active'");
 
         $sportid = $result_sql->sportid;
         $leagueid =$result_sql->leagueid;
         $roundid =$result_sql->round;
+
         
         $jointeamtable = $wpdb->prefix . "jointeam";
         $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".matchid = $matchId ");

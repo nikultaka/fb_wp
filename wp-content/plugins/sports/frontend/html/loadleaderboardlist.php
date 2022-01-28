@@ -2,15 +2,42 @@
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
 <div class="container-fluid mt-5">
-<table class="table"  id="loadleaderboardlistdata-table"> 
-		<thead>
-			<!-- <th>ID</th> -->
+    <table class="table" id="loadleaderboardlistdata-table">
+        <thead>
+            <!-- <th>ID</th> -->
             <th>League Name</th>
-			<th>User Name</th>
-			<th>User Score</th>
-		</thead>
-</table>
-<div>
+            <th>User Name</th>
+            <th>User Points</th>
+        </thead>
+    </table> 
+</div>
+<button class="btn btn-sm" onclick="history.back()">Go Back</button>
+
+<div class="modal fade" id="matchscoredetailsmodal" tabindex="-1" role="dialog" aria-labelledby="matchscoredetailslabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="matchscoredetailslabel">Score Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table" id="loadmatchscoredetails-table">
+                    <thead>
+                        <th>Team Name</th>
+                        <th>Team Score</th>
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script type="text/javascript">
     var $ = jQuery;

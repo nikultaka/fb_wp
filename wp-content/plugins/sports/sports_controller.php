@@ -41,7 +41,7 @@ function league()
 
     $roundtable = $wpdb->prefix . "round";
     $leagueid = $_GET['id'];
-    $querym = "SELECT * FROM " . $roundtable . " WHERE leagueid=".$leagueid."  RSTATUS = 'active'";
+    $querym = "SELECT * FROM " . $roundtable . " WHERE leagueid=" . $leagueid . "  RSTATUS = 'active'";
     $roundsql = $wpdb->get_results($querym);
 
 
@@ -348,6 +348,12 @@ class league_controller
 
         $matchtable = $wpdb->prefix . "match";
         $wpdb->delete($matchtable, array('leagueid' => $leagueid));
+
+        $scoretable = $wpdb->prefix . "score";
+        $wpdb->delete($scoretable, array('leagueid' => $leagueid));
+
+        $jointeamtable = $wpdb->prefix . "jointeam";
+        $wpdb->delete($jointeamtable, array('leagueid' => $leagueid));
         return true;
     }
 
@@ -700,7 +706,7 @@ class league_controller
         $roundtable = $wpdb->prefix . "round";
 
         // $edit_sql = $wpdb->get_results("SELECT * FROM $matchtable WHERE id = '$editId' ");
-        $edit_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname FROM " . $matchtable." LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable.".id = '$editId' ");
+        $edit_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname FROM " . $matchtable . " LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable . ".id = '$editId' ");
 
         if ($edit_sql > 0) {
             $result['status'] = 1;
@@ -711,7 +717,7 @@ class league_controller
     }
 
 
-    
+
 
     /***********  match  ****************************************************************************************************/
 
@@ -767,7 +773,11 @@ class league_controller
         $matchtable = $wpdb->prefix . "match";
         $matchscoretable = $wpdb->prefix . "score";
         //  $result_sql = $wpdb->get_results("SELECT * FROM " . $matchscoretable . " WHERE matchid = ".$matchid."");
-        $result_sql = $wpdb->get_results("SELECT " . $matchscoretable . ".*," . $matchtable . ".team1 as teamname1 ," . $matchtable . ".team2 as teamname2 FROM " . $matchscoretable . " LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $matchscoretable . ".matchid WHERE matchid = " . $matchid . "");
+        $result_sql = $wpdb->get_results("SELECT " . $matchscoretable . ".*," . $matchtable . ".team1 as teamname1 ," . $matchtable . ".team2 as teamname2 
+        FROM " . $matchtable . " 
+        LEFT JOIN " . $matchscoretable . " on " . $matchtable . ".id = " . $matchscoretable . ".matchid 
+        WHERE " . $matchtable . ".id = " . $matchid . "");
+
         $result['status'] = 1;
         $result['recoed'] = $result_sql[0];
         echo json_encode($result);
@@ -798,33 +808,60 @@ class league_controller
     {
         global $wpdb;
         $requestData = $_POST;
-        $data = array();
         $lbhdnleagueid = $_POST['lbhdnleagueid'];
+
+        $data = array();
         $leaderboard = $wpdb->prefix . "leaderboard";
         $leaguetable = $wpdb->prefix . "league";
         $usertable = $wpdb->prefix . "users";
+        $jointeamtable = $wpdb->prefix . "jointeam";
+        $matchscoretable = $wpdb->prefix . "score";
+        $roundtable = $wpdb->prefix . "round";
 
-        $result_sql = "SELECT " . $leaderboard . ".*," . $leaguetable . ".name as leaguename," . $usertable . ".display_name as username
-        FROM " . $leaderboard . " 
-        LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $leaderboard . ".leagueid
-        LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $leaderboard . ".userid 
-        WHERE " . $leaderboard . ".id = " . $lbhdnleagueid . " ";
+
+        $result_sql = "SELECT " . $jointeamtable . ".*," . $leaguetable . ".name as leaguename," . $usertable . ".display_name as username,
+        " . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
+        CASE
+        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score
+        ELSE ''
+        END AS teamscore
+        FROM " . $jointeamtable . " 
+        LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $jointeamtable . ".leagueid
+        LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $jointeamtable . ".userid 
+        LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
+        LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
+        WHERE " . $jointeamtable . ".leagueid = " . $lbhdnleagueid . " ";
+
+        $totalScorebyleague = $wpdb->get_results($result_sql, OBJECT);
+        $totalScore = 0;
+        foreach ($totalScorebyleague as $row) {
+            $temp['yourscore'] = $row->scoretype == 'added' ?
+                "+ " . $row->scoremultiplier * $row->teamscore :
+                "- " . $row->scoremultiplier * $row->teamscore;
+            if ($row->scoretype == 'added') {
+                $totalScore += $row->scoremultiplier * $row->teamscore;
+            } else {
+                $totalScore -= $row->scoremultiplier * $row->teamscore;
+            }
+        }
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
-            $result_sql .= "AND (username LIKE '%" . $search . "%')
+            $result_sql .= "AND (id LIKE '%" . $search . "%')
                             OR (score LIKE '%" . $search . "%')";
         }
         $columns = array(
-            0 => 'username',
-            1 => 'score',
+            0 => 'leaguename',
+            1 => 'username',
+            2 => 'score',
         );
-
+        $result_sql .= " GROUP BY userid ";
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
             $order_by = $columns[$requestData['order'][0]['column']];
             $result_sql .= " ORDER BY " . $order_by;
         } else {
-            $result_sql .= "ORDER BY a.id DESC";
+            $result_sql .= "ORDER BY id DESC";
         }
         if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
             $result_sql .= " " . $requestData['order'][0]['dir'];
@@ -844,12 +881,14 @@ class league_controller
             $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
         }
         $list_data = $wpdb->get_results($result_sql, "OBJECT");
+ 
         $arr_data = array();
         $arr_data = $result;
 
         foreach ($list_data as $row) {
+            $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
-            $temp['score'] = $row->score;
+            $temp['score'] = $totalScore;
             $data[] = $temp;
             $id = "";
         }
@@ -865,7 +904,6 @@ class league_controller
         echo json_encode($json_data);
         exit(0);
     }
-
 
 
     /***********  leaderboard  ****************************************************************************************************/

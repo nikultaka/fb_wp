@@ -456,41 +456,6 @@ function editmatch_record(id) {
 end of match
 start of score
  **************************/
-
-$("#save_Btnmatchscore").click(function () {
-  console.log($("#matchscoreformdata").serialize());
-
-  $("#matchscoreformdata").validate({
-    rules: {
-      team1score: "required",
-      team2score: "required",
-    },
-    messages: {
-      team1score: "Team 1 Score is Required",
-      team2score: "Team 2 Score is Required",
-    },
-    submitHandler: function () {
-      $.ajax({
-        url: ajaxurl,
-        type: "POST",
-        data: $("#matchscoreformdata").serialize(),
-
-        success: function (responce) {
-          var data = JSON.parse(responce);
-          if (data.status == 1) {
-            Swal.fire({
-              icon: "success",
-              title: data.msg,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
-        },
-      });
-    },
-  });
-});
-
 function loadmatchscoretable(matchid) {
   $("#hdnmatchid").val(matchid);
   $.ajax({
@@ -516,6 +481,43 @@ function loadmatchscoretable(matchid) {
     },
   });
 }
+
+$("#save_Btnmatchscore").click(function () {
+  $("#matchscoreformdata").validate({
+    rules: {
+      team1score: "required",
+      team2score: "required",
+    },
+    messages: {
+      team1score: "Team 1 Score is Required",
+      team2score: "Team 2 Score is Required",
+    },
+    submitHandler: function () {
+      $.ajax({
+        url: ajaxurl,
+        type: "POST",
+        data: $("#matchscoreformdata").serialize(),
+
+        success: function (responce) {
+          var data = JSON.parse(responce);
+          if (data.status == 1) {
+            Swal.fire({
+              icon: "success",
+              title: data.msg,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            $("#matchscoremodal").modal("hide");
+            $("#matchmodal").modal("show");
+
+          }
+        },
+      });
+    },
+  });
+});
+
+
 
 function deletematchscore_record(id) {
   Swal.fire({
@@ -575,13 +577,14 @@ function loadleaderboardtable() {
       },
     },
     aoColumns: [
+      { mData: "leaguename" },
       { mData: "username" },
       { mData: "score" },
     ],
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [1],
+        targets: [2],
         orderable: false,
       },
     ],
@@ -830,7 +833,7 @@ function load_leader_board_list(id) {
       // { mData: "id" },
       { mData: "leaguename" },
       { mData: "username" },
-      { mData: "userscore" },
+      { mData: "userspoints" },
     ],
     order: [[0, "asc"]],
     columnDefs: [
@@ -844,4 +847,42 @@ function load_leader_board_list(id) {
 
 /*************************** 
 end of Load Leaderboard List
+start of Match Score Details
+ **************************/
+
+function load_match_score_details_list(id) {
+  $("#matchscoredetailsmodal").modal("show");
+  $("#loadmatchscoredetails-table").dataTable({
+    paging: true,
+    pageLength: 10,
+    bProcessing: true,
+    serverSide: true,
+    bDestroy: true,
+    ajax: {
+   
+      type: "POST",
+      url: ajaxurl,
+      datatype: "json",
+      data: {
+        id:id,
+        action: "leader_board_Controller::load_match_score_details",
+      },
+    },
+    aoColumns: [
+      // { mData: "id" },
+      { mData: "teamname" },
+      { mData: "teamscore" },
+    ],
+    order: [[0, "asc"]],
+    columnDefs: [
+      {
+        targets: [1],
+        orderable: false,
+      },
+    ],
+  });
+}
+
+/*************************** 
+end of Load Match Score Details
  **************************/

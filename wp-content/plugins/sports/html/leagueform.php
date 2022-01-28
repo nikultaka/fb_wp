@@ -331,7 +331,7 @@
                 <div class="container-fluid mt-3">
                         <table class="table" style="width: 100%; color:#343a40;" id="leaderboarddata-table">
                             <thead>
-                                <!-- <th>ID</th> -->
+                                <th>League Name</th>
                                 <th>User Name</th>
                                 <th>Points</th>
                             </thead>

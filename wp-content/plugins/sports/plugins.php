@@ -85,10 +85,10 @@
         $score_table_name = $wpdb->prefix . 'score';
         $charset_collate = $wpdb->get_charset_collate();
         $sqlScore = "CREATE TABLE `$score_table_name` (
-        `id` int(11) NOT NULL auto_increment,
+        `id` int(11) NOT NULL auto_increment, 
         `matchid` int(11) NOT NULL,
         `team1score` VARCHAR(50) NOT NULL,
-        `team2score` VARCHAR(50) NOT NULL,         
+        `team2score` VARCHAR(50) NOT NULL,              
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;";   
         

@@ -108,7 +108,12 @@ class my_score_Controller
         }
         // $a=array($temp['yourscore']);
         // array_push($a);         
+        // const array = []
+        // let sum = 0;
 
+        // for (let i = 0; i < array.length; i++) {
+        //     sum += array[i];
+        // }
 
         $json_data = array(
             "draw" => intval($requestData['draw']),

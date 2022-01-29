@@ -2,6 +2,8 @@
 class my_score_Controller
 {
 
+    
+    
     function my_score()
     {
         ob_start();
@@ -9,7 +11,7 @@ class my_score_Controller
         include(dirname(__FILE__) . "/html/myscore.php");
         $s = ob_get_contents();
         ob_end_clean();
-        print $s;
+        print $s;       
     }
 
     public function get_my_score()

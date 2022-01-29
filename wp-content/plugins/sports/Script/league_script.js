@@ -666,13 +666,16 @@ function match_list(id) {
 end of Match List
 start of Join Team
  **************************/
+
+ 
+
+
 function join_team(tid, id) {
   var matchDate =  $("#match-"+id).attr('data-date');
 
   var dt = new Date();
   var currenttime = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();  
   var currentDate =  $.datepicker.formatDate('yy-mm-dd', new Date());
-
   var current = currentDate +' '+ currenttime
 
   if (matchDate > current) {
@@ -709,7 +712,7 @@ function join_team(tid, id) {
   Swal.fire({
     title: "You Can Not Join This Team !",
     text: "Date Is Over To Join Or Change Team.",
-    icon: "warning",
+    icon: "error",  
     showCancelButton: false,
     confirmButtonColor: "#d33",
     cancelButtonColor: "#d33",
@@ -760,6 +763,7 @@ function my_score_list() {
     ],
   });
 }
+
 
 /*************************** 
 end of My Score

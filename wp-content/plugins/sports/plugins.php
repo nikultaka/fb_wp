@@ -126,6 +126,7 @@
             $wpdb->get_var("SHOW TABLES LIKE '$leaderboard_table_name'") != $leaderboard_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$jointeam_table_name'") != $jointeam_table_name) {
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+            require_once(ABSPATH . 'wp-includes/pluggable.php');
             dbDelta($sql);
             dbDelta($sqlLeague);
             dbDelta($sqlRound);
@@ -144,5 +145,8 @@
     include_once(dirname(__FILE__) . "/frontend/match_controller.php");
     include_once(dirname(__FILE__) . "/frontend/myscore_controller.php");
     include_once(dirname(__FILE__) . "/frontend/leaderboard_controller.php");
+
+    
+
 
  

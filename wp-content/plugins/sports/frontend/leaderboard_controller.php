@@ -172,7 +172,7 @@ class leader_board_Controller
         foreach ($list_data as $row) {
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
-            $temp['userspoints'] = $totalScore. " <button  class='btn btn-sm' id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . ")'>Details</button>";
+            $temp['userspoints'] = $totalScore. " <button  class='btn btn-sm' data-toggle='modal'  id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . ")'>Details</button>";
 
             $data[] = $temp;
             $id = "";

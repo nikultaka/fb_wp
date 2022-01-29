@@ -366,15 +366,20 @@ function loadmatchtable() {
         hmhdnleagueid: hmhdnleagueid,
       },
     },
-    initComplete: function(settings,msg) {
+    initComplete: function (settings, msg) {
       console.log(msg);
-        var roundString = '<option value="">----Round----</option>';
-        if(msg.round.length > 0) {
-            for(var n=0; n<msg.round.length; n++) {
-                roundString+='<option value="'+msg.round[n].id+'">'+msg.round[n].rname+'</option>';
-            }
+      var roundString = '<option value="">----Round----</option>';
+      if (msg.round.length > 0) {
+        for (var n = 0; n < msg.round.length; n++) {
+          roundString +=
+            '<option value="' +
+            msg.round[n].id +
+            '">' +
+            msg.round[n].rname +
+            "</option>";
         }
-        $("#round").html(roundString);
+      }
+      $("#round").html(roundString);
     },
     aoColumns: [
       // { mData: "id" },
@@ -509,15 +514,12 @@ $("#save_Btnmatchscore").click(function () {
             });
             $("#matchscoremodal").modal("hide");
             $("#matchmodal").modal("show");
-
           }
         },
       });
     },
   });
 });
-
-
 
 function deletematchscore_record(id) {
   Swal.fire({
@@ -594,29 +596,24 @@ function loadleaderboardtable() {
 end of leaderboard
  **************************/
 
-
-
-
-
-
 /*************************** 
 start of sport List
  **************************/
 
 function get_all_sport_list() {
   $.ajax({
-      type: "POST",
-      url: ajaxurl,
-      datatype : 'json',
-      data:{
-          action : "sport_list_Controller::get_sport_list"
-      },
-      success: function (responce) {
-        var data = JSON.parse(responce);
-        if (data.status == 1) {
-          $("#sportlistdata").append(data.sport_string);
-      }            
+    type: "POST",
+    url: ajaxurl,
+    datatype: "json",
+    data: {
+      action: "sport_list_Controller::get_sport_list",
+    },
+    success: function (responce) {
+      var data = JSON.parse(responce);
+      if (data.status == 1) {
+        $("#sportlistdata").append(data.sport_string);
       }
+    },
   });
 }
 
@@ -625,21 +622,21 @@ end of sport List
 start of League List
  **************************/
 
-  function league_list(id) {
-    $.ajax({
-      type: "POST",
-      url: ajaxurl,
-      datatype : 'json',
-      data:{
-        id: id,
-        action: "league_list_Controller::get_league_list",
-      },
-      success: function (responce) {
-        var data = JSON.parse(responce);
-        if (data.status == 1) {
-          $("#leaguelistdata").append(data.league_string);
-      }            
+function league_list(id) {
+  $.ajax({
+    type: "POST",
+    url: ajaxurl,
+    datatype: "json",
+    data: {
+      id: id,
+      action: "league_list_Controller::get_league_list",
+    },
+    success: function (responce) {
+      var data = JSON.parse(responce);
+      if (data.status == 1) {
+        $("#leaguelistdata").append(data.league_string);
       }
+    },
   });
 }
 
@@ -651,8 +648,8 @@ function match_list(id) {
   $.ajax({
     type: "POST",
     url: ajaxurl,
-    datatype : 'json',
-    data:{
+    datatype: "json",
+    data: {
       id: id,
       action: "match_list_Controller::get_match_list",
     },
@@ -660,72 +657,67 @@ function match_list(id) {
       var data = JSON.parse(responce);
       if (data.status == 1) {
         $("#matchlistdata").append(data.match_string);
-    }            
-    }
-});
+      }
+    },
+  });
 }
-
 
 /*************************** 
 end of Match List
 start of Join Team
  **************************/
-function join_team(tid,id) {
-Swal.fire({
-  title: "Are You Sure to Join This Team ?",
-  text: "",
-  icon: "info",
-  showCancelButton: true,
-  confirmButtonColor: "#24890d",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, Join it!",
-}).then((result) => {
-  if (result.isConfirmed) {
-    $.ajax({
-      type: "POST",
-      url: ajaxurl,
-      datatype : 'json',
-      data:{
-        tid,tid,
-        id: id,
-        action: "match_list_Controller::add_team_join",
-      },
-      success: function (responce) {
-        var data = JSON.parse(responce);
-        if (data.status == 1) {
-          Swal.fire("You Joined Team Successfully.");
-          $("#joinbutton").append("You Joined This Match");
-        }
-      },
-    });
-  }
-});
+function join_team(tid, id) {
+  var matchDate =  $("#match-"+id).attr('data-date');
+
+  var dt = new Date();
+  var currenttime = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();  
+  var currentDate =  $.datepicker.formatDate('yy-mm-dd', new Date());
+
+  var current = currentDate +' '+ currenttime
+
+  if (matchDate > current) {
+  Swal.fire({
+    title: "Are You Sure to Join This Team ?",
+    text: "",
+    icon: "info",
+    showCancelButton: true,
+    confirmButtonColor: "#24890d",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, Join it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        type: "POST",
+        url: ajaxurl,
+        datatype: "json",
+        data: {
+          tid: tid,
+          id: id,
+          action: "match_list_Controller::add_team_join",
+        },
+        success: function (responce) {
+          var data = JSON.parse(responce);
+          if (data.status == 1) {
+            Swal.fire("You Joined Team Successfully.");
+            $("#joinbutton").append("You Joined This Match");
+          }
+        },
+      });
+    }
+  });
+}else{
+  Swal.fire({
+    title: "You Can Not Join This Team !",
+    text: "Date Is Over To Join Or Change Team.",
+    icon: "warning",
+    showCancelButton: false,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ok",
+  });
+
 }
-// function join_team(tid,id) {
-//   $.ajax({
-//     type: "POST",
-//     url: ajaxurl,
-//     datatype : 'json',
-//     data:{
-//       tid,tid,
-//       id: id,
-//       action: "match_list_Controller::add_team_join",
-//     },
-//     success: function (responce) {
-//       var data = JSON.parse(responce);
-//       if (data.status == 1) {
-//         Swal.fire({
-//           icon: "success",
-//           title: data.msg,
-//           showConfirmButton: false,
-//           timer: 1500,
-//         });
-//       }          
-//     }
-// });
-// }
-
-
+}
 
 
 /*************************** 
@@ -741,15 +733,14 @@ function my_score_list() {
     serverSide: true,
     bDestroy: true,
     ajax: {
-   
       type: "POST",
       url: ajaxurl,
       datatype: "json",
       data: {
         action: "my_score_Controller::get_my_score",
-      }
+      },
     },
-    initComplete:function(settings, json){
+    initComplete: function (settings, json) {
       $("#totalScore").text(json.score);
     },
     aoColumns: [
@@ -770,7 +761,6 @@ function my_score_list() {
   });
 }
 
-
 /*************************** 
 end of My Score
 start of Leaderboard List
@@ -784,7 +774,6 @@ function leader_board_list() {
     serverSide: true,
     bDestroy: true,
     ajax: {
-   
       type: "POST",
       url: ajaxurl,
       datatype: "json",
@@ -820,12 +809,11 @@ function load_leader_board_list(id) {
     serverSide: true,
     bDestroy: true,
     ajax: {
-   
       type: "POST",
       url: ajaxurl,
       datatype: "json",
       data: {
-        id:id,
+        id: id,
         action: "leader_board_Controller::load_leader_board",
       },
     },
@@ -852,6 +840,7 @@ start of Match Score Details
 
 function load_match_score_details_list(id) {
   $("#matchscoredetailsmodal").modal("show");
+
   $("#loadmatchscoredetails-table").dataTable({
     paging: true,
     pageLength: 10,
@@ -859,12 +848,11 @@ function load_match_score_details_list(id) {
     serverSide: true,
     bDestroy: true,
     ajax: {
-   
       type: "POST",
       url: ajaxurl,
       datatype: "json",
       data: {
-        id:id,
+        id: id,
         action: "leader_board_Controller::load_match_score_details",
       },
     },

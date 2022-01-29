@@ -29,11 +29,13 @@ class match_list_Controller
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
         WHERE " . $matchtable . ".leagueid = " . $matchId . " and MSTATUS = 'active'");
 
-
         $match_string  = '';
 
-        if (count($result_sql)>0) {
+        if (count($result_sql) > 0) {
+
+
             foreach ($result_sql as $match) {
+                // if ($match->enddate > date("Y-m-d H:i:s")) {
                 $match_string .= '<div class="elementor-column elementor-col-50" data-id="3867c19" data-element_type="column">
                                       <div class="elementor-widget-wrap elementor-element-populated">
                                           <div class="elementor-element">
@@ -44,13 +46,15 @@ class match_list_Controller
                                                               <span class="kode-subtitle col-sm-4 ">League<h3>' . $match->leaguename . '</h3></span>
                                                               <span class="kode-subtitle col-sm-4">Round<h3>' . $match->roundname . '</h3><br></span>     
                                                           <ul>
-                                                              <li><span >Team 1<h1>' . $match->team1 . '</h1></span>
-                                                              <button  class="btn  btn-lg" onclick="join_team(' . $match->t1id . ','.$match->id.')">JOIN</button>
-                                                              </li>
+                                                              <li><span >Team 1<h1>' . $match->team1 . '</h1></span>';
 
+                // if ($match->enddate > date("Y-m-d H:i:s")) {
+                $match_string .= '<button  class="btn btn-lg" data-date="'.$match->enddate.'" id="match-'.$match->id.'"  btn-lg" onclick="join_team(' . $match->t2id . ',' . $match->id .')">JOIN</button>
+
+                                                              </li>
                                                               <li><span ><h2>Vs</h2></span></li>
                                                               <li><span >Team 2<h1>' . $match->team2 . '</h1></span>
-                                                              <button  class="btn  btn-lg" onclick="join_team(' . $match->t2id . ','.$match->id.')">JOIN</button>
+                                                              <button  class="btn  btn-lg" onclick="join_team(' . $match->t2id . ',' . $match->id . ')">JOIN</button>
                                                               </li>
                                                           </ul>
                                                        
@@ -60,9 +64,14 @@ class match_list_Controller
                                           </div>
                                       </div>
                                   </div>';
+                // } else {
+                //     $match_string .= '<div class="card-body col-sm-4">
+                //     <h1 class="card-title"> You Can Not Join This Event !</h1>
+                //     </div>';
+                // }
             }
-        }else{
-            $match_string .='<div class="card-body col-sm-4">
+        } else {
+            $match_string .= '<div class="card-body col-sm-4">
             <h1 class="card-title"> No Matches Found !</h1>
             </div>';
         }
@@ -77,9 +86,9 @@ class match_list_Controller
 
     function add_team_join()
     {
- 
+
         global $wpdb;
-        $userid = get_current_user_id();      
+        $userid = get_current_user_id();
         $teamId = $_POST['tid'];
         $matchId = $_POST['id'];
 
@@ -93,14 +102,14 @@ class match_list_Controller
         WHERE " . $matchtable . ".id = " . $matchId . " and MSTATUS = 'active'");
 
         $sportid = $result_sql->sportid;
-        $leagueid =$result_sql->leagueid;
-        $roundid =$result_sql->round;
+        $leagueid = $result_sql->leagueid;
+        $roundid = $result_sql->round;
 
-        
+
         $jointeamtable = $wpdb->prefix . "jointeam";
         $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".matchid = $matchId ");
 
-        $updateId =$result_teamsql->id;
+        $updateId = $result_teamsql->id;
 
         $data['status'] = 0;
         $data['msg'] = "Error Data Not insert";
@@ -119,7 +128,6 @@ class match_list_Controller
 
             $data['status'] = 1;
             $data['msg'] = "You Joined Team Successfully";
-           
         } else {
             $wpdb->update(
                 $jointeamtable,
@@ -136,12 +144,10 @@ class match_list_Controller
 
             $data['status'] = 1;
             $data['msg'] = "You Joined Team Successfully2";
-        
         }
 
         echo json_encode($data);
         exit;
-
     }
 }
 

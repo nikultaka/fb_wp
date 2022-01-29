@@ -29,8 +29,8 @@ class league_list_Controller
         if (count($result_sql)>0) {
             foreach ($result_sql as $league) {            
                 $basematchlink = home_url("/matches/?id=" . $league->id);
-                $league_string .= '<div class="card-body col-sm-4">
-              <h3 class="card-title"> <a class="btn btn-block btn-lg" href=' . $basematchlink . ' type="button">' . $league->name . '</a></h3>
+                $league_string .= '<div class="card-body col-sm-6">
+              <a class="sportbut" style="min-width: 500px !important;" href=' . $basematchlink . ' >' . $league->name . '</a> </br></br></br>
               </div>';
             }
          

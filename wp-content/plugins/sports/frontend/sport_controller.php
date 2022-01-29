@@ -26,7 +26,7 @@ class sport_list_Controller
             foreach ($get_sql as $sport) {
                 $baseleaguelink = home_url("/leagues/?id=" . $sport->id);
                 $sport_string .= '<div class="card-body col-sm-4">
-              <h3 class="card-title"> <a class="btn btn-block btn-lg" href=' . $baseleaguelink . ' type="button">' . $sport->name . '</a></h3>
+              <a class="sportbut" href=' . $baseleaguelink . ' >' . $sport->name . '</a> </br></br></br>
               </div>';
             }
         } else {

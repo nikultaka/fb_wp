@@ -33,48 +33,42 @@ class match_list_Controller
 
         if (count($result_sql) > 0) {
 
-
             foreach ($result_sql as $match) {
- 
-                    $match_string .= '<div class="elementor-column elementor-col-50" data-id="3867c19" data-element_type="column">
-                                      <div class="elementor-widget-wrap elementor-element-populated">
-                                      <div class="elementor-element">
-                                      <div class="elementor-widget-container">
-                                      <div class="kode-inner-fixer">
-                                      <div class="kode-team-match"> 
-                                      <span class="kode-subtitle col-sm-4">sport<h3>' . $match->sportname . '</h3></span>
-                                      <span class="kode-subtitle col-sm-4 ">League<h3>' . $match->leaguename . '</h3></span>
-                                      <span class="kode-subtitle col-sm-4">Round<h3>' . $match->roundname . '</h3><br></span>     
-                                      <ul>
-                                      <li><span >Team 1<h1>' . $match->team1 . '</h1></span>';
 
+                $match_string .= '<div class="col-md-6 col-sm-6 col-xsx-6">
+                                        <div class="serviceBox">
+                                          <div class="service-icon">
+                                            <span><i class="fa fa-trophy"></i></span>
+                                          </div>
+                                        <div class="row service-content">
+                                          </br><span class="kode-subtitle col-sm-4"><span class="text2">sport</span><h3 class="text">' . $match->sportname . '</h3></span>
+                                          <span class="kode-subtitle col-sm-4 "><span class="text2">League</span><h3 class="text">' . $match->leaguename . '</h3></span>
+                                          <span class="kode-subtitle col-sm-4"><span class="text2">Round</span><h3 class="text">' . $match->roundname . '</h3><br></span>
+                                          <div class="col-md-6">
+                                          <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1 . '</b></h3></span>';
                 if ( is_user_logged_in() ) {
-                    $match_string .= '<button  class="btn btn-lg" data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t1id . ',' . $match->id .')">JOIN</button>';
+                    $match_string .= '<a class="read-more" data-toggle="tooltip" title="Read More" data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t1id . ',' . $match->id .')">JOIN</a>';
                 }else{
                     $singinlink = home_url('my-account/');
-                    $match_string .= '<a  href="'.$singinlink.'" style="background-color: #24890d !important; color: white !important;" class="btn btn-lg bg-dark text-white ">JOIN</a>';
-                }
-                    $match_string .= '</li>
-                                  <li><span ><h2>Vs</h2></span></li>
-                                  <li><span >Team 2<h1>' . $match->team2 . '</h1></span>';
+                    $match_string .= '<a  href="'.$singinlink.'" class="read-more" title="Read More" data-toggle="tooltip">JOIN</a>';
+                }  
+                $match_string .= '</div>
+                                  <div class="col-md-6">
+                                  <span><span class="text2">Team 2</span><h3 class="title"><b>' . $match->team2 . '</b></h3></span>';
                 if ( is_user_logged_in() ) {
-                    $match_string .= '<button  class="btn btn-lg" data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t2id . ',' . $match->id .')">JOIN</button>';
+                    $match_string .= '<a class="read-more" data-toggle="tooltip" title="Read More" data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t2id . ',' . $match->id .')">JOIN</a>';
                 }else{
                     $singinlink = home_url('my-account/');
-                    $match_string .= '<a  href="'.$singinlink.'" style="background-color: #24890d !important; color: white !important;" class="btn btn-lg bg-dark text-white ">JOIN</a>';
+                    $match_string .= '<a  href="'.$singinlink.'" class="read-more" title="Read More" data-toggle="tooltip">JOIN</a>';
                 }
-                    $match_string .= '</li>
-                                      </ul>                                                       
-                                      </div>
-                                      </div>
-                                      </div>
-                                      </div>
-                                      </div>
+                $match_string .= '</div>
+                      
+                                          </div>
+                                        </div>
                                       </div>';
-
             }
         } else {
-             $match_string .= '<div class="card-body col-sm-4">
+            $match_string .= '<div class="card-body col-sm-4">
              <h1 class="card-title"> No Matches Found !</h1>
              </div>';
         }
@@ -110,7 +104,7 @@ class match_list_Controller
 
 
         $jointeamtable = $wpdb->prefix . "jointeam";
-        $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".matchid = $matchId ");
+        $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".matchid = $matchId and " . $jointeamtable . ".userid = $userid ");
 
         $updateId = $result_teamsql->id;
 

@@ -20,12 +20,15 @@ class my_score_Controller
         $requestData = $_POST;
         $data = array();
 
+        $userid = get_current_user_id();
         $sportstable = $wpdb->prefix . "sports";
         $leaguetable = $wpdb->prefix . "league";
         $roundtable = $wpdb->prefix . "round";
         $matchtable = $wpdb->prefix . "match";
         $matchscoretable = $wpdb->prefix . "score";
         $jointeamtable = $wpdb->prefix . "jointeam";
+
+        
 
         $result_sql = "SELECT " . $jointeamtable . ".*," . $sportstable . ".name as sportname," . $leaguetable . ".name as leaguename,
         " . $roundtable . ".rname as roundname," . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
@@ -45,9 +48,9 @@ class my_score_Controller
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $jointeamtable . ".leagueid 
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
-        LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid";
+        LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid WHERE " . $jointeamtable . ".userid = " . $userid . "";
 
-        //echo $result_sql; die;
+
         $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
         $toalScore = 0;
         foreach ($totalScoreResult as $row) {

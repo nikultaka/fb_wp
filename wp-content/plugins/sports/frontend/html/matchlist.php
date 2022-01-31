@@ -11,7 +11,7 @@
 		width: 78px;
 		height: 78px;
 		border-radius: 3px;
-		background: #fff;
+		background: #58c333;
 		margin: 0 auto;
 		position: absolute;
 		top: -34px;
@@ -19,6 +19,7 @@
 		right: 0;
 		z-index: 1;
 		transition: all 0.3s ease-out 0s;
+		
 	}
 
 	.serviceBox:hover .service-icon {
@@ -31,7 +32,7 @@
 		height: 60px;
 		line-height: 60px;
 		border-radius: 3px;
-		background: #727cb6;
+		background: #24890d;
 		font-size: 30px;
 		color: #fff;
 		margin: auto;
@@ -41,6 +42,7 @@
 		bottom: 0;
 		right: 0;
 		transition: all 0.3s ease-out 0s;
+		border: 3px solid #ffcc00;
 	}
 
 	.serviceBox .service-icon span i {
@@ -52,11 +54,12 @@
 	}
 
 	.serviceBox .service-content {
-		background: #fff;
-		border: 1px solid #e7e7e7;
-		border-radius: 3px;
+		background: #24890d;
+		border: 1px solid #fff;
+		border-radius: 25px;
 		padding: 55px 15px;
 		position: relative;
+		margin: 5px auto;
 	}
 
 	.serviceBox .service-content:before {
@@ -80,53 +83,73 @@
 	}
 
 	.serviceBox .title {
-		font-size: 17px;
+		font-size: 20px;
 		font-weight: 500;
-		color: #324545;
+		color: #fff;
 		text-transform: uppercase;
 		margin: 0 0 25px 0;
 		position: relative;
 		transition: all 0.3s ease-out 0s;
 	}
-
 	.serviceBox:hover .title {
-		color: #727cb6;
+		color: #fff;
 	}
 
-	.serviceBox .description {
-		font-size: 14px;
+	.serviceBox .text {
+		font-size: 20px;
 		font-weight: 500;
-		line-height: 24px;
-		margin-bottom: 0;
+		color: #fff;
+		text-transform: uppercase;
+		margin: 0 0 25px 0;
+		position: relative;
+		transition: all 0.3s ease-out 0s;
+	}
+	.serviceBox:hover .text {
+		color: #fff;
+	}
+
+	.serviceBox .text2 {
+		font-size: 18px;
+		font-weight: 500;
+		color: #ffcc00;
+		text-transform: uppercase;
+		margin: 0 0 25px 0;
+		position: relative;
+		transition: all 0.3s ease-out 0s;
+	}
+	.serviceBox:hover .text2 {
+		color: #ffcc00;
 	}
 
 	.serviceBox .read-more {
 		display: block;
 		width: 80px;
-		height: 60px;
+		height: 45px;
 		line-height: 38px;
-		border-radius: 50%;
-		background: #fff;
-		border: 2px solid #e7e7e7;
-		font-size: 14px;
-		color: #c4c2c2;
+		border-radius: 15%;
+		background: #24890d;
+		border: 2px solid #fff;
+		font-size: 20px;
+		color: #fff;
 		margin: 0 auto;
 		position: absolute;
-		bottom: -17px;
+		bottom: -25px;
 		left: 0;
 		right: 0;
 		transition: all 0.3s ease-out 0s;
 	}
 
 	.serviceBox .read-more:hover {
-		border: 1px solid #727cb6;
-		color: #727cb6;
+		border: 3px solid #ffcc00;
+		background: #004700;
+		color: #ffcc00;
 		text-decoration: none;
 	}
-
+ 
 	.serviceBox:hover .read-more {
-		border: 2px solid #727cb6;
-		color: #727cb6;
+		border: 2px solid #ffcc00;
+
+		color: #ffcc00;
 	}
 </style>
 
@@ -134,33 +157,7 @@
 
 <div class="row d-grid gap-3">
 	<div id="matchlistdata">
-	</div>
-</div>
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-sm-6 col-xsx-6">
-			<div class="serviceBox">
-				<div class="service-icon">
-					<span><i class="fa fa-id-card-o"></i></span>
-				</div>
-				<div class="row service-content">
-					<span class="kode-subtitle col-sm-4">sport<h3>sportname</h3></span>
-					<span class="kode-subtitle col-sm-4 ">League<h3>leaguename</h3></span>
-					<span class="kode-subtitle col-sm-4">Round<h3>roundname</h3><br></span>
-					<div class="col-md-6">
-						<h3 class="title">Web Desinging</h3>
-						<a href="WebDesigning.html" class="read-more" data-toggle="tooltip" title="Read More">Join</a>
-					</div>
-					<div class="col-md-6">
-						<h3 class="title">Web Desinging</h3>
-						<a href="WebDesigning.html" class="read-more" data-toggle="tooltip" title="Read More">Join</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
+	</div></br></br>
 </div>
 
 <button class="btn btn-sm" onclick="history.back()">Go Back</button>

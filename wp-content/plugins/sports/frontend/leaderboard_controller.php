@@ -90,12 +90,12 @@ class leader_board_Controller
 
     function load_leader_board()
     {
-
         global $wpdb;
         $requestData = $_POST;
         $leagueId = $_POST['id'];
 
         $data = array();
+
         $leaderboard = $wpdb->prefix . "leaderboard";
         $leaguetable = $wpdb->prefix . "league";
         $usertable = $wpdb->prefix . "users";
@@ -103,6 +103,7 @@ class leader_board_Controller
         $matchscoretable = $wpdb->prefix . "score";
         $roundtable = $wpdb->prefix . "round";
 
+       
 
         $result_sql = "SELECT " . $jointeamtable . ".*," . $leaguetable . ".name as leaguename," . $usertable . ".display_name as username,
         " . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
@@ -116,19 +117,23 @@ class leader_board_Controller
         LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $jointeamtable . ".userid 
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
-        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " ";
+        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . "  ";
 
         $totalScorebyleague = $wpdb->get_results($result_sql, OBJECT);
         $totalScore = 0;
         foreach ($totalScorebyleague as $row) {
-            $temp['yourscore'] = $row->scoretype == 'added' ?
-                "+ " . $row->scoremultiplier * $row->teamscore :
-                "- " . $row->scoremultiplier * $row->teamscore;
-            if ($row->scoretype == 'added') {
-                $totalScore += $row->scoremultiplier * $row->teamscore;
-            } else {
-                $totalScore -= $row->scoremultiplier * $row->teamscore;
+            
+                $temp['yourscore'] = $row->scoretype == 'added' ?
+                    "+ " . $row->scoremultiplier * $row->teamscore :
+                    "- " . $row->scoremultiplier * $row->teamscore;
+                if ($row->userid) {
+                if ($row->scoretype == 'added') {
+                    $totalScore += $row->scoremultiplier * $row->teamscore;
+                } else {
+                    $totalScore -= $row->scoremultiplier * $row->teamscore;
+                }
             }
+            
         }
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
@@ -172,7 +177,7 @@ class leader_board_Controller
         foreach ($list_data as $row) {
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
-            $temp['userspoints'] = $totalScore. " <button  class='btn btn-sm' data-toggle='modal'  id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . ")'>Details</button>";
+            $temp['userspoints'] = $totalScore . " <button  class='btn btn-sm' data-toggle='modal'  id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . ")'>Details</button>";
 
             $data[] = $temp;
             $id = "";
@@ -190,10 +195,10 @@ class leader_board_Controller
         exit(0);
     }
 
-    
+
     function load_match_score_details()
     {
-        
+
         global $wpdb;
         $requestData = $_POST;
         $leagueId = $_POST['id'];
@@ -261,8 +266,8 @@ class leader_board_Controller
         foreach ($list_data as $row) {
             $temp['teamname'] = $row->teamname;
             $temp['teamscore'] = $row->scoretype == 'added' ?
-            "+ " . $row->scoremultiplier * $row->teamscore :
-            "- " . $row->scoremultiplier * $row->teamscore; 
+                "+ " . $row->scoremultiplier * $row->teamscore :
+                "- " . $row->scoremultiplier * $row->teamscore;
 
             $data[] = $temp;
             $id = "";

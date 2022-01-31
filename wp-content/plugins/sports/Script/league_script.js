@@ -386,7 +386,7 @@ function loadmatchtable() {
       { mData: "round" },
       { mData: "team1" },
       { mData: "team2" },
-      { mData: "enddate" },
+      //{ mData: "enddate" },
       { mData: "mstatus" },
       { mData: "action" },
     ],

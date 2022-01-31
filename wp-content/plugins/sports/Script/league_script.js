@@ -806,6 +806,7 @@ start of Load Leaderboard List
  **************************/
 
 function load_leader_board_list(id) {
+
   $("#loadleaderboardlistdata-table").dataTable({
     paging: true,
     pageLength: 10,
@@ -817,7 +818,7 @@ function load_leader_board_list(id) {
       url: ajaxurl,
       datatype: "json",
       data: {
-        id: id,
+        id, id,
         action: "leader_board_Controller::load_leader_board",
       },
     },
@@ -842,7 +843,7 @@ end of Load Leaderboard List
 start of Match Score Details
  **************************/
 
-function load_match_score_details_list(id) {
+function load_match_score_details_list(id ,uid) {
   $("#matchscoredetailsmodal").modal("show");
 
   $("#loadmatchscoredetails-table").dataTable({
@@ -857,6 +858,7 @@ function load_match_score_details_list(id) {
       datatype: "json",
       data: {
         id: id,
+        uid: uid,
         action: "leader_board_Controller::load_match_score_details",
       },
     },

@@ -119,22 +119,19 @@ class leader_board_Controller
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
         WHERE " . $jointeamtable . ".leagueid = " . $leagueId . "  ";
 
-        $totalScorebyleague = $wpdb->get_results($result_sql, OBJECT);
-        $totalScore = 0;
-        foreach ($totalScorebyleague as $row) {
-            
-                $temp['yourscore'] = $row->scoretype == 'added' ?
-                    "+ " . $row->scoremultiplier * $row->teamscore :
-                    "- " . $row->scoremultiplier * $row->teamscore;
-                if ($row->userid) {
-                if ($row->scoretype == 'added') {
-                    $totalScore += $row->scoremultiplier * $row->teamscore;
-                } else {
-                    $totalScore -= $row->scoremultiplier * $row->teamscore;
-                }
-            }
-            
-        }
+        $totalScorebyleague = $wpdb->get_results($result_sql, OBJECT);   
+        $useridarry = array();
+        foreach( $totalScorebyleague as $row) {               
+             $temp['yourscore'] = $row->scoretype == 'added' ?
+                "+ " . $row->scoremultiplier * $row->teamscore :
+                "- " . $row->scoremultiplier * $row->teamscore;
+           
+            if ($row->scoretype == 'added') {
+                $useridarry[$row->userid] += $row->scoremultiplier * $row->teamscore;
+            } else {
+                $useridarry[$row->userid] -= $row->scoremultiplier * $row->teamscore;
+            }              
+          }
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
@@ -177,7 +174,7 @@ class leader_board_Controller
         foreach ($list_data as $row) {
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
-            $temp['userspoints'] = $totalScore . " <button  class='btn btn-sm' data-toggle='modal'  id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . ")'>Details</button>";
+            $temp['userspoints'] = $useridarry[$row->userid] . " <button  class='btn btn-sm' data-toggle='modal'  id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . "," . $row->userid . ")'>Details</button>";
 
             $data[] = $temp;
             $id = "";
@@ -202,7 +199,8 @@ class leader_board_Controller
         global $wpdb;
         $requestData = $_POST;
         $leagueId = $_POST['id'];
-
+        $userid = $_POST['uid']; 
+        
         $data = array();
         $jointeamtable = $wpdb->prefix . "jointeam";
         $matchtable = $wpdb->prefix . "match";
@@ -225,7 +223,7 @@ class leader_board_Controller
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
-        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " ";
+        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " and " . $jointeamtable . ".userid = " . $userid . "  ";
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
@@ -236,6 +234,8 @@ class leader_board_Controller
             0 => 'teamname',
             1 => 'teamscore',
         );
+
+       
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
             $order_by = $columns[$requestData['order'][0]['column']];
             $result_sql .= " ORDER BY " . $order_by;

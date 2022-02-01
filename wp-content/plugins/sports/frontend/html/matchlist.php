@@ -123,7 +123,7 @@
 
 	.serviceBox .read-more {
 		display: block;
-		width: 80px;
+		width: 90px;
 		height: 45px;
 		line-height: 38px;
 		border-radius: 15%;
@@ -157,6 +157,7 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <button class="btn btn-sm" onclick="history.back()">Go Back</button></br>
+
 
 <div class="row d-grid gap-3">
 	<div id="matchlistdata">

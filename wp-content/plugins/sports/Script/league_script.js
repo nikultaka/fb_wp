@@ -671,10 +671,7 @@ start of Join Team
 
 
 function join_team(tid, id) {
-
-  // $("#match-"+id).click(function() {
-  //   $("#match-"+id).html("Joined");
-  // });
+ 
 
   var matchDate =  $("#match-"+id).attr('data-date');
 
@@ -684,6 +681,7 @@ function join_team(tid, id) {
   var current = currentDate +' '+ currenttime
 
   if (matchDate > current) {
+   
   Swal.fire({
     title: "Are You Sure Want To Join This Team !",
     text: "If you already selected team, Then this team will override it",
@@ -709,7 +707,8 @@ function join_team(tid, id) {
           if (data.status == 1) {
             Swal.fire("You Joined Team Successfully.");
             $("#joinbutton").append("You Joined This Match");
-            // $(".team_"+tid+"_"+id).html("Joined");
+            $(".match-"+id).html("JOIN");
+            $(".team_"+tid+"_"+id).html("JOINED");
           }
         },
       });

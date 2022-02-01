@@ -21,13 +21,16 @@ class match_list_Controller
         $leaguetable = $wpdb->prefix . "league";
         $matchtable = $wpdb->prefix . "match";
         $roundtable = $wpdb->prefix . "round";
+        $jointeamtable = $wpdb->prefix . "jointeam";
 
-        $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname ," . $leaguetable . ".name as leaguename ," . $sportstable . ".name as sportname
+        $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname ,
+        " . $leaguetable . ".name as leaguename ," . $sportstable . ".name as sportname," . $jointeamtable . ".teamid as teamid
         FROM " . $matchtable . " 
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round 
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid 
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
-        WHERE " . $matchtable . ".leagueid = " . $matchId . " and MSTATUS = 'active'");
+        LEFT JOIN " . $jointeamtable . " on " . $jointeamtable . ".matchid = " . $matchtable . ".id 
+        WHERE " . $matchtable . ".leagueid = " . $matchId . " and MSTATUS = 'active' ");
 
         $match_string  = '';
 
@@ -47,19 +50,24 @@ class match_list_Controller
                                           <div class="col-md-6">
                                           <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1 . '</b></h3></span>';
                 if ( is_user_logged_in() ) {
-                    $match_string .= '<a class="read-more pointer joined25 team_' . $match->t1id . '_' . $match->id .'" data-toggle="tooltip" title="Join Team" data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t1id . ',' . $match->id .')">JOIN</a>';
+                    $match_string .= '<a class="read-more pointer match-'.$match->id.' team_' . $match->t1id . '_' . $match->id .'"  data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t1id . ',' . $match->id .')">';
+                    if($match->teamid != '' && $match->teamid == 1) { $match_string .= 'JOINED';}else{ $match_string .= 'JOIN';}
+                    $match_string .= '</a>';
                 }else{
                     $singinlink = home_url('my-account/');
-                    $match_string .= '<a  href="'.$singinlink.'" class="read-more pointer joined25 team_' . $match->t1id . '_' . $match->id .'" title="Join Team" data-toggle="tooltip">JOIN</a>';
+                    $match_string .= '<a  href="'.$singinlink.'" class="read-more pointer" title="Join Team" data-toggle="tooltip">JOIN</a>';
                 }  
                 $match_string .= '</div>
                                   <div class="col-md-6">
                                   <span><span class="text2">Team 2</span><h3 class="title"><b>' . $match->team2 . '</b></h3></span>';
                 if ( is_user_logged_in() ) {
-                    $match_string .= '<a class="read-more pointer joined25 team_' . $match->t2id . '_' . $match->id .'" data-toggle="tooltip" title="Join Team" data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t2id . ',' . $match->id .')">JOIN</a>';
+                    $match_string .= '<a class="read-more pointer match-'.$match->id.' team_' . $match->t2id . '_' . $match->id .'"  data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t2id . ',' . $match->id .')">';
+                    if($match->teamid != '' && $match->teamid == 0
+                    ) { $match_string .= 'JOINED';}else{ $match_string .= 'JOIN';}
+                    $match_string .= '</a>';
                 }else{
                     $singinlink = home_url('my-account/');
-                    $match_string .= '<a  href="'.$singinlink.'" class="read-more pointer joined25 team_' . $match->t2id . '_' . $match->id .'" title="Join Team" data-toggle="tooltip">JOIN</a>';
+                    $match_string .= '<a  href="'.$singinlink.'" class="read-more pointer" title="Join Team" data-toggle="tooltip">JOIN</a>';
                 }
                 $match_string .= '</div>
                       
@@ -124,7 +132,7 @@ class match_list_Controller
             ));
 
             $data['status'] = 1;
-            $data['msg'] = "You Joined Team Successfully";
+            $data['msg'] = "You Joined Team Successfully2";
         } else {
             $wpdb->update(
                 $jointeamtable,

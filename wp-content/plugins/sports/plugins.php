@@ -142,6 +142,7 @@
     include_once(dirname(__FILE__) . "/sports_controller.php");
     include_once(dirname(__FILE__) . "/frontend/sport_controller.php");
     include_once(dirname(__FILE__) . "/frontend/league_controller.php");
+    include_once(dirname(__FILE__) . "/frontend/round_controller.php");
     include_once(dirname(__FILE__) . "/frontend/match_controller.php");
     include_once(dirname(__FILE__) . "/frontend/myscore_controller.php");
     include_once(dirname(__FILE__) . "/frontend/leaderboard_controller.php");

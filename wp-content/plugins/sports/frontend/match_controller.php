@@ -22,21 +22,22 @@ class match_list_Controller
         $matchtable = $wpdb->prefix . "match";
         $roundtable = $wpdb->prefix . "round";
         $jointeamtable = $wpdb->prefix . "jointeam";
+        $userid = get_current_user_id();
 
-        $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname ,
-        " . $leaguetable . ".name as leaguename ," . $sportstable . ".name as sportname," . $jointeamtable . ".teamid as teamid
+
+        $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname," . $leaguetable . ".name as leaguename ,
+        " . $sportstable . ".name as sportname,(SELECT teamid from " . $jointeamtable . " where matchid = " . $matchtable . ".id and userid = $userid ) as teamid
         FROM " . $matchtable . " 
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round 
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid 
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
-        LEFT JOIN " . $jointeamtable . " on " . $jointeamtable . ".matchid = " . $matchtable . ".id 
-        WHERE " . $matchtable . ".leagueid = " . $matchId . " and MSTATUS = 'active' ");
-
+        WHERE " . $matchtable . ".round = " . $matchId . "  and MSTATUS = 'active' ");
         $match_string  = '';
 
         if (count($result_sql) > 0) {
 
             foreach ($result_sql as $match) {
+                // if ($userid == $match->datauserid || $match->datauserid == '') {
 
                 $match_string .= '<div class="col-md-6 col-sm-6 col-xsx-6">
                                         <div class="serviceBox">
@@ -74,7 +75,8 @@ class match_list_Controller
                                           </div>
                                         </div>
                                       </div>';
-            }
+            // }
+        }
         } else {
             $match_string .= '<div class="card-body col-sm-4">
              <h1 class="card-title"> No Matches Found !</h1>

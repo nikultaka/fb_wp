@@ -23,14 +23,13 @@ class league_list_Controller
         $leaguetable = $wpdb->prefix . "league";
 
         $result_sql = $wpdb->get_results("SELECT * FROM $leaguetable WHERE sports = '$sportId' and STATUS = 'active'");
-
         $league_string  = '';
 
         if (count($result_sql)>0) {
             foreach ($result_sql as $league) {            
-                $basematchlink = home_url("/matches/?id=" . $league->id);
+                $baseroundlink = home_url("/round/?id=" . $league->id);
                 $league_string .= '<div class="card-body col-sm-6">
-              <a class="sportbut" style="min-width: 500px !important;" href=' . $basematchlink . ' >' . $league->name . '</a> </br></br></br>
+              <a class="sportbut" style="min-width: 500px !important;" href=' . $baseroundlink . ' >' . $league->name . '</a> </br></br></br>
               </div>';
             }
          

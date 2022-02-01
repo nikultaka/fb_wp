@@ -641,7 +641,30 @@ function league_list(id) {
 }
 
 /*************************** 
-end of Get League List
+end of sport List
+start of Round List
+ **************************/
+
+function round_list(id) {
+  $.ajax({
+    type: "POST",
+    url: ajaxurl,
+    datatype: "json",
+    data: {
+      id: id,
+      action: "round_list_Controller::get_round_list",
+    },
+    success: function (responce) {
+      var data = JSON.parse(responce);
+      if (data.status == 1) {
+        $("#roundlistdata").append(data.round_string);
+      }
+    },
+  });
+}
+
+/*************************** 
+end of Get Round List
 start of Match List
  **************************/
 function match_list(id) {

@@ -146,6 +146,7 @@
     include_once(dirname(__FILE__) . "/frontend/match_controller.php");
     include_once(dirname(__FILE__) . "/frontend/myscore_controller.php");
     include_once(dirname(__FILE__) . "/frontend/leaderboard_controller.php");
+    include_once(dirname(__FILE__) . "/frontend/livematch_controller.php");
 
     
 

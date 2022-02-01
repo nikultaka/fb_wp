@@ -39,9 +39,6 @@
   --s: #0005;
   transition: none;
 }
-
-
-
 .sportbut .body {
   display:grid;
   grid-auto-flow:column;
@@ -52,6 +49,7 @@
 }
 </style>
 <button class="btn btn-sm" onclick="history.back()">Go Back</button></br></br></br>
+
 <div class="row d-grid gap-3">
     <div id="leaguelistdata" >
     </div>

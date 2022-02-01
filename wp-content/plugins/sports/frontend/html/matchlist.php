@@ -19,7 +19,7 @@
 		right: 0;
 		z-index: 1;
 		transition: all 0.3s ease-out 0s;
-		
+
 	}
 
 	.serviceBox:hover .service-icon {
@@ -91,6 +91,7 @@
 		position: relative;
 		transition: all 0.3s ease-out 0s;
 	}
+
 	.serviceBox:hover .title {
 		color: #fff;
 	}
@@ -104,6 +105,7 @@
 		position: relative;
 		transition: all 0.3s ease-out 0s;
 	}
+
 	.serviceBox:hover .text {
 		color: #fff;
 	}
@@ -117,6 +119,7 @@
 		position: relative;
 		transition: all 0.3s ease-out 0s;
 	}
+
 	.serviceBox:hover .text2 {
 		color: #ffcc00;
 	}
@@ -145,14 +148,16 @@
 		color: #ffcc00;
 		text-decoration: none;
 	}
- 
+
 	.serviceBox:hover .read-more {
 		border: 2px solid #ffcc00;
 
 		color: #ffcc00;
 	}
-	.pointer {cursor: pointer;}
 
+	.pointer {
+		cursor: pointer;
+	}
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -163,8 +168,6 @@
 	<div id="matchlistdata">
 	</div></br></br>
 </div>
-
-
 
 <script type="text/javascript">
 	var $ = jQuery;

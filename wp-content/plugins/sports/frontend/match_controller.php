@@ -77,6 +77,7 @@ class match_list_Controller
                                       </div>';
             // }
         }
+        
         } else {
             $match_string .= '<div class="card-body col-sm-4">
              <h1 class="card-title"> No Matches Found !</h1>

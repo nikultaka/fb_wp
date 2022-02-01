@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<button class="btn btn-sm" onclick="history.back()">Go Back</button></br></br>
 
 <div class="container-fluid mt-5">
     <table class="table" id="loadleaderboardlistdata-table">
@@ -11,7 +12,7 @@
         </thead>
     </table> 
 </div>
-<button class="btn btn-sm" onclick="history.back()">Go Back</button>
+
 
 <div class="modal fade"  data-backdrop="false" id="matchscoredetailsmodal" tabindex="-1" role="dialog" aria-labelledby="matchscoredetailslabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

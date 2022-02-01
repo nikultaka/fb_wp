@@ -671,6 +671,11 @@ start of Join Team
 
 
 function join_team(tid, id) {
+
+  // $("#match-"+id).click(function() {
+  //   $("#match-"+id).html("Joined");
+  // });
+
   var matchDate =  $("#match-"+id).attr('data-date');
 
   var dt = new Date();
@@ -680,10 +685,11 @@ function join_team(tid, id) {
 
   if (matchDate > current) {
   Swal.fire({
-    title: "Are You Sure to Join This Team ?",
-    text: "",
+    title: "Are You Sure Want To Join This Team !",
+    text: "If you already selected team, Then this team will override it",
     icon: "info",
     showCancelButton: true,
+    width: '400px',
     confirmButtonColor: "#24890d",
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, Join it!",
@@ -703,6 +709,7 @@ function join_team(tid, id) {
           if (data.status == 1) {
             Swal.fire("You Joined Team Successfully.");
             $("#joinbutton").append("You Joined This Match");
+            // $(".team_"+tid+"_"+id).html("Joined");
           }
         },
       });
@@ -753,6 +760,7 @@ function my_score_list() {
       { mData: "round" },
       { mData: "team" },
       { mData: "yourscore" },
+      { mData: "action" },
     ],
     order: [[0, "asc"]],
     columnDefs: [
@@ -770,35 +778,35 @@ end of My Score
 start of Leaderboard List
  **************************/
 
-function leader_board_list() {
-  $("#leaderboardlistdata-table").dataTable({
-    paging: true,
-    pageLength: 10,
-    bProcessing: true,
-    serverSide: true,
-    bDestroy: true,
-    ajax: {
-      type: "POST",
-      url: ajaxurl,
-      datatype: "json",
-      data: {
-        action: "leader_board_Controller::get_leader_board",
-      },
-    },
-    aoColumns: [
-      // { mData: "id" },
-      { mData: "league" },
-      { mData: "action" },
-    ],
-    order: [[0, "asc"]],
-    columnDefs: [
-      {
-        targets: [1],
-        orderable: false,
-      },
-    ],
-  });
-}
+// function leader_board_list() {
+//   $("#leaderboardlistdata-table").dataTable({
+//     paging: true,
+//     pageLength: 10,
+//     bProcessing: true,
+//     serverSide: true,
+//     bDestroy: true,
+//     ajax: {
+//       type: "POST",
+//       url: ajaxurl,
+//       datatype: "json",
+//       data: {
+//         action: "leader_board_Controller::get_leader_board",
+//       },
+//     },
+//     aoColumns: [
+//       // { mData: "id" },
+//       { mData: "league" },
+//       { mData: "action" },
+//     ],
+//     order: [[0, "asc"]],
+//     columnDefs: [
+//       {
+//         targets: [1],
+//         orderable: false,
+//       },
+//     ],
+//   });
+// }
 
 /*************************** 
 end of Leaderboard List

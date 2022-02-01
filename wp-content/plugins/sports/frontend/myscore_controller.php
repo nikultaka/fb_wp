@@ -114,13 +114,16 @@ class my_score_Controller
         $arr_data = $result;
 
         foreach ($list_data as $row) {
+            $leaderboardlink = home_url("/load-leader-board/?id=$row->leagueid");
             $temp['sport'] = $row->sportname;
             $temp['league'] = $row->leaguename;
             $temp['round'] = $row->roundname;
             $temp['team'] = $row->teamname;
             $temp['yourscore'] = $row->scoretype == 'added' ?
                 "+ " . $row->scoremultiplier * $row->teamscore :
-                "- " . $row->scoremultiplier * $row->teamscore; 
+                "- " . $row->scoremultiplier * $row->teamscore;
+            $action = "<a class='btn btn-default ' style='background-color: #24890d; color: #fff;' href='$leaderboardlink' type='button'>Leader Board</a>";
+            $temp['action'] = $action; 
             $data[] = $temp;
             $id = "";
         }

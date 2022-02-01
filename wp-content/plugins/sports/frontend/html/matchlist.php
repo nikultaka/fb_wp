@@ -151,16 +151,19 @@
 
 		color: #ffcc00;
 	}
+	.pointer {cursor: pointer;}
+
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<button class="btn btn-sm" onclick="history.back()">Go Back</button></br>
 
 <div class="row d-grid gap-3">
 	<div id="matchlistdata">
 	</div></br></br>
 </div>
 
-<button class="btn btn-sm" onclick="history.back()">Go Back</button>
+
 
 <script type="text/javascript">
 	var $ = jQuery;

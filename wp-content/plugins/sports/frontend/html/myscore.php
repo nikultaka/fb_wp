@@ -12,6 +12,7 @@
 			<th>Round</th>
             <th>Team</th>
             <th>Points</th>
+            <th>Action</th>
 		</thead>
 </table>
 <div>

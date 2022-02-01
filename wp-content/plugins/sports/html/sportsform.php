@@ -16,9 +16,9 @@
 </style>
 
 	<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#registerModal">
+    </br></br><button type="button" class="btn btn-primary mt-5" style="float: left;" data-toggle="modal" data-target="#registerModal">
 Add Sports 
-</button>
+</button></br>
 
 
 <!-- Modal -->
@@ -70,7 +70,7 @@ Add Sports
 
 <!-- Modal -->
 
-<div class="container-fluid mt-5">
+    </br></br><div class="container-fluid mt-5">
 <table class="table" id="sportsdata-table"> 
 		<thead>
 			<!-- <th>ID</th> -->

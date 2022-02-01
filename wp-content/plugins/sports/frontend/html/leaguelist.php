@@ -51,12 +51,12 @@
   height:100vh;
 }
 </style>
-
+<button class="btn btn-sm" onclick="history.back()">Go Back</button></br></br></br>
 <div class="row d-grid gap-3">
     <div id="leaguelistdata" >
     </div>
 </div>
-<button class="btn btn-sm" onclick="history.back()">Go Back</button>
+
 
 <script type="text/javascript">
     var $ = jQuery;

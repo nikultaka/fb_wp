@@ -41,14 +41,6 @@
 
 
 
-body {
-  display:grid;
-  grid-auto-flow:column;
-  grid-gap:20px;
-  place-content:center;
-  margin:0;
-  height:100vh;
-}
 </style>
 
 <div class="row d-grid gap-3">

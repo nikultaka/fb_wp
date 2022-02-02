@@ -29,7 +29,7 @@
         global $round_table_name;
         global $score_table_name;
         global $leaderboard_table_name;
-
+        global $additionalpoints_table_name;
 
 
         $sports_table_name = $wpdb->prefix . 'sports';
@@ -116,6 +116,18 @@
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;"; 
 
+        $additionalpoints_table_name = $wpdb->prefix . 'additionalpoints';
+        $charset_collate = $wpdb->get_charset_collate();
+        $sqladditionalpoints = "CREATE TABLE `$additionalpoints_table_name` (
+        `id` int(11) NOT NULL auto_increment,
+        `leagueid` int(11) NOT NULL,
+        `jokerscoremultiplier` INT(50),
+        `jokerscoretype` VARCHAR(50),
+        `predictorscoremultiplier` INT(50),
+        `predictorscoretype` VARCHAR(50),         
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+        PRIMARY KEY  id (id)) $charset_collate;"; 
+
 
         if (
             $wpdb->get_var("SHOW TABLES LIKE '$sports_table_name'") != $sports_table_name ||
@@ -124,7 +136,8 @@
             $wpdb->get_var("SHOW TABLES LIKE '$match_table_name'") != $match_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$score_table_name'") != $score_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$leaderboard_table_name'") != $leaderboard_table_name ||
-            $wpdb->get_var("SHOW TABLES LIKE '$jointeam_table_name'") != $jointeam_table_name) {
+            $wpdb->get_var("SHOW TABLES LIKE '$jointeam_table_name'") != $jointeam_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$additionalpoints_table_name'") != $additionalpoints_table_name) {
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             require_once(ABSPATH . 'wp-includes/pluggable.php');
             dbDelta($sql);
@@ -134,6 +147,7 @@
             dbDelta($sqlScore);
             dbDelta($sqlleaderboard);
             dbDelta($sqljointeam);
+            dbDelta($sqladditionalpoints);
 
         }
     }

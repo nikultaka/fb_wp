@@ -594,7 +594,104 @@ function loadleaderboardtable() {
 }
 /*************************** 
 end of leaderboard
+start of Additional Points
  **************************/
+
+function additionalpoints(id) {
+  $("#additionalpointsmodal").modal("show");
+  $("#hdnmatchid").val(id);
+  $.ajax({
+    url: ajaxurl,
+    type: "POST",
+    data: {
+      matchid: matchid,
+      action: "league_controller::loadmatchscore_Datatable",
+    },
+    success: function (responce) {
+      var data = JSON.parse(responce);
+      if (data.status == 1) {
+        var result = data.recoed;
+        $("#additionalpointsmodal").modal("show");
+        $("#matchscoreformdata")[0].reset();
+        $("#matchmodal").modal("hide");
+        $("#hmsid").val(result.id);
+        $("#team1score").val(result.team1score);
+        $("#team2score").val(result.team2score);
+        $("#teamname1").html(result.teamname1);
+        $("#teamname2").html(result.teamname2);
+      }
+    },
+  });
+}
+
+$("#save_Btnmatchscore").click(function () {
+  $("#matchscoreformdata").validate({
+    rules: {
+      team1score: "required",
+      team2score: "required",
+    },
+    messages: {
+      team1score: "Team 1 Score is Required",
+      team2score: "Team 2 Score is Required",
+    },
+    submitHandler: function () {
+      $.ajax({
+        url: ajaxurl,
+        type: "POST",
+        data: $("#matchscoreformdata").serialize(),
+
+        success: function (responce) {
+          var data = JSON.parse(responce);
+          if (data.status == 1) {
+            Swal.fire({
+              icon: "success",
+              title: data.msg,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            $("#matchscoremodal").modal("hide");
+            $("#matchmodal").modal("show");
+          }
+        },
+      });
+    },
+  });
+});
+
+function deletematchscore_record(id) {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You are sure to delete this record !",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        url: ajaxurl,
+        type: "POST",
+        data: {
+          id: id,
+          action: "league_controller::deletematchscore_record",
+        },
+        success: function (responce) {
+          var data = JSON.parse(responce);
+          if (data.status == 1) {
+            Swal.fire("Deleted!", "Your record has been deleted.", "success");
+            loadmatchscoretable();
+          }
+        },
+      });
+    }
+  });
+}
+/*************************** 
+end of Additional Points
+ **************************/
+
+
 
 /*************************** 
 start of sport List

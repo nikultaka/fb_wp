@@ -917,11 +917,12 @@ function load_leader_board_list(id) {
       { mData: "leaguename" },
       { mData: "username" },
       { mData: "userspoints" },
+      { mData: "action" },
     ],
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [2],
+        targets: [3],
         orderable: false,
       },
     ],

@@ -9,6 +9,7 @@
             <th>League Name</th>
             <th>User Name</th>
             <th>User Points</th>
+            <th>Action</th>
         </thead>
     </table> 
 </div>
@@ -19,9 +20,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="matchscoredetailslabel">Score Details</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <table class="table" id="loadmatchscoredetails-table">

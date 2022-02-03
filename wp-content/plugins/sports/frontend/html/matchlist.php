@@ -126,7 +126,7 @@
 
 	.serviceBox .read-more {
 		display: block;
-		width: 90px;
+		width: 110px;
 		height: 45px;
 		line-height: 38px;
 		border-radius: 15%;

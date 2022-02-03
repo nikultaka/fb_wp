@@ -597,7 +597,6 @@ end of leaderboard
 start of Additional Points
  **************************/
 
-
 function loadadditionalpoints(id) {
   // $("#additionalpointsmodal").modal("show");
   $("#hdnapid").val(id);
@@ -615,7 +614,7 @@ function loadadditionalpoints(id) {
         var result = data.recoed;
         $("#additionalpointsmodal").modal("show");
         $("#apformdata")[0].reset();
-        $("#hapid").val(result.id);       
+        $("#hapid").val(result.id);
         $("#jokerscoremultiplier").val(result.jokerscoremultiplier);
         $("#jokerscoretype").val(result.jokerscoretype);
         $("#predictorscoremultiplier").val(result.predictorscoremultiplier);
@@ -649,12 +648,9 @@ $("#save_Btnap").click(function () {
   });
 });
 
-
 /*************************** 
 end of Additional Points
  **************************/
-
-
 
 /*************************** 
 start of sport List
@@ -739,6 +735,8 @@ function match_list(id) {
     success: function (responce) {
       var data = JSON.parse(responce);
       if (data.status == 1) {
+        localStorage.removeItem("allTeamData");
+        localStorage.setItem("allTeamData", JSON.stringify(data.teamData));
         $("#matchlistdata").append(data.match_string);
       }
     },
@@ -750,67 +748,88 @@ end of Match List
 start of Join Team
  **************************/
 
- 
-
-
 function join_team(tid, id) {
- 
+  var allTeamDataArray = JSON.parse(localStorage.getItem("allTeamData"));
+  var teamname = $("#match-" + id).attr("data-teamname");
+  allTeamDataArray.forEach((team) => {
+    var team1cc = teamname.trim().toLowerCase()
+    var team2cc = team.teamname.trim().toLowerCase()
 
-  var matchDate =  $("#match-"+id).attr('data-date');
+console.log('team1'+team1cc);
+console.log('team2'+team2cc);
 
-  var dt = new Date();
-  var currenttime = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();  
-  var currentDate =  $.datepicker.formatDate('yy-mm-dd', new Date());
-  var current = currentDate +' '+ currenttime
 
-  if (matchDate > current) {
-   
-  Swal.fire({
-    title: "Are You Sure Want To Join This Team !",
-    text: "If you already selected team, Then this team will override it",
-    icon: "info",
-    showCancelButton: true,
-    width: '400px',
-    confirmButtonColor: "#24890d",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, Join it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        type: "POST",
-        url: ajaxurl,
-        datatype: "json",
-        data: {
-          tid: tid,
-          id: id,
-          action: "match_list_Controller::add_team_join",
-        },
-        success: function (responce) {
-          var data = JSON.parse(responce);
-          if (data.status == 1) {
-            Swal.fire("You Joined Team Successfully.");
-            $("#joinbutton").append("You Joined This Match");
-            $(".match-"+id).html("JOIN");
-            $(".team_"+tid+"_"+id).html("JOINED");
+    // if (team.teamname.trim().toLowerCase() === teamname.trim().toLowerCase()) {
+      // if (team1cc === team2cc) {
+    if (team2cc === team1cc) {
+
+
+
+        Swal.fire({
+          title: "You Can Not Select This Team",
+          text: "You Already Selected This Team In Another Round",
+          icon: "error",
+          showCancelButton: false,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Ok",
+        });
+    } else {
+      var matchDate = $("#match-" + id).attr("data-date");
+
+      var dt = new Date();
+      var currenttime =
+        dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+      var currentDate = $.datepicker.formatDate("yy-mm-dd", new Date());
+      var current = currentDate + " " + currenttime;
+
+      if (matchDate > current) {
+        Swal.fire({
+          title: "Are You Sure Want To Select This Team !",
+          text: "If you already selected team, Then this team will override it",
+          icon: "info",
+          showCancelButton: true,
+          width: "400px",
+          confirmButtonColor: "#24890d",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, select it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $.ajax({
+              type: "POST",
+              url: ajaxurl,
+              datatype: "json",
+              data: {
+                tid: tid,
+                id: id,
+                action: "match_list_Controller::add_team_join",
+              },
+              success: function (responce) {
+                var data = JSON.parse(responce);
+                if (data.status == 1) {
+                  Swal.fire("You Selected Team Successfully.");
+                  $("#joinbutton").append("You selected This Match");
+                  $(".match-" + id).html("SELECT");
+                  $(".team_" + tid + "_" + id).html("SELECTED");
+                }
+              },
+            });
           }
-        },
-      });
+        });
+      } else {
+        Swal.fire({
+          title: "You Can Not select This Team !",
+          text: "Date Is Over To select Or Change Team.",
+          icon: "error",
+          showCancelButton: false,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Ok",
+        });
+      }
     }
   });
-}else{
-  Swal.fire({
-    title: "You Can Not Join This Team !",
-    text: "Date Is Over To Join Or Change Team.",
-    icon: "error",  
-    showCancelButton: false,
-    confirmButtonColor: "#d33",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Ok",
-  });
-
 }
-}
-
 
 /*************************** 
 end of Join Team
@@ -854,7 +873,6 @@ function my_score_list() {
   });
 }
 
-
 /*************************** 
 end of My Score
 start of Leaderboard List
@@ -896,7 +914,6 @@ start of Load Leaderboard List
  **************************/
 
 function load_leader_board_list(id) {
-
   $("#loadleaderboardlistdata-table").dataTable({
     paging: true,
     pageLength: 10,
@@ -908,7 +925,8 @@ function load_leader_board_list(id) {
       url: ajaxurl,
       datatype: "json",
       data: {
-        id, id,
+        id,
+        id,
         action: "leader_board_Controller::load_leader_board",
       },
     },
@@ -934,7 +952,7 @@ end of Load Leaderboard List
 start of Match Score Details
  **************************/
 
-function load_match_score_details_list(id ,uid) {
+function load_match_score_details_list(id, uid) {
   $("#matchscoredetailsmodal").modal("show");
 
   $("#loadmatchscoredetails-table").dataTable({

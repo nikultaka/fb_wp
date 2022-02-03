@@ -86,7 +86,7 @@ class live_match_list_Controller
                                                         <div class="kode-result-info">
                                                             <h2><a href="#">' . $match->team1 . '</a> </h2>
                                                             <ul>
-                                                            <li><a href="#">sport <span>(' . $match->sportname . ')</span></a></li>
+                                                            <li><a href="#">Sport <span>(' . $match->sportname . ')</span></a></li>
                                                             <li><a href="#">League <span>(' . $match->leaguename . ')</span></a></li>
                                                             <li><a href="#">Round <span>(' . $match->roundname . ')</span></a></li>
                                                             </ul>
@@ -104,7 +104,7 @@ class live_match_list_Controller
                                                         <div class="kode-result-info">
                                                             <h2><a href="#">' . $match->team2 . '</a></h2>
                                                             <ul>
-                                                            <li><a href="#">sport <span>(' . $match->sportname . ')</span></a></li>
+                                                            <li><a href="#">Sport <span>(' . $match->sportname . ')</span></a></li>
                                                             <li><a href="#">League <span>(' . $match->leaguename . ')</span></a></li>
                                                             <li><a href="#">Round <span>(' . $match->roundname . ')</span></a></li>
                                                             </ul>
@@ -162,7 +162,7 @@ class live_match_list_Controller
         $matchscoretable = $wpdb->prefix . "score";
 
 
-        $attime = current_time('Y-m-d H:i:s');
+        $attime = date("Y-m-d",strtotime('+1 day')); //current_time('Y-m-d H:i:s');
 
 
         $result_sql = $wpdb->get_row("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname," . $leaguetable . ".name as leaguename ,
@@ -172,7 +172,7 @@ class live_match_list_Controller
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid 
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $matchtable . ".id
-        WHERE   MSTATUS = 'active' AND  " . $matchtable . ".enddate > '$attime' ORDER BY " . $matchtable . ".enddate ");
+        WHERE   MSTATUS = 'active' AND  date(" . $matchtable . ".enddate) >= '$attime' ORDER BY " . $matchtable . ".enddate ");
         $upcoming_match_string  = '';
 
         $team1 = $result_sql->team1;

@@ -168,11 +168,11 @@
                         <table class="table" style="width: 100%; color:#343a40;" id="rounddata-table">
                             <thead>
                                 <!-- <th>ID</th> -->
-                                <th>Round Name</th>
-                                <th>Score Multiplier</th>
-                                <th>Score Type</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th width="20%">Round Name</th>
+                                <th width="20%">Score Multiplier</th>
+                                <th width="10%">Score Type</th>
+                                <th width="10%">Status</th>
+                                <th width="40%">Actions</th>
                             </thead>
                         </table>
                         <div>

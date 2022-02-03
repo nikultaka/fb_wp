@@ -913,7 +913,6 @@ class league_controller
 
      function additionalpointsinsert_data()
      {
-
          global $wpdb;
          $updateId = $_POST['hapid'];
  
@@ -939,7 +938,7 @@ class league_controller
              ));
  
              $data['status'] = 1;
-             $data['msg'] = "Joker Round added successfully";
+             $data['msg'] = "Additional Points added successfully";
          } else {
              $wpdb->update(
                  $additionalpointstable,
@@ -954,7 +953,7 @@ class league_controller
              );
  
              $data['status'] = 1;
-             $data['msg'] = "Joker Round updated successfully";
+             $data['msg'] = "Additional Points updated successfully";
          }
  
          echo  json_encode($data);

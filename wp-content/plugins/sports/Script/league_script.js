@@ -615,7 +615,7 @@ function loadadditionalpoints(id) {
         var result = data.recoed;
         $("#additionalpointsmodal").modal("show");
         $("#apformdata")[0].reset();
-        $("#hapid").val(result.id);        
+        $("#hapid").val(result.id);       
         $("#jokerscoremultiplier").val(result.jokerscoremultiplier);
         $("#jokerscoretype").val(result.jokerscoretype);
         $("#predictorscoremultiplier").val(result.predictorscoremultiplier);

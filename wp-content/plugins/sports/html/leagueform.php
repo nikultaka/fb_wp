@@ -373,16 +373,35 @@
                             <h3>A Joker Round</h3>
                             <form onsubmit="return false" method="POST" name="apformdata" id="apformdata">
                                 <input type="hidden" name="action" value="league_controller::additionalpointsinsert_data">
-                                <input type="hidden" id="apid" name="apid">
+                                <input type="hidden" id="hapid" name="hapid" value="">
                                 <input type="hidden" id="hdnapid" name="hdnapid">
                                 <div class="row">
+                                    <div class="col-sm-4">
+                                        <label for="jokerscoremultiplier">Score Multiplier :</label>
+                                        <input type="number" class="form-control" id="jokerscoremultiplier" name="jokerscoremultiplier" min="0">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="jokerscoretype"> Score Type :</label>
+                                        <select class="form-control" id="jokerscoretype" name="jokerscoretype">
+                                            <option value="added">Added</option>
+                                            <option value="subtracted">Subtracted</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select Score Type.
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div id="scorepridictorround" class="tab-pane fade">
+                            <h3>Score Predictor Round</h3>
+                            <div class="row">
                                 <div class="col-sm-4">
-                                    <label for="jokerscoremultiplier">Score Multiplier :</label>
-                                    <input type="number" class="form-control" id="jokerscoremultiplier" name="jokerscoremultiplier" min="0">
+                                    <label for="predictorscoremultiplier">Score Multiplier :</label>
+                                    <input type="number" class="form-control" id="predictorscoremultiplier" name="predictorscoremultiplier" min="0">
                                 </div>
                                 <div class="col-sm-3">
-                                    <label for="jokerscoretype"> Score Type :</label>
-                                    <select class="form-control" id="jokerscoretype" name="jokerscoretype">
+                                    <label for="predictorscoretype"> Score Type :</label>
+                                    <select class="form-control" id="predictorscoretype" name="predictorscoretype">
                                         <option value="added">Added</option>
                                         <option value="subtracted">Subtracted</option>
                                     </select>
@@ -390,37 +409,17 @@
                                         Please select Score Type.
                                     </div>
                                 </div>
-                                </div>
-                        </div>
-                        <div id="scorepridictorround" class="tab-pane fade">
-                            <h3>Score Predictor Round</h3>
-                            <div class="row">
-                            <div class="col-sm-4">
-                                <label for="predictorscoremultiplier">Score Multiplier :</label>
-                                <input type="number" class="form-control" id="predictorscoremultiplier" name="predictorscoremultiplier" min="0">
                             </div>
-                            <div class="col-sm-3">
-                                <label for="predictorscoretype"> Score Type :</label>
-                                <select class="form-control" id="predictorscoretype" name="predictorscoretype">
-                                    <option value="added">Added</option>
-                                    <option value="subtracted">Subtracted</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select Score Type.
-                                </div>
-                            </div>
-                            <div class="col-sm-3" style="margin-top: 4%;">
-                                <button type="submit" class="btn btn-primary" id="save_Btnap" name="save_Btnap">Save</button>
-                            </div>
-                            </div>
-                            </form>
-
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="col-sm-3" style="margin-top: 4%;">
+                    <button type="submit" class="btn btn-primary" id="save_Btnap" name="save_Btnap">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>

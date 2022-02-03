@@ -121,7 +121,6 @@
         $sqladditionalpoints = "CREATE TABLE `$additionalpoints_table_name` (
         `id` int(11) NOT NULL auto_increment,
         `leagueid` int(11) NOT NULL,
-        `tab` VARCHAR(4) NOT NULL,
         `jokerscoremultiplier` INT(50),
         `jokerscoretype` VARCHAR(50),
         `predictorscoremultiplier` INT(50),

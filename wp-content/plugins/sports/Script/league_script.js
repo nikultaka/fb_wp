@@ -521,35 +521,35 @@ $("#save_Btnmatchscore").click(function () {
   });
 });
 
-function deletematchscore_record(id) {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You are sure to delete this record !",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        url: ajaxurl,
-        type: "POST",
-        data: {
-          id: id,
-          action: "league_controller::deletematchscore_record",
-        },
-        success: function (responce) {
-          var data = JSON.parse(responce);
-          if (data.status == 1) {
-            Swal.fire("Deleted!", "Your record has been deleted.", "success");
-            loadmatchscoretable();
-          }
-        },
-      });
-    }
-  });
-}
+// function deletematchscore_record(id) {
+//   Swal.fire({
+//     title: "Are you sure?",
+//     text: "You are sure to delete this record !",
+//     icon: "warning",
+//     showCancelButton: true,
+//     confirmButtonColor: "#3085d6",
+//     cancelButtonColor: "#d33",
+//     confirmButtonText: "Yes, delete it!",
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       $.ajax({
+//         url: ajaxurl,
+//         type: "POST",
+//         data: {
+//           id: id,
+//           action: "league_controller::deletematchscore_record",
+//         },
+//         success: function (responce) {
+//           var data = JSON.parse(responce);
+//           if (data.status == 1) {
+//             Swal.fire("Deleted!", "Your record has been deleted.", "success");
+//             loadmatchscoretable();
+//           }
+//         },
+//       });
+//     }
+//   });
+// }
 
 /*************************** 
 end of score
@@ -597,48 +597,41 @@ end of leaderboard
 start of Additional Points
  **************************/
 
-function additionalpoints(id) {
-  $("#additionalpointsmodal").modal("show");
-  $("#hdnmatchid").val(id);
+
+function loadadditionalpoints(id) {
+  // $("#additionalpointsmodal").modal("show");
+  $("#hdnapid").val(id);
+
   $.ajax({
     url: ajaxurl,
     type: "POST",
     data: {
-      matchid: matchid,
-      action: "league_controller::loadmatchscore_Datatable",
+      id: id,
+      action: "league_controller::loadadditionalpoints_Datatable",
     },
     success: function (responce) {
       var data = JSON.parse(responce);
       if (data.status == 1) {
         var result = data.recoed;
         $("#additionalpointsmodal").modal("show");
-        $("#matchscoreformdata")[0].reset();
-        $("#matchmodal").modal("hide");
-        $("#hmsid").val(result.id);
-        $("#team1score").val(result.team1score);
-        $("#team2score").val(result.team2score);
-        $("#teamname1").html(result.teamname1);
-        $("#teamname2").html(result.teamname2);
+        $("#apformdata")[0].reset();
+        $("#hapid").val(result.id);        
+        $("#jokerscoremultiplier").val(result.jokerscoremultiplier);
+        $("#jokerscoretype").val(result.jokerscoretype);
+        $("#predictorscoremultiplier").val(result.predictorscoremultiplier);
+        $("#predictorscoretype").val(result.predictorscoretype);
       }
     },
   });
 }
 
-$("#save_Btnmatchscore").click(function () {
-  $("#matchscoreformdata").validate({
-    rules: {
-      team1score: "required",
-      team2score: "required",
-    },
-    messages: {
-      team1score: "Team 1 Score is Required",
-      team2score: "Team 2 Score is Required",
-    },
+$("#save_Btnap").click(function () {
+  $("#apformdata").validate({
     submitHandler: function () {
       $.ajax({
         url: ajaxurl,
         type: "POST",
-        data: $("#matchscoreformdata").serialize(),
+        data: $("#apformdata").serialize(),
 
         success: function (responce) {
           var data = JSON.parse(responce);
@@ -649,8 +642,6 @@ $("#save_Btnmatchscore").click(function () {
               showConfirmButton: false,
               timer: 1500,
             });
-            $("#matchscoremodal").modal("hide");
-            $("#matchmodal").modal("show");
           }
         },
       });
@@ -658,35 +649,7 @@ $("#save_Btnmatchscore").click(function () {
   });
 });
 
-function deletematchscore_record(id) {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You are sure to delete this record !",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        url: ajaxurl,
-        type: "POST",
-        data: {
-          id: id,
-          action: "league_controller::deletematchscore_record",
-        },
-        success: function (responce) {
-          var data = JSON.parse(responce);
-          if (data.status == 1) {
-            Swal.fire("Deleted!", "Your record has been deleted.", "success");
-            loadmatchscoretable();
-          }
-        },
-      });
-    }
-  });
-}
+
 /*************************** 
 end of Additional Points
  **************************/

@@ -364,24 +364,25 @@
             <div class="modal-body">
                 <div class="container">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active " data-toggle="tab" href="#jokerround">A Joker Round</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#scorepridictorround">Score Predictor Round</a></li>
+                        <li class="nav-item"><a class="nav-link active additionalClass" data-sample="tab1" data-toggle="tab" href="#jokerround">A Joker Round</a></li>
+                        <li class="nav-item"><a class="nav-link additionalClass" data-sample="tab2" data-toggle="tab" href="#scorepridictorround">Score Predictor Round</a></li>
                     </ul>
 
                     <div class="tab-content"></br>
                         <div id="jokerround" class="tab-pane fade-in active">
                             <h3>A Joker Round</h3>
-                            <form class="form-inline" onsubmit="return false" method="POST" name="jokerformdata" id="jokerformdata" class="form-inline">
+                            <form onsubmit="return false" method="POST" name="apformdata" id="apformdata">
                                 <input type="hidden" name="action" value="league_controller::additionalpointsinsert_data">
-                                <!-- <input type="hidden" id="hrid" name="hrid">
-                                <input type="hidden" id="hdnleagueid" name="hdnleagueid"> -->
-                                <div class="form-group">
+                                <input type="hidden" id="apid" name="apid">
+                                <input type="hidden" id="hdnapid" name="hdnapid">
+                                <div class="row">
+                                <div class="col-sm-4">
                                     <label for="jokerscoremultiplier">Score Multiplier :</label>
-                                    <input type="number" class="form-control mx-sm-3" id="jokerscoremultiplier" name="jokerscoremultiplier" min="0" required>
+                                    <input type="number" class="form-control" id="jokerscoremultiplier" name="jokerscoremultiplier" min="0">
                                 </div>
-                                <div class="form-group">
+                                <div class="col-sm-3">
                                     <label for="jokerscoretype"> Score Type :</label>
-                                    <select class="form-control mx-sm-3" id="jokerscoretype" name="jokerscoretype" required>
+                                    <select class="form-control" id="jokerscoretype" name="jokerscoretype">
                                         <option value="added">Added</option>
                                         <option value="subtracted">Subtracted</option>
                                     </select>
@@ -389,35 +390,29 @@
                                         Please select Score Type.
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" id="save_Btnjoker" name="save_Btnjoker">Save</button>
                                 </div>
-                            </form>
-
                         </div>
                         <div id="scorepridictorround" class="tab-pane fade">
                             <h3>Score Predictor Round</h3>
-                            <form class="form-inline" onsubmit="return false" method="POST" name="scoerepredictorformdata" id="scoerepredictorformdata" class="form-inline">
-                                <input type="hidden" name="action" value="league_controller::additionalpointsinsert_data">
-                                <input type="hidden" id="hrid" name="hrid">
-                                <input type="hidden" id="hdnleagueid" name="hdnleagueid">
-                                <div class="form-group">
-                                    <label for="predictorscoremultiplier">Score Multiplier :</label>
-                                    <input type="number" class="form-control mx-sm-3" id="predictorscoremultiplier" name="predictorscoremultiplier" min="0" required>
+                            <div class="row">
+                            <div class="col-sm-4">
+                                <label for="predictorscoremultiplier">Score Multiplier :</label>
+                                <input type="number" class="form-control" id="predictorscoremultiplier" name="predictorscoremultiplier" min="0">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="predictorscoretype"> Score Type :</label>
+                                <select class="form-control" id="predictorscoretype" name="predictorscoretype">
+                                    <option value="added">Added</option>
+                                    <option value="subtracted">Subtracted</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select Score Type.
                                 </div>
-                                <div class="form-group">
-                                    <label for="predictorscoretype"> Score Type :</label>
-                                    <select class="form-control mx-sm-3" id="predictorscoretype" name="predictorscoretype" required>
-                                        <option value="added">Added</option>
-                                        <option value="subtracted">Subtracted</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select Score Type.
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" id="save_Btnscoerepredictor" name="save_Btnscoerepredictor">Save</button>
-                                </div>
+                            </div>
+                            <div class="col-sm-3" style="margin-top: 4%;">
+                                <button type="submit" class="btn btn-primary" id="save_Btnap" name="save_Btnap">Save</button>
+                            </div>
+                            </div>
                             </form>
 
                         </div>
@@ -431,40 +426,3 @@
     </div>
 </div>
 <!-- additionalpoints Modal -->
-
-
-
-
-<!-- <form onsubmit="return false" method="POST" name="roundformdata" id="roundformdata" class="form-inline">
-    <input type="hidden" name="action" value="league_controller::roundinsert_data">
-    <input type="hidden" id="hrid" name="hrid">
-    <input type="hidden" id="hdnleagueid" name="hdnleagueid">
-    <div class="row">
-        <div class="form-group">
-            <div class="col-md-2">
-                <label for="scoremultiplier">Score Multiplier :</label>
-                <input type="number" class="form-control" id="scoremultiplier" name="scoremultiplier" min="0" required>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-3">
-                <label for="scoretype">Score Type :</label>
-                <select class="form-control" id="scoretype" name="scoretype" required>
-                    <option value="added">Added</option>
-                    <option value="subtracted">Subtracted</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please select Score Type.
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-2" style="margin-top: 3%;">
-            <button type="submit" class="btn btn-primary" id="save_Btnround" name="save_Btnround">Save</button>
-        </div>
-    </div>
-    </div>
-    <br>
-</form> -->

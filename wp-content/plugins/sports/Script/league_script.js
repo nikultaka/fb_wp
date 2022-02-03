@@ -521,35 +521,35 @@ $("#save_Btnmatchscore").click(function () {
   });
 });
 
-function deletematchscore_record(id) {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You are sure to delete this record !",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        url: ajaxurl,
-        type: "POST",
-        data: {
-          id: id,
-          action: "league_controller::deletematchscore_record",
-        },
-        success: function (responce) {
-          var data = JSON.parse(responce);
-          if (data.status == 1) {
-            Swal.fire("Deleted!", "Your record has been deleted.", "success");
-            loadmatchscoretable();
-          }
-        },
-      });
-    }
-  });
-}
+// function deletematchscore_record(id) {
+//   Swal.fire({
+//     title: "Are you sure?",
+//     text: "You are sure to delete this record !",
+//     icon: "warning",
+//     showCancelButton: true,
+//     confirmButtonColor: "#3085d6",
+//     cancelButtonColor: "#d33",
+//     confirmButtonText: "Yes, delete it!",
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       $.ajax({
+//         url: ajaxurl,
+//         type: "POST",
+//         data: {
+//           id: id,
+//           action: "league_controller::deletematchscore_record",
+//         },
+//         success: function (responce) {
+//           var data = JSON.parse(responce);
+//           if (data.status == 1) {
+//             Swal.fire("Deleted!", "Your record has been deleted.", "success");
+//             loadmatchscoretable();
+//           }
+//         },
+//       });
+//     }
+//   });
+// }
 
 /*************************** 
 end of score
@@ -594,7 +594,67 @@ function loadleaderboardtable() {
 }
 /*************************** 
 end of leaderboard
+start of Additional Points
  **************************/
+
+
+function loadadditionalpoints(id) {
+  // $("#additionalpointsmodal").modal("show");
+  $("#hdnapid").val(id);
+
+  $.ajax({
+    url: ajaxurl,
+    type: "POST",
+    data: {
+      id: id,
+      action: "league_controller::loadadditionalpoints_Datatable",
+    },
+    success: function (responce) {
+      var data = JSON.parse(responce);
+      if (data.status == 1) {
+        var result = data.recoed;
+        $("#additionalpointsmodal").modal("show");
+        $("#apformdata")[0].reset();
+        $("#hapid").val(result.id);        
+        $("#jokerscoremultiplier").val(result.jokerscoremultiplier);
+        $("#jokerscoretype").val(result.jokerscoretype);
+        $("#predictorscoremultiplier").val(result.predictorscoremultiplier);
+        $("#predictorscoretype").val(result.predictorscoretype);
+      }
+    },
+  });
+}
+
+$("#save_Btnap").click(function () {
+  $("#apformdata").validate({
+    submitHandler: function () {
+      $.ajax({
+        url: ajaxurl,
+        type: "POST",
+        data: $("#apformdata").serialize(),
+
+        success: function (responce) {
+          var data = JSON.parse(responce);
+          if (data.status == 1) {
+            Swal.fire({
+              icon: "success",
+              title: data.msg,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        },
+      });
+    },
+  });
+});
+
+
+/*************************** 
+end of Additional Points
+ **************************/
+
+
 
 /*************************** 
 start of sport List

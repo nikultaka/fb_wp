@@ -15,19 +15,21 @@
     form .error {
         color: #ff0000;
     }
-    .swal2-container{
+
+    .swal2-container {
         z-index: 99999999999999999999999999999999999;
     }
-  
 </style>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#leagueModal">
+</br></br><button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#leagueModal">
     Add League
 </button>
 
 
+
 <!-- Modal -->
+</br>
 <div class="modal fade" id="leagueModal" tabindex="-1" role="dialog" aria-labelledby="leagueModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -129,7 +131,7 @@
 
                         <div class="col-md-2">
                             <label for="scoremultiplier">Score Multiplier :</label>
-                            <input type="number" class="form-control" id="scoremultiplier" name="scoremultiplier"  min="0" required>
+                            <input type="number" class="form-control" id="scoremultiplier" name="scoremultiplier" min="0" required>
                         </div>
 
                         <!-- <div class="col"> -->
@@ -210,9 +212,9 @@
                         </div>
                         <div class="col-md-4">
                             <label for="name"><b>Team 1</b></label>
-                            <input type="text"  autocomplete="off" class="form-control" id="team1" name="team1" required>
+                            <input type="text" autocomplete="off" class="form-control" id="team1" name="team1" required>
                         </div>
-                        <h4  style="margin-top: 3%;"><span><b> VS </b></span></h4>
+                        <h4 style="margin-top: 3%;"><span><b> VS </b></span></h4>
                         <div class="col-md-4">
                             <label for="name"><b>Team 2</b></label>
                             <input type="text" autocomplete="off" class="form-control" id="team2" name="team2" required>
@@ -220,7 +222,7 @@
 
                         <div class="col-md-4">
                             <label for="enddate"><b>End Date</b></label>
-                            <input type="text" autocomplete="off" class="form-control date-time-picker" id="enddate"  name="enddate" required>
+                            <input type="text" autocomplete="off" class="form-control date-time-picker" id="enddate" name="enddate" required>
                         </div>
                         <div class="col-md-3">
                             <label for="mstatus"><b>Status</b></label>
@@ -234,7 +236,7 @@
                         </div>
                         <!-- </div> -->
                         <div class="col-md-5" style="margin-top: 3%;">
-                            <button type="submit" class="btn btn-sm btn-primary" id="save_Btnmatch"  name="save_Btnmatch"> Save </button>
+                            <button type="submit" class="btn btn-sm btn-primary" id="save_Btnmatch" name="save_Btnmatch"> Save </button>
                             <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2">Close</button>
                         </div>
                     </div>
@@ -249,8 +251,8 @@
                                 <th width="20%">Team 1</th>
                                 <th width="20%">Team 2</th>
                                 <!-- <th>End Date</th> -->
-                                <th width="5%">Status</th>                             
-                                <th width="35%">Actions</th>   
+                                <th width="5%">Status</th>
+                                <th width="35%">Actions</th>
                             </thead>
                         </table>
 
@@ -329,20 +331,98 @@
             <div class="modal-body">
                 <input type="hidden" id="lbhdnleagueid" name="lbhdnleagueid">
                 <div class="container-fluid mt-3">
-                        <table class="table" style="width: 100%; color:#343a40;" id="leaderboarddata-table">
-                            <thead>
-                                <th>League Name</th>
-                                <th>User Name</th>
-                                <th>Points</th>
-                            </thead>
-                        </table>
-                    </div>
+                    <table class="table" style="width: 100%; color:#343a40;" id="leaderboarddata-table">
+                        <thead>
+                            <th>League Name</th>
+                            <th>User Name</th>
+                            <th>Points</th>
+                        </thead>
+                    </table>
+                </div>
 
                 <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2">Close</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2">Close</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- leaderboard Modal -->
+
+<!------------------------------------------------------------------------------------>
+
+<!-- additionalpoints Modal -->
+<div class="modal fade" id="additionalpointsmodal" tabindex="-1" role="dialog" aria-labelledby="additionalpointsmodalLabel" aria-hidden="true" style="z-index:99999999999">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 id="modal-title" class="modal-title">Additional Points</h4>
+                <button type="button" class="close" data-dismiss="modal" id="close_modal_btn1" name="close_modal_btn1">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><a class="nav-link active additionalClass" data-sample="tab1" data-toggle="tab" href="#jokerround">A Joker Round</a></li>
+                        <li class="nav-item"><a class="nav-link additionalClass" data-sample="tab2" data-toggle="tab" href="#scorepridictorround">Score Predictor Round</a></li>
+                    </ul>
+
+                    <div class="tab-content"></br>
+                        <div id="jokerround" class="tab-pane fade-in active">
+                            <h3>A Joker Round</h3>
+                            <form onsubmit="return false" method="POST" name="apformdata" id="apformdata">
+                                <input type="hidden" name="action" value="league_controller::additionalpointsinsert_data">
+                                <input type="hidden" id="apid" name="apid">
+                                <input type="hidden" id="hdnapid" name="hdnapid">
+                                <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="jokerscoremultiplier">Score Multiplier :</label>
+                                    <input type="number" class="form-control" id="jokerscoremultiplier" name="jokerscoremultiplier" min="0">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="jokerscoretype"> Score Type :</label>
+                                    <select class="form-control" id="jokerscoretype" name="jokerscoretype">
+                                        <option value="added">Added</option>
+                                        <option value="subtracted">Subtracted</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select Score Type.
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                        <div id="scorepridictorround" class="tab-pane fade">
+                            <h3>Score Predictor Round</h3>
+                            <div class="row">
+                            <div class="col-sm-4">
+                                <label for="predictorscoremultiplier">Score Multiplier :</label>
+                                <input type="number" class="form-control" id="predictorscoremultiplier" name="predictorscoremultiplier" min="0">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="predictorscoretype"> Score Type :</label>
+                                <select class="form-control" id="predictorscoretype" name="predictorscoretype">
+                                    <option value="added">Added</option>
+                                    <option value="subtracted">Subtracted</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select Score Type.
+                                </div>
+                            </div>
+                            <div class="col-sm-3" style="margin-top: 4%;">
+                                <button type="submit" class="btn btn-primary" id="save_Btnap" name="save_Btnap">Save</button>
+                            </div>
+                            </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- additionalpoints Modal -->

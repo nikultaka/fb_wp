@@ -305,6 +305,7 @@ class league_controller
             $action .=  " <button  class='btn btn-sm btn-secondary' id='leaguerounds' onclick='leagueround(" . $row->id . ")'><i class='fa fa-flag-checkered' aria-hidden='true'></i> Rounds</button>";
             $action .=  " <button  class='btn btn-sm btn-primary leaguematchClass' id='leaguematch' onclick='leaguematch(" . $row->id . ")'><i class='fa fa-futbol-o' aria-hidden='true'></i> Matches</button>";
             $action .=  " <button  class='btn btn-sm btn-warning text-grey' id='leagueleaderboard' onclick='leagueleaderboard(" . $row->id . ")'><i class='fa fa-group' aria-hidden='true'></i> LeaderBoard</button>";
+            $action .=  " <button  class='btn btn-sm btn-info text-white' id='loadadditionalpoints' onclick='loadadditionalpoints(" . $row->id . ")'><i class='fa fa-plus-circle' aria-hidden='true'></i>  Additional Points</button>";
 
 
             $temp['action'] = $action;
@@ -784,20 +785,20 @@ class league_controller
         exit();
     }
 
-    function deletematchscore_record()
-    {
-        global $wpdb;
-        $deleteId = $_POST['id'];
-        $matchscoretable = $wpdb->prefix . "score";
-        $result['status'] = 0;
+    // function deletematchscore_record()
+    // {
+    //     global $wpdb;
+    //     $deleteId = $_POST['id'];
+    //     $matchscoretable = $wpdb->prefix . "score";
+    //     $result['status'] = 0;
 
-        $delete_sql = $wpdb->delete($matchscoretable, array('id' => $deleteId));
-        if ($delete_sql) {
-            $result['status'] = 1;
-        }
-        echo json_encode($result);
-        exit();
-    }
+    //     $delete_sql = $wpdb->delete($matchscoretable, array('id' => $deleteId));
+    //     if ($delete_sql) {
+    //         $result['status'] = 1;
+    //     }
+    //     echo json_encode($result);
+    //     exit();
+    // }
 
 
     /***********  matchscore  ****************************************************************************************************/
@@ -907,6 +908,92 @@ class league_controller
 
 
     /***********  leaderboard  ****************************************************************************************************/
+
+     /***********  matchscore  ****************************************************************************************************/
+
+     function additionalpointsinsert_data()
+     {
+
+         global $wpdb;
+         $updateId = $_POST['hapid'];
+ 
+         $data['status'] = 0;
+         $data['msg'] = "Error Data Not insert";
+ 
+         $jokerscoremultiplier = $_POST['jokerscoremultiplier'];
+         $jokerscoretype = $_POST['jokerscoretype'];
+         $predictorscoremultiplier = $_POST['predictorscoremultiplier'];
+         $predictorscoretype = $_POST['predictorscoretype'];
+         $hdnapid = $_POST['hdnapid'];
+ 
+         $additionalpointstable = $wpdb->prefix . "additionalpoints";
+ 
+         if ($updateId == '') {
+             $wpdb->insert($additionalpointstable, array(
+                 'jokerscoremultiplier'       => $jokerscoremultiplier,
+                 'jokerscoretype'             => $jokerscoretype,
+                 'predictorscoremultiplier'   => $predictorscoremultiplier,
+                 'predictorscoretype'         => $predictorscoretype,
+                 'leagueid'                   => $hdnapid,
+
+             ));
+ 
+             $data['status'] = 1;
+             $data['msg'] = "Joker Round added successfully";
+         } else {
+             $wpdb->update(
+                 $additionalpointstable,
+                 array(
+                    'jokerscoremultiplier'       => $jokerscoremultiplier,
+                    'jokerscoretype'             => $jokerscoretype,
+                    'predictorscoremultiplier'   => $predictorscoremultiplier,
+                    'predictorscoretype'         => $predictorscoretype,
+                    'leagueid'                   => $hdnapid,
+                 ),
+                 array('id'  => $updateId)
+             );
+ 
+             $data['status'] = 1;
+             $data['msg'] = "Joker Round updated successfully";
+         }
+ 
+         echo  json_encode($data);
+         exit;
+     }
+ 
+     function loadadditionalpoints_Datatable()
+     {
+         global $wpdb;
+         $leagueid = $_POST['id'];
+         $additionalpointstable = $wpdb->prefix . "additionalpoints";
+
+         $result_sql = $wpdb->get_results("SELECT " . $additionalpointstable . ".* 
+         FROM " . $additionalpointstable . " WHERE " . $additionalpointstable . ".leagueid = " . $leagueid . "  ");
+      
+         $result['status'] = 1;
+         $result['recoed'] = $result_sql[0];
+         echo json_encode($result);
+         exit();
+     }
+ 
+    //  function deleteadditionalpoints_record()
+    //  {
+    //      global $wpdb;
+    //      $deleteId = $_POST['id'];
+    //      $additionalpointstable = $wpdb->prefix . "score";
+    //      $result['status'] = 0;
+ 
+    //      $delete_sql = $wpdb->delete($additionalpointstable, array('id' => $deleteId));
+    //      if ($delete_sql) {
+    //          $result['status'] = 1;
+    //      }
+    //      echo json_encode($result);
+    //      exit();
+    //  }
+ 
+ 
+     /***********  additionalpoints  ****************************************************************************************************/
+ 
 }
 
 $league_controller = new league_controller();
@@ -932,9 +1019,14 @@ add_action('wp_ajax_league_controller::editmatch_record', array($league_controll
 //MatchScore
 add_action('wp_ajax_league_controller::matchscoreinsert_data', array($league_controller, 'matchscoreinsert_data'));
 add_action('wp_ajax_league_controller::loadmatchscore_Datatable', array($league_controller, 'loadmatchscore_Datatable'));
-add_action('wp_ajax_league_controller::deletematchscore_record', array($league_controller, 'deletematchscore_record'));
+// add_action('wp_ajax_league_controller::deletematchscore_record', array($league_controller, 'deletematchscore_record'));
 
 //LeaderBoard
 add_action('wp_ajax_league_controller::loadleaderboard_Datatable', array($league_controller, 'loadleaderboard_Datatable'));
+
+//Additional Points
+add_action('wp_ajax_league_controller::additionalpointsinsert_data', array($league_controller, 'additionalpointsinsert_data'));
+add_action('wp_ajax_league_controller::loadadditionalpoints_Datatable', array($league_controller, 'loadadditionalpoints_Datatable'));
+// add_action('wp_ajax_league_controller::deleteadditionalpoints_record', array($league_controller, 'deleteadditionalpoints_record'));
 
 /**********************************************************************************************************************************/

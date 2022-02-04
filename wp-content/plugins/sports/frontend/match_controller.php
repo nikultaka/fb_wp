@@ -32,16 +32,15 @@ class match_list_Controller
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid 
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
         WHERE " . $matchtable . ".round = " . $matchId . "  and MSTATUS = 'active' ");
+       
         $match_string  = '';
     
+        $roundselect_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ," . $jointeamtable . ".roundid, " . $jointeamtable . ".roundselect From " . $jointeamtable . " ");
+
         $team_sql = $wpdb->get_results("SELECT
-        CASE
-        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
-        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
-        ELSE ''
-        END AS teamname
         FROM " . $jointeamtable . "
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid ");
+
         if (count($result_sql) > 0) {
 
             foreach ($result_sql as $match) {
@@ -59,7 +58,7 @@ class match_list_Controller
                                           <div class="col-md-6">
                                           <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1 . '</b></h3></span>';
                 if ( is_user_logged_in() ) {
-                    $match_string .= '<a class="read-more pointer match-'.$match->id.' team_' . $match->t1id . '_' . $match->id .'"  data-teamname="'.$match->team1.'" data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t1id . ',' . $match->id .')">';
+                    $match_string .= '<a class="read-more pointer match-'.$match->id.' team_' . $match->t1id . '_' . $match->id .'"  data-teamname1="'.$match->team1.'" data-date="'.$match->enddate.'"  id="match-'.$match->id.'" onclick="join_team(' . $match->t1id . ',' . $match->id .',' . $match->leagueid .')">';
                     if($match->teamid != '' && $match->teamid == 1) { $match_string .= 'SELECTED';}else{ $match_string .= 'SELECT';}
                     $match_string .= '</a>';
                 }else{
@@ -70,7 +69,7 @@ class match_list_Controller
                                   <div class="col-md-6">
                                   <span><span class="text2">Team 2</span><h3 class="title"><b>' . $match->team2 . '</b></h3></span>';
                 if ( is_user_logged_in() ) {
-                    $match_string .= '<a class="read-more pointer match-'.$match->id.' team_' . $match->t2id . '_' . $match->id .'" data-teamname="'.$match->team2.'" data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t2id . ',' . $match->id .')">';
+                    $match_string .= '<a class="read-more pointer match-'.$match->id.' team_' . $match->t2id . '_' . $match->id .'" data-teamname2="'.$match->team2.'" data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t2id . ',' . $match->id .',' . $match->leagueid .')">';
                     if($match->teamid != '' && $match->teamid == 0
                     ) { $match_string .= 'SELECTED';}else{ $match_string .= 'SELECT';}
                     $match_string .= '</a>';
@@ -96,6 +95,7 @@ class match_list_Controller
             $result['status'] = 1;
             $result['match_string'] = $match_string;
             $result['teamData'] =$team_sql;
+            $result['roundSelectData'] =$roundselect_sql;
 
 
 
@@ -111,6 +111,7 @@ class match_list_Controller
         $userid = get_current_user_id();
         $teamId = $_POST['tid'];
         $matchId = $_POST['id'];
+        $roundselect = $_POST['roundselect'];
 
         $result['status'] = 0;
         $leaguetable = $wpdb->prefix . "league";
@@ -143,6 +144,7 @@ class match_list_Controller
                 'roundid'            => $roundid,
                 'matchid'            => $matchId,
                 'teamid'             => $teamId,
+                'roundselect'        => $roundselect,
 
             ));
 
@@ -158,6 +160,8 @@ class match_list_Controller
                     'roundid'            => $roundid,
                     'matchid'            => $matchId,
                     'teamid'             => $teamId,
+                    'roundselect'        => $roundselect,
+
                 ),
                 array('id'  => $updateId)
             );

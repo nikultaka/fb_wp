@@ -112,7 +112,8 @@
         `leagueid` int(11) NOT NULL,
         `roundid` int(11) NOT NULL,
         `matchid` int(11) NOT NULL,
-        `teamid` int(11) NOT NULL,     
+        `teamid` int(11) NOT NULL,
+        `roundselect` VARCHAR(50) NOT NULL,         
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;"; 
 

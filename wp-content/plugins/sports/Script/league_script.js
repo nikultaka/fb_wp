@@ -737,6 +737,10 @@ function match_list(id) {
       if (data.status == 1) {
         localStorage.removeItem("allTeamData");
         localStorage.setItem("allTeamData", JSON.stringify(data.teamData));
+
+        localStorage.removeItem("roundSelectData");
+        localStorage.setItem("roundSelectData", JSON.stringify(data.roundSelectData));
+      
         $("#matchlistdata").append(data.match_string);
       }
     },
@@ -748,53 +752,105 @@ end of Match List
 start of Join Team
  **************************/
 
-function join_team(tid, id) {
+function join_team(tid, id, leagueid) {
+
+  var roundSelectDataArray = JSON.parse(localStorage.getItem("roundSelectData"));
+  var leagueidstr = leagueid.toString();
+
+  var roundSelectData = [];
+  var roundselectleague = [];
+  roundSelectDataArray.forEach((round) => {
+    var roundselect = round.roundselect.trim().toLowerCase()
+    var roundleague = round.leagueid
+    roundSelectData.push(roundselect)
+    roundselectleague.push(roundleague)
+  });
+
+ 
+ 
   var allTeamDataArray = JSON.parse(localStorage.getItem("allTeamData"));
-  var teamname = $("#match-" + id).attr("data-teamname");
+  var allteamname = [];
   allTeamDataArray.forEach((team) => {
-    var team1cc = teamname.trim().toLowerCase()
     var team2cc = team.teamname.trim().toLowerCase()
+    allteamname.push(team2cc)
+  });
 
-console.log('team1'+team1cc);
-console.log('team2'+team2cc);
+  var teamname = ''
+  if(tid == 1){
+    teamname = $(".team_"+tid+"_"+ id).attr("data-teamname1");
+  }else if(tid == 0){
+   teamname = $(".team_"+tid+"_"+ id).attr("data-teamname2");
+  }
 
 
-    // if (team.teamname.trim().toLowerCase() === teamname.trim().toLowerCase()) {
-      // if (team1cc === team2cc) {
-    if (team2cc === team1cc) {
+   if(allteamname.includes(teamname.trim().toLowerCase())){
+    Swal.fire({
+      title: "You Can Not Select This Team",
+      text: "You Already Selected This Team In Another Round",
+      icon: "error",
+      showCancelButton: false,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ok",
+    });
+   }else{
+    var matchDate = $("#match-" + id).attr("data-date");
 
+    var dt = new Date();
+    var currenttime =
+      dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+    var currentDate = $.datepicker.formatDate("yy-mm-dd", new Date());
+    var current = currentDate + " " + currenttime;
 
+    if (matchDate > current) {
+      Swal.fire({
+        title: "<h3>Are You Sure Want To Select This Team !</h3>",
+        text: "If you already selected team, Then this team will override it",
+        icon: "info",
+        showCancelButton: true,
+        width: "450px",
+        confirmButtonColor: "#24890d",        
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, select it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const inputOptions = new Promise((resolve) => {
+             {
+            
+              if (roundSelectData.includes('jokeround'.trim().toLowerCase()) && roundselectleague.includes(leagueidstr)){
+                resolve({
+                  'scorePredictorround': '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
+                  'nothanks': '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>'
+                })
+              }else{
+                resolve({
+                  'jokeround': '<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
+                  'scorePredictorround': '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
+                  'nothanks': '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>'
+                })
+              }             
+            }
+          })
+          
+          const { value: round } =  Swal.fire({
+            title: '<h2 style="color:#0a4a03">Want To Select Round ?<h2>',
+            input: 'radio',
+            icon: "question",
+            width: "450px",
+            confirmButtonColor: "#0a4a03",
+            iconColor: '#54595F',
+            confirmButtonText: "select it!",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            inputOptions: inputOptions,
+            inputValidator: (value) => {
+              if (!value) {
+                return 'You need to choose something!'
+              }
+            }
+          }).then((round) => { 
+            $roundselect = round.value; 
 
-        Swal.fire({
-          title: "You Can Not Select This Team",
-          text: "You Already Selected This Team In Another Round",
-          icon: "error",
-          showCancelButton: false,
-          confirmButtonColor: "#d33",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Ok",
-        });
-    } else {
-      var matchDate = $("#match-" + id).attr("data-date");
-
-      var dt = new Date();
-      var currenttime =
-        dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-      var currentDate = $.datepicker.formatDate("yy-mm-dd", new Date());
-      var current = currentDate + " " + currenttime;
-
-      if (matchDate > current) {
-        Swal.fire({
-          title: "Are You Sure Want To Select This Team !",
-          text: "If you already selected team, Then this team will override it",
-          icon: "info",
-          showCancelButton: true,
-          width: "400px",
-          confirmButtonColor: "#24890d",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, select it!",
-        }).then((result) => {
-          if (result.isConfirmed) {
             $.ajax({
               type: "POST",
               url: ajaxurl,
@@ -802,6 +858,7 @@ console.log('team2'+team2cc);
               data: {
                 tid: tid,
                 id: id,
+                roundselect: round.value,
                 action: "match_list_Controller::add_team_join",
               },
               success: function (responce) {
@@ -811,24 +868,27 @@ console.log('team2'+team2cc);
                   $("#joinbutton").append("You selected This Match");
                   $(".match-" + id).html("SELECT");
                   $(".team_" + tid + "_" + id).html("SELECTED");
+                  location.reload();
                 }
               },
             });
-          }
-        });
-      } else {
-        Swal.fire({
-          title: "You Can Not select This Team !",
-          text: "Date Is Over To select Or Change Team.",
-          icon: "error",
-          showCancelButton: false,
-          confirmButtonColor: "#d33",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Ok",
-        });
-      }
+            
+          })        
+        }
+      });
+    } else {
+      Swal.fire({
+        title: "You Can Not select This Team !",
+        text: "Date Is Over To select Or Change Team.",
+        icon: "error",
+        showCancelButton: false,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ok",
+      });
     }
-  });
+   }
+   return false;
 }
 
 /*************************** 

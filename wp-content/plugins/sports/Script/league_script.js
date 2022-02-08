@@ -752,18 +752,35 @@ end of Match List
 start of Join Team
  **************************/
 
-function join_team(tid, id, leagueid) {
+function join_team(tid, id, leagueid, roundid, uniqid) {
 
   var roundSelectDataArray = JSON.parse(localStorage.getItem("roundSelectData"));
   var leagueidstr = leagueid.toString();
+  var roundidstr = roundid.toString();
+  var uniqstr = uniqid.toString();
+
+
+
+  
+
+
 
   var roundSelectData = [];
   var roundselectleague = [];
+  var roundselectround = [];
+  var roundselectid = [];
+
   roundSelectDataArray.forEach((round) => {
-    var roundselect = round.roundselect.trim().toLowerCase()
+    var roundselect = round.roundselect.trim().toLowerCase() 
     var roundleague = round.leagueid
+    var roundround = round.roundid
+    var roundsrtid = round.id
+
     roundSelectData.push(roundselect)
     roundselectleague.push(roundleague)
+    roundselectround.push(roundround)
+    roundselectid.push(roundsrtid)
+
   });
 
  
@@ -816,19 +833,31 @@ function join_team(tid, id, leagueid) {
         if (result.isConfirmed) {
           const inputOptions = new Promise((resolve) => {
              {
-            
+             
               if (roundSelectData.includes('jokeround'.trim().toLowerCase()) && roundselectleague.includes(leagueidstr)){
-                resolve({
-                  'scorePredictorround': '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
-                  'nothanks': '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>'
-                })
-              }else{
+                alert("1")
+                if(roundSelectData.includes('scorePredictorround'.trim().toLowerCase())  && roundselectround.includes(roundidstr) && roundselectid.includes(uniqstr)){
+                  alert("1a")
+                  resolve({
+                    'nothanks': '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>'
+                  })
+                }else{
+                  alert("1b")
+                  resolve({
+                    'scorePredictorround': '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
+                    'nothanks': '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>'
+                  })
+                }              
+              }              
+              else{
+                alert("3")
                 resolve({
                   'jokeround': '<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
                   'scorePredictorround': '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
                   'nothanks': '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>'
                 })
-              }             
+              } 
+
             }
           })
           

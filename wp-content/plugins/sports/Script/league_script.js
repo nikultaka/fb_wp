@@ -740,7 +740,10 @@ function match_list(id) {
 
         localStorage.removeItem("roundSelectData");
         localStorage.setItem("roundSelectData", JSON.stringify(data.roundSelectData));
-      
+
+        localStorage.removeItem("validateData");
+        localStorage.setItem("validateData", JSON.stringify(data.validateData));
+
         $("#matchlistdata").append(data.match_string);
       }
     },
@@ -752,55 +755,67 @@ end of Match List
 start of Join Team
  **************************/
 
-function join_team(tid, id, leagueid, roundid, uniqid) {
-
+function join_team(tid, id, leagueid, roundid) {
   var roundSelectDataArray = JSON.parse(localStorage.getItem("roundSelectData"));
   var leagueidstr = leagueid.toString();
   var roundidstr = roundid.toString();
-  var uniqstr = uniqid.toString();
 
-
-
-  
-
-
-
-  var roundSelectData = [];
-  var roundselectleague = [];
-  var roundselectround = [];
-  var roundselectid = [];
-
-  roundSelectDataArray.forEach((round) => {
-    var roundselect = round.roundselect.trim().toLowerCase() 
-    var roundleague = round.leagueid
-    var roundround = round.roundid
-    var roundsrtid = round.id
-
-    roundSelectData.push(roundselect)
-    roundselectleague.push(roundleague)
-    roundselectround.push(roundround)
-    roundselectid.push(roundsrtid)
-
+  var sprSelectData = [];
+  var uniqcheck = roundSelectDataArray.filter((round) => {
+    return round.roundselect === "scorePredictorround";
+  });
+  uniqcheck.forEach((round) => {
+    var sprround = round.roundid;
+    sprSelectData.push(sprround);
   });
 
- 
- 
+  var jrSelectData = [];
+  var uniqcheck = roundSelectDataArray.filter((round) => {
+    return round.roundselect === "jokeround";
+  });
+  uniqcheck.forEach((round) => {
+    var jrround = round.leagueid;
+    jrSelectData.push(jrround);
+  });
+
+  var roundSelectData = [];
+  roundSelectDataArray.forEach((round) => {
+    var roundselect = round.roundselect.trim().toLowerCase();
+    roundSelectData.push(roundselect);   
+  });
+
+  // console.log(jrSelectData);
+  // console.log(leagueidstr);
+  // console.log(sprSelectData);
+  console.log(roundidstr);
+  // console.log(roundSelectData);
+
+  var validateDataArray = JSON.parse(localStorage.getItem("validateData"));
+  var uniqidselect = [];
+  validateDataArray.forEach((uniq) => {
+    var idselect = uniq.id;
+    uniqidselect.push(idselect);
+  });
+   console.log(uniqidselect);
+
+
+
+
   var allTeamDataArray = JSON.parse(localStorage.getItem("allTeamData"));
   var allteamname = [];
   allTeamDataArray.forEach((team) => {
-    var team2cc = team.teamname.trim().toLowerCase()
-    allteamname.push(team2cc)
+    var team2cc = team.teamname.trim().toLowerCase();
+    allteamname.push(team2cc);
   });
 
-  var teamname = ''
-  if(tid == 1){
-    teamname = $(".team_"+tid+"_"+ id).attr("data-teamname1");
-  }else if(tid == 0){
-   teamname = $(".team_"+tid+"_"+ id).attr("data-teamname2");
+  var teamname = "";
+  if (tid == 1) {
+    teamname = $(".team_" + tid + "_" + id).attr("data-teamname1");
+  } else if (tid == 0) {
+    teamname = $(".team_" + tid + "_" + id).attr("data-teamname2");
   }
 
-
-   if(allteamname.includes(teamname.trim().toLowerCase())){
+  if (allteamname.includes(teamname.trim().toLowerCase())) {
     Swal.fire({
       title: "You Can Not Select This Team",
       text: "You Already Selected This Team In Another Round",
@@ -810,7 +825,7 @@ function join_team(tid, id, leagueid, roundid, uniqid) {
       cancelButtonColor: "#d33",
       confirmButtonText: "Ok",
     });
-   }else{
+  } else {
     var matchDate = $("#match-" + id).attr("data-date");
 
     var dt = new Date();
@@ -826,60 +841,84 @@ function join_team(tid, id, leagueid, roundid, uniqid) {
         icon: "info",
         showCancelButton: true,
         width: "450px",
-        confirmButtonColor: "#24890d",        
+        confirmButtonColor: "#24890d",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, select it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          const inputOptions = new Promise((resolve) => {
-             {
-             
-              if (roundSelectData.includes('jokeround'.trim().toLowerCase()) && roundselectleague.includes(leagueidstr)){
-                alert("1")
-                if(roundSelectData.includes('scorePredictorround'.trim().toLowerCase())  && roundselectround.includes(roundidstr) && roundselectid.includes(uniqstr)){
-                  alert("1a")
+          if (uniqidselect.includes(roundidstr)) {
+          const inputOptions = new Promise((resolve) => {            
+              {
+                if (
+                  roundSelectData.includes("jokeround".trim().toLowerCase()) &&
+                  jrSelectData.includes(leagueidstr)
+                ) {
+                  alert("1");
+                  if (
+                    roundSelectData.includes(
+                      "scorePredictorround".trim().toLowerCase()
+                    ) &&
+                    sprSelectData.includes(roundidstr)
+                  ) {
+                    alert("1a");
+                    resolve({
+                      nothanks:
+                        '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>',
+                    });
+                  } else {
+                    alert("1b");
+                    resolve({
+                      scorePredictorround:
+                        '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
+                      nothanks:
+                        '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>',
+                    });
+                  }
+                } else if (
+                  roundSelectData.includes(
+                    "scorePredictorround".trim().toLowerCase()
+                  ) &&
+                  sprSelectData.includes(roundidstr)
+                ) {
+                  alert("2");
                   resolve({
-                    'nothanks': '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>'
-                  })
-                }else{
-                  alert("1b")
+                      jokeround:'<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
+                      nothanks:'<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>',
+                    });
+                  
+                } else {
+                  alert("3");
                   resolve({
-                    'scorePredictorround': '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
-                    'nothanks': '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>'
-                  })
-                }              
-              }              
-              else{
-                alert("3")
-                resolve({
-                  'jokeround': '<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
-                  'scorePredictorround': '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
-                  'nothanks': '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>'
-                })
-              } 
+                    jokeround:
+                      '<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
+                    scorePredictorround:
+                      '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
+                    nothanks:
+                      '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>',
+                  });
+                }
+              }          
+          });
 
-            }
-          })
-          
-          const { value: round } =  Swal.fire({
+          const { value: round } = Swal.fire({
             title: '<h2 style="color:#0a4a03">Want To Select Round ?<h2>',
-            input: 'radio',
+            input: "radio",
             icon: "question",
             width: "450px",
             confirmButtonColor: "#0a4a03",
-            iconColor: '#54595F',
+            iconColor: "#54595F",
             confirmButtonText: "select it!",
             allowOutsideClick: false,
             allowEscapeKey: false,
             inputOptions: inputOptions,
             inputValidator: (value) => {
               if (!value) {
-                return 'You need to choose something!'
+                return "You need to choose something!";
               }
-            }
-          }).then((round) => { 
-            $roundselect = round.value; 
-
+            },
+          })        
+        .then((round) => {
+            $roundselect = round.value;
             $.ajax({
               type: "POST",
               url: ajaxurl,
@@ -901,8 +940,31 @@ function join_team(tid, id, leagueid, roundid, uniqid) {
                 }
               },
             });
-            
-          })        
+          });
+        }else{
+          $roundselect = 'nothanks';
+          $.ajax({
+            type: "POST",
+            url: ajaxurl,
+            datatype: "json",
+            data: {
+              tid: tid,
+              id: id,
+              roundselect: 'nothanks',
+              action: "match_list_Controller::add_team_join",
+            },
+            success: function (responce) {
+              var data = JSON.parse(responce);
+              if (data.status == 1) {
+                Swal.fire("You Selected Team Successfully.");
+                $("#joinbutton").append("You selected This Match");
+                $(".match-" + id).html("SELECT");
+                $(".team_" + tid + "_" + id).html("SELECTED");
+                location.reload();
+              }
+            },
+          });
+        }
         }
       });
     } else {
@@ -916,8 +978,8 @@ function join_team(tid, id, leagueid, roundid, uniqid) {
         confirmButtonText: "Ok",
       });
     }
-   }
-   return false;
+  }
+  return false;
 }
 
 /*************************** 

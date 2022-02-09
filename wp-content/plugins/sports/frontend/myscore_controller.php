@@ -59,7 +59,7 @@ class my_score_Controller
                 "- " . $row->scoremultiplier * $row->teamscore; 
             if($row->scoretype == 'added') {
                 $toalScore+=$row->scoremultiplier * $row->teamscore;
-            } else {
+            } else { 
                 $toalScore-=$row->scoremultiplier * $row->teamscore;
             }     
         }
@@ -72,7 +72,7 @@ class my_score_Controller
                         OR (a.teamname LIKE '%" . $search . "%')
                         OR (a.matchid LIKE '%" . $search . "%')";
         }
-        $columns = array(
+        $columns = array(  
             0 => 'sportname',
             1 => 'leaguename',
             2 => 'roundname',

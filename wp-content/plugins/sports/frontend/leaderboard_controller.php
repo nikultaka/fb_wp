@@ -114,15 +114,27 @@ class leader_board_Controller
         CASE WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score 
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score ELSE ''
         END AS teamscore,
-        CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(
-            " . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier
-        ) WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(
-            " . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier
-        ) WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(
-            " . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier
-        ) WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(
-            " . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier
-        ) ELSE ''
+        CASE WHEN " . $jointeamtable . ".roundselect = 'nothanks' THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier)
+        END                                            
+        ELSE
+        CASE WHEN " . $jointeamtable . ".roundselect = 'scorePredictorround' THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * 3) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * 3)
+        END
+        ELSE
+        CASE WHEN " . $jointeamtable . ".roundselect = 'jokeround'  THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * 3)  
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * 3) 
+        END
+        END
+        END
         END AS userscore
         FROM
             " . $jointeamtable . "
@@ -131,12 +143,13 @@ class leader_board_Controller
         LEFT JOIN " . $matchscoretable . " ON " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
         LEFT JOIN " . $roundtable . " ON " . $roundtable . ".id = " . $jointeamtable . ".roundid
         WHERE
-            " . $jointeamtable . ".leagueid = 8
+            " . $jointeamtable . ".leagueid = $leagueId
         ORDER BY
             userscore
         DESC) as data
         group by userid
         order by finalscore DESC";
+      
 
         $result = $wpdb->get_results($result_sql, OBJECT);
         $totalData = 0;

@@ -247,10 +247,10 @@
                         <table class="table" style="width: 100%; color:#343a40;" id="matchdata-table">
                             <thead>
                                 <!-- <th>ID</th> -->
-                                <th width="20%">Round Name</th>
-                                <th width="20%">Team 1</th>
-                                <th width="20%">Team 2</th>
-                                <!-- <th>End Date</th> -->
+                                <th width="15%">Round Name</th>
+                                <th width="15%">Team 1</th>
+                                <th width="15%">Team 2</th>
+                                <th width="15%">End Date</th>
                                 <th width="5%">Status</th>
                                 <th width="35%">Actions</th>
                             </thead>

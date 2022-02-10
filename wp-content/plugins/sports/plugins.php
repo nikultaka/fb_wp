@@ -129,6 +129,16 @@
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;"; 
 
+        $scorepredictor_table_name = $wpdb->prefix . 'scorepredictor';
+        $charset_collate = $wpdb->get_charset_collate();
+        $sqlscorepredictor = "CREATE TABLE `$scorepredictor_table_name` (
+        `id` int(11) NOT NULL auto_increment,
+        `matchid` int(11) NOT NULL,
+        `roundid` int(11) NOT NULL,
+        `scorepredictor` INT(50) NOT NULL,         
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+        PRIMARY KEY  id (id)) $charset_collate;"; 
+
 
         if (
             $wpdb->get_var("SHOW TABLES LIKE '$sports_table_name'") != $sports_table_name ||
@@ -138,7 +148,8 @@
             $wpdb->get_var("SHOW TABLES LIKE '$score_table_name'") != $score_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$leaderboard_table_name'") != $leaderboard_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$jointeam_table_name'") != $jointeam_table_name ||
-            $wpdb->get_var("SHOW TABLES LIKE '$additionalpoints_table_name'") != $additionalpoints_table_name) {
+            $wpdb->get_var("SHOW TABLES LIKE '$additionalpoints_table_name'") != $additionalpoints_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$scorepredictor_table_name'") != $scorepredictor_table_name) {
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             require_once(ABSPATH . 'wp-includes/pluggable.php');
             dbDelta($sql);
@@ -149,6 +160,8 @@
             dbDelta($sqlleaderboard);
             dbDelta($sqljointeam);
             dbDelta($sqladditionalpoints);
+            dbDelta($sqlscorepredictor);
+
 
         }
     }

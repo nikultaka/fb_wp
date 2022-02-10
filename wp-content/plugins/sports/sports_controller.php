@@ -818,6 +818,7 @@ class league_controller
         $jointeamtable = $wpdb->prefix . "jointeam";
         $matchscoretable = $wpdb->prefix . "score";
         $roundtable = $wpdb->prefix . "round";
+        $additionalpointstable = $wpdb->prefix . "additionalpoints";
 
 
         $result_sql = "SELECT " . $jointeamtable . ".*," . $leaguetable . ".name as leaguename," . $usertable . ".display_name as username,
@@ -826,25 +827,43 @@ class league_controller
         WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score
         ELSE ''
-        END AS teamscore
+        END AS teamscore,
+        CASE WHEN " . $jointeamtable . ".roundselect = 'nothanks' THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier)
+        END                                            
+        ELSE
+        CASE WHEN " . $jointeamtable . ".roundselect = 'scorePredictorround' THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
+        END
+        ELSE
+        CASE WHEN " . $jointeamtable . ".roundselect = 'jokeround'  THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".jokerscoremultiplier)  
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".jokerscoremultiplier) 
+        END
+        END
+        END
+        END AS userscore
         FROM " . $jointeamtable . " 
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $jointeamtable . ".leagueid
         LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $jointeamtable . ".userid 
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
+        LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
         WHERE " . $jointeamtable . ".leagueid = " . $lbhdnleagueid . " ";
 
         $totalScorebyleague = $wpdb->get_results($result_sql, OBJECT);
         $totalScore = 0;
         foreach ($totalScorebyleague as $row) {
-            $temp['yourscore'] = $row->scoretype == 'added' ?
-                "+ " . $row->scoremultiplier * $row->teamscore :
-                "- " . $row->scoremultiplier * $row->teamscore;
-            if ($row->scoretype == 'added') {
-                $totalScore += $row->scoremultiplier * $row->teamscore;
-            } else {
-                $totalScore -= $row->scoremultiplier * $row->teamscore;
-            }
+            $temp['yourscore'] = $row->userscore;
+                $totalScore += $row->userscore;
+          
         }
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {

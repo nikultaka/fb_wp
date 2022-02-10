@@ -7,6 +7,7 @@ class match_list_Controller
         ob_start();
         wp_enqueue_script('script', plugins_url('../Script/league_script.js', __FILE__));
         include(dirname(__FILE__) . "/html/matchlist.php");
+        include(dirname(__FILE__) . "/html/scorepredictormodel.php");
         $s = ob_get_contents();
         ob_end_clean();
         print $s;
@@ -25,15 +26,15 @@ class match_list_Controller
         $userid = get_current_user_id();
 
 
-        $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname," . $leaguetable . ".name as leaguename ,
+        $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname," . $leaguetable . ".name as leaguename ," . $jointeamtable . ".roundselect as roundselect,
         " . $sportstable . ".name as sportname,(SELECT teamid from " . $jointeamtable . " where matchid = " . $matchtable . ".id and userid = $userid ) as teamid
         FROM " . $matchtable . " 
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round 
-        LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid 
+        LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid
+        LEFT JOIN " . $jointeamtable . " on " . $jointeamtable . ".matchid = " . $matchtable . ".id
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
         WHERE " . $matchtable . ".round = " . $matchId . "  and MSTATUS = 'active' ");
         $match_string  = '';
-    
         $roundselect_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ," . $jointeamtable . ".roundid, " . $jointeamtable . ".roundselect, " . $jointeamtable . ".id 
         From " . $jointeamtable . " WHERE " . $jointeamtable . ".userid = $userid ");
 
@@ -51,8 +52,14 @@ class match_list_Controller
                                           <div class="service-icon">
                                             <span><i class="fa fa-trophy"></i></span>
                                           </div>
-                                        <div class="row service-content">
-                                          </br><span class="kode-subtitle col-sm-4"><span class="text2">sport</span><h3 class="text">' . $match->sportname . '</h3></span>
+                                        <div class="row service-content">';
+                if ($match->roundselect == 'scorePredictorround') {                        
+                $match_string .= '<span><a  onclick="load_score_predicter_model(' . $match->id . ')" class="title btn" style="float:right; background-color: #ffcc00; color: #24890d; font-size: 15px; margin-top:-50px; font-family: Oswald; "><b>Predict Your Score Here</b></a></span>';
+                }
+                if ($match->roundselect == 'jokeround') {                        
+                    $match_string .= '<span><h3 class="title" style="float:right; color: #ffcc00; margin-top:-50px; font-family: Oswald; "><b>Joker Round</b></h3></span>';
+                    }
+                $match_string .= '</br><span class="kode-subtitle col-sm-4"><span class="text2">sport</span><h3 class="text">' . $match->sportname . '</h3></span>
                                           <span class="kode-subtitle col-sm-4 "><span class="text2">League</span><h3 class="text">' . $match->leaguename . '</h3></span>
                                           <span class="kode-subtitle col-sm-4"><span class="text2">Round</span><h3 class="text">' . $match->roundname . '</h3><br></span>
                                           <div class="col-md-6">
@@ -175,15 +182,81 @@ class match_list_Controller
         echo json_encode($data);
         exit;
     }
+
+
+
+
+
+    
+    function score_predictor_insert_data()
+    {
+
+        global $wpdb;
+        $updateId = $_POST['hmsid'];
+
+        $data['status'] = 0;
+        $data['msg'] = "Error Data Not insert";
+
+        $team1score = $_POST['team1score'];
+        $team2score = $_POST['team2score'];
+        $hdnmatchid = $_POST['hdnmatchid'];
+
+        $matchscoretable = $wpdb->prefix . "score";
+
+        if ($updateId == '') {
+            $wpdb->insert($matchscoretable, array(
+                'team1score'             => $team1score,
+                'team2score'             => $team2score,
+                'matchid'                => $hdnmatchid,
+            ));
+
+            $data['status'] = 1;
+            $data['msg'] = "Match Score added successfully";
+        } else {
+            $wpdb->update(
+                $matchscoretable,
+                array(
+                    'team1score'             => $team1score,
+                    'team2score'             => $team2score,
+                    'matchid'                => $hdnmatchid,
+                ),
+                array('id'  => $updateId)
+            );
+
+            $data['status'] = 1;
+            $data['msg'] = "Match Score updated successfully";
+        }
+
+        echo  json_encode($data);
+        exit;
+    }
+
+    function score_predictor_load_data()
+    {
+        global $wpdb;
+        $matchid = $_POST['matchid'];
+        $scorepredictortable = $wpdb->prefix . "scorepredictor";
+        $result_sql = $wpdb->get_results("SELECT * FROM " . $scorepredictortable . " WHERE matchid = ".$matchid."");
+
+        $result['status'] = 1;
+        $result['recoed'] = $result_sql[0];
+        echo json_encode($result);
+        exit();
+    }
 }
 
 $match_list_Controller = new match_list_Controller();
 
-add_action('wp_ajax_nopriv_match_list_Controller::get_match_list', array($match_list_Controller, 'get_match_list'));
 add_action('wp_ajax_match_list_Controller::get_match_list', array($match_list_Controller, 'get_match_list'));
+add_action('wp_ajax_nopriv_match_list_Controller::get_match_list', array($match_list_Controller, 'get_match_list'));
 
 add_action('wp_ajax_match_list_Controller::add_team_join', array($match_list_Controller, 'add_team_join'));
 add_action('wp_ajax_nopriv_match_list_Controller::add_team_join', array($match_list_Controller, 'add_team_join'));
 
+add_action('wp_ajax_match_list_Controller::score_predictor_insert_data', array($match_list_Controller, 'score_predictor_insert_data'));
+add_action('wp_ajax_nopriv_match_list_Controller::score_predictor_insert_data', array($match_list_Controller, 'score_predictor_insert_data'));
+
+add_action('wp_ajax_match_list_Controller::score_predictor_load_data', array($match_list_Controller, 'score_predictor_load_data'));
+add_action('wp_ajax_nopriv_match_list_Controller::score_predictor_load_data', array($match_list_Controller, 'score_predictor_load_data'));
 
 add_shortcode('match_list_short_code', array($match_list_Controller, 'match_list_short_code'));

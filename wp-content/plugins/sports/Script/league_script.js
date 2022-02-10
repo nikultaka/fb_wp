@@ -386,7 +386,7 @@ function loadmatchtable() {
       { mData: "round" },
       { mData: "team1" },
       { mData: "team2" },
-      //{ mData: "enddate" },
+      { mData: "enddate" },
       { mData: "mstatus" },
       { mData: "action" },
     ],
@@ -471,6 +471,7 @@ function loadmatchscoretable(matchid) {
       action: "league_controller::loadmatchscore_Datatable",
     },
     success: function (responce) {
+      console.log(responce)
       var data = JSON.parse(responce);
       if (data.status == 1) {
         var result = data.recoed;
@@ -702,6 +703,8 @@ start of Round List
  **************************/
 
 function round_list(id) {
+
+
   $.ajax({
     type: "POST",
     url: ajaxurl,
@@ -752,6 +755,67 @@ function match_list(id) {
 
 /*************************** 
 end of Match List
+start of Score Predict
+ **************************/
+
+function load_score_predicter_model(matchid) {
+  $("#hdnsprmatchid").val(matchid);
+  $.ajax({
+    url: ajaxurl,
+    type: "POST",
+    data: {
+      matchid: matchid,
+      action: "match_list_Controller::score_predictor_load_data",
+    },
+    success: function (responce) {
+      console.log(responce)
+
+      var data = JSON.parse(responce);
+      if (data.status == 1) {
+        var result = data.recoed;
+
+        $("#scorepredictormodal").modal("show");
+        $("#scorepredictorformdata")[0].reset();
+        $("#hspfid").val(result.id);
+        console.log(result.id)
+        $("#predictscore").val(result.scorepredictor);
+
+      }
+    },
+  });
+}
+
+$("#save_Btnscorepredictor").click(function () {
+  $("#scorepredictorformdata").validate({
+    rules: {
+      predictscore: "required",
+    },
+    messages: {
+      predictscore: "Enter Score !",
+    },
+    submitHandler: function () {
+      $.ajax({
+        url: ajaxurl,
+        type: "POST",
+        data: $("#scorepredictorformdata").serialize(),
+        success: function (responce) {
+          var data = JSON.parse(responce);
+          if (data.status == 1) {
+            Swal.fire({
+              icon: "success",
+              title: data.msg,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        },
+      });
+    },
+  });
+});
+
+/*************************** 
+end of  Score Predict
 start of Join Team
  **************************/
 
@@ -862,11 +926,13 @@ function join_team(tid, id, leagueid, roundid) {
                   ) {
                     alert("1a");
                     resolve({
+    
                       nothanks:
                         '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>',
                     });
                   } else {
                     alert("1b");
+                    
                     resolve({
                       scorePredictorround:
                         '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',

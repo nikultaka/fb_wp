@@ -38,11 +38,28 @@ class my_score_Controller
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
         ELSE ''
         END AS teamname ,
-        CASE
-        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score
-        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score
-        ELSE ''
-        END AS teamscore
+        CASE WHEN " . $jointeamtable . ".roundselect = 'nothanks' THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier)
+        END                                            
+        ELSE
+        CASE WHEN " . $jointeamtable . ".roundselect = 'scorePredictorround' THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * 3) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * 3)
+        END
+        ELSE
+        CASE WHEN " . $jointeamtable . ".roundselect = 'jokeround'  THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * 3)  
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * 3) 
+        END
+        END
+        END
+        END AS userscore
         FROM " . $jointeamtable . " 
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $jointeamtable . ".sportid 
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $jointeamtable . ".leagueid 
@@ -54,14 +71,8 @@ class my_score_Controller
         $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
         $toalScore = 0;
         foreach ($totalScoreResult as $row) {
-            $temp['yourscore'] = $row->scoretype == 'added' ?
-                "+ " . $row->scoremultiplier * $row->teamscore :
-                "- " . $row->scoremultiplier * $row->teamscore; 
-            if($row->scoretype == 'added') {
-                $toalScore+=$row->scoremultiplier * $row->teamscore;
-            } else { 
-                $toalScore-=$row->scoremultiplier * $row->teamscore;
-            }     
+            $temp['yourscore'] = $row->userscore; 
+            $toalScore+=$row->userscore;    
         }
     
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
@@ -119,9 +130,7 @@ class my_score_Controller
             $temp['league'] = $row->leaguename;
             $temp['round'] = $row->roundname;
             $temp['team'] = $row->teamname;
-            $temp['yourscore'] = $row->scoretype == 'added' ?
-                "+ " . $row->scoremultiplier * $row->teamscore :
-                "- " . $row->scoremultiplier * $row->teamscore;
+            $temp['yourscore'] = $row->userscore;
             $action = "<a class='btn btn-default ' style='background-color: #24890d; color: #fff;' href='$leaderboardlink' type='button'>Leader Board</a>";
             $temp['action'] = $action; 
             $data[] = $temp;

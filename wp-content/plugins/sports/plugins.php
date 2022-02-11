@@ -136,6 +136,7 @@
         `id` int(11) NOT NULL auto_increment,
         `matchid` int(11) NOT NULL,
         `teamid` int(11) NOT NULL,
+        `userid` int(11) NOT NULL,
         `scorepredictor` INT(50) NOT NULL,         
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;"; 

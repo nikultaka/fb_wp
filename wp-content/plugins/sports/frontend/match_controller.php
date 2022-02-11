@@ -196,7 +196,7 @@ class match_list_Controller
 
         $data['status'] = 0;
         $data['msg'] = "Error Data Not insert";
-
+        $userid = get_current_user_id();
         $scorepredictor	 = $_POST['scorepredictor'];
         $hdnsprmatchid = $_POST['hdnsprmatchid'];
         $hdnsprteamid = $_POST['hdnsprteamid'];
@@ -206,8 +206,8 @@ class match_list_Controller
             $wpdb->insert($scorepredictortable, array(
                 'scorepredictor'         => $scorepredictor,            
                 'matchid'                => $hdnsprmatchid,
-                'teamid'                => $hdnsprteamid,
-
+                'teamid'                 => $hdnsprteamid,
+                'userid'                 => $userid,
             ));
             $data['status'] = 1;
             $data['msg'] = "Your Predicted Score added successfully";
@@ -217,8 +217,8 @@ class match_list_Controller
                 array(
                     'scorepredictor'         => $scorepredictor,               
                     'matchid'                => $hdnsprmatchid,
-                    'teamid'                => $hdnsprteamid,
-
+                    'teamid'                 => $hdnsprteamid,
+                    'userid'                 => $userid,
                 ),
                 array('id'  => $updateId)
             );
@@ -233,8 +233,9 @@ class match_list_Controller
     {
         global $wpdb;
         $matchid = $_POST['matchid'];
+        $userid = get_current_user_id();
         $scorepredictortable = $wpdb->prefix . "scorepredictor";
-        $result_sql = $wpdb->get_results("SELECT * FROM " . $scorepredictortable . " WHERE matchid = ".$matchid."");
+        $result_sql = $wpdb->get_results("SELECT * FROM " . $scorepredictortable . " WHERE matchid = ".$matchid." AND userid = $userid ");
 
         $result['status'] = 1;
         $result['recoed'] = $result_sql[0];

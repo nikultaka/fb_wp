@@ -135,7 +135,7 @@
                         </div>
 
                         <!-- <div class="col"> -->
-                        <div class="col-md-2">
+                        <div class="col-md-1.5">
                             <label for="scoretype">Score Type :</label>
                             <select class="form-control" id="scoretype" name="scoretype" required>
                                 <option value="added">Added</option>
@@ -155,8 +155,12 @@
                                 Please select status.
                             </div>
                         </div>
+                        <div class="col-md-1.5" style="margin-top: 35px;">                            
+                            <input type="checkbox"  id="iscomplete" name="iscomplete" value="YES" />
+                            <label for="iscomplete">Is Completed ?</label>
+                        </div>
                         <!-- </div> -->
-                        <div class="col-md-3" style="margin-top: 3%;">
+                        <div class="col-md-2" style="margin-top: 3%;">
                             <button type="submit" class="btn btn-sm btn-primary" id="save_Btnround" name="save_Btnround">Save</button>
                             <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2">Close</button>
                         </div>
@@ -168,11 +172,12 @@
                         <table class="table" style="width: 100%; color:#343a40;" id="rounddata-table">
                             <thead>
                                 <!-- <th>ID</th> -->
-                                <th width="20%">Round Name</th>
+                                <th width="25%">Round Name</th>
                                 <th width="20%">Score Multiplier</th>
                                 <th width="10%">Score Type</th>
                                 <th width="10%">Status</th>
-                                <th width="40%">Actions</th>
+                                <th width="5%">Is Completed</th>
+                                <th width="30%">Actions</th>
                             </thead>
                         </table>
                         <div>

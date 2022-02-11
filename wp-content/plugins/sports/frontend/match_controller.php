@@ -54,7 +54,7 @@ class match_list_Controller
                                           </div>
                                         <div class="row service-content">';
                 if ($match->roundselect == 'scorePredictorround') {                        
-                $match_string .= '<span><a  onclick="load_score_predicter_model(' . $match->id . ')" class="title btn" style="float:right; background-color: #ffcc00; color: #24890d; font-size: 15px; margin-top:-50px; font-family: Oswald; "><b>Predict Your Score Here</b></a></span>';
+                $match_string .= '<span><a data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="load_score_predicter_model(' . $match->id . ',' . $match->teamid . ')" class="title btn" style="float:right; background-color: #ffcc00; color: #24890d; font-size: 15px; margin-top:-50px; font-family: Oswald; "><b>Predict Your Score Here</b></a></span>';
                 }
                 if ($match->roundselect == 'jokeround') {                        
                     $match_string .= '<span><h3 class="title" style="float:right; color: #ffcc00; margin-top:-50px; font-family: Oswald; "><b>Joker Round</b></h3></span>';
@@ -65,7 +65,7 @@ class match_list_Controller
                                           <div class="col-md-6">
                                           <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1 . '</b></h3></span>';
                 if ( is_user_logged_in() ) {
-                    $match_string .= '<a class="read-more pointer match-'.$match->id.' team_' . $match->t1id . '_' . $match->id .'"  data-teamname1="'.$match->team1.'" data-date="'.$match->enddate.'"  id="match-'.$match->id.'" onclick="join_team(' . $match->t1id . ',' . $match->id .',' . $match->leagueid .',' . $match->round .')">';
+                    $match_string .= '<a class="read-more pointer match-'.$match->id.' team_' . $match->t1id . '_' . $match->id .'"  data-teamname1="'.$match->team1.'" data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="join_team(' . $match->t1id . ',' . $match->id .',' . $match->leagueid .',' . $match->round .')">';
                     if($match->teamid != '' && $match->teamid == 1) { $match_string .= 'SELECTED';}else{ $match_string .= 'SELECT';}
                     $match_string .= '</a>';
                 }else{
@@ -182,51 +182,44 @@ class match_list_Controller
         echo json_encode($data);
         exit;
     }
-
-
-
-
-
     
     function score_predictor_insert_data()
     {
 
         global $wpdb;
-        $updateId = $_POST['hmsid'];
+        $updateId = $_POST['hspfid'];
 
         $data['status'] = 0;
         $data['msg'] = "Error Data Not insert";
 
-        $team1score = $_POST['team1score'];
-        $team2score = $_POST['team2score'];
-        $hdnmatchid = $_POST['hdnmatchid'];
-
-        $matchscoretable = $wpdb->prefix . "score";
+        $scorepredictor	 = $_POST['scorepredictor'];
+        $hdnsprmatchid = $_POST['hdnsprmatchid'];
+        $hdnsprteamid = $_POST['hdnsprteamid'];
+        $scorepredictortable = $wpdb->prefix . "scorepredictor";
 
         if ($updateId == '') {
-            $wpdb->insert($matchscoretable, array(
-                'team1score'             => $team1score,
-                'team2score'             => $team2score,
-                'matchid'                => $hdnmatchid,
-            ));
+            $wpdb->insert($scorepredictortable, array(
+                'scorepredictor'         => $scorepredictor,            
+                'matchid'                => $hdnsprmatchid,
+                'teamid'                => $hdnsprteamid,
 
+            ));
             $data['status'] = 1;
-            $data['msg'] = "Match Score added successfully";
+            $data['msg'] = "Your Predicted Score added successfully";
         } else {
             $wpdb->update(
-                $matchscoretable,
+                $scorepredictortable,
                 array(
-                    'team1score'             => $team1score,
-                    'team2score'             => $team2score,
-                    'matchid'                => $hdnmatchid,
+                    'scorepredictor'         => $scorepredictor,               
+                    'matchid'                => $hdnsprmatchid,
+                    'teamid'                => $hdnsprteamid,
+
                 ),
                 array('id'  => $updateId)
             );
-
             $data['status'] = 1;
-            $data['msg'] = "Match Score updated successfully";
+            $data['msg'] = "Your Predicted Score updated successfully";
         }
-
         echo  json_encode($data);
         exit;
     }

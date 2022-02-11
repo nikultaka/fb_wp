@@ -13,21 +13,22 @@
                 <div class="modal-body">
                     <input type="hidden" name="action" value="match_list_Controller::score_predictor_insert_data">
                     <input type="hidden" id="hdnsprmatchid" name="hdnsprmatchid">
+                    <input type="hidden" id="hdnsprteamid" name="hdnsprteamid">
                     <input type="hidden" id="hspfid" name="hspfid">
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4">   
                             <label for="name">
                                 <h3><b>Predict Your Score :</b></h3>
                             </label>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" style="color: #2b2b2b;" class="form-control" id="predictscore" autocomplete="off" name="predictscore">
+                            <input type="text" style="color: #2b2b2b;" class="form-control" id="scorepredictor" autocomplete="off" name="scorepredictor">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn" id="save_Btnscorepredictor" style="background-color: #24890d;" name="save_Btnscorepredictor">Save</button>
+                    <button type="submit" class="btn" id="save_Btnscorepredictor" style="background-color: #24890d;" name="save_Btnscorepredictor">Save</button>
                     <button type="button" class="btn" style="background-color: #e0b404;" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2">Close</button>
                 </div>
             </form>

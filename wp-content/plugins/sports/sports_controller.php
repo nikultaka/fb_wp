@@ -387,14 +387,21 @@ class league_controller
 
         $data['status'] = 0;
         $data['msg'] = "Error Data Not insert";
-
+        $checkedvalue = $_POST['iscomplete'];
+      
         $rname = $_POST['rname'];
         $scoremultiplier = $_POST['scoremultiplier'];
         $scoretype = $_POST['scoretype'];
-        $rstatus = $_POST['rstatus'];
+        $rstatus = $_POST['rstatus'];       
         $hdnleagueid = $_POST['hdnleagueid'];
-        $roundtable = $wpdb->prefix . "round";
 
+        if($checkedvalue == 'YES'){
+            $iscomplete = 'YES';
+        }else{
+            $iscomplete = 'NO';
+        };
+
+        $roundtable = $wpdb->prefix . "round";       
         if ($updateId == '') {
             $wpdb->insert($roundtable, array(
                 'rname'             => $rname,
@@ -402,6 +409,7 @@ class league_controller
                 'scoretype'         => $scoretype,
                 'leagueid'          => $hdnleagueid,
                 'rstatus'           => $rstatus,
+                'iscomplete'        => $iscomplete,
 
             ));
             $data['status'] = 1;
@@ -415,6 +423,8 @@ class league_controller
                     'scoretype'         => $scoretype,
                     'leagueid'          => $hdnleagueid,
                     'rstatus'           => $rstatus,
+                    'iscomplete'        => $iscomplete,
+
                 ),
                 array('id'  => $updateId)
             );
@@ -448,6 +458,7 @@ class league_controller
             2 => 'scoremultiplier',
             3 => 'scoretype',
             4 => 'rstatus',
+            5 => 'iscomplete',
         );
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
@@ -483,6 +494,7 @@ class league_controller
             $temp['scoremultiplier'] = $row->scoremultiplier;
             $temp['scoretype'] = strtoupper($row->scoretype);
             $temp['rstatus'] = strtoupper($row->rstatus);
+            $temp['iscomplete'] = strtoupper($row->iscomplete);
             $action = "<button  class='btn btn-sm btn-success'  onclick='editround_record(" . $row->id . ")'><i class='fa fa-pencil-square' aria-hidden='true'> Edit</i></button>
                        <button  class='btn btn-sm btn-danger' onclick='deleteround_record(" . $row->id . ")'><i class='fa fa-trash' aria-hidden='true'></i> Delete</button>";
             $temp['action'] = $action;
@@ -819,6 +831,7 @@ class league_controller
         $matchscoretable = $wpdb->prefix . "score";
         $roundtable = $wpdb->prefix . "round";
         $additionalpointstable = $wpdb->prefix . "additionalpoints";
+        $scorepredictortable = $wpdb->prefix . "scorepredictor";
 
 
         $result_sql = "SELECT " . $jointeamtable . ".*," . $leaguetable . ".name as leaguename," . $usertable . ".display_name as username,
@@ -837,9 +850,28 @@ class league_controller
         END                                            
         ELSE
         CASE WHEN " . $jointeamtable . ".roundselect = 'scorePredictorround' THEN 
-        CASE 
-            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
-            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
+            CASE WHEN " . $scorepredictortable . ".teamid = 1 THEN
+                     CASE WHEN " . $scorepredictortable . ".scorepredictor = " . $matchscoretable . ".team1score THEN  
+                            CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
+                                 WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
+                            END
+                        WHEN " . $scorepredictortable . ".scorepredictor = '' OR " . $scorepredictortable . ".scorepredictor != " . $matchscoretable . ".team1score THEN
+                            CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * 1) 
+                                 WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * 1)
+                            END    
+                    END
+            ELSE                 
+            CASE WHEN " . $scorepredictortable . ".teamid = 0 THEN
+                      CASE WHEN " . $scorepredictortable . ".scorepredictor = " . $matchscoretable . ".team2score THEN  
+                            CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
+                                 WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
+                            END
+                        WHEN " . $scorepredictortable . ".scorepredictor = '' OR " . $scorepredictortable . ".scorepredictor != " . $matchscoretable . ".team2score THEN
+                            CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * 1) 
+                                 WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * 1)
+                            END    
+                    END 
+            END                     
         END
         ELSE
         CASE WHEN " . $jointeamtable . ".roundselect = 'jokeround'  THEN 
@@ -855,6 +887,7 @@ class league_controller
         LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $jointeamtable . ".userid 
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
+        LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid 
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
         WHERE " . $jointeamtable . ".leagueid = " . $lbhdnleagueid . " ";
 

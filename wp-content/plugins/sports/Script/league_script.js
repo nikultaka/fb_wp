@@ -184,6 +184,7 @@ $("#save_Btnround").click(function () {
             $("#hrid").val("");
             $("#scoretype").val("");
             $("#rstatus").val("");
+            $("#iscomplete").prop('checked',false);
             loadroundtable();
             $("#roundformdata")[0].reset();
             // $("#roundModal").modal("hide");
@@ -216,12 +217,13 @@ function loadroundtable() {
       { mData: "scoremultiplier" },
       { mData: "scoretype" },
       { mData: "rstatus" },
+      { mData: "iscomplete" },
       { mData: "action" },
     ],
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [4],
+        targets: [5],
         orderable: false,
       },
     ],
@@ -259,6 +261,8 @@ function deleteround_record(id) {
 }
 
 function editround_record(id) {
+  $('#iscomplete').attr('checked', false); // Unchecks it
+
   $.ajax({
     url: ajaxurl,
     type: "POST",
@@ -271,13 +275,17 @@ function editround_record(id) {
       $("#submit").html("Update");
 
       if (data.status == 1) {
-        var result = data.recoed;
-        console.log(result.id);
+        var result = data.recoed;S
         $("#hrid").val(result.id);
         $("#rname").val(result.rname);
         $("#scoremultiplier").val(result.scoremultiplier);
         $("#scoretype").val(result.scoretype);
         $("#rstatus").val(result.rstatus);
+        if(result.iscomplete == 'YES') {
+          $("#iscomplete").prop('checked',true);
+        } else {
+          $("#iscomplete").prop('checked',false);
+        } 
         loadroundtable();
       }
     },
@@ -758,13 +766,22 @@ end of Match List
 start of Score Predict
  **************************/
 
-function load_score_predicter_model(matchid) {
+function load_score_predicter_model(matchid , teamid) {  
+  var matchDate = $("#match-" + matchid).attr("data-date");
+  var dt = new Date();
+  var currenttime =
+    dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+  var currentDate = $.datepicker.formatDate("yy-mm-dd", new Date());
+  var current = currentDate + " " + currenttime;
+  if (matchDate > current) {
   $("#hdnsprmatchid").val(matchid);
+  $("#hdnsprteamid").val(teamid);
   $.ajax({
     url: ajaxurl,
     type: "POST",
     data: {
       matchid: matchid,
+      teamid: teamid,
       action: "match_list_Controller::score_predictor_load_data",
     },
     success: function (responce) {
@@ -778,20 +795,31 @@ function load_score_predicter_model(matchid) {
         $("#scorepredictorformdata")[0].reset();
         $("#hspfid").val(result.id);
         console.log(result.id)
-        $("#predictscore").val(result.scorepredictor);
+        $("#scorepredictor").val(result.scorepredictor);
 
       }
     },
   });
+}else{
+  Swal.fire({
+    title: "You Can Not Predict Score For This Team",
+    text: "Date Is Over To Predict Score For This Team",
+    icon: "error",
+    showCancelButton: false,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ok",
+  });
+}
 }
 
 $("#save_Btnscorepredictor").click(function () {
   $("#scorepredictorformdata").validate({
     rules: {
-      predictscore: "required",
+      scorepredictor: "required",
     },
     messages: {
-      predictscore: "Enter Score !",
+      scorepredictor: "Enter Score !",
     },
     submitHandler: function () {
       $.ajax({
@@ -807,6 +835,8 @@ $("#save_Btnscorepredictor").click(function () {
               showConfirmButton: false,
               timer: 1500,
             });
+        $("#scorepredictormodal").modal("hide");
+
           }
         },
       });
@@ -917,22 +947,18 @@ function join_team(tid, id, leagueid, roundid) {
                   roundSelectData.includes("jokeround".trim().toLowerCase()) &&
                   jrSelectData.includes(leagueidstr)
                 ) {
-                  alert("1");
                   if (
                     roundSelectData.includes(
                       "scorePredictorround".trim().toLowerCase()
                     ) &&
                     sprSelectData.includes(roundidstr)
                   ) {
-                    alert("1a");
                     resolve({
     
                       nothanks:
                         '<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>',
                     });
-                  } else {
-                    alert("1b");
-                    
+                  } else {         
                     resolve({
                       scorePredictorround:
                         '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
@@ -945,15 +971,13 @@ function join_team(tid, id, leagueid, roundid) {
                     "scorePredictorround".trim().toLowerCase()
                   ) &&
                   sprSelectData.includes(roundidstr)
-                ) {
-                  alert("2");
+                ) {               
                   resolve({
                       jokeround:'<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
                       nothanks:'<h5><strong style="color:#2e2d2d">No Thanks</strong></h5>',
                     });
                   
-                } else {
-                  alert("3");
+                } else {                  
                   resolve({
                     jokeround:
                       '<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',

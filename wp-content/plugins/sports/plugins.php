@@ -61,7 +61,8 @@
         `rname` VARCHAR(50) NOT NULL,
         `scoremultiplier` INT(50) NOT NULL,
         `scoretype` VARCHAR(50) NOT NULL,
-        `rstatus` VARCHAR(50) NOT NULL,       
+        `rstatus` VARCHAR(50) NOT NULL,  
+        `iscomplete` VARCHAR(3),     
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;";
 
@@ -134,7 +135,7 @@
         $sqlscorepredictor = "CREATE TABLE `$scorepredictor_table_name` (
         `id` int(11) NOT NULL auto_increment,
         `matchid` int(11) NOT NULL,
-        `roundid` int(11) NOT NULL,
+        `teamid` int(11) NOT NULL,
         `scorepredictor` INT(50) NOT NULL,         
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;"; 

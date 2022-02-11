@@ -38,7 +38,12 @@ class match_list_Controller
         $roundselect_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ," . $jointeamtable . ".roundid, " . $jointeamtable . ".roundselect, " . $jointeamtable . ".id 
         From " . $jointeamtable . " WHERE " . $jointeamtable . ".userid = $userid ");
 
-        $team_sql = $wpdb->get_results("SELECT FROM " . $jointeamtable . " LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid ");
+        $team_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ,   CASE
+        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
+        ELSE ''
+        END AS teamname 
+        FROM " . $jointeamtable . " LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid ");
 
         $validate_sql = $wpdb->get_results("SELECT * FROM $roundtable WHERE " . $roundtable . ".scoremultiplier ='1' and " . $roundtable . ".scoretype = 'added'");
 

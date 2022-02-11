@@ -98,23 +98,23 @@ class sports_controller
         $requestData = $_POST;
         $data = array();
         $sportstable = $wpdb->prefix . "sports";
-        $result_sql = "SELECT a.* FROM " . $sportstable . " as a";
+        $result_sql = "SELECT * FROM " . $sportstable . " as a";
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
-            $result_sql .= "AND (a.name LIKE '%" . $search . "%')
-                                OR (a.status LIKE '%" . $search . "%')";
+            $result_sql .= "AND (name LIKE '%" . $search . "%')
+                                OR (status LIKE '%" . $search . "%')";
         }
         $columns = array(
-            0 => 'a.id',
-            1 => 'a.name',
-            2 => 'a.status',
+            0 => 'id',
+            1 => 'name',
+            2 => 'status',
         );
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
             $order_by = $columns[$requestData['order'][0]['column']];
             $result_sql .= " ORDER BY " . $order_by;
         } else {
-            $result_sql .= "ORDER BY a.id DESC";
+            $result_sql .= "ORDER BY id DESC";
         }
         if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
             $result_sql .= " " . $requestData['order'][0]['dir'];
@@ -465,7 +465,7 @@ class league_controller
             $order_by = $columns[$requestData['order'][0]['column']];
             $result_sql .= " ORDER BY " . $order_by;
         } else {
-            $result_sql .= "ORDER BY a.id DESC";
+            $result_sql .= "ORDER BY id ASC";
         }
         if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
             $result_sql .= " " . $requestData['order'][0]['dir'];
@@ -634,7 +634,7 @@ class league_controller
             $order_by = $columns[$requestData['order'][0]['column']];
             $result_sql .= " ORDER BY " . $order_by;
         } else {
-            $result_sql .= "ORDER BY a.id DESC";
+            $result_sql .= "ORDER BY id DESC";
         }
         if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
             $result_sql .= " " . $requestData['order'][0]['dir'];

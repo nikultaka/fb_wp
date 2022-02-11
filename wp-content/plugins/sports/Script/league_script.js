@@ -275,7 +275,7 @@ function editround_record(id) {
       $("#submit").html("Update");
 
       if (data.status == 1) {
-        var result = data.recoed;S
+        var result = data.recoed; 
         $("#hrid").val(result.id);
         $("#rname").val(result.rname);
         $("#scoremultiplier").val(result.scoremultiplier);
@@ -881,7 +881,7 @@ function join_team(tid, id, leagueid, roundid) {
   // console.log(jrSelectData);
   // console.log(leagueidstr);
   // console.log(sprSelectData);
-  console.log(roundidstr);
+  // console.log(roundidstr);
   // console.log(roundSelectData);
 
   var validateDataArray = JSON.parse(localStorage.getItem("validateData"));
@@ -890,16 +890,17 @@ function join_team(tid, id, leagueid, roundid) {
     var idselect = uniq.id;
     uniqidselect.push(idselect);
   });
-   console.log(uniqidselect);
-
-
+   
 
 
   var allTeamDataArray = JSON.parse(localStorage.getItem("allTeamData"));
   var allteamname = [];
-  allTeamDataArray.forEach((team) => {
-    var team2cc = team.teamname.trim().toLowerCase();
-    allteamname.push(team2cc);
+  var leagueidteam = allTeamDataArray.filter((team) => {    
+    return team.leagueid === leagueidstr;
+  });
+  leagueidteam.forEach((team) => {
+    var allteamnamelg = team.teamname;
+    allteamname.push(allteamnamelg);
   });
 
   var teamname = "";
@@ -908,7 +909,7 @@ function join_team(tid, id, leagueid, roundid) {
   } else if (tid == 0) {
     teamname = $(".team_" + tid + "_" + id).attr("data-teamname2");
   }
-
+   
   if (allteamname.includes(teamname.trim().toLowerCase())) {
     Swal.fire({
       title: "You Can Not Select This Team",
@@ -947,6 +948,7 @@ function join_team(tid, id, leagueid, roundid) {
                   roundSelectData.includes("jokeround".trim().toLowerCase()) &&
                   jrSelectData.includes(leagueidstr)
                 ) {
+
                   if (
                     roundSelectData.includes(
                       "scorePredictorround".trim().toLowerCase()

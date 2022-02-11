@@ -21,7 +21,7 @@ class round_list_Controller
         $result['status'] = 0;
         $roundtable = $wpdb->prefix . "round";
 
-        $result_sql = $wpdb->get_results("SELECT * FROM $roundtable WHERE leagueid = '$roundId' and RSTATUS = 'active' and iscomplete = 'NO'");
+        $result_sql = $wpdb->get_results("SELECT * FROM $roundtable WHERE leagueid = '$roundId' and RSTATUS = 'active' and iscomplete = 'NO' order by id ASC");
 
         $round_string  = '';
 

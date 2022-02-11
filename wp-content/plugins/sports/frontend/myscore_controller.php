@@ -32,7 +32,7 @@ class my_score_Controller
 
         
 
-        $result_sql = "SELECT " . $jointeamtable . ".*," . $sportstable . ".name as sportname," . $leaguetable . ".name as leaguename,
+        $result_sql = "SELECT distinct " . $jointeamtable . ".*," . $sportstable . ".name as sportname," . $leaguetable . ".name as leaguename,
         " . $roundtable . ".rname as roundname," . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
         " . $matchtable . ".id as matchid ,
         CASE
@@ -121,9 +121,9 @@ class my_score_Controller
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
             $order_by = $columns[$requestData['order'][0]['column']];
-            $result_sql .= " ORDER BY " . $order_by;
+            $result_sql .= " group by id ORDER BY " . $order_by;
         } else {
-            $result_sql .= "ORDER BY a.id DESC";
+            $result_sql .= " group by id ORDER BY a.id DESC";
         }
         if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
             $result_sql .= " " . $requestData['order'][0]['dir'];

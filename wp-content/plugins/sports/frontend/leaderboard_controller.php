@@ -108,7 +108,7 @@ class leader_board_Controller
 
 
 
-        $result_sql = "select *,sum(userscore) as finalscore from (SELECT
+        $result_sql = "select distinct *,sum(userscore) as finalscore from (SELECT
         " . $jointeamtable . ".*,
         " . $leaguetable . ".name AS leaguename,
         " . $usertable . ".display_name AS username,
@@ -169,11 +169,14 @@ class leader_board_Controller
         LEFT JOIN " . $roundtable . " ON " . $roundtable . ".id = " . $jointeamtable . ".roundid
         WHERE
             " . $jointeamtable . ".leagueid = $leagueId
+        group by id    
         ORDER BY
             userscore
         DESC) as data
         group by userid
         order by finalscore DESC";
+
+        //echo $result_sql; die;
 
 
         $result = $wpdb->get_results($result_sql, OBJECT);
@@ -232,7 +235,7 @@ class leader_board_Controller
 
 
 
-        $result_sql = "SELECT " . $jointeamtable . ".*," . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
+        $result_sql = "SELECT distinct " . $jointeamtable . ".*," . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
         CASE
         WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1

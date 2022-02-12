@@ -87,18 +87,19 @@ class my_score_Controller
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
-        LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid 
+        LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid and wp_scorepredictor.userid = ".$userid."
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
         WHERE " . $jointeamtable . ".userid = " . $userid . "";
-     echo '<pre>';
-     print_r($result_sql);
-     die;
+     // echo '<pre>';
+     // print_r($result_sql);
+     // die;  
 
         $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
+        //echo '<pre>'; print_r($totalScoreResult); exit;
         $toalScore = 0;
         foreach ($totalScoreResult as $row) {
             $temp['yourscore'] = $row->userscore; 
-            $toalScore+=$row->userscore;    
+            $toalScore+= $row->userscore;    
         }
     
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {

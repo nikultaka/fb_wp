@@ -54,21 +54,21 @@ class match_list_Controller
             foreach ($result_sql as $match) {
                 // if ($userid == $match->datauserid || $match->datauserid == '') {
 
-                $match_string .= '<div class="col-md-6 col-sm-6 col-xsx-6">
+                $match_string .= '<div class="col-md-4 col-sm-4 col-xsx-4" style="padding-right: 5px;  padding-left: 5px;">
                                         <div class="serviceBox">
                                           <div class="service-icon">
                                             <span><i class="fa fa-trophy"></i></span>
                                           </div>
                                         <div class="row service-content">';
                 if ($match->roundselect == 'scorePredictorround') {                        
-                $match_string .= '<span><a data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="load_score_predicter_model(' . $match->id . ',' . $match->teamid . ')" class="title btn" style="float:right; background-color: #ffcc00; color: #24890d; font-size: 15px; margin-top:-50px; font-family: Oswald; "><b>Predict Your Score Here</b></a></span>';
+                $match_string .= '<span><a data-date="'.$match->enddate.'" id="match-'.$match->id.'" onclick="load_score_predicter_model(' . $match->id . ',' . $match->teamid . ')" class="title btn" style="float:right; background-color: #ffcc00; color: #24890d; font-size: 13px; margin-top:-50px; font-family: Oswald; "><b>Predict Score</b></a></span>';
                 }
                 if ($match->roundselect == 'jokeround') {                        
                     $match_string .= '<span><h3 class="title" style="float:right; color: #ffcc00; margin-top:-50px; font-family: Oswald; "><b>Joker Round</b></h3></span>';
                     }
                 $match_string .= '</br><span class="kode-subtitle col-sm-4"><span class="text2">sport</span><h3 class="text">' . $match->sportname . '</h3></span>
                                           <span class="kode-subtitle col-sm-4 "><span class="text2">League</span><h3 class="text">' . $match->leaguename . '</h3></span>
-                                          <span class="kode-subtitle col-sm-4"><span class="text2">Round</span><h3 class="text">' . $match->roundname . '</h3><br></span>
+                                          <span class="kode-subtitle col-sm-4"><span class="text2">Round</span><h3 class="text">' . $match->roundname . '</h3></span>
                                           <div class="col-md-6">
                                           <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1 . '</b></h3></span>';
                 if ( is_user_logged_in() ) {

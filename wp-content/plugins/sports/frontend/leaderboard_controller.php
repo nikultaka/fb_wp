@@ -127,7 +127,7 @@ class leader_board_Controller
         ELSE
         CASE WHEN " . $jointeamtable . ".roundselect = 'scorePredictorround' THEN 
             CASE WHEN " . $scorepredictortable . ".teamid = 1 THEN
-                     CASE WHEN " . $scorepredictortable . ".scorepredictor >= " . $matchscoretable . ".team1score THEN  
+                     CASE WHEN " . $scorepredictortable . ".scorepredictor = " . $matchscoretable . ".team1score THEN  
                             CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
                                  WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
                             END
@@ -138,7 +138,7 @@ class leader_board_Controller
                     END
             ELSE                 
             CASE WHEN " . $scorepredictortable . ".teamid = 0 THEN
-                      CASE WHEN " . $scorepredictortable . ".scorepredictor >= " . $matchscoretable . ".team2score THEN  
+                      CASE WHEN " . $scorepredictortable . ".scorepredictor = " . $matchscoretable . ".team2score THEN  
                             CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
                                  WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
                             END
@@ -251,7 +251,7 @@ class leader_board_Controller
         ELSE
         CASE WHEN " . $jointeamtable . ".roundselect = 'scorePredictorround' THEN 
             CASE WHEN " . $scorepredictortable . ".teamid = 1 THEN
-                     CASE WHEN " . $scorepredictortable . ".scorepredictor >= " . $matchscoretable . ".team1score THEN  
+                     CASE WHEN " . $scorepredictortable . ".scorepredictor = " . $matchscoretable . ".team1score THEN  
                             CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
                                  WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
                             END
@@ -262,7 +262,7 @@ class leader_board_Controller
                     END
             ELSE                 
             CASE WHEN " . $scorepredictortable . ".teamid = 0 THEN
-                      CASE WHEN " . $scorepredictortable . ".scorepredictor >= " . $matchscoretable . ".team2score THEN  
+                      CASE WHEN " . $scorepredictortable . ".scorepredictor = " . $matchscoretable . ".team2score THEN  
                             CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
                                  WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
                             END
@@ -288,7 +288,7 @@ class leader_board_Controller
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
         LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid 
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
-        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " and " . $jointeamtable . ".userid = " . $userid . "  ";
+        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " and " . $jointeamtable . ".userid = " . $userid . " group by teamname ";
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
@@ -324,6 +324,7 @@ class leader_board_Controller
         if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
             $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
         }
+
         $list_data = $wpdb->get_results($result_sql, "OBJECT");
         $arr_data = array();
         $arr_data = $result;

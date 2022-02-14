@@ -50,7 +50,7 @@ class my_score_Controller
         ELSE
         CASE WHEN " . $jointeamtable . ".roundselect = 'scorePredictorround' THEN 
             CASE WHEN " . $scorepredictortable . ".teamid = 1   THEN
-                     CASE WHEN " . $scorepredictortable . ".scorepredictor >= " . $matchscoretable . ".team1score THEN  
+                     CASE WHEN " . $scorepredictortable . ".scorepredictor = " . $matchscoretable . ".team1score THEN  
                             CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
                                  WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
                             END
@@ -61,7 +61,7 @@ class my_score_Controller
                     END
             ELSE                 
             CASE WHEN " . $scorepredictortable . ".teamid = 0  THEN
-                      CASE WHEN " . $scorepredictortable . ".scorepredictor >= " . $matchscoretable . ".team2score THEN  
+                      CASE WHEN " . $scorepredictortable . ".scorepredictor = " . $matchscoretable . ".team2score THEN  
                             CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
                                  WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
                             END
@@ -114,10 +114,8 @@ class my_score_Controller
             1 => 'leaguename',
             2 => 'roundname',
             3 => 'teamname',
-            4 => 'matchid',
-            5 => 'scoremultiplier',
-            6 => 'teamscore',
-            7 => 'scoretype',
+            4 => 'userscore',
+       
         );
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {

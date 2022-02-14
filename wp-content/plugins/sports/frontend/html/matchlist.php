@@ -83,7 +83,7 @@
 	}
 
 	.serviceBox .title {
-		font-size: 20px;
+		font-size: 16px;
 		font-weight: 500;
 		color: #fff;
 		text-transform: uppercase;
@@ -97,7 +97,7 @@
 	}
 
 	.serviceBox .text {
-		font-size: 20px;
+		font-size: 15px;
 		font-weight: 500;
 		color: #fff;
 		text-transform: uppercase;
@@ -111,7 +111,7 @@
 	}
 
 	.serviceBox .text2 {
-		font-size: 18px;
+		font-size: 15px;
 		font-weight: 500;
 		color: #ffcc00;
 		text-transform: uppercase;
@@ -126,13 +126,13 @@
 
 	.serviceBox .read-more {
 		display: block;
-		width: 110px;
-		height: 45px;
+		width: 95px;
+		height: 42px;
 		line-height: 38px;
 		border-radius: 15%;
 		background: #24890d;
 		border: 2px solid #fff;
-		font-size: 20px;
+		font-size: 15px;
 		color: #fff;
 		margin: 0 auto;
 		position: absolute;

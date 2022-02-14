@@ -226,7 +226,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label for="enddate"><b>End Date</b></label>
+                            <label for="enddate"><b>Cut Off Time</b></label>
                             <input type="text" autocomplete="off" class="form-control date-time-picker" id="enddate" name="enddate" required>
                         </div>
                         <div class="col-md-3">
@@ -255,7 +255,7 @@
                                 <th width="15%">Round Name</th>
                                 <th width="15%">Team 1</th>
                                 <th width="15%">Team 2</th>
-                                <th width="15%">End Date</th>
+                                <th width="15%">Cut Off Time</th>
                                 <th width="5%">Status</th>
                                 <th width="35%">Actions</th>
                             </thead>

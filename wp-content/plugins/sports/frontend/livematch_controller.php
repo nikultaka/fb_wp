@@ -22,6 +22,16 @@ class live_match_list_Controller
         print $s;
     }
 
+    function live_leaderboard_list_short_code()
+    {
+        ob_start();
+        wp_enqueue_script('script', plugins_url('../Script/homepage_script.js', __FILE__));
+        include(dirname(__FILE__) . "/html/leaderboard.php");
+        $s = ob_get_contents();
+        ob_end_clean();
+        print $s;
+    }
+
     public function live_match_list()
     {
         global $wpdb;
@@ -162,7 +172,7 @@ class live_match_list_Controller
         $matchscoretable = $wpdb->prefix . "score";
 
 
-        $attime = date("Y-m-d",strtotime('+1 day')); //current_time('Y-m-d H:i:s');
+        $attime = date("Y-m-d", strtotime('+1 day')); //current_time('Y-m-d H:i:s');
 
 
         $result_sql = $wpdb->get_row("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname," . $leaguetable . ".name as leaguename ,
@@ -231,10 +241,7 @@ class live_match_list_Controller
                         </div>
                     </div>
                 </section>';
-                
-            
-            
-            } else {
+        } else {
             $upcoming_match_string .= '
             <section class="elementor-section elementor-top-section elementor-element elementor-element-095297c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="095297c" data-element_type="section">
             <div class="elementor-container elementor-column-gap-default">
@@ -283,6 +290,175 @@ class live_match_list_Controller
         echo json_encode($result);
         exit();
     }
+
+
+    public function live_leaderboard_list()
+    {
+
+        global $wpdb;
+        $leaguetable = $wpdb->prefix . "league";
+
+        $result_sql = $wpdb->get_results("SELECT * FROM " . $leaguetable . " WHERE STATUS = 'active' ORDER BY id DESC LIMIT 5");
+
+        $live_leaderboard_string  = '';
+
+        if (count($result_sql) > 0) {
+
+            $live_leaderboard_string  .= '
+            <section class="elementor-section elementor-top-section elementor-element elementor-element-095297c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="095297c" data-element_type="section">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-9e2fe1f" data-id="9e2fe1f" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-47716d5 elementor-widget elementor-widget-fancy-heading" data-id="47716d5" data-element_type="widget" data-widget_type="fancy-heading.default">
+                            <div class="elementor-widget-container">
+                                <div class="fancy-heading-wrapper fancy-heading-47716d5">
+                                    <div class="kode-simple-heading kode-align-center ">
+                                        <div class="heading heading-12 kode-align-center">
+                                            <p>Explore Your Favorite Leagues !</p>
+                                            <h2><span class="left"></span>Leader Board<span class="right"></span></h2>
+                                        </div>
+                                    </div>
+                                </div>        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>';
+
+            foreach ($result_sql as $leaderboard) {
+
+                $live_leaderboard_string .= '
+                <div class="col-md-2">
+                <button class="third" onclick="load_leaderboard_Pointtable(' . $leaderboard->id . ')" style="font-size:25px">'.$leaderboard->name.'</button>
+                </div>';
+            }
+        } else {
+            $live_leaderboard_string .= '';
+        }
+
+        if ($result_sql > 0) {
+            $result['status'] = 1;
+            $result['live_leaderboard_string'] = $live_leaderboard_string;
+        }
+        echo json_encode($result);
+        exit();
+    }
+
+    public function load_leaderboard_Pointtable(){
+        global $wpdb;
+        $requestData = $_POST;
+        $leagueId = $_POST['id'];
+
+        $data = array();
+
+        $leaderboard = $wpdb->prefix . "leaderboard";
+        $leaguetable = $wpdb->prefix . "league";
+        $usertable = $wpdb->prefix . "users";
+        $sportstable = $wpdb->prefix . "sports";
+        $jointeamtable = $wpdb->prefix . "jointeam";
+        $matchscoretable = $wpdb->prefix . "score";
+        $roundtable = $wpdb->prefix . "round";
+        $additionalpointstable = $wpdb->prefix . "additionalpoints";
+        $scorepredictortable = $wpdb->prefix . "scorepredictor";
+
+        $result_sql = $wpdb->get_results("select distinct *,sum(userscore) as finalscore from (SELECT
+        " . $jointeamtable . ".*,
+        " . $leaguetable . ".name AS leaguename,
+        " . $sportstable . ".name AS sportname,
+        " . $usertable . ".display_name AS username,
+        " . $roundtable . ".scoremultiplier AS scoremultiplier,
+        " . $roundtable . ".scoretype AS scoretype,
+        CASE WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score 
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score ELSE ''
+        END AS teamscore,
+        CASE WHEN " . $jointeamtable . ".roundselect = 'nothanks' THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier) 
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier)
+        END                                            
+        ELSE
+        CASE WHEN " . $jointeamtable . ".roundselect = 'scorePredictorround' THEN 
+            CASE WHEN " . $scorepredictortable . ".teamid = 1 THEN
+                     CASE WHEN " . $scorepredictortable . ".scorepredictor = " . $matchscoretable . ".team1score THEN  
+                            CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
+                                 WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
+                            END
+                        WHEN " . $scorepredictortable . ".scorepredictor = '' OR " . $scorepredictortable . ".scorepredictor != " . $matchscoretable . ".team1score THEN
+                            CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * 1) 
+                                 WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * 1)
+                            END    
+                    END
+            ELSE                 
+            CASE WHEN " . $scorepredictortable . ".teamid = 0 THEN
+                      CASE WHEN " . $scorepredictortable . ".scorepredictor = " . $matchscoretable . ".team2score THEN  
+                            CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".predictorscoremultiplier) 
+                                 WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".predictorscoremultiplier)
+                            END
+                        WHEN " . $scorepredictortable . ".scorepredictor = '' OR " . $scorepredictortable . ".scorepredictor != " . $matchscoretable . ".team2score THEN
+                            CASE WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * 1) 
+                                 WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * 1)
+                            END    
+                    END 
+            END                     
+        END
+        ELSE
+        CASE WHEN " . $jointeamtable . ".roundselect = 'jokeround'  THEN 
+        CASE 
+            WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".jokerscoremultiplier)  
+            WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".jokerscoremultiplier) 
+        END
+        END
+        END
+        END AS userscore
+        FROM
+            " . $jointeamtable . "
+        LEFT JOIN " . $leaguetable . " ON " . $leaguetable . ".id = " . $jointeamtable . ".leagueid
+        LEFT JOIN " . $usertable . " ON " . $usertable . ".id = " . $jointeamtable . ".userid
+        LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
+        LEFT JOIN " . $matchscoretable . " ON " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
+        LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid 
+        LEFT JOIN " . $sportstable . " ON " . $sportstable . ".id = " . $jointeamtable . ".sportid
+        LEFT JOIN " . $roundtable . " ON " . $roundtable . ".id = " . $jointeamtable . ".roundid
+        WHERE
+            " . $jointeamtable . ".leagueid = $leagueId
+        group by id    
+        ORDER BY
+            userscore
+        DESC) as data
+        group by userid
+        order by finalscore DESC");
+
+
+        $live_leaderboard_points_string  = '';
+        if (count($result_sql) > 0) {
+    
+        foreach ($result_sql as $leaderboardpoints) {
+
+        $live_leaderboard_points_string .= '
+        <div class="col-md-12">
+        <h2>sportname : '.$leaderboardpoints->sportname.'</h2></br>
+        <h2>leaguename : '.$leaderboardpoints->leaguename.'</h2></br>
+        <h2>username : '.$leaderboardpoints->username.'</h2></br>
+        <h2>finalscore : '.$leaderboardpoints->finalscore.'</h2></br>
+        </div>';
+        }
+
+        } else {
+         $live_leaderboard_points_string .= ' <div class="col-md-12">
+         <h2>No User Found In This League !</h2></br>
+         </div>';
+        }
+
+        if ($result_sql > 0) {
+        $result['status'] = 1;
+        $result['live_leaderboard_points_string'] = $live_leaderboard_points_string;
+        }
+        echo json_encode($result);
+        exit();
+    }
 }
 
 $live_match_list_Controller = new live_match_list_Controller();
@@ -293,5 +469,12 @@ add_action('wp_ajax_live_match_list_Controller::live_match_list', array($live_ma
 add_action('wp_ajax_nopriv_live_match_list_Controller::upcoming_match_list', array($live_match_list_Controller, 'upcoming_match_list'));
 add_action('wp_ajax_live_match_list_Controller::upcoming_match_list', array($live_match_list_Controller, 'upcoming_match_list'));
 
+add_action('wp_ajax_nopriv_live_match_list_Controller::live_leaderboard_list', array($live_match_list_Controller, 'live_leaderboard_list'));
+add_action('wp_ajax_live_match_list_Controller::live_leaderboard_list', array($live_match_list_Controller, 'live_leaderboard_list'));
+
+add_action('wp_ajax_nopriv_live_match_list_Controller::load_leaderboard_Pointtable', array($live_match_list_Controller, 'load_leaderboard_Pointtable'));
+add_action('wp_ajax_live_match_list_Controller::load_leaderboard_Pointtable', array($live_match_list_Controller, 'load_leaderboard_Pointtable'));
+
 add_shortcode('live_match_list_short_code', array($live_match_list_Controller, 'live_match_list_short_code'));
 add_shortcode('upcoming_match_list_short_code', array($live_match_list_Controller, 'upcoming_match_list_short_code'));
+add_shortcode('live_leaderboard_list_short_code', array($live_match_list_Controller, 'live_leaderboard_list_short_code'));

@@ -830,12 +830,14 @@ class league_controller
         $scorepredictortable = $wpdb->prefix . "scorepredictor";
 
 
-        $result_sql = "SELECT " . $jointeamtable . ".*," . $leaguetable . ".name as leaguename," . $usertable . ".display_name as username,
-        " . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
-        CASE
-        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score
-        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score
-        ELSE ''
+        $result_sql = "select distinct *,sum(userscore) as finalscore from (SELECT
+        " . $jointeamtable . ".*,
+        " . $leaguetable . ".name AS leaguename,
+        " . $usertable . ".display_name AS username,
+        " . $roundtable . ".scoremultiplier AS scoremultiplier,
+        " . $roundtable . ".scoretype AS scoretype,
+        CASE WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score 
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score ELSE ''
         END AS teamscore,
         CASE WHEN " . $jointeamtable . ".roundselect = 'nothanks' THEN 
         CASE 
@@ -878,32 +880,42 @@ class league_controller
         END
         END
         END AS userscore
-        FROM " . $jointeamtable . " 
-        LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $jointeamtable . ".leagueid
-        LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $jointeamtable . ".userid 
-        LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
+        FROM
+            " . $jointeamtable . "
+        LEFT JOIN " . $leaguetable . " ON " . $leaguetable . ".id = " . $jointeamtable . ".leagueid
+        LEFT JOIN " . $usertable . " ON " . $usertable . ".id = " . $jointeamtable . ".userid
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
+        LEFT JOIN " . $matchscoretable . " ON " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
         LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid 
-        LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
-        WHERE " . $jointeamtable . ".leagueid = " . $lbhdnleagueid . " ";
 
-        $totalScorebyleague = $wpdb->get_results($result_sql, OBJECT);
-        $totalScore = 0;
-        foreach ($totalScorebyleague as $row) {
-            $temp['yourscore'] = $row->userscore;
-                $totalScore += $row->userscore;
+        LEFT JOIN " . $roundtable . " ON " . $roundtable . ".id = " . $jointeamtable . ".roundid
+        WHERE
+            " . $jointeamtable . ".leagueid = $lbhdnleagueid
+        group by id    
+        ORDER BY
+            userscore
+        DESC) as data";
+
+        // $totalScorebyleague = $wpdb->get_results($result_sql, OBJECT);
+        // $totalScore = 0;
+        // foreach ($totalScorebyleague as $row) {
+        //     $temp['yourscore'] = $row->userscore;
+        //         $totalScore += $row->userscore;
           
-        }
+        // }
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
             $result_sql .= "AND (id LIKE '%" . $search . "%')
-                            OR (score LIKE '%" . $search . "%')";
+                            OR (leaguename LIKE '%" . $search . "%')
+                            OR (username LIKE '%" . $search . "%')
+                            OR (finalscore LIKE '%" . $search . "%')";
+                            
         }
         $columns = array(
             0 => 'leaguename',
             1 => 'username',
-            2 => 'score',
+            2 => 'finalscore',        
         );
         $result_sql .= " GROUP BY userid ";
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
@@ -937,7 +949,7 @@ class league_controller
         foreach ($list_data as $row) {
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
-            $temp['score'] = $totalScore;
+            $temp['score'] = $row->finalscore;
             $data[] = $temp;
             $id = "";
         }

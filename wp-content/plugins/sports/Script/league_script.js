@@ -522,7 +522,6 @@ $("#save_Btnmatchscore").click(function () {
               timer: 1500,
             });
             $("#matchscoremodal").modal("hide");
-            $("#matchmodal").modal("show");
           }
         },
       });

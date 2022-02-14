@@ -105,9 +105,8 @@ class sports_controller
                                 OR (status LIKE '%" . $search . "%')";
         }
         $columns = array(
-            0 => 'id',
-            1 => 'name',
-            2 => 'status',
+            0 => 'name',
+            1 => 'status',
         );
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
@@ -261,10 +260,9 @@ class league_controller
                                 OR (status LIKE '%" . $search . "%')";
         }
         $columns = array(
-            0 => 'id',
-            1 => 'sport_name',
-            2 => 'name',
-            3 => 'status',
+            0 => 'sport_name',
+            1 => 'name',
+            2 => 'status',
         );
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
@@ -453,12 +451,11 @@ class league_controller
                                 OR (rstatus LIKE '%" . $search . "%')";
         }
         $columns = array(
-            0 => 'id',
-            1 => 'rname',
-            2 => 'scoremultiplier',
-            3 => 'scoretype',
-            4 => 'rstatus',
-            5 => 'iscomplete',
+            0 => 'rname',
+            1 => 'scoremultiplier',
+            2 => 'scoretype',
+            3 => 'rstatus',
+            4 => 'iscomplete',
         );
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
@@ -622,12 +619,11 @@ class league_controller
                                 OR (mstatus LIKE '%" . $search . "%')";
         }
         $columns = array(
-            0 => 'id',
-            1 => 'roundname',
-            2 => 'team1',
-            3 => 'team2',
-            4 => 'enddate',
-            5 => 'mstatus',
+            0 => 'roundname',
+            1 => 'team1',
+            2 => 'team2',
+            3 => 'enddate',
+            4 => 'mstatus',
         );
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
@@ -674,7 +670,7 @@ class league_controller
             $id = "";
         }
 
-        $resultRound = "SELECT * FROM " . $roundtable . " where leagueid = " . $hdnleagueid;
+        $resultRound = "SELECT * FROM " . $roundtable . " where leagueid = " . $hdnleagueid ." ORDER BY id ASC";
         $roundData = $wpdb->get_results($resultRound, "OBJECT");
         $json_data = array(
             "draw" => intval($requestData['draw']),

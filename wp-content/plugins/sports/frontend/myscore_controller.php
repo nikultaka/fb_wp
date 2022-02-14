@@ -90,9 +90,7 @@ class my_score_Controller
         LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid 
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
         WHERE " . $jointeamtable . ".userid = " . $userid . "";
-     echo '<pre>';
-     print_r($result_sql);
-     die;
+
 
         $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
         $toalScore = 0;
@@ -115,7 +113,6 @@ class my_score_Controller
             2 => 'roundname',
             3 => 'teamname',
             4 => 'matchid',
-
             5 => 'scoremultiplier',
             6 => 'teamscore',
             7 => 'scoretype',

@@ -111,10 +111,6 @@ class match_list_Controller
             $result['teamData'] =$team_sql;
             $result['roundSelectData'] =$roundselect_sql;
             $result['validateData'] =$validate_sql;
-
-
-
-
         }
         echo json_encode($result);
         exit();
@@ -123,8 +119,15 @@ class match_list_Controller
     function add_team_join()
     {
 
+      
+
         global $wpdb;
-        $userid = get_current_user_id();
+        if($_POST['uid'] != ""){
+            $userid = $_POST['uid'];
+        }else{
+            $userid = get_current_user_id();
+        }
+               
         $teamId = $_POST['tid'];
         $matchId = $_POST['id'];
         $roundselect = $_POST['roundselect'];

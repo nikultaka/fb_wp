@@ -203,6 +203,7 @@ add_action('wp_ajax_sports_controller::edit_record', array($sports_controller, '
 
 class league_controller
 {
+    /*********** Start league  ****************************************************************************************************/
 
     function leagueinsert_data()
     {
@@ -373,8 +374,8 @@ class league_controller
         echo json_encode($result);
         exit();
     }
-
-    /***********  round  ****************************************************************************************************/
+    /*********** End league  ****************************************************************************************************/
+    /*********** Start round  ****************************************************************************************************/
 
 
     function roundinsert_data()
@@ -427,10 +428,36 @@ class league_controller
                 array('id'  => $updateId)
             );
 
-            $data['status'] = 1;
+            $data['status'] = 1;            
             $data['msg'] = "Round updated successfully";
         }
-        echo  json_encode($data);
+
+        $matchtable = $wpdb->prefix . "match";
+        $usertable = $wpdb->prefix . "users";
+        $roundtable = $wpdb->prefix . "round";
+        $jointeamtable = $wpdb->prefix . "jointeam";
+        $userid = get_current_user_id();
+
+
+        $userData_sql = $wpdb->get_results("SELECT id FROM " . $usertable . " ORDER BY id ASC");
+        $matchData_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname FROM " . $matchtable. " LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable. ".round = $updateId  ORDER BY id ASC");
+
+        $joinData_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*," . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
+        CASE
+        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
+        ELSE ''
+        END AS teamname
+        FROM " . $jointeamtable . "
+        LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
+        LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid ");
+
+        $data['matchData'] =$matchData_sql;
+        $data['joinData'] =$joinData_sql;
+        $data['userData'] =$userData_sql;
+
+
+        echo json_encode($data);
         exit;
     }
 
@@ -543,10 +570,8 @@ class league_controller
         exit();
     }
 
-    /***********  round  ****************************************************************************************************/
-
-
-    /***********  match  ****************************************************************************************************/
+    /*********** End round  ****************************************************************************************************/
+    /*********** Start match  ****************************************************************************************************/
 
     function matchinsert_data()
     {
@@ -705,7 +730,6 @@ class league_controller
         exit();
     }
 
-
     function editmatch_record()
     {
         global $wpdb;
@@ -725,12 +749,8 @@ class league_controller
         exit();
     }
 
-
-
-
-    /***********  match  ****************************************************************************************************/
-
-    /***********  matchscore  ****************************************************************************************************/
+    /*********** End match  ****************************************************************************************************/
+    /*********** Start matchscore  ****************************************************************************************************/
 
     function matchscoreinsert_data()
     {
@@ -793,24 +813,7 @@ class league_controller
         exit();
     }
 
-    // function deletematchscore_record()
-    // {
-    //     global $wpdb;
-    //     $deleteId = $_POST['id'];
-    //     $matchscoretable = $wpdb->prefix . "score";
-    //     $result['status'] = 0;
-
-    //     $delete_sql = $wpdb->delete($matchscoretable, array('id' => $deleteId));
-    //     if ($delete_sql) {
-    //         $result['status'] = 1;
-    //     }
-    //     echo json_encode($result);
-    //     exit();
-    // }
-
-
-    /***********  matchscore  ****************************************************************************************************/
-
+    /***********  End matchscore  ****************************************************************************************************/
     /***********  leaderboard  ****************************************************************************************************/
 
     function loadleaderboard_Datatable()
@@ -966,10 +969,8 @@ class league_controller
         exit(0);
     }
 
-
-    /***********  leaderboard  ****************************************************************************************************/
-
-     /***********  matchscore  ****************************************************************************************************/
+    /*********** End leaderboard  ****************************************************************************************************/
+     /*********** Start additionalpoints  ****************************************************************************************************/
 
      function additionalpointsinsert_data()
      {
@@ -1033,23 +1034,7 @@ class league_controller
          $result['recoed'] = $result_sql[0];
          echo json_encode($result);
          exit();
-     }
- 
-    //  function deleteadditionalpoints_record()
-    //  {
-    //      global $wpdb;
-    //      $deleteId = $_POST['id'];
-    //      $additionalpointstable = $wpdb->prefix . "score";
-    //      $result['status'] = 0;
- 
-    //      $delete_sql = $wpdb->delete($additionalpointstable, array('id' => $deleteId));
-    //      if ($delete_sql) {
-    //          $result['status'] = 1;
-    //      }
-    //      echo json_encode($result);
-    //      exit();
-    //  }
- 
+     } 
  
      /***********  additionalpoints  ****************************************************************************************************/
  

@@ -330,7 +330,7 @@ class live_match_list_Controller
 
                 $live_leaderboard_string .= '
                 <div class="col-md-2">
-                <button class="third" onclick="load_leaderboard_Pointtable(' . $leaderboard->id . ')" style="font-size:25px">'.$leaderboard->name.'</button>
+                <button class="third" onclick="load_leaderboard_Pointtable(' . $leaderboard->id . ')" style="font-size:25px">' . $leaderboard->name . '</button>
                 </div>';
             }
         } else {
@@ -345,7 +345,8 @@ class live_match_list_Controller
         exit();
     }
 
-    public function load_leaderboard_Pointtable(){
+    public function load_leaderboard_Pointtable()
+    {
         global $wpdb;
         $requestData = $_POST;
         $leagueId = $_POST['id'];
@@ -429,32 +430,39 @@ class live_match_list_Controller
             userscore
         DESC) as data
         group by userid
-        order by finalscore DESC");
+        order by finalscore DESC Limit 3");
 
 
         $live_leaderboard_points_string  = '';
         if (count($result_sql) > 0) {
-    
-        foreach ($result_sql as $leaderboardpoints) {
 
-        $live_leaderboard_points_string .= '
-        <div class="col-md-12">
-        <h2>sportname : '.$leaderboardpoints->sportname.'</h2></br>
-        <h2>leaguename : '.$leaderboardpoints->leaguename.'</h2></br>
-        <h2>username : '.$leaderboardpoints->username.'</h2></br>
-        <h2>finalscore : '.$leaderboardpoints->finalscore.'</h2></br>
+            foreach ($result_sql as $leaderboardpoints) {
+
+                $live_leaderboard_points_string .= '
+        <div class="col-md-4">
+                
+        <div class="containerFFG">
+            <div class="cardFFG">
+                <div class="txtFFG">
+                <h5>sportname : ' . $leaderboardpoints->sportname . '</h5></br>
+                <div class="PFFG"></div>
+                <h5>leaguename : ' . $leaderboardpoints->leaguename . '</h5></br>
+                <h5>username : ' . $leaderboardpoints->username . '</h5></br>
+                <h5>finalscore : ' . $leaderboardpoints->finalscore . '</h5></br>
+                </div>
+            </div>
+            </div>
         </div>';
-        }
-
+            }
         } else {
-         $live_leaderboard_points_string .= ' <div class="col-md-12">
+            $live_leaderboard_points_string .= ' <div class="col-md-12">
          <h2>No User Found In This League !</h2></br>
          </div>';
         }
 
         if ($result_sql > 0) {
-        $result['status'] = 1;
-        $result['live_leaderboard_points_string'] = $live_leaderboard_points_string;
+            $result['status'] = 1;
+            $result['live_leaderboard_points_string'] = $live_leaderboard_points_string;
         }
         echo json_encode($result);
         exit();

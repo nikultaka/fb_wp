@@ -1,15 +1,85 @@
 <style>
+    .third {
+        border-color: blue;
+        color: #fff;
+        box-shadow: 0 0 40px 40px blue inset, 0 0 0 0 blue;
+        transition: all 150ms ease-in-out;
+    }
 
-.third {
-  border-color: blue;
-  color: #fff;
-  box-shadow: 0 0 40px 40px blue inset, 0 0 0 0 blue;
-  transition: all 150ms ease-in-out;
-}
-  .third:hover {
-    box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
-  }
+    .third:hover {
+        box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
+    }
 
+  
+
+
+
+    .containerFFG {
+        display: grid;
+        place-items: center;
+        width: 200px;
+       
+        margin: auto;
+        background: linear-gradient(50deg, lightblue, Teal);
+        position: relative;
+        border-radius: 5%;
+        overflow: hidden;
+        padding: 3px;
+    }
+
+    .containerFFG::before {
+        content: '';
+        background: linear-gradient(45deg, yellow, Aqua);
+        width: 400px;
+        height: 20px;
+        position: absolute;
+        transform: rotate(-52deg) translate(0, -180px);
+    }
+
+    .cardFFG {
+        display: grid;
+        place-items: center;
+        width: 100%;        
+        border-radius: 5%;
+        background-color: #6EC1E4;
+        color: #7A7A7A;
+        position: relative;
+    }
+
+    .txtFFG {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        transition: color 1s ease;
+    }
+
+    .PFFG::before {
+        content: "";
+        display: inline-block;
+        width: 98%;
+        height: 2px;
+        background: linear-gradient(45deg, lightblue, Aqua);
+        transform: scaleX(0);
+        transition: transform 1s ease;
+    }
+
+    .containerFFG:hover::before {
+        animation: effetto 3s infinite;
+    }
+
+    .containerFFG:hover .txtFFG .PFFG::before {
+        transform: scaleX(1);
+    }
+
+    .containerFFG:hover .cardFFG {
+        color: #fff;
+    }
+
+    @keyframes effetto {
+        50% {
+            transform: rotate(-52deg) translate(0, 180px)
+        }
+    }
 </style>
 
 
@@ -39,6 +109,7 @@
 
 
 
+
 <div class="row d-grid gap-3">
     <div id="liveleaderboardlist">
     </div>
@@ -57,4 +128,3 @@
         live_leaderboard_list();
     })
 </script>
-

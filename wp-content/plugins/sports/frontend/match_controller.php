@@ -44,7 +44,9 @@ class match_list_Controller
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
         ELSE ''
         END AS teamname 
-        FROM " . $jointeamtable . " LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid ");
+        FROM " . $jointeamtable . " LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid 
+        WHERE " . $jointeamtable . ".userid = $userid 
+        ");    
 
         //echo '<pre>'; print_r($result_sql); exit;        
 

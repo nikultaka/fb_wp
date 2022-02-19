@@ -1,20 +1,37 @@
 <style>
-    .container1FFG {
+    .container10FFG {
         display: flow-root;
         place-items: center;
         width: 100%;
-        height: 70px;
+        height: 80px;
         position: relative;
         overflow: hidden;
+        padding: 9px;
+
     }
 
-    .container1FFG::before {
+    .container10FFG::before {
         content: '';
-        background: linear-gradient(45deg, yellow, red);
-        width: 308px;
-        height: 93px;
+        background: linear-gradient(45deg, #24890d, #58c333);
+        width: 400px;
+        height: 90px;
         position: absolute;
         transform: rotate(-45deg) translate(0, -200px);
+    }
+
+    .txt10FFG {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        transition: color 1s ease;
+    }
+
+    .container10FFG:hover::before {
+        animation: effetto 3s infinite;
+    }
+
+    .container10FFG:hover .txt10FFG {
+        transform: scaleX(1);
     }
 
     .card1FFG {
@@ -28,18 +45,6 @@
         padding: 17px;
     }
 
-    .container1FFG:hover::before {
-        animation: effetto 3s infinite;
-    }
-
-    .container1FFG:hover .txtFFG .PFFG::before {
-        transform: scaleX(1);
-    }
-
-    .container1FFG:hover .card1FFG {
-        color: #fff;
-    }
-
     .t1FFG {
         font-style: bold;
         font-family: Oswald;
@@ -49,6 +54,11 @@
         font-size: 38px;
         margin: 3px 0px -6px 0px;
     }
+
+
+
+
+
 
 
 
@@ -93,7 +103,7 @@
         transition: color 1s ease;
     }
 
-    .tFFG h5{
+    .tFFG h5 {
         font-style: normal;
         color: #0C2D48;
         font-weight: 400;

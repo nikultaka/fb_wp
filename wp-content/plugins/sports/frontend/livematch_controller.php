@@ -330,9 +330,11 @@ class live_match_list_Controller
 
                 $live_leaderboard_string .= '
                 <div class="col-md-4">                
-                <div class="container1FFG">
-                    <div class="card1FFG">                      
+                <div class="container10FFG">
+                    <div class="card1FFG"> 
+                    <div class="txtFFG">            
                     <center><a class="pointer t1FFG" onclick="load_leaderboard_Pointtable(' . $leaderboard->id . ')">' . $leaderboard->name . '</a><center>                
+                    </div>                    
                     </div>
                     </div>
                 </div>';

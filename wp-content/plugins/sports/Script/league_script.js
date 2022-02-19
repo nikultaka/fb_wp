@@ -1374,4 +1374,27 @@ function load_match_score_details_list(id, uid) {
 
 /*************************** 
 end of Load Match Score Details
+start of Send Mail Users For Enddate
  **************************/
+
+function send_mail_users_for_enddate() {
+    $.ajax({
+      type: "POST",
+      url: ajaxurl,
+      datatype: "json",
+      data: {
+        action: "match_list_Controller::send_mail_users_enddate",
+      },
+      success: function (responce) {
+        var data = JSON.parse(responce);
+        if (data.status == 1) {
+         
+        }
+      },
+    });
+}
+
+/*************************** 
+end of Send Mail Users For Enddate
+ **************************/
+

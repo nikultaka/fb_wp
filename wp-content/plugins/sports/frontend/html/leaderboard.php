@@ -1,49 +1,89 @@
 <style>
-    .third {
-        border-color: blue;
+    .container1FFG {
+        display: flow-root;
+        place-items: center;
+        width: 100%;
+        height: 70px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container1FFG::before {
+        content: '';
+        background: linear-gradient(45deg, yellow, red);
+        width: 308px;
+        height: 93px;
+        position: absolute;
+        transform: rotate(-45deg) translate(0, -200px);
+    }
+
+    .card1FFG {
+        display: block;
+        place-items: center;
+        width: auto;
+        height: 79px;
+        background-color: #f2f2f2;
+        position: relative;
+        margin: -6px;
+        padding: 17px;
+    }
+
+    .container1FFG:hover::before {
+        animation: effetto 3s infinite;
+    }
+
+    .container1FFG:hover .txtFFG .PFFG::before {
+        transform: scaleX(1);
+    }
+
+    .container1FFG:hover .card1FFG {
         color: #fff;
-        box-shadow: 0 0 40px 40px blue inset, 0 0 0 0 blue;
-        transition: all 150ms ease-in-out;
     }
 
-    .third:hover {
-        box-shadow: 0 0 10px 0 blue inset, 0 0 10px 4px blue;
+    .t1FFG {
+        font-style: bold;
+        font-family: Oswald;
+        color: #0C2D48;
+        font-weight: 400;
+        line-height: 1;
+        font-size: 38px;
+        margin: 3px 0px -6px 0px;
     }
 
-  
+
+
 
 
 
     .containerFFG {
-        display: grid;
+        display: flow-root;
         place-items: center;
-        width: 200px;
-       
-        margin: auto;
-        background: linear-gradient(50deg, lightblue, Teal);
+        width: 337px;
+        height: 191px;
+        margin: 8px;
         position: relative;
-        border-radius: 5%;
         overflow: hidden;
-        padding: 3px;
+        padding: 9px;
     }
 
     .containerFFG::before {
         content: '';
-        background: linear-gradient(45deg, yellow, Aqua);
-        width: 400px;
-        height: 20px;
+        background: linear-gradient(45deg, yellow, red);
+        width: 308px;
+        height: 93px;
         position: absolute;
-        transform: rotate(-52deg) translate(0, -180px);
+        transform: rotate(-45deg) translate(0, -200px);
     }
 
     .cardFFG {
-        display: grid;
+        display: block;
         place-items: center;
-        width: 100%;        
-        border-radius: 5%;
-        background-color: #6EC1E4;
-        color: #7A7A7A;
+        width: auto;
+        height: 185px;
+        background-color: #f2f2f2;
         position: relative;
+        margin: -6px;
+        padding: 17px;
     }
 
     .txtFFG {
@@ -53,12 +93,21 @@
         transition: color 1s ease;
     }
 
+    .tFFG h5{
+        font-style: normal;
+        color: #0C2D48;
+        font-weight: 400;
+        line-height: 1;
+        font-size: 22px;
+        margin: 3px 0px -6px 0px;
+    }
+
     .PFFG::before {
         content: "";
         display: inline-block;
-        width: 98%;
-        height: 2px;
-        background: linear-gradient(45deg, lightblue, Aqua);
+        width: 282px;
+        height: 1px;
+        background: linear-gradient(45deg, yellow, red);
         transform: scaleX(0);
         transition: transform 1s ease;
     }
@@ -75,10 +124,66 @@
         color: #fff;
     }
 
+    .pointer {
+        cursor: pointer;
+    }
+
     @keyframes effetto {
         50% {
             transform: rotate(-52deg) translate(0, 180px)
         }
+    }
+
+    .container2FFG {
+        display: flow-root;
+        place-items: center;
+        width: 100%;
+        height: 85px;
+        margin: 8px;
+        position: relative;
+        overflow: hidden;
+        padding: 9px;
+    }
+
+    .container2FFG::before {
+        content: '';
+        background: linear-gradient(45deg, yellow, red);
+        width: 308px;
+        height: 93px;
+        position: absolute;
+        transform: rotate(-45deg) translate(0, -200px);
+    }
+
+    .card2FFG {
+        display: block;
+        place-items: center;
+        width: auto;
+        height: 79px;
+        background-color: #f2f2f2;
+        position: relative;
+        margin: -6px;
+        padding: 17px;
+    }
+
+    .container2FFG:hover::before {
+        animation: effetto 3s infinite;
+    }
+
+    .container2FFG:hover .txtFFG .PFFG::before {
+        transform: scaleX(1);
+    }
+
+    .container2FFG:hover .cardFFG {
+        color: #fff;
+    }
+
+    .t2FFG h2 {
+        font-style: normal;
+        color: #0C2D48;
+        font-weight: 400;
+        line-height: 1;
+        font-size: 35px;
+        margin: 3px 0px -6px 0px;
     }
 </style>
 
@@ -118,7 +223,7 @@
 <div class="row d-grid gap-3">
     <div id="liveleaderboardpoints">
     </div>
-</div>
+</div></br></br></br></br></br>
 
 
 <script type="text/javascript">

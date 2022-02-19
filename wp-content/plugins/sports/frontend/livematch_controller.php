@@ -329,8 +329,12 @@ class live_match_list_Controller
             foreach ($result_sql as $leaderboard) {
 
                 $live_leaderboard_string .= '
-                <div class="col-md-2">
-                <button class="third" onclick="load_leaderboard_Pointtable(' . $leaderboard->id . ')" style="font-size:25px">' . $leaderboard->name . '</button>
+                <div class="col-md-4">                
+                <div class="container1FFG">
+                    <div class="card1FFG">                      
+                    <center><a class="pointer t1FFG" onclick="load_leaderboard_Pointtable(' . $leaderboard->id . ')">' . $leaderboard->name . '</a><center>                
+                    </div>
+                    </div>
                 </div>';
             }
         } else {
@@ -439,24 +443,30 @@ class live_match_list_Controller
             foreach ($result_sql as $leaderboardpoints) {
 
                 $live_leaderboard_points_string .= '
-        <div class="col-md-4">
-                
+        <div class="col-md-4">                
         <div class="containerFFG">
             <div class="cardFFG">
                 <div class="txtFFG">
-                <h5>sportname : ' . $leaderboardpoints->sportname . '</h5></br>
-                <div class="PFFG"></div>
-                <h5>leaguename : ' . $leaderboardpoints->leaguename . '</h5></br>
-                <h5>username : ' . $leaderboardpoints->username . '</h5></br>
-                <h5>finalscore : ' . $leaderboardpoints->finalscore . '</h5></br>
+                <div class="tFFG"><h5>Sportname : ' . $leaderboardpoints->sportname . '</h5></div>
+                <div class="PFFG"><div class="tFFG"><h5>Leaguename : ' . $leaderboardpoints->leaguename . '</h5></div></div>
+                <div class="PFFG"><div class="tFFG"><h5>Username : ' . $leaderboardpoints->username . '</h5></div></div>
+                <div class="PFFG"><div class="tFFG"><h5>Finalscore : ' . $leaderboardpoints->finalscore . '</h5></div></div>
                 </div>
             </div>
             </div>
         </div>';
             }
         } else {
-            $live_leaderboard_points_string .= ' <div class="col-md-12">
-         <h2>No User Found In This League !</h2></br>
+            $live_leaderboard_points_string .= '
+        
+             <div class="col-md-12">
+             <div class="container2FFG">
+             <div class="card2FFG">
+                 <div class="txtFFG">
+                 <div class="t2FFG"><h2>No User Found In This League !</h2></div>
+                 </div>
+             </div>
+             </div>
          </div>';
         }
 

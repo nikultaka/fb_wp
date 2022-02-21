@@ -159,13 +159,27 @@
 		cursor: pointer;
 	}
 
-	
+	.score112 {
+		float: right;
+		width: 44%;
+		height: 32px;
+		margin-top: -30px;
+		margin-right: 330px;
+		padding: 0px 0px;
+		position: relative;
+	}
+
+	.text23 {
+		color: #fff;
+		font-size: 22px;
+		font-family: oswald;
+	}
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- <button type="button" class="btn btn-warning" onclick="send_mail_users_for_enddate()" >Send Mail</button> -->
 </br>
-<button class="btn btn-sm" onclick="history.back()">Go Back</button></br>
+
 
 
 <div class="row d-grid gap-3">

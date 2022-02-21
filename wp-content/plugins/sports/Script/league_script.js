@@ -930,6 +930,7 @@ function join_team(tid, id, leagueid, roundid) {
     var current = currentDate + " " + currenttime;
 
     if (matchDate > current) {
+      // $(".team_" + tid + "_" + id).html("PREVIOUSLY SELECTED");
       Swal.fire({
         title: "<h3>Are You Sure Want To Select This Team !</h3>",
         text: "If you already selected team, Then this team will override it",
@@ -971,6 +972,7 @@ function join_team(tid, id, leagueid, roundid) {
                       $(".match-" + id).html("SELECT");
                       $(".team_" + tid + "_" + id).html("SELECTED");
                       location.reload();
+                      if (allteamname.includes(teamnamestr.trim().toLowerCase())) { $(".team_" + tid + "_" + id).html("PREVIOUSLY SELECTED");}
                     }
                   },
                 });
@@ -1042,6 +1044,9 @@ function join_team(tid, id, leagueid, roundid) {
                     $(".match-" + id).html("SELECT");
                     $(".team_" + tid + "_" + id).html("SELECTED");
                     location.reload();
+                    if (allteamname.includes(teamnamestr.trim().toLowerCase())) { $(".team_" + tid + "_" + id).html("PREVIOUSLY SELECTED");}
+
+
                   }
                 },
               });
@@ -1066,6 +1071,8 @@ function join_team(tid, id, leagueid, roundid) {
                   $(".match-" + id).html("SELECT");
                   $(".team_" + tid + "_" + id).html("SELECTED");
                   location.reload();
+                  if (allteamname.includes(teamnamestr.trim().toLowerCase())) { $(".team_" + tid + "_" + id).html("PREVIOUSLY SELECTED");}
+
                 }
               },
             });

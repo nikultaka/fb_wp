@@ -46,14 +46,14 @@ class match_list_Controller
         END AS teamname 
         FROM " . $jointeamtable . " LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid 
         WHERE " . $jointeamtable . ".userid = $userid 
-        ");    
+        ");
 
-     
+
         $match_string  = '';
         $roundselect_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ," . $jointeamtable . ".roundid, " . $jointeamtable . ".roundselect, " . $jointeamtable . ".id 
         From " . $jointeamtable . " WHERE " . $jointeamtable . ".userid = $userid ");
         //echo '<pre>'; print_r($result_sql); exit;  
-        
+
         $result2_sql = $wpdb->get_row("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname," . $leaguetable . ".name as leaguename ," . $jointeamtable . ".roundselect as roundselect,           
         " . $sportstable . ".name as sportname,(SELECT teamid from " . $jointeamtable . " where matchid = " . $matchtable . ".id and userid = $userid ) as teamid," . $roundtable . ".scoretype as scoretype," . $roundtable . ".scoremultiplier as scoremultiplier 
         FROM " . $matchtable . " 
@@ -63,7 +63,7 @@ class match_list_Controller
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
         WHERE " . $matchtable . ".round = " . $matchId . "  and MSTATUS = 'active' group by id  ");
         $match_string  = '';
-   
+
         $roundselect_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ," . $jointeamtable . ".roundid, " . $jointeamtable . ".roundselect, " . $jointeamtable . ".id 
         From " . $jointeamtable . " WHERE " . $jointeamtable . ".userid = $userid ");
 
@@ -78,17 +78,25 @@ class match_list_Controller
 
         $scoremultiplier = $result2_sql->scoremultiplier;
         $scoretype = $result2_sql->scoretype;
-
+        $type = ucfirst($scoretype);
 
         $validate_sql = $wpdb->get_results("SELECT * FROM $roundtable WHERE " . $roundtable . ".scoremultiplier ='1' and " . $roundtable . ".scoretype = 'added'");
         if (count($result_sql) > 0) {
-
-            $match_string .= '<div class="col-sm-12 row">
-            <span class=" ">Score Type : <h3 class="">' . $scoretype. '</h3></span>
-            <span class=" ">Score Multiplier : <h3 class="">' . $scoremultiplier . '</h3></span>
-            </div>
-           
-';
+            $match_string .= '
+            <div class="row">
+            <button class="btn btn-sm" onclick="history.back()">Go Back</button></br>
+            <div class="score112 kode-bg-color">
+					<span class="kode-halfbg thbg-color"></span>
+						<center>
+							<div class="col-md-6">
+                            <span class="text23">Score Type : ' . $type . '</span>
+							</div>
+							<div class="col-md-6">
+                            <span class="text23">Score Multiplier : ' . $scoremultiplier . '</span>								
+                            </div>
+						</center>				
+				</div>
+                </div><br><br><br>';
             foreach ($result_sql as $match) {
                 // if ($userid == $match->datauserid || $match->datauserid == '') {
 
@@ -294,7 +302,6 @@ class match_list_Controller
         echo json_encode($result);
         exit();
     }
-
 }
 
 $match_list_Controller = new match_list_Controller();

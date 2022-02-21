@@ -163,7 +163,7 @@
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<button type="button" class="btn btn-warning" onclick="send_mail_users_for_enddate()" >Send Mail</button>
+<!-- <button type="button" class="btn btn-warning" onclick="send_mail_users_for_enddate()" >Send Mail</button> -->
 </br>
 <button class="btn btn-sm" onclick="history.back()">Go Back</button></br>
 

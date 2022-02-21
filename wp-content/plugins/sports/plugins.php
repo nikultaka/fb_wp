@@ -169,6 +169,7 @@
     }
     // include_once("sports_controller.php");
     // include_once("frontend/league_controller.php");
+    include_once(dirname(__FILE__) . "/user_Invite_Cron.php");
     include_once(dirname(__FILE__) . "/sports_controller.php");
     include_once(dirname(__FILE__) . "/frontend/sport_controller.php");
     include_once(dirname(__FILE__) . "/frontend/league_controller.php");
@@ -177,6 +178,7 @@
     include_once(dirname(__FILE__) . "/frontend/myscore_controller.php");
     include_once(dirname(__FILE__) . "/frontend/leaderboard_controller.php");
     include_once(dirname(__FILE__) . "/frontend/livematch_controller.php");
+
 
     
 

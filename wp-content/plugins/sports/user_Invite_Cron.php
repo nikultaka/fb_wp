@@ -1,5 +1,5 @@
 <?php
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/fb_wp/wp-load.php';
 function send_mail_users_enddate()
     {
         global $wpdb;
@@ -12,9 +12,12 @@ function send_mail_users_enddate()
         $attime = date("Y-m-d", strtotime('-1 day')); //current_time('Y-m-d H:i:s');
 
         $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".* FROM " . $matchtable . " 
-        WHERE   MSTATUS = 'active' AND  date(" . $matchtable . ".enddate) = '$attime' ORDER BY " . $matchtable . ".enddate");
+        WHERE   MSTATUS = 'active' AND  date(" . $matchtable . ".enddate) <= '$attime' ORDER BY " . $matchtable . ".enddate");
+
 
         $user_sql = $wpdb->get_results("SELECT ID, display_name, user_email FROM $usertable");
+
+        //echo '<pre>'; print_r($user_sql); exit;
 
         foreach ($result_sql as $match) {
             $user_sql = $wpdb->get_results("SELECT * FROM " . $usertable . " where ID NOT IN (SELECT userid FROM " . $jointeamtable . " where matchid ='. $match->id .')");
@@ -45,7 +48,7 @@ function send_mail_users_enddate()
     }
 
     
-
+//send_mail_users_enddate();
 
 add_action('members_invitation_cron', 'send_mail_users_enddate');
 // put this line inside a function, 

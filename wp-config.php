@@ -26,9 +26,9 @@ define( 'DB_NAME', 'wordpress_sport' );
 define( 'DB_USER', 'root' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '' );     
+define( 'DB_PASSWORD', 'Testing@123');     
 
-/** MySQL hostname */
+/** MySQL hostname */     
 define( 'DB_HOST', 'localhost' );
 
 /** Database charset to use in creating database tables. */

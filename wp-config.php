@@ -90,6 +90,9 @@ define( 'WP_DEBUG', false );
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
+define('ALTERNATE_WP_CRON', false);
+define('DISABLE_WP_CRON', false);
+
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }

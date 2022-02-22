@@ -126,17 +126,18 @@
 
 	.serviceBox .read-more {
 		display: block;
-		width: 95px;
-		height: 42px;
-		line-height: 38px;
-		border-radius: 15%;
+		width: 115px;
+		height: auto;
+		line-height: 20px;
+		border-radius: 7%;
 		background: #24890d;
-		border: 2px solid #fff;
+		border: 1px solid #fff;
 		font-size: 15px;
 		color: #fff;
 		margin: 0 auto;
 		position: absolute;
-		bottom: -25px;
+		padding: 5px;
+		top: 55px;
 		left: 0;
 		right: 0;
 		transition: all 0.3s ease-out 0s;

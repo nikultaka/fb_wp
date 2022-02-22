@@ -182,7 +182,7 @@ class leader_board_Controller
         $result = $wpdb->get_results($result_sql, OBJECT);
         $totalData = 0;
         $totalFiltered = 0;
-        if (count($result) > 0) {
+        if (count($result) > 0) {  
             $totalData = count($result);
             $totalFiltered = count($result);
         }

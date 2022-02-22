@@ -751,7 +751,10 @@ function match_list(id) {
         localStorage.setItem("allTeamData", JSON.stringify(data.teamData));
 
         localStorage.removeItem("roundSelectData");
-        localStorage.setItem("roundSelectData",JSON.stringify(data.roundSelectData));
+        localStorage.setItem(
+          "roundSelectData",
+          JSON.stringify(data.roundSelectData)
+        );
 
         localStorage.removeItem("validateData");
         localStorage.setItem("validateData", JSON.stringify(data.validateData));
@@ -848,12 +851,13 @@ end of  Score Predict
 start of Join Team
  **************************/
 
-function join_team(tid, id, leagueid, roundid) {
+function join_team(tid, id, leagueid, roundid, userid) {
   var roundSelectDataArray = JSON.parse(
     localStorage.getItem("roundSelectData")
   );
   var leagueidstr = leagueid.toString();
   var roundidstr = roundid.toString();
+  var useridstr = userid.toString();
 
   var sprSelectData = [];
   var uniqcheck = roundSelectDataArray.filter((round) => {
@@ -896,11 +900,19 @@ function join_team(tid, id, leagueid, roundid) {
   var allTeamDataArray = JSON.parse(localStorage.getItem("allTeamData"));
   var allteamname = [];
   var leagueidteam = allTeamDataArray.filter((team) => {
-    return team.leagueid === leagueidstr;
+    return team.leagueid === leagueidstr && team.roundid != roundidstr;
   });
   leagueidteam.forEach((team) => {
     var allteamnamelg = team.teamname.trim().toLowerCase();
     allteamname.push(allteamnamelg);
+  });
+
+  var joinround = roundSelectDataArray.filter((team) => {
+    return (
+      team.leagueid === leagueidstr &&
+      team.userid === useridstr &&
+      team.roundid != roundidstr
+    );
   });
 
   var teamname = "";
@@ -972,7 +984,11 @@ function join_team(tid, id, leagueid, roundid) {
                       $(".match-" + id).html("SELECT");
                       $(".team_" + tid + "_" + id).html("SELECTED");
                       location.reload();
-                      if (allteamname.includes(teamnamestr.trim().toLowerCase())) { $(".team_" + tid + "_" + id).html("PREVIOUSLY SELECTED");}
+                      joinround.forEach((round) => {
+                        $(
+                          ".teamname_" + round.teamname.trim().toLowerCase()
+                        ).html("PREVIOUSLY SELECTED");
+                      });                      
                     }
                   },
                 });
@@ -1041,12 +1057,17 @@ function join_team(tid, id, leagueid, roundid) {
                   if (data.status == 1) {
                     Swal.fire("You Selected Team Successfully.");
                     $("#joinbutton").append("You selected This Match");
-                    $(".match-" + id).html("SELECT");
                     $(".team_" + tid + "_" + id).html("SELECTED");
                     location.reload();
-                    if (allteamname.includes(teamnamestr.trim().toLowerCase())) { $(".team_" + tid + "_" + id).html("PREVIOUSLY SELECTED");}
+                    $(".match-" + id).html("SELECT");
 
 
+                    joinround.forEach((round) => {
+                        $(
+                          ".teamname_" + round.teamname.trim().toLowerCase()
+                        ).html("PREVIOUSLY SELECTED");
+                      }) 
+                    
                   }
                 },
               });
@@ -1071,8 +1092,12 @@ function join_team(tid, id, leagueid, roundid) {
                   $(".match-" + id).html("SELECT");
                   $(".team_" + tid + "_" + id).html("SELECTED");
                   location.reload();
-                  if (allteamname.includes(teamnamestr.trim().toLowerCase())) { $(".team_" + tid + "_" + id).html("PREVIOUSLY SELECTED");}
-
+                  joinround.forEach((round) => {
+                    $(
+                      ".teamname_" + round.teamname.trim().toLowerCase()
+                    ).html("PREVIOUSLY SELECTED");
+                  });
+                  
                 }
               },
             });
@@ -1100,35 +1125,34 @@ start of auto join team
  **************************/
 
 function auto_join_team() {
+  /** user **/
+  var userDataArray = JSON.parse(localStorage.getItem("userData"));
+  var matchDataArray = JSON.parse(localStorage.getItem("matchData"));
 
- /** user **/
- var userDataArray = JSON.parse(localStorage.getItem("userData"));
- var matchDataArray = JSON.parse(localStorage.getItem("matchData"));
+  var roundselectid = [];
+  matchDataArray.forEach((team) => {
+    var roundselectm = team.round.trim().toLowerCase();
+    roundselectid.push(roundselectm);
+  });
 
- var roundselectid = [];
- matchDataArray.forEach((team) => {
-   var roundselectm = team.round.trim().toLowerCase();
-   roundselectid.push(roundselectm);
- });
+  console.log(roundselectid);
+  var userdata = [];
+  userDataArray.forEach((user) => {
+    var userselect = user.id.trim().toLowerCase();
+    userdata.push(userselect);
+  });
 
- console.log(roundselectid)
- var userdata = [];
- userDataArray.forEach((user) => {
-   var userselect = user.id.trim().toLowerCase();
-   userdata.push(userselect);
- });
-
- var joinDataArray = JSON.parse(localStorage.getItem("joinData"));
- var joinrounduser = [];
- var joinround = joinDataArray.filter((team) => {
-  return team.roundid === roundselectid[0] ;
-});
-joinround.forEach((round) => {
-   var rounduserselect = round.userid.trim().toLowerCase();
-   joinrounduser.push(rounduserselect);
- });
- console.log(joinrounduser)
- var uid = $(userdata).not(joinrounduser).get();
+  var joinDataArray = JSON.parse(localStorage.getItem("joinData"));
+  var joinrounduser = [];
+  var joinround = joinDataArray.filter((team) => {
+    return team.roundid === roundselectid[0];
+  });
+  joinround.forEach((round) => {
+    var rounduserselect = round.userid.trim().toLowerCase();
+    joinrounduser.push(rounduserselect);
+  });
+  console.log(joinrounduser);
+  var uid = $(userdata).not(joinrounduser).get();
   /** /user **/
 
   /** round **/
@@ -1153,54 +1177,53 @@ joinround.forEach((round) => {
 
   /** teamname **/
   uid.forEach((user) => {
-  difference.forEach((round) => {
+    difference.forEach((round) => {
+      var matchteamname = [];
+      var matchidjoin = matchDataArray.filter((team) => {
+        return team.round === round;
+      });
+      matchidjoin.forEach((team) => {
+        var allmatchjoin1 = team.team1.trim().toLowerCase();
+        matchteamname.push(allmatchjoin1);
+      });
+      var matchteamname2 = [];
+      var matchidjoin = matchDataArray.filter((team) => {
+        return team.round === round;
+      });
+      matchidjoin.forEach((team) => {
+        var allmatchjoin2 = team.team2.trim().toLowerCase();
+        matchteamname2.push(allmatchjoin2);
+      });
+      var allteamname = matchteamname.concat(matchteamname2);
 
-    var matchteamname = [];
-    var matchidjoin = matchDataArray.filter((team) => {
-      return team.round === round;
-    });
-    matchidjoin.forEach((team) => {
-      var allmatchjoin1 = team.team1.trim().toLowerCase();
-      matchteamname.push(allmatchjoin1);
-    });
-    var matchteamname2 = [];
-    var matchidjoin = matchDataArray.filter((team) => {
-      return team.round === round;
-    });
-    matchidjoin.forEach((team) => {
-      var allmatchjoin2 = team.team2.trim().toLowerCase();
-      matchteamname2.push(allmatchjoin2);
-    });
-    var allteamname = matchteamname.concat(matchteamname2);
+      var jointeamname = [];
+      joinDataArray.forEach((round) => {
+        var teamselect = round.teamname.trim().toLowerCase();
+        jointeamname.push(teamselect);
+      });
 
-    var jointeamname = [];
-    joinDataArray.forEach((round) => {
-      var teamselect = round.teamname.trim().toLowerCase();
-      jointeamname.push(teamselect);
-    });
+      var differenceteam = $(allteamname).not(jointeamname).get();
+      var teamname = differenceteam[0];
+      /**************/ console.log(teamname);
+      /** /teamname **/
 
-    var differenceteam = $(allteamname).not(jointeamname).get();
-    var teamname = differenceteam[0];
-    /**************/ console.log(teamname);
-    /** /teamname **/
-
-    /** match id **/
-    var matchjoin = [];
-    var matchidjoin = matchDataArray.filter((team) => {
-      return team.team1.trim().toLowerCase() === teamname;
-    });
-    matchidjoin.forEach((team) => {
-      var allmatchjoin = team.id.trim().toLowerCase();
-      matchjoin.push(allmatchjoin);
-    });
-    /**************/ console.log(matchjoin);
-    /** /match id **/
+      /** match id **/
+      var matchjoin = [];
+      var matchidjoin = matchDataArray.filter((team) => {
+        return team.team1.trim().toLowerCase() === teamname;
+      });
+      matchidjoin.forEach((team) => {
+        var allmatchjoin = team.id.trim().toLowerCase();
+        matchjoin.push(allmatchjoin);
+      });
+      /**************/ console.log(matchjoin);
+      /** /match id **/
 
       $roundselect = "nothanks";
       $id = matchjoin[0];
       $tid = "1";
       $uid = user;
-      console.log($uid)
+      console.log($uid);
       $.ajax({
         type: "POST",
         url: ajaxurl,
@@ -1214,14 +1237,13 @@ joinround.forEach((round) => {
         },
         success: function (responce) {
           var data = JSON.parse(responce);
-          if (data.status == 1) {          
+          if (data.status == 1) {
           }
         },
       });
       return false;
-
+    });
   });
-});
 }
 
 /*************************** 
@@ -1395,7 +1417,7 @@ start of Send Mail Users For Enddate
 //       success: function (responce) {
 //         var data = JSON.parse(responce);
 //         if (data.status == 1) {
-         
+
 //         }
 //       },
 //     });
@@ -1404,4 +1426,3 @@ start of Send Mail Users For Enddate
 /*************************** 
 end of Send Mail Users For Enddate
  **************************/
-

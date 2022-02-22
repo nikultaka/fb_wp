@@ -28,18 +28,43 @@ class match_list_Controller
 
 
         $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname," . $leaguetable . ".name as leaguename ," . $jointeamtable . ".roundselect as roundselect,           
-        " . $sportstable . ".name as sportname,(SELECT teamid from " . $jointeamtable . " where matchid = " . $matchtable . ".id and userid = $userid ) as teamid," . $roundtable . ".scoretype as scoretype," . $roundtable . ".scoremultiplier as scoremultiplier 
+        " . $sportstable . ".name as sportname,(SELECT teamid from " . $jointeamtable . " where matchid = " . $matchtable . ".id and userid = $userid ) as teamid,
+        " . $roundtable . ".scoretype as scoretype," . $roundtable . ".scoremultiplier as scoremultiplier
         FROM " . $matchtable . " 
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round 
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid
         LEFT JOIN " . $jointeamtable . " on " . $jointeamtable . ".matchid = " . $matchtable . ".id and userid = " . $userid . "
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
         WHERE " . $matchtable . ".round = " . $matchId . "  and MSTATUS = 'active' group by id  ");
-        $match_string  = '';
-        $roundselect_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ," . $jointeamtable . ".roundid, " . $jointeamtable . ".roundselect, " . $jointeamtable . ".id 
-        From " . $jointeamtable . " WHERE " . $jointeamtable . ".userid = $userid ");
 
-        $team_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ,   CASE
+
+        $match_string  = '';
+
+        $roundselect_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*,
+        CASE
+        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
+        ELSE ''
+        END AS teamname
+        FROM " . $jointeamtable . "
+        LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid WHERE " . $jointeamtable . ".userid = $userid ");
+
+
+        $teamname_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*,
+        CASE
+        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
+        ELSE ''
+        END AS teamname
+        FROM " . $jointeamtable . "
+        LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid WHERE " . $jointeamtable . ".userid = $userid AND " . $matchtable . ".round != $matchId ");
+
+        $allteam = array();
+        foreach ($teamname_sql as $row) {
+            array_push($allteam, $row->teamname);
+        }
+
+        $team_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid, " . $jointeamtable . ".roundid,   CASE
         WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
         ELSE ''
@@ -47,12 +72,6 @@ class match_list_Controller
         FROM " . $jointeamtable . " LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid 
         WHERE " . $jointeamtable . ".userid = $userid 
         ");
-
-
-        $match_string  = '';
-        $roundselect_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ," . $jointeamtable . ".roundid, " . $jointeamtable . ".roundselect, " . $jointeamtable . ".id 
-        From " . $jointeamtable . " WHERE " . $jointeamtable . ".userid = $userid ");
-        //echo '<pre>'; print_r($result_sql); exit;  
 
         $result2_sql = $wpdb->get_row("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname," . $leaguetable . ".name as leaguename ," . $jointeamtable . ".roundselect as roundselect,           
         " . $sportstable . ".name as sportname,(SELECT teamid from " . $jointeamtable . " where matchid = " . $matchtable . ".id and userid = $userid ) as teamid," . $roundtable . ".scoretype as scoretype," . $roundtable . ".scoremultiplier as scoremultiplier 
@@ -62,23 +81,11 @@ class match_list_Controller
         LEFT JOIN " . $jointeamtable . " on " . $jointeamtable . ".matchid = " . $matchtable . ".id and userid = " . $userid . "
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
         WHERE " . $matchtable . ".round = " . $matchId . "  and MSTATUS = 'active' group by id  ");
-        $match_string  = '';
-
-        $roundselect_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ," . $jointeamtable . ".roundid, " . $jointeamtable . ".roundselect, " . $jointeamtable . ".id 
-        From " . $jointeamtable . " WHERE " . $jointeamtable . ".userid = $userid ");
-
-        $team_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid ,   CASE
-        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
-        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
-        ELSE ''
-        END AS teamname 
-        FROM " . $jointeamtable . " LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid 
-        WHERE " . $jointeamtable . ".userid = $userid 
-        ");
 
         $scoremultiplier = $result2_sql->scoremultiplier;
         $scoretype = $result2_sql->scoretype;
         $type = ucfirst($scoretype);
+
 
         $validate_sql = $wpdb->get_results("SELECT * FROM $roundtable WHERE " . $roundtable . ".scoremultiplier ='1' and " . $roundtable . ".scoretype = 'added'");
         if (count($result_sql) > 0) {
@@ -98,9 +105,16 @@ class match_list_Controller
 				</div>
                 </div><br><br><br>';
             foreach ($result_sql as $match) {
+
+
+
+                $teamname1 = strtolower($match->team1);
+                $teamname2 = strtolower($match->team2);
+
                 // if ($userid == $match->datauserid || $match->datauserid == '') {
 
-                $match_string .= '                
+                $match_string .= ' 
+                               
                 <div class="col-md-4 col-sm-4 col-xsx-4" style="padding-right: 5px;  padding-left: 5px;">
                                         <div class="serviceBox">
                                           <div class="service-icon">
@@ -119,11 +133,17 @@ class match_list_Controller
                                           <div class="col-md-6">
                                           <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1 . '</b></h3></span>';
                 if (is_user_logged_in()) {
-                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t1id . '_' . $match->id . '"  data-teamname1="' . $match->team1 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="join_team(' . $match->t1id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ')">';
-                    if ($match->teamid != '' && $match->teamid == 1) {
-                        $match_string .= 'SELECTED';
+                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t1id . '_' . $match->id . ' teamname_' . $teamname1 . '"  data-teamname1="' . $match->team1 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="join_team(' . $match->t1id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $userid . ')">';
+                   
+                    if (in_array($match->team1, $allteam)) {         
+                        $match_string .= 'PREVIOUSLY SELECTED';
                     } else {
-                        $match_string .= 'SELECT';
+
+                        if ($match->teamid != '' && $match->teamid == 1) {
+                            $match_string .= 'SELECTED';
+                        } else {
+                            $match_string .= 'SELECT';
+                        }
                     }
                     $match_string .= '</a>';
                 } else {
@@ -134,13 +154,17 @@ class match_list_Controller
                                   <div class="col-md-6">
                                   <span><span class="text2">Team 2</span><h3 class="title"><b>' . $match->team2 . '</b></h3></span>';
                 if (is_user_logged_in()) {
-                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t2id . '_' . $match->id . '" data-teamname2="' . $match->team2 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="join_team(' . $match->t2id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ')">';
-                    if (
-                        $match->teamid != '' && $match->teamid == 0
-                    ) {
-                        $match_string .= 'SELECTED';
+                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t2id . '_' . $match->id . ' teamname_' . $teamname2 . '" data-teamname2="' . $match->team2 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="join_team(' . $match->t2id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $userid . ')">';
+                    if (in_array($match->team2, $allteam)) {
+                        $match_string .= 'PREVIOUSLY SELECTED';
                     } else {
-                        $match_string .= 'SELECT';
+                        if (
+                            $match->teamid != '' && $match->teamid == 0
+                        ) {
+                            $match_string .= 'SELECTED';
+                        } else {
+                            $match_string .= 'SELECT';
+                        }
                     }
                     $match_string .= '</a>';
                 } else {

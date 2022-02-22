@@ -955,17 +955,65 @@ function join_team(tid, id, leagueid, roundid, userid) {
       }).then((result) => {
         if (result.isConfirmed) {
           if (uniqidselect.includes(roundidstr)) {
+            console.log(roundSelectData)
+            console.log(jrSelectData)
+            console.log(leagueidstr)
+
             if (
               roundSelectData.includes("jokeround".trim().toLowerCase()) &&
               jrSelectData.includes(leagueidstr)
             ) {
-              if (
+                alert("if")
+                var inputOptions = new Promise((resolve) => {
+                  resolve({
+                    scorePredictorround:
+                      '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
+                  });
+                });
+              } else if (
                 roundSelectData.includes(
                   "scorePredictorround".trim().toLowerCase()
                 ) &&
                 sprSelectData.includes(roundidstr)
               ) {
-                $roundselect = "nothanks";
+                alert("else if")
+                var inputOptions = new Promise((resolve) => {
+                  resolve({
+                    jokeround:
+                    '<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
+                    scorePredictorround:
+                    '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
+                  });
+                });
+              }else {
+                alert("else")
+                var inputOptions = new Promise((resolve) => {
+                  resolve({
+                    jokeround:
+                      '<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
+                    scorePredictorround:
+                      '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
+                  });
+                });
+              }
+              const { value: round } = Swal.fire({
+                title: '<h2 style="color:#0a4a03">Want To Select Round ?<h2>',
+                input: "radio",
+                icon: "question",
+                width: "450px",
+                confirmButtonColor: "#0a4a03",
+                iconColor: "#54595F",
+                confirmButtonText: "select it!",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                inputOptions: inputOptions,
+                inputValidator: (value) => {
+                  if (!value) {
+                    return "You need to choose something!";
+                  }
+                },
+              }).then((round) => {
+                $roundselect = round.value;
                 $.ajax({
                   type: "POST",
                   url: ajaxurl,
@@ -973,7 +1021,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
                   data: {
                     tid: tid,
                     id: id,
-                    roundselect: "nothanks",
+                    roundselect: round.value,
                     action: "match_list_Controller::add_team_join",
                   },
                   success: function (responce) {
@@ -981,67 +1029,23 @@ function join_team(tid, id, leagueid, roundid, userid) {
                     if (data.status == 1) {
                       Swal.fire("You Selected Team Successfully.");
                       $("#joinbutton").append("You selected This Match");
-                      $(".match-" + id).html("SELECT");
                       $(".team_" + tid + "_" + id).html("SELECTED");
                       location.reload();
+                      $(".match-" + id).html("SELECT");
+
                       joinround.forEach((round) => {
                         $(
                           ".teamname_" + round.teamname.trim().toLowerCase()
                         ).html("PREVIOUSLY SELECTED");
-                      });                      
+                      });
                     }
                   },
                 });
-                return false;
-              } else {
-                var inputOptions = new Promise((resolve) => {
-                  resolve({
-                    scorePredictorround:
-                      '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
-                  });
-                });
-              }
-            } else if (
-              roundSelectData.includes(
-                "scorePredictorround".trim().toLowerCase()
-              ) &&
-              sprSelectData.includes(roundidstr)
-            ) {
-              var inputOptions = new Promise((resolve) => {
-                resolve({
-                  jokeround:
-                    '<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
-                });
               });
+            
             } else {
-              var inputOptions = new Promise((resolve) => {
-                resolve({
-                  jokeround:
-                    '<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
-                  scorePredictorround:
-                    '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
-                });
-              });
-            }
-
-            const { value: round } = Swal.fire({
-              title: '<h2 style="color:#0a4a03">Want To Select Round ?<h2>',
-              input: "radio",
-              icon: "question",
-              width: "450px",
-              confirmButtonColor: "#0a4a03",
-              iconColor: "#54595F",
-              confirmButtonText: "select it!",
-              allowOutsideClick: false,
-              allowEscapeKey: false,
-              inputOptions: inputOptions,
-              inputValidator: (value) => {
-                if (!value) {
-                  return "You need to choose something!";
-                }
-              },
-            }).then((round) => {
-              $roundselect = round.value;
+              console.log("1else")
+              $roundselect = "nothanks";
               $.ajax({
                 type: "POST",
                 url: ajaxurl,
@@ -1049,7 +1053,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
                 data: {
                   tid: tid,
                   id: id,
-                  roundselect: round.value,
+                  roundselect: "nothanks",
                   action: "match_list_Controller::add_team_join",
                 },
                 success: function (responce) {
@@ -1057,51 +1061,18 @@ function join_team(tid, id, leagueid, roundid, userid) {
                   if (data.status == 1) {
                     Swal.fire("You Selected Team Successfully.");
                     $("#joinbutton").append("You selected This Match");
+                    $(".match-" + id).html("SELECT");
                     $(".team_" + tid + "_" + id).html("SELECTED");
                     location.reload();
-                    $(".match-" + id).html("SELECT");
-
-
                     joinround.forEach((round) => {
-                        $(
-                          ".teamname_" + round.teamname.trim().toLowerCase()
-                        ).html("PREVIOUSLY SELECTED");
-                      }) 
-                    
+                      $(
+                        ".teamname_" + round.teamname.trim().toLowerCase()
+                      ).html("PREVIOUSLY SELECTED");
+                    });
                   }
                 },
               });
-            });
-          } else {
-            $roundselect = "nothanks";
-            $.ajax({
-              type: "POST",
-              url: ajaxurl,
-              datatype: "json",
-              data: {
-                tid: tid,
-                id: id,
-                roundselect: "nothanks",
-                action: "match_list_Controller::add_team_join",
-              },
-              success: function (responce) {
-                var data = JSON.parse(responce);
-                if (data.status == 1) {
-                  Swal.fire("You Selected Team Successfully.");
-                  $("#joinbutton").append("You selected This Match");
-                  $(".match-" + id).html("SELECT");
-                  $(".team_" + tid + "_" + id).html("SELECTED");
-                  location.reload();
-                  joinround.forEach((round) => {
-                    $(
-                      ".teamname_" + round.teamname.trim().toLowerCase()
-                    ).html("PREVIOUSLY SELECTED");
-                  });
-                  
-                }
-              },
-            });
-          }
+            }
         }
       });
     } else {

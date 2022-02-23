@@ -225,11 +225,20 @@ class match_list_Controller
         $roundid = $result_sql->round;
 
 
-        $jointeamtable = $wpdb->prefix . "jointeam";
-        $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".roundid = $roundid and " . $jointeamtable . ".userid = $userid ");
+        if( $roundselect == 'jokeround'){
 
+            $jointeamtable = $wpdb->prefix . "jointeam";
+            $delete_teamsql = $wpdb->query("DELETE  FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".leagueid = $leagueid and " . $jointeamtable . ".roundselect = 'jokeround' 
+            and " . $jointeamtable . ".userid = $userid ");
+            $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".leagueid = $leagueid and " . $jointeamtable . ".roundid = $roundid  and " . $jointeamtable . ".userid = $userid ");
+        }
+
+        else{
+
+            $jointeamtable = $wpdb->prefix . "jointeam";
+            $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".roundid = $roundid and " . $jointeamtable . ".userid = $userid ");
+        }
         $updateId = $result_teamsql->id;
-
         $data['status'] = 0;
         $data['msg'] = "Error Data Not insert";
 

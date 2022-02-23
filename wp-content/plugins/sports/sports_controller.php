@@ -984,6 +984,8 @@ class league_controller
          $jokerscoretype = $_POST['jokerscoretype'];
          $predictorscoremultiplier = $_POST['predictorscoremultiplier'];
          $predictorscoretype = $_POST['predictorscoretype'];
+         $superscoremultiplier = $_POST['superscoremultiplier'];
+         $superscoretype = $_POST['superscoretype'];
          $hdnapid = $_POST['hdnapid'];
  
          $additionalpointstable = $wpdb->prefix . "additionalpoints";
@@ -994,6 +996,8 @@ class league_controller
                  'jokerscoretype'             => $jokerscoretype,
                  'predictorscoremultiplier'   => $predictorscoremultiplier,
                  'predictorscoretype'         => $predictorscoretype,
+                 'superscoremultiplier'       => $superscoremultiplier,
+                 'superscoretype'             => $superscoretype,
                  'leagueid'                   => $hdnapid,
 
              ));
@@ -1008,6 +1012,8 @@ class league_controller
                     'jokerscoretype'             => $jokerscoretype,
                     'predictorscoremultiplier'   => $predictorscoremultiplier,
                     'predictorscoretype'         => $predictorscoretype,
+                    'superscoremultiplier'       => $superscoremultiplier,
+                    'superscoretype'             => $superscoretype,
                     'leagueid'                   => $hdnapid,
                  ),
                  array('id'  => $updateId)

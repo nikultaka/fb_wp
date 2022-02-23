@@ -631,6 +631,8 @@ function loadadditionalpoints(id) {
         $("#jokerscoretype").val(result.jokerscoretype);
         $("#predictorscoremultiplier").val(result.predictorscoremultiplier);
         $("#predictorscoretype").val(result.predictorscoretype);
+        $("#predictorscoremultiplier").val(result.predictorscoremultiplier);
+        $("#superscoretype").val(result.superscoretype);
       }
     },
   });
@@ -663,6 +665,10 @@ $("#save_Btnap").click(function () {
 /*************************** 
 end of Additional Points
  **************************/
+
+
+
+
 
 /*************************** 
 start of sport List
@@ -963,9 +969,10 @@ function join_team(tid, id, leagueid, roundid, userid) {
               roundSelectData.includes("jokeround".trim().toLowerCase()) &&
               jrSelectData.includes(leagueidstr)
             ) {
-                alert("if")
                 var inputOptions = new Promise((resolve) => {
                   resolve({
+                    jokeround:
+                    '<h5><strong  style="color:#2e2d2d">Joker Round</strong></h5>',
                     scorePredictorround:
                       '<h5><strong style="color:#2e2d2d">Score Predictor Round</strong></h5>',
                   });
@@ -975,8 +982,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
                   "scorePredictorround".trim().toLowerCase()
                 ) &&
                 sprSelectData.includes(roundidstr)
-              ) {
-                alert("else if")
+              ) { 
                 var inputOptions = new Promise((resolve) => {
                   resolve({
                     jokeround:
@@ -986,7 +992,6 @@ function join_team(tid, id, leagueid, roundid, userid) {
                   });
                 });
               }else {
-                alert("else")
                 var inputOptions = new Promise((resolve) => {
                   resolve({
                     jokeround:

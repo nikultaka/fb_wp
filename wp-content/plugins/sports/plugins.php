@@ -126,7 +126,9 @@
         `jokerscoremultiplier` INT(50),
         `jokerscoretype` VARCHAR(50),
         `predictorscoremultiplier` INT(50),
-        `predictorscoretype` VARCHAR(50),         
+        `predictorscoretype` VARCHAR(50), 
+        `superscoremultiplier` INT(50),
+        `superscoretype` VARCHAR(50),         
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;"; 
 

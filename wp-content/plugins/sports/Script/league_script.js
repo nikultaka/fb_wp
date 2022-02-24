@@ -201,7 +201,7 @@ $("#save_Btnround").click(function () {
   });
 
   if ($("#iscomplete").is(":checked")) {
-    auto_join_team();
+    // auto_join_team();
   }
 });
 

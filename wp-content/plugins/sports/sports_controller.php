@@ -354,6 +354,9 @@ class league_controller
 
         $jointeamtable = $wpdb->prefix . "jointeam";
         $wpdb->delete($jointeamtable, array('leagueid' => $leagueid));
+
+        $additionalpoints = $wpdb->prefix . "additionalpoints";
+        $wpdb->delete($additionalpoints, array('leagueid' => $leagueid));
         return true;
     }
 
@@ -723,13 +726,24 @@ class league_controller
         $result['status'] = 0;
 
         $delete_sql = $wpdb->delete($matchtable, array('id' => $deleteId));
+        $this->delete_all_matchdata($deleteId);
         if ($delete_sql) {
             $result['status'] = 1;
         }
         echo json_encode($result);
         exit();
-    }
+    }    
+    function delete_all_matchdata($matchid)
+    {
+        global $wpdb;
+        $scorepredictor = $wpdb->prefix . "scorepredictor";
+        $wpdb->delete($scorepredictor, array('matchid' => $matchid));
 
+        $score = $wpdb->prefix . "score";
+        $wpdb->delete($score, array('matchid' => $matchid));
+        return true;
+    }
+ 
     function editmatch_record()
     {
         global $wpdb;
@@ -975,8 +989,7 @@ class league_controller
      function additionalpointsinsert_data()
      {
          global $wpdb;
-         $updateId = $_POST['hapid'];
- 
+         $updateId = $_POST['hapid'];   
          $data['status'] = 0;
          $data['msg'] = "Error Data Not insert";
  

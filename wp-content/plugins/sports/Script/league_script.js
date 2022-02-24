@@ -481,6 +481,7 @@ start of score
  **************************/
 function loadmatchscoretable(matchid) {
   $("#hdnmatchid").val(matchid);
+  $("#hmsid").val("");
   $.ajax({
     url: ajaxurl,
     type: "POST",
@@ -612,7 +613,7 @@ start of Additional Points
 function loadadditionalpoints(id) {
   // $("#additionalpointsmodal").modal("show");
   $("#hdnapid").val(id);
-
+  $("#hapid").val("");
   $.ajax({
     url: ajaxurl,
     type: "POST",
@@ -631,7 +632,7 @@ function loadadditionalpoints(id) {
         $("#jokerscoretype").val(result.jokerscoretype);
         $("#predictorscoremultiplier").val(result.predictorscoremultiplier);
         $("#predictorscoretype").val(result.predictorscoretype);
-        $("#predictorscoremultiplier").val(result.predictorscoremultiplier);
+        $("#superscoremultiplier").val(result.superscoremultiplier);
         $("#superscoretype").val(result.superscoretype);
       }
     },
@@ -655,6 +656,7 @@ $("#save_Btnap").click(function () {
               showConfirmButton: false,
               timer: 1500,
             });
+            $("#additionalpointsmodal").modal("hide");
           }
         },
       });
@@ -1345,7 +1347,6 @@ start of Match Score Details
 
 function load_match_score_details_list(id, uid) {
   $("#matchscoredetailsmodal").modal("show");
-
   $("#loadmatchscoredetails-table").dataTable({
     paging: true,
     pageLength: 10,

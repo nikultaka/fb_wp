@@ -632,8 +632,6 @@ function loadadditionalpoints(id) {
         $("#jokerscoretype").val(result.jokerscoretype);
         $("#predictorscoremultiplier").val(result.predictorscoremultiplier);
         $("#predictorscoretype").val(result.predictorscoretype);
-        $("#superscoremultiplier").val(result.superscoremultiplier);
-        $("#superscoretype").val(result.superscoretype);
       }
     },
   });
@@ -1035,7 +1033,6 @@ function join_team(tid, id, leagueid, roundid, userid) {
                     var data = JSON.parse(responce);
                     if (data.status == 1) {
                       Swal.fire("You Selected Team Successfully.");
-                      $("#joinbutton").append("You selected This Match");
                       $(".team_" + tid + "_" + id).html("SELECTED");
                       location.reload();
                       $(".match-" + id).html("SELECT");
@@ -1067,7 +1064,6 @@ function join_team(tid, id, leagueid, roundid, userid) {
                   var data = JSON.parse(responce);
                   if (data.status == 1) {
                     Swal.fire("You Selected Team Successfully.");
-                    $("#joinbutton").append("You selected This Match");
                     $(".match-" + id).html("SELECT");
                     $(".team_" + tid + "_" + id).html("SELECTED");
                     location.reload();
@@ -1402,4 +1398,30 @@ start of Send Mail Users For Enddate
 
 /*************************** 
 end of Send Mail Users For Enddate
+start of Select Team
+ **************************/
+
+function select_team(tid, id) {
+  $.ajax({
+    type: "POST",
+    url: ajaxurl,
+    datatype: "json",
+    data: {
+      tid: tid,
+      id: id,
+      action: "match_list_Controller::add_team_selection",
+    },
+    success: function (responce) {
+      var data = JSON.parse(responce);
+      if (data.status == 1) {
+        Swal.fire("You Selected Team Successfully.");
+        $(".match-" + id).html("SELECT TEAM");
+        $(".team_" + tid + "_" + id).html("TEAM SELECTED"); 
+      }
+    },
+  });
+}
+
+/*************************** 
+end of Select Team
  **************************/

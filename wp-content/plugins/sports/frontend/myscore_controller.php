@@ -90,9 +90,9 @@ class my_score_Controller
         LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid and wp_scorepredictor.userid = ".$userid."
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
         WHERE " . $jointeamtable . ".userid = " . $userid . "";
-    //  echo '<pre>';
-    //  print_r($result_sql);
-    //  die;  
+     echo '<pre>';
+     print_r($result_sql);
+     die;  
 
         $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
         $toalScore = 0;

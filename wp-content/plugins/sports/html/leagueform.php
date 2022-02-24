@@ -155,8 +155,8 @@
                                 Please select status.
                             </div>
                         </div>
-                        <div class="col-md-1.5" style="margin-top: 35px;">                            
-                            <input type="checkbox"  id="iscomplete" name="iscomplete" value="YES" />
+                        <div class="col-md-1.5" style="margin-top: 35px;">
+                            <input type="checkbox" id="iscomplete" name="iscomplete" value="YES" />
                             <label for="iscomplete">Is Completed ?</label>
                         </div>
                         <!-- </div> -->
@@ -444,7 +444,7 @@
                     <button type="submit" class="btn btn-primary" id="save_Btnap" name="save_Btnap">Save</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
-                </form>
+            </form>
             </div>
         </div>
     </div>

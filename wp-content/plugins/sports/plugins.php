@@ -126,9 +126,7 @@
         `jokerscoremultiplier` INT(50),
         `jokerscoretype` VARCHAR(50),
         `predictorscoremultiplier` INT(50),
-        `predictorscoretype` VARCHAR(50), 
-        `superscoremultiplier` INT(50),
-        `superscoretype` VARCHAR(50),         
+        `predictorscoretype` VARCHAR(50),       
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;"; 
 
@@ -143,6 +141,19 @@
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;"; 
 
+        $Selectteam_table_name = $wpdb->prefix . 'Selectteam';
+        $charset_collate = $wpdb->get_charset_collate();
+        $sqlSelectteam = "CREATE TABLE `$Selectteam_table_name` (
+        `id` int(11) NOT NULL auto_increment,
+        `userid` int(11) NOT NULL,
+        `sportid` int(11) NOT NULL,
+        `leagueid` int(11) NOT NULL,
+        `roundid` int(11) NOT NULL,
+        `matchid` int(11) NOT NULL,
+        `teamid` int(11) NOT NULL,        
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+        PRIMARY KEY  id (id)) $charset_collate;";
+
 
         if (
             $wpdb->get_var("SHOW TABLES LIKE '$sports_table_name'") != $sports_table_name ||
@@ -153,7 +164,8 @@
             $wpdb->get_var("SHOW TABLES LIKE '$leaderboard_table_name'") != $leaderboard_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$jointeam_table_name'") != $jointeam_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$additionalpoints_table_name'") != $additionalpoints_table_name ||
-            $wpdb->get_var("SHOW TABLES LIKE '$scorepredictor_table_name'") != $scorepredictor_table_name) {
+            $wpdb->get_var("SHOW TABLES LIKE '$scorepredictor_table_name'") != $scorepredictor_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$Selectteam_table_name'") != $Selectteam_table_name) {
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             require_once(ABSPATH . 'wp-includes/pluggable.php');
             dbDelta($sql);
@@ -165,8 +177,7 @@
             dbDelta($sqljointeam);
             dbDelta($sqladditionalpoints);
             dbDelta($sqlscorepredictor);
-
-
+            dbDelta($sqlSelectteam );
         }
     }
     // include_once("sports_controller.php");

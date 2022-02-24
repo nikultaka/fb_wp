@@ -57,9 +57,11 @@
 		background: #24890d;
 		border: 1px solid #fff;
 		border-radius: 25px;
-		padding: 55px 15px;
+		padding: 60px 15px;
+		padding-top: 55px;
 		position: relative;
 		margin: 5px auto;
+		height: auto;
 	}
 
 	.serviceBox .service-content:before {
@@ -137,7 +139,7 @@
 		margin: 0 auto;
 		position: absolute;
 		padding: 5px;
-		top: 55px;
+		top: 74px;
 		left: 0;
 		right: 0;
 		transition: all 0.3s ease-out 0s;
@@ -174,6 +176,41 @@
 		color: #fff;
 		font-size: 22px;
 		font-family: oswald;
+	}
+
+
+
+
+	.serviceBox .read2-more {
+		display: block;
+		width: 105px;
+		height: auto;
+		line-height: 8px;
+		border-radius: 7%;
+		background: #24890d;
+		border: 1px solid #fff;
+		font-size: 11px;
+		color: #fff;
+		margin: 0 auto;
+		position: absolute;
+		padding: 6px;
+		top: 48px;
+		left: 0;
+		right: 0;
+		transition: all 0.3s ease-out 0s;
+	}
+
+	.serviceBox .read2-more:hover {
+		border: 3px solid #ffcc00;
+		background: #004700;
+		color: #ffcc00;
+		text-decoration: none;
+	}
+
+	.serviceBox:hover .read2-more {
+		border: 1px solid #ffcc00;
+		font-weight: 700;
+		color: #ffcc00;
 	}
 </style>
 

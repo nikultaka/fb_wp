@@ -1415,8 +1415,8 @@ function select_team(tid, id) {
       var data = JSON.parse(responce);
       if (data.status == 1) {
         Swal.fire("You Selected Team Successfully.");
-        $(".match-" + id).html("SELECT TEAM");
-        $(".team_" + tid + "_" + id).html("TEAM SELECTED"); 
+        // $(".match-" + id).html("SELECT TEAM");
+        // $(".team_" + tid + "_" + id).html("TEAM SELECTED"); 
       }
     },
   });

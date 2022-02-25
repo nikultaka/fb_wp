@@ -25,8 +25,10 @@ class my_score_Controller
         $leaguetable = $wpdb->prefix . "league";
         $roundtable = $wpdb->prefix . "round";
         $matchtable = $wpdb->prefix . "match";
+        $usertable = $wpdb->prefix . "users";
         $matchscoretable = $wpdb->prefix . "score";
         $jointeamtable = $wpdb->prefix . "jointeam";
+        $selectteam = $wpdb->prefix . "selectteam";
         $additionalpointstable = $wpdb->prefix . "additionalpoints";
         $scorepredictortable = $wpdb->prefix . "scorepredictor";
 
@@ -87,18 +89,39 @@ class my_score_Controller
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
-        LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid and wp_scorepredictor.userid = ".$userid."
+        LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid and " . $scorepredictortable . ".userid = ".$userid."
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
-        WHERE " . $jointeamtable . ".userid = " . $userid . "";
-     echo '<pre>';
-     print_r($result_sql);
-     die;  
+        WHERE " . $jointeamtable . ".userid = " . $userid . ""; 
+
+
+        $teamselect_sql =$wpdb->get_row("select count(*) as final_multiplier_coun from (SELECT distinct " . $matchscoretable . ".*,
+        CASE
+        WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
+        WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
+        ELSE ''
+        END AS winteams ,
+        CASE
+        WHEN " . $selectteam . ".teamid = 1  THEN concat('1_'," . $selectteam . ".matchid)
+        WHEN " . $selectteam . ".teamid = 0  THEN concat('0_'," . $selectteam . ".matchid)
+        ELSE ''
+        END AS selectteams
+        FROM " . $matchscoretable . " 
+        LEFT JOIN " . $selectteam . " on " . $selectteam . ".matchid = " . $selectteam . ".matchid
+        LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $selectteam . ".userid
+        WHERE " . $selectteam . ".userid = $userid HAVING winteams = selectteams) as data");
+
+        $finalscoremultiplier = $teamselect_sql->final_multiplier_coun;
 
         $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
         $toalScore = 0;
         foreach ($totalScoreResult as $row) {
-            $temp['yourscore'] = $row->userscore; 
-            $toalScore+= $row->userscore;    
+            if($row->scoretype == 'added' && $row->scoremultiplier == 0 ){
+                $temp['yourscore'] = $row->userscore; 
+                $toalScore+= $row->userscore * $finalscoremultiplier;  
+            }else{
+                $temp['yourscore'] = $row->userscore; 
+                $toalScore+= $row->userscore;  
+            }
         }
     
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
@@ -147,13 +170,18 @@ class my_score_Controller
         $arr_data = array();
         $arr_data = $result;
 
+
         foreach ($list_data as $row) {
             $leaderboardlink = home_url("/load-leader-board/?id=$row->leagueid");
             $temp['sport'] = $row->sportname;
             $temp['league'] = $row->leaguename;
             $temp['round'] = $row->roundname;
             $temp['team'] = $row->teamname;
-            $temp['yourscore'] = $row->userscore;
+            if($row->scoretype == 'added' && $row->scoremultiplier == 0 ){
+                $temp['yourscore'] = $row->userscore  * $finalscoremultiplier; 
+            }else{
+                $temp['yourscore'] = $row->userscore; 
+            }
             $action = "<a class='btn btn-default ' style='background-color: #24890d; color: #fff;' href='$leaderboardlink' type='button'>Leader Board</a>";
             $temp['action'] = $action; 
             $data[] = $temp;

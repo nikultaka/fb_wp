@@ -337,7 +337,7 @@ class match_list_Controller
         $roundid = $result_sql->round;
 
         $Selectteamtable = $wpdb->prefix . "Selectteam";
-        $result_teamsql = $wpdb->get_row("SELECT " . $Selectteamtable . ".id FROM " . $Selectteamtable . " WHERE " . $Selectteamtable . ".roundid = $roundid and " . $Selectteamtable . ".userid = $userid ");
+        $result_teamsql = $wpdb->get_row("SELECT " . $Selectteamtable . ".id FROM " . $Selectteamtable . " WHERE " . $Selectteamtable . ".matchid = $matchId and " . $Selectteamtable . ".userid = $userid ");
 
         $updateId = $result_teamsql->id;
         $data['status'] = 0;

@@ -837,17 +837,41 @@ class league_controller
         $lbhdnleagueid = $_POST['lbhdnleagueid'];
 
         $data = array();
+        $user2id = get_current_user_id();
         $leaderboard = $wpdb->prefix . "leaderboard";
         $leaguetable = $wpdb->prefix . "league";
         $usertable = $wpdb->prefix . "users";
         $jointeamtable = $wpdb->prefix . "jointeam";
         $matchscoretable = $wpdb->prefix . "score";
         $roundtable = $wpdb->prefix . "round";
+        $selectteam = $wpdb->prefix . "selectteam";
         $additionalpointstable = $wpdb->prefix . "additionalpoints";
         $scorepredictortable = $wpdb->prefix . "scorepredictor";
 
+        $teamselect_sql =$wpdb->get_row("select count(*) as final_multiplier_coun from (SELECT distinct " . $matchscoretable . ".*,
+        CASE
+        WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
+        WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
+        ELSE ''
+        END AS winteams ,
+        CASE
+        WHEN " . $selectteam . ".teamid = 1  THEN concat('1_'," . $selectteam . ".matchid)
+        WHEN " . $selectteam . ".teamid = 0  THEN concat('0_'," . $selectteam . ".matchid)
+        ELSE ''
+        END AS selectteams
+        FROM " . $matchscoretable . " 
+        LEFT JOIN " . $selectteam . " on " . $selectteam . ".matchid = " . $selectteam . ".matchid
+        LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $selectteam . ".userid
+        WHERE " . $selectteam . ".userid = $user2id HAVING winteams = selectteams) as data");
 
-        $result_sql = "select distinct *,sum(userscore) as finalscore from (SELECT
+        $finalscoremultiplier = $teamselect_sql->final_multiplier_coun;
+
+        $result_sql = "select distinct *,sum(
+            CASE
+            WHEN scoretype = 'added' AND scoremultiplier = 0 AND userid = $user2id THEN userscore*$finalscoremultiplier
+            ELSE userscore
+            END
+            ) as finalscore from (SELECT
         " . $jointeamtable . ".*,
         " . $leaguetable . ".name AS leaguename,
         " . $usertable . ".display_name AS username,

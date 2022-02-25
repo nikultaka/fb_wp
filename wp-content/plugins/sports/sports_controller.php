@@ -347,10 +347,12 @@ class league_controller
         $wpdb->delete($roundtable, array('leagueid' => $leagueid));
 
         $matchtable = $wpdb->prefix . "match";
+        $all_sql = $wpdb->get_results("SELECT id FROM $matchtable WHERE leagueid = '$leagueid'");
+        foreach ($all_sql as $row) {
+            $matchid = $row->id;
+            $this->delete_all_matchdata($matchid);
+        }
         $wpdb->delete($matchtable, array('leagueid' => $leagueid));
-
-        $scoretable = $wpdb->prefix . "score";
-        $wpdb->delete($scoretable, array('leagueid' => $leagueid));
 
         $jointeamtable = $wpdb->prefix . "jointeam";
         $wpdb->delete($jointeamtable, array('leagueid' => $leagueid));
@@ -741,6 +743,9 @@ class league_controller
 
         $score = $wpdb->prefix . "score";
         $wpdb->delete($score, array('matchid' => $matchid));
+
+        $selectteam = $wpdb->prefix . "selectteam";
+        $wpdb->delete($selectteam, array('matchid' => $matchid));
         return true;
     }
  

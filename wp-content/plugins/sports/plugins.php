@@ -27,9 +27,12 @@
         global $sports_table_name;
         global $league_table_name;
         global $round_table_name;
+        global $match_table_name;
         global $score_table_name;
-        global $leaderboard_table_name;
+        global $jointeam_table_name;
         global $additionalpoints_table_name;
+        global $scorepredictor_table_name;
+        global $Selectteam_table_name;
 
 
         $sports_table_name = $wpdb->prefix . 'sports';
@@ -94,16 +97,6 @@
         PRIMARY KEY  id (id)) $charset_collate;";   
         
 
-        $leaderboard_table_name = $wpdb->prefix . 'leaderboard';
-        $charset_collate = $wpdb->get_charset_collate();
-        $sqlleaderboard = "CREATE TABLE `$leaderboard_table_name` (
-        `id` int(11) NOT NULL auto_increment,
-        `userid` int(11) NOT NULL,
-        `leagueid` int(11) NOT NULL,
-        `score` VARCHAR(50) NOT NULL,       
-        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-        PRIMARY KEY  id (id)) $charset_collate;"; 
-
         $jointeam_table_name = $wpdb->prefix . 'jointeam';
         $charset_collate = $wpdb->get_charset_collate();
         $sqljointeam = "CREATE TABLE `$jointeam_table_name` (
@@ -161,7 +154,6 @@
             $wpdb->get_var("SHOW TABLES LIKE '$round_table_name'") != $round_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$match_table_name'") != $match_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$score_table_name'") != $score_table_name ||
-            $wpdb->get_var("SHOW TABLES LIKE '$leaderboard_table_name'") != $leaderboard_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$jointeam_table_name'") != $jointeam_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$additionalpoints_table_name'") != $additionalpoints_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$scorepredictor_table_name'") != $scorepredictor_table_name ||
@@ -173,7 +165,6 @@
             dbDelta($sqlRound);
             dbDelta($sqlMatch);
             dbDelta($sqlScore);
-            dbDelta($sqlleaderboard);
             dbDelta($sqljointeam);
             dbDelta($sqladditionalpoints);
             dbDelta($sqlscorepredictor);

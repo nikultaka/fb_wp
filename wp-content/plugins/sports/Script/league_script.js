@@ -1417,6 +1417,7 @@ function select_team(tid, id) {
         Swal.fire("You Selected Team Successfully.");
         // $(".match-" + id).html("SELECT TEAM");
         // $(".team_" + tid + "_" + id).html("TEAM SELECTED"); 
+        location.reload();
       }
     },
   });

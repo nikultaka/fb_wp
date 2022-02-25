@@ -371,7 +371,6 @@
                     <ul class="nav nav-pills">
                         <li class="nav-item"><a class="nav-link active additionalClass" data-sample="tab1" data-toggle="tab" href="#jokerround">A Joker Round</a></li>
                         <li class="nav-item"><a class="nav-link additionalClass" data-sample="tab2" data-toggle="tab" href="#scorepridictorround">Score Predictor Round</a></li>
-                        <li class="nav-item"><a class="nav-link additionalClass" data-sample="tab3" data-toggle="tab" href="#superscoreround">Super Scorer Round</a></li>
                     </ul>
 
                     <div class="tab-content"></br>
@@ -408,25 +407,6 @@
                                 <div class="col-sm-3">
                                     <label for="predictorscoretype"> Score Type :</label>
                                     <select class="form-control" id="predictorscoretype" name="predictorscoretype">
-                                        <option value="added">Added</option>
-                                        <option value="subtracted">Subtracted</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select Score Type.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="superscoreround" class="tab-pane fade">
-                            <h3>Super Score Round</h3>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <label for="superscoremultiplier">Score Multiplier :</label>
-                                    <input type="number" class="form-control" id="superscoremultiplier" name="superscoremultiplier" min="0">
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="superscoretype"> Score Type :</label>
-                                    <select class="form-control" id="superscoretype" name="superscoretype">
                                         <option value="added">Added</option>
                                         <option value="subtracted">Subtracted</option>
                                     </select>

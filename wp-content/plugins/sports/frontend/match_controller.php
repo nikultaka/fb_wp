@@ -137,7 +137,7 @@ class match_list_Controller
                 /*START*/ //////////////////
                 if (is_user_logged_in()) {
                     if ($match->scoremultiplier == 0 && $match->scoretype == 'added') {
-                        $match_string .= '<a class="read2-more pointer match-' . $match->id . ' team_' . $match->t1id . '_' . $match->id . '" id="match-' . $match->id . '" onclick="select_team(' . $match->t1id . ',' . $match->id . ')">';
+                        $match_string .= '<a class="read2-more pointer "  onclick="select_team(' . $match->t1id . ',' . $match->id . ')">';
                         if (
                             $match->selectteamid != '' && $match->selectteamid == 1
                         ) {
@@ -177,7 +177,7 @@ class match_list_Controller
                 /*START*/ //////////////////
                 if (is_user_logged_in()) {
                     if ($match->scoremultiplier == 0 && $match->scoretype == 'added') {
-                        $match_string .= '<a class="read2-more pointer match-' . $match->id . ' team_' . $match->t2id . '_' . $match->id . '"   id="match-' . $match->id . '" onclick="select_team(' . $match->t2id . ',' . $match->id . ')">';
+                        $match_string .= '<a class="read2-more pointer"  onclick="select_team(' . $match->t2id . ',' . $match->id . ')">';
                         if (
                             $match->selectteamid != '' && $match->selectteamid == 0
                         ) {

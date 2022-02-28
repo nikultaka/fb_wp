@@ -134,7 +134,7 @@
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;"; 
 
-        $Selectteam_table_name = $wpdb->prefix . 'Selectteam';
+        $Selectteam_table_name = $wpdb->prefix . 'selectteam';
         $charset_collate = $wpdb->get_charset_collate();
         $sqlSelectteam = "CREATE TABLE `$Selectteam_table_name` (
         `id` int(11) NOT NULL auto_increment,

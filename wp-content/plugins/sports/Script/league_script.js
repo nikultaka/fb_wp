@@ -1302,7 +1302,8 @@ end of Leaderboard List
 start of Load Leaderboard List
  **************************/
 
-function load_leader_board_list(id) {
+function load_leader_board_list(id,userid) {
+
   $("#loadleaderboardlistdata-table").dataTable({
     paging: true,
     pageLength: 10,
@@ -1314,8 +1315,8 @@ function load_leader_board_list(id) {
       url: ajaxurl,
       datatype: "json",
       data: {
-        id,
-        id,
+        id:id,
+        userid:userid,
         action: "leader_board_Controller::load_leader_board",
       },
     },

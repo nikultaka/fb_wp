@@ -452,7 +452,7 @@ class live_match_list_Controller
                 <div class="tFFG"><h5>Sportname : ' . $leaderboardpoints->sportname . '</h5></div>
                 <div class="PFFG"><div class="tFFG"><h5>Leaguename : ' . $leaderboardpoints->leaguename . '</h5></div></div>
                 <div class="PFFG"><div class="tFFG"><h5>Username : ' . $leaderboardpoints->username . '</h5></div></div>
-                <div class="PFFG"><div class="tFFG"><h5>Finalscore : ' . $leaderboardpoints->finalscore . '</h5></div></div>
+                <div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $leaderboardpoints->finalscore . '</h5></div></div>
                 </div>
             </div>
             </div>

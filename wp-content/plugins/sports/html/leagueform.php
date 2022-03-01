@@ -60,7 +60,7 @@
                         <div class="col-sm-3">
                             <label for="name">League Name :</label>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-7" style="max-width: 54%;">
                             <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                     </div>
@@ -217,12 +217,12 @@
                         </div>
                         <div class="col-md-4">
                             <label for="name"><b>Team 1</b></label>
-                            <input type="text" autocomplete="off" class="form-control" id="team1" name="team1" required>
+                            <select class="form-control" id="team1" name="team1" required></select>
                         </div>
                         <h4 style="margin-top: 3%;"><span><b> VS </b></span></h4>
                         <div class="col-md-4">
                             <label for="name"><b>Team 2</b></label>
-                            <input type="text" autocomplete="off" class="form-control" id="team2" name="team2" required>
+                            <select class="form-control" id="team2" name="team2" required></select>
                         </div>
 
                         <div class="col-md-4">

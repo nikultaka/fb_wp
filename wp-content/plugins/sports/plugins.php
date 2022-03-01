@@ -33,6 +33,7 @@
         global $additionalpoints_table_name;
         global $scorepredictor_table_name;
         global $Selectteam_table_name;
+        global $team_table_name;
 
 
         $sports_table_name = $wpdb->prefix . 'sports';
@@ -147,6 +148,16 @@
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;";
 
+        $team_table_name = $wpdb->prefix . 'team';
+        $charset_collate = $wpdb->get_charset_collate();
+        $sqlteam = "CREATE TABLE `$team_table_name` (
+        `id` int(11) NOT NULL auto_increment,
+        `sportid` int(11) NOT NULL,
+        `teamname` VARCHAR(50) NOT NULL,
+        `tstatus` VARCHAR(50) NOT NULL,       
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+        PRIMARY KEY  id (id)) $charset_collate;";
+
 
         if (
             $wpdb->get_var("SHOW TABLES LIKE '$sports_table_name'") != $sports_table_name ||
@@ -157,7 +168,8 @@
             $wpdb->get_var("SHOW TABLES LIKE '$jointeam_table_name'") != $jointeam_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$additionalpoints_table_name'") != $additionalpoints_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$scorepredictor_table_name'") != $scorepredictor_table_name ||
-            $wpdb->get_var("SHOW TABLES LIKE '$Selectteam_table_name'") != $Selectteam_table_name) {
+            $wpdb->get_var("SHOW TABLES LIKE '$Selectteam_table_name'") != $Selectteam_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$team_table_name'") != $team_table_name) {
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             require_once(ABSPATH . 'wp-includes/pluggable.php');
             dbDelta($sql);
@@ -168,13 +180,16 @@
             dbDelta($sqljointeam);
             dbDelta($sqladditionalpoints);
             dbDelta($sqlscorepredictor);
-            dbDelta($sqlSelectteam );
+            dbDelta($sqlSelectteam);
+            dbDelta($sqlteam);
+
         }
     }
     // include_once("sports_controller.php");
     // include_once("frontend/league_controller.php");
     include_once(dirname(__FILE__) . "/user_Invite_Cron.php");
     include_once(dirname(__FILE__) . "/sports_controller.php");
+    include_once(dirname(__FILE__) . "/team_controller.php");
     include_once(dirname(__FILE__) . "/frontend/sport_controller.php");
     include_once(dirname(__FILE__) . "/frontend/league_controller.php");
     include_once(dirname(__FILE__) . "/frontend/round_controller.php");

@@ -321,8 +321,11 @@ function leaguematch(id) {
 
 $("#save_Btnmatch").click(function () {
   console.log($("#matchformdata").serialize());
-
+  // if(team1 = team2){
+  //   Swal.fire("Alert", "You Can't Select Same Team At A Time.", "danger");
+  // }
   $("#matchformdata").validate({
+  
     rules: {
       round: "required",
       team1: "required",
@@ -386,7 +389,7 @@ function loadmatchtable() {
     },
     initComplete: function (settings, msg) {
       console.log(msg);
-      var roundString = '<option value="">----Round----</option>';
+      var roundString = '<option value="">------------Select Round------------</option>';
       if (msg.round.length > 0) {
         for (var n = 0; n < msg.round.length; n++) {
           roundString +=
@@ -398,6 +401,21 @@ function loadmatchtable() {
         }
       }
       $("#round").html(roundString);
+
+      var teamString = '<option value="">----------------Select Team--------------------------</option>';
+      if (msg.team.length > 0) {
+        for (var n = 0; n < msg.team.length; n++) {
+          teamString +=
+            '<option value="' +
+            msg.team[n].id +
+            '">' +
+            msg.team[n].teamname +
+            "</option>";
+        }
+      }
+      $("#team1").html(teamString);
+      $("#team2").html(teamString);
+
     },
     aoColumns: [
       // { mData: "id" },
@@ -603,6 +621,12 @@ function loadleaderboardtable() {
       { mData: "score" },
     ],
     order: [[0, "asc"]],
+    columnDefs: [
+      {
+        targets: [2],
+        orderable: false,
+      },
+    ],
   });
 }
 /*************************** 
@@ -1303,13 +1327,14 @@ start of Load Leaderboard List
  **************************/
 
 function load_leader_board_list(id,userid) {
-
+  // $("#loadleaderboardlistdata-table").dataTable({searching: false});
   $("#loadleaderboardlistdata-table").dataTable({
     paging: true,
     pageLength: 10,
     bProcessing: true,
     serverSide: true,
     bDestroy: true,
+    searching: false,
     ajax: {
       type: "POST",
       url: ajaxurl,
@@ -1330,8 +1355,9 @@ function load_leader_board_list(id,userid) {
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [3],
+        targets: [2,3],
         orderable: false,
+        searching: false,
       },
     ],
   });

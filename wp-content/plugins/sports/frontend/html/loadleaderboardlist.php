@@ -42,6 +42,6 @@
     var $ = jQuery;
     var ajaxurl = "<?php echo admin_url('admin-ajax.php') ?>";
     $(document).ready(function() {
-        load_leader_board_list(<?php echo $_GET['id'] ?>);
+        load_leader_board_list(<?php echo $_GET['id']?>, <?php echo $_GET['userid'] ?>);
     })
 </script>

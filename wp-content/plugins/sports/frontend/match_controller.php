@@ -64,7 +64,9 @@ class match_list_Controller
         $allteam = array();
         foreach ($teamname_sql as $row) {
             array_push($allteam, $row->teamname);
+            
         }
+        $allteam = array_map('strtolower', $allteam);
 
         $team_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid, " . $jointeamtable . ".roundid,   CASE
         WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
@@ -109,7 +111,7 @@ class match_list_Controller
             foreach ($result_sql as $match) {
 
 
-
+                
                 $teamname1 = strtolower($match->team1);
                 $teamname2 = strtolower($match->team2);
 
@@ -155,7 +157,7 @@ class match_list_Controller
                 if (is_user_logged_in()) {
                     $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t1id . '_' . $match->id . ' teamname_' . $teamname1 . '"  data-teamname1="' . $match->team1 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="join_team(' . $match->t1id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $userid . ')">';
 
-                    if (in_array($match->team1, $allteam)) {
+                    if (in_array($teamname1, $allteam)) {
                         $match_string .= 'PREVIOUSLY SELECTED';
                     } else {
 
@@ -194,7 +196,7 @@ class match_list_Controller
                 /*END*/ //////////////////
                 if (is_user_logged_in()) {
                     $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t2id . '_' . $match->id . ' teamname_' . $teamname2 . '" data-teamname2="' . $match->team2 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="join_team(' . $match->t2id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $userid . ')">';
-                    if (in_array($match->team2, $allteam)) {
+                    if (in_array($teamname2, $allteam)) {
                         $match_string .= 'PREVIOUSLY SELECTED';
                     } else {
                         if (
@@ -218,6 +220,7 @@ class match_list_Controller
                                       </div>';
                 // }
             }
+          
         } else {
             $match_string .= '<div class="card-body col-sm-4">
              <h1 class="card-title"> No Matches Found !</h1>

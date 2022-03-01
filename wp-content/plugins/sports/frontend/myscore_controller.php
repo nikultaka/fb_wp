@@ -181,7 +181,7 @@ class my_score_Controller
 
         foreach ($list_data as $row) {
 
-            $leaderboardlink = home_url("/load-leader-board/?id=$row->leagueid");
+            $leaderboardlink = home_url("/load-leader-board/?id=$row->leagueid&userid=$row->userid");
             $temp['sport'] = $row->sportname;
             $temp['league'] = $row->leaguename;
             $temp['round'] = $row->roundname;

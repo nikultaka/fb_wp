@@ -195,7 +195,7 @@
 
 
 <!-- match Modal -->
-<div class="modal fade" id="matchmodal" tabindex="-1" role="dialog" aria-labelledby="matchmodalLabel" aria-hidden="true" style="z-index:99999999999">
+<div class="modal fade" id="matchmodal" tabindex="-1" role="dialog" aria-labelledby="matchmodalLabel" aria-hidden="true" style="z-index:99999999999 !important;">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -222,7 +222,7 @@
                         <h4 style="margin-top: 3%;"><span><b> VS </b></span></h4>
                         <div class="col-md-4">
                             <label for="name"><b>Team 2</b></label>
-                            <select class="form-control" id="team2" name="team2" required></select>
+                            <select class="form-control" id="team2" name="team2" data-rule-notequalTo="#team1" required></select>
                         </div>
 
                         <div class="col-md-4">

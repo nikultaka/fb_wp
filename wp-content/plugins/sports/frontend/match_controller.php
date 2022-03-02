@@ -22,6 +22,7 @@ class match_list_Controller
         $sportstable = $wpdb->prefix . "sports";
         $leaguetable = $wpdb->prefix . "league";
         $matchtable = $wpdb->prefix . "match";
+        $teamtable = $wpdb->prefix . "team";
         $roundtable = $wpdb->prefix . "round";
         $jointeamtable = $wpdb->prefix . "jointeam";
         $selectteamtable = $wpdb->prefix . "selectteam";
@@ -29,13 +30,15 @@ class match_list_Controller
         $userid = get_current_user_id();
 
         $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname," . $leaguetable . ".name as leaguename ," . $jointeamtable . ".roundselect as roundselect,           
-        " . $sportstable . ".name as sportname,
+        " . $sportstable . ".name as sportname,  " . $teamtable . ".teamname as team1name , t.teamname as team2name,
         (SELECT teamid from " . $jointeamtable . " where matchid = " . $matchtable . ".id and userid = $userid ) as teamid,
         (SELECT teamid from " . $selectteamtable . " where matchid = " . $matchtable . ".id and userid = $userid) as selectteamid,
         " . $roundtable . ".scoretype as scoretype," . $roundtable . ".scoremultiplier as scoremultiplier
         FROM " . $matchtable . " 
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round 
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid
+        LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1
+        LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2
         LEFT JOIN " . $jointeamtable . " on " . $jointeamtable . ".matchid = " . $matchtable . ".id and " . $jointeamtable . ".userid = " . $userid . "
         LEFT JOIN " . $selectteamtable . " on " . $selectteamtable . ".matchid = " . $matchtable . ".id and " . $selectteamtable . ".userid = " . $userid . "
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
@@ -135,7 +138,7 @@ class match_list_Controller
                                           <span class="kode-subtitle col-sm-4 "><span class="text2">League</span><h3 class="text">' . $match->leaguename . '</h3></span>
                                           <span class="kode-subtitle col-sm-4"><span class="text2">Round</span><h3 class="text">' . $match->roundname . '</h3></span>
                                           <div class="col-md-6">
-                                          <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1 . '</b></h3></span>';
+                                          <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1name . '</b></h3></span>';
                 /*START*/ //////////////////
                 if (is_user_logged_in()) {
                     if ($match->scoremultiplier == 0 && $match->scoretype == 'added') {
@@ -175,7 +178,7 @@ class match_list_Controller
 
                 $match_string .= '</div>
                                   <div class="col-md-6">
-                                  <span><span class="text2">Team 2</span><h3 class="title"><b>' . $match->team2 . '</b></h3></span>';
+                                  <span><span class="text2">Team 2</span><h3 class="title"><b>' . $match->team2name . '</b></h3></span>';
                 /*START*/ //////////////////
                 if (is_user_logged_in()) {
                     if ($match->scoremultiplier == 0 && $match->scoretype == 'added') {
@@ -222,9 +225,11 @@ class match_list_Controller
             }
           
         } else {
-            $match_string .= '<div class="card-body col-sm-4">
-             <h1 class="card-title"> No Matches Found !</h1>
-             </div>';
+            $match_string .= '
+            <button class="btn btn-sm" onclick="history.back()">Go Back</button></br></br>
+            <div class="card-body col-sm-4">
+            <h1 class="card-title"> No Matches Found !</h1>
+            </div>';
         }
 
         if ($result_sql > 0) {

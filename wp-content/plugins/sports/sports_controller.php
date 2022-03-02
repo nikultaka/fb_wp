@@ -49,7 +49,7 @@ function league()
 
     $roundtable = $wpdb->prefix . "round";
     $leagueid = $_GET['id'];
-    $querym = "SELECT * FROM " . $roundtable . " WHERE leagueid=" . $leagueid . "  RSTATUS = 'active'";
+    $querym = "SELECT * FROM " . $roundtable . " WHERE leagueid=" . $leagueid . " AND RSTATUS = 'active'";
     $roundsql = $wpdb->get_results($querym);
 
 
@@ -602,9 +602,6 @@ class league_controller
 
     function matchinsert_data()
     {
-echo '<pre>';
-print_r($_POST);
-die;
         global $wpdb;
         $updateId = $_POST['hmid'];
 
@@ -663,21 +660,24 @@ die;
         $matchtable = $wpdb->prefix . "match";
         $roundtable = $wpdb->prefix . "round";
         $teamtable = $wpdb->prefix . "team";
-        $result_sql = "SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname FROM " . $matchtable;
+        $result_sql = "SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname,  " . $teamtable . ".teamname as team1name , t.teamname as team2name FROM " . $matchtable;
+        $result_sql .= " LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 ";
+        $result_sql .= " LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2 ";
         $result_sql .= " LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable . ".leagueid = " . $hdnleagueid . "";
+
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
             $result_sql .= "AND (roundname LIKE '%" . $search . "%')
-                                OR (team1 LIKE '%" . $search . "%')
-                                OR (team2 LIKE '%" . $search . "%')
+                                OR (team1name LIKE '%" . $search . "%')
+                                OR (team2name LIKE '%" . $search . "%')
                                 OR (enddate LIKE '%" . $search . "%')
                                 OR (mstatus LIKE '%" . $search . "%')";
         }
         $columns = array(
             0 => 'roundname',
-            1 => 'team1',
-            2 => 'team2',
+            1 => 'team1name',
+            2 => 'team2name',
             3 => 'enddate',
             4 => 'mstatus',
         );
@@ -713,8 +713,8 @@ die;
 
             $temp['id'] = $row->id;
             $temp['round'] = $row->roundname;
-            $temp['team1'] = $row->team1;
-            $temp['team2'] = $row->team2;
+            $temp['team1'] = $row->team1name;
+            $temp['team2'] = $row->team2name;
             $temp['enddate'] = $row->enddate;
             $temp['mstatus'] = strtoupper($row->mstatus);
             $action = "<button  class='btn btn-sm btn-success'  onclick='editmatch_record(" . $row->id . ")'><i class='fa fa-pencil-square' aria-hidden='true'> Edit</i></button>
@@ -726,12 +726,12 @@ die;
             $id = "";
         }
 
-        $resultRound = "SELECT * FROM " . $roundtable . " where leagueid = " . $hdnleagueid ." ORDER BY id ASC";
+        $resultRound = "SELECT * FROM " . $roundtable . " where leagueid = " . $hdnleagueid ." AND RSTATUS = 'active' ORDER BY id ASC";
         $roundData = $wpdb->get_results($resultRound, "OBJECT");
 
         $all_sql = $wpdb->get_row("SELECT sports FROM $leaguetable WHERE id = $hdnleagueid");
         $sportid = $all_sql->sports;
-        $resultteam = "SELECT * FROM " . $teamtable . " WHERE sportid = $sportid   ORDER BY id ASC";
+        $resultteam = "SELECT * FROM " . $teamtable . " WHERE sportid = $sportid AND TSTATUS = 'active'  ORDER BY id ASC";
         
         $teamData = $wpdb->get_results($resultteam, "OBJECT");
         $json_data = array(
@@ -852,13 +852,16 @@ die;
     {
         global $wpdb;
         $matchid = $_POST['matchid'];
+        $teamtable = $wpdb->prefix . "team";
         $matchtable = $wpdb->prefix . "match";
         $matchscoretable = $wpdb->prefix . "score";
         //  $result_sql = $wpdb->get_results("SELECT * FROM " . $matchscoretable . " WHERE matchid = ".$matchid."");
-        $result_sql = $wpdb->get_results("SELECT " . $matchscoretable . ".*," . $matchtable . ".team1 as teamname1 ," . $matchtable . ".team2 as teamname2 
-        FROM " . $matchtable . " 
-        LEFT JOIN " . $matchscoretable . " on " . $matchtable . ".id = " . $matchscoretable . ".matchid 
-        WHERE " . $matchtable . ".id = " . $matchid . "");
+        $result_sql =  $wpdb->get_results("SELECT " . $matchscoretable . ".*," . $teamtable . ".teamname as teamname1 , t.teamname as teamname2 
+        FROM " . $matchtable . "
+        LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $matchtable . ".id
+        LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1
+        LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2
+        WHERE " . $matchtable . ".id = $matchid");
 
         $result['status'] = 1;
         $result['recoed'] = $result_sql[0];

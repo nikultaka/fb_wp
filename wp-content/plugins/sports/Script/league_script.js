@@ -320,10 +320,19 @@ function leaguematch(id) {
 }
 
 $("#save_Btnmatch").click(function () {
-  console.log($("#matchformdata").serialize());
-  // if(team1 = team2){
-  //   Swal.fire("Alert", "You Can't Select Same Team At A Time.", "danger");
-  // }
+    
+  var teamx = $('#team1').val();
+  var teamy = $('#team2').val();
+
+  if(teamx == teamy){
+    Swal.fire(
+      'Error',
+      "You Can't Select Same Team At a Time !",
+      'error'
+    )
+    return false;
+  }
+
   $("#matchformdata").validate({
   
     rules: {
@@ -389,7 +398,7 @@ function loadmatchtable() {
     },
     initComplete: function (settings, msg) {
       console.log(msg);
-      var roundString = '<option value="">------------Select Round------------</option>';
+      var roundString = '<option value="">-----Select Round-----</option>';
       if (msg.round.length > 0) {
         for (var n = 0; n < msg.round.length; n++) {
           roundString +=
@@ -402,7 +411,7 @@ function loadmatchtable() {
       }
       $("#round").html(roundString);
 
-      var teamString = '<option value="">----------------Select Team--------------------------</option>';
+      var teamString = '<option value="">----------Select Team----------</option>';
       if (msg.team.length > 0) {
         for (var n = 0; n < msg.team.length; n++) {
           teamString +=
@@ -551,6 +560,7 @@ $("#save_Btnmatchscore").click(function () {
               timer: 1500,
             });
             $("#matchscoremodal").modal("hide");
+            // $("#matchmodal").modal("show");
           }
         },
       });
@@ -933,7 +943,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
     return team.leagueid === leagueidstr && team.roundid != roundidstr;
   });
   leagueidteam.forEach((team) => {
-    var allteamnamelg = team.teamname.trim().toLowerCase();
+    var allteamnamelg = team.teamname;
     allteamname.push(allteamnamelg);
   });
 
@@ -952,7 +962,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
     teamname = $(".team_" + tid + "_" + id).attr("data-teamname2");
   }
   var teamnamestr = teamname.toString();
-  if (allteamname.includes(teamnamestr.trim().toLowerCase())) {
+  if (allteamname.includes(teamnamestr)) {
     Swal.fire({
       title: "You Can Not Select This Team",
       text: "You Already Selected This Team In Another Round",
@@ -1063,7 +1073,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
 
                       joinround.forEach((round) => {
                         $(
-                          ".teamname_" + round.teamname.trim().toLowerCase()
+                          ".teamname_" + round.teamname
                         ).html("PREVIOUSLY SELECTED");
                       });
                     }
@@ -1093,7 +1103,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
                     location.reload();
                     joinround.forEach((round) => {
                       $(
-                        ".teamname_" + round.teamname.trim().toLowerCase()
+                        ".teamname_" + round.teamname
                       ).html("PREVIOUSLY SELECTED");
                     });
                   }

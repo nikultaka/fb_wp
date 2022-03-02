@@ -166,7 +166,7 @@
 		float: right;
 		width: 44%;
 		height: 32px;
-		margin-top: -30px;
+		margin-top: -40px;
 		margin-right: 330px;
 		padding: 0px 0px;
 		position: relative;

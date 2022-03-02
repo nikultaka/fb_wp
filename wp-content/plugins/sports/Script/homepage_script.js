@@ -53,7 +53,6 @@ function live_leaderboard_list() {
 }
 
 function load_leaderboard_Pointtable(id) {
-
   $.ajax({
       type: "POST",
       url: ajaxurl,

@@ -1438,6 +1438,52 @@ end of Send Mail Users For Enddate
 start of Select Team
  **************************/
 
+function load_select_team_model(leagueid, roundid) {
+  var matchDate = $("#match-" + matchid).attr("data-date");
+  var dt = new Date();
+  var currenttime =
+    dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+  var currentDate = $.datepicker.formatDate("yy-mm-dd", new Date());
+  var current = currentDate + " " + currenttime;
+  if (matchDate > current) {
+    $("#hdnsprmatchid").val(matchid);
+    $("#hdnsprteamid").val(teamid);
+    $.ajax({
+      url: ajaxurl,
+      type: "POST",
+      data: {
+        matchid: matchid,
+        teamid: teamid,
+        action: "match_list_Controller::score_predictor_load_data",
+      },
+      success: function (responce) {
+        console.log(responce);
+
+        var data = JSON.parse(responce);
+        if (data.status == 1) {
+          var result = data.recoed;
+
+          $("#scorepredictormodal").modal("show");
+          $("#scorepredictorformdata")[0].reset();
+          $("#hspfid").val(result.id);
+          console.log(result.id);
+          $("#scorepredictor").val(result.scorepredictor);
+        }
+      },
+    });
+  } else {
+    Swal.fire({
+      title: "You Can Not Predict Score For This Team",
+      text: "Date Is Over To Predict Score For This Team",
+      icon: "error",
+      showCancelButton: false,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ok",
+    });
+  }
+}
+
 function select_team(tid, id) {
   $.ajax({
     type: "POST",

@@ -91,30 +91,39 @@ class match_list_Controller
 
         $scoremultiplier = $result2_sql->scoremultiplier;
         $scoretype = $result2_sql->scoretype;
+        $leagueid = $result2_sql->leagueid;
+        $round = $result2_sql->round;
         $type = ucfirst($scoretype);
 
 
         $validate_sql = $wpdb->get_results("SELECT * FROM $roundtable WHERE " . $roundtable . ".scoremultiplier ='1' and " . $roundtable . ".scoretype = 'added'");
         if (count($result_sql) > 0) {
             $match_string .= '
+            <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -30px;  margin-left: 135px; font-family: Oswald; "><b>Go Back</b></a></span>
             <div class="row">
-            <button class="btn btn-sm" onclick="history.back()">Go Back</button></br>
             <div class="score112 kode-bg-color">
 					<span class="kode-halfbg thbg-color"></span>
 						<center>
 							<div class="col-md-6">
                             <span class="text23">Score Type : ' . $type . '</span>
 							</div>
-							<div class="col-md-6">
-                            <span class="text23">Score Multiplier : ' . $scoremultiplier . '</span>								
-                            </div>
+							<div class="col-md-6">';
+        if($scoremultiplier == 0 && $scoretype == 'added'){
+            $match_string .= '<span class="text23">Super Scorer Round</span>
+            </div>
+						</center>				
+				</div>
+                </div>
+                <span><a onclick="load_select_team_model(' . $leagueid . ',' . $round . ')" class="title btn" style="float: right; background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -50px;  margin-right: 95px; font-family: Oswald; "><b>Select Team</b></a></span><br><br><br>';
+        }else{
+            $match_string .= '<span class="text23">Score Multiplier : ' . $scoremultiplier . '</span>
+            </div>
 						</center>				
 				</div>
                 </div><br><br><br>';
+        }      
             foreach ($result_sql as $match) {
-
-
-                
+   
                 $teamname1 = strtolower($match->team1);
                 $teamname2 = strtolower($match->team2);
 
@@ -226,7 +235,7 @@ class match_list_Controller
           
         } else {
             $match_string .= '
-            <button class="btn btn-sm" onclick="history.back()">Go Back</button></br></br>
+            <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -30px;  margin-left: 135px; font-family: Oswald; "><b>Go Back</b></a></span>
             <div class="card-body col-sm-4">
             <h1 class="card-title"> No Matches Found !</h1>
             </div>';

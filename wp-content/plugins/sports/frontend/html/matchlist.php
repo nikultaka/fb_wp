@@ -57,7 +57,7 @@
 		background: #24890d;
 		border: 1px solid #fff;
 		border-radius: 25px;
-		padding: 60px 15px;
+		padding: 45px 15px;
 		padding-top: 55px;
 		position: relative;
 		margin: 5px auto;
@@ -139,7 +139,7 @@
 		margin: 0 auto;
 		position: absolute;
 		padding: 5px;
-		top: 74px;
+		top: 52px;
 		left: 0;
 		right: 0;
 		transition: all 0.3s ease-out 0s;
@@ -179,38 +179,37 @@
 	}
 
 
-
-
-	.serviceBox .read2-more {
-		display: block;
-		width: 105px;
+	.block {
+		box-sizing: border-box;
+		border: 2px solid #eee;
+		padding: 10px 0px 10px 0px;
+		font-size: 15px;
+		border-radius: 5px;
+		margin: 0px;
+		width: 292px;
 		height: auto;
-		line-height: 8px;
-		border-radius: 7%;
-		background: #24890d;
-		border: 1px solid #fff;
-		font-size: 11px;
+		font-weight: bold;
+		overflow: hidden;
+		color: #000 !important; 
+		background-color: #fff;
+	}
+	.block2 {
+		box-sizing: border-box;
+		padding: 15px;
+		width: 322px;
+		border: 0px solid;
+		overflow: hidden;
+		color: #656D78;
+		background-color: #fff;
+	}
+
+	.block:hover {
 		color: #fff;
-		margin: 0 auto;
-		position: absolute;
-		padding: 6px;
-		top: 48px;
-		left: 0;
-		right: 0;
-		transition: all 0.3s ease-out 0s;
+		border-color: transparent;
 	}
 
-	.serviceBox .read2-more:hover {
-		border: 3px solid #ffcc00;
-		background: #004700;
-		color: #ffcc00;
-		text-decoration: none;
-	}
-
-	.serviceBox:hover .read2-more {
-		border: 1px solid #ffcc00;
-		font-weight: 700;
-		color: #ffcc00;
+	.bg-hover-grass:hover {
+		background-color: #ffcc00;
 	}
 </style>
 
@@ -223,8 +222,31 @@
 <div class="row d-grid gap-3">
 	<div id="matchlistdata">
 	</div></br></br>
-
 </div>
+
+
+
+<div class="modal fade" tabindex="-1" role="dialog" data-backdrop="false" id="selecteammodal" aria-labelledby="selecteammodallabel" aria-hidden="true">
+	<div class="modal-dialog" role="document" style="width: 1000px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="selecteammodallabel">Select Team</h5>
+			</div>
+			<div class="modal-body">
+				<div id="selectTeamListMainDiv">
+					<div id="selectteamlistdata">
+					</div>
+				</div>
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn" style="background-color: #e0b404;" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 
 <script type="text/javascript">
 	var $ = jQuery;

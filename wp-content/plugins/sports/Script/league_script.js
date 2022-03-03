@@ -149,6 +149,7 @@ function leagueround(id) {
 }
 
 $("#save_Btnround").click(function () {
+
   $("#roundformdata").validate({
     rules: {
       rname: "required",
@@ -200,9 +201,14 @@ $("#save_Btnround").click(function () {
     },
   });
 
+
+  if($("#hrid").val() != ''){
   if ($("#iscomplete").is(":checked")) {
-    // auto_join_team();
+    $roundid =  $("#hrid").val();
+    send_mail_users_score($roundid);
   }
+}
+
 });
 
 function loadroundtable() {
@@ -1435,56 +1441,64 @@ start of Send Mail Users For Enddate
 
 /*************************** 
 end of Send Mail Users For Enddate
+start of Send Mail Users Score
+ **************************/
+
+function send_mail_users_score(roundid) {
+  $.ajax({
+    type: "POST",
+    url: ajaxurl,
+    datatype: "json",
+    data: {
+      roundid: roundid,
+      function2call: 'send_mail_users_score'
+    },
+    success: function (responce) {
+      var data = JSON.parse(responce);
+      if (data.status == 1) {
+      console.log("send Mail successfully")
+      }
+    },
+  });
+}
+
+/*************************** 
+end of Send Mail Users Score
 start of Select Team
  **************************/
 
-function load_select_team_model(leagueid, roundid) {
-  var matchDate = $("#match-" + matchid).attr("data-date");
+function load_select_team_model(id) {
+  $("#selecteammodal").modal("show");
+    $.ajax({
+      type: "POST",
+      url: ajaxurl,
+      datatype: "json",
+      data: {
+        id: id,
+        action: "match_list_Controller::get_match_list",
+      },
+      success: function (responce) {
+        var data = JSON.parse(responce);
+        console.log(data.teamselect_string)
+        if (data.status == 1) {
+          console.log(data.teamselect_string)
+          $("#selectteamlistdata").html('');
+          $("#selectteamlistdata").html(data.teamselect_string);
+        }
+      },
+    });
+}
+
+function select_team(tid, id, roundid) {
+  var matchDate = $("#matchteam-" + id).attr("data-dateteam");
   var dt = new Date();
   var currenttime =
     dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
   var currentDate = $.datepicker.formatDate("yy-mm-dd", new Date());
   var current = currentDate + " " + currenttime;
-  if (matchDate > current) {
-    $("#hdnsprmatchid").val(matchid);
-    $("#hdnsprteamid").val(teamid);
-    $.ajax({
-      url: ajaxurl,
-      type: "POST",
-      data: {
-        matchid: matchid,
-        teamid: teamid,
-        action: "match_list_Controller::score_predictor_load_data",
-      },
-      success: function (responce) {
-        console.log(responce);
-
-        var data = JSON.parse(responce);
-        if (data.status == 1) {
-          var result = data.recoed;
-
-          $("#scorepredictormodal").modal("show");
-          $("#scorepredictorformdata")[0].reset();
-          $("#hspfid").val(result.id);
-          console.log(result.id);
-          $("#scorepredictor").val(result.scorepredictor);
-        }
-      },
-    });
-  } else {
-    Swal.fire({
-      title: "You Can Not Predict Score For This Team",
-      text: "Date Is Over To Predict Score For This Team",
-      icon: "error",
-      showCancelButton: false,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Ok",
-    });
-  }
-}
-
-function select_team(tid, id) {
+  console.log(matchDate)
+  console.log(current)
+  if (matchDate > current){
   $.ajax({
     type: "POST",
     url: ajaxurl,
@@ -1497,13 +1511,22 @@ function select_team(tid, id) {
     success: function (responce) {
       var data = JSON.parse(responce);
       if (data.status == 1) {
+        load_select_team_model(roundid);
         Swal.fire("You Selected Team Successfully.");
-        // $(".match-" + id).html("SELECT TEAM");
-        // $(".team_" + tid + "_" + id).html("TEAM SELECTED"); 
-        location.reload();
       }
     },
   });
+} else {
+  Swal.fire({
+    title: "You Can Not Select This Team",
+    text: "Date Is Over To Select This Team",
+    icon: "error",
+    showCancelButton: false,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ok",
+  });
+}
 }
 
 /*************************** 

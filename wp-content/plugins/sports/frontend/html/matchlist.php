@@ -221,7 +221,7 @@
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
-	background: url('../wp-content/plugins/sports/images/5.gif')50% 50% no-repeat rgb(255 255 255 / 20%);
+	background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(0 0 0 / 0%);
 }
 </style>
 

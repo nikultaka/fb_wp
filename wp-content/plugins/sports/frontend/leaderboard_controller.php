@@ -179,7 +179,7 @@ class leader_board_Controller
          ";
 
 
-         $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,userid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid,
+        $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,userid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid,
          CASE
          WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
          WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
@@ -195,7 +195,7 @@ class leader_board_Controller
          LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $selectteam . ".userid
          HAVING winteams = selectteams) as data
          group by userid");
-        
+
         $ary = [];
         foreach ($teamselect_sql as $user) {
             $ary[$user->userid] = $user->multipliercount;
@@ -204,23 +204,49 @@ class leader_board_Controller
         $calculation_sql .= " group by " . $jointeamtable . ".id";
         $result = $wpdb->get_results($calculation_sql, OBJECT);
         $scoreByUserId = [];
-        foreach ($result as $row) {       
-            if ($row->scoretype == 'added' && $row->scoremultiplier == 0 ) {
+        foreach ($result as $row) {
+            if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
                 $temp['yourscore'] = $row->userscore;
                 $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid];
             } else {
                 $temp['yourscore'] = $row->userscore;
                 $scoreByUserId[$row->userid] += $row->userscore;
-            }  
-           
-        } 
+            }
+        }
+        $result_sql .= " group by userid";
+
+        if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
+            $search = $requestData['search']['value'];
+            $result_sql .= "AND (id LIKE '%" . $search . "%')
+                            OR (leaguename LIKE '%" . $search . "%')
+                            OR (username LIKE '%" . $search . "%')";
+                            
+        }
+        $columns = array(
+            0 => 'leaguename',
+            1 => 'username',      
+        );
+
+        if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
+            $order_by = $columns[$requestData['order'][0]['column']];
+            $result_sql .= " ORDER BY " . $order_by;
+        } else {
+            $result_sql .= "ORDER BY id DESC";
+        }
+        if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
+            $result_sql .= " " . $requestData['order'][0]['dir'];
+        } else {
+            $result_sql .= " DESC ";
+        }
+
+        $result = $wpdb->get_results($result_sql, OBJECT);
+
         $totalData = 0;
         $totalFiltered = 0;
-        if (count($result) > 0) {  
+        if (count($result) > 0) {
             $totalData = count($result);
             $totalFiltered = count($result);
         }
-        $result_sql .= " group by userid";
 
         // This is for pagination
         if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
@@ -236,7 +262,7 @@ class leader_board_Controller
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
             $temp['userspoints'] = $scoreByUserId[$row->userid];
-            $action ="<button  class='btn btn-sm' data-toggle='modal'  id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . "," . $row->userid . ")'>Details</button>";
+            $action = "<button  class='btn btn-sm' data-toggle='modal'  id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . "," . $row->userid . ")'>Details</button>";
             $temp['action'] = $action;
             $data[] = $temp;
             $id = "";
@@ -267,6 +293,7 @@ class leader_board_Controller
         $user2id = get_current_user_id();
         $jointeamtable = $wpdb->prefix . "jointeam";
         $matchtable = $wpdb->prefix . "match";
+        $teamtable = $wpdb->prefix . "team";
         $roundtable = $wpdb->prefix . "round";
         $usertable = $wpdb->prefix . "users";
         $matchscoretable = $wpdb->prefix . "score";
@@ -280,8 +307,8 @@ class leader_board_Controller
         " . $roundtable . ".rname as roundname," . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
         " . $matchtable . ".id as matchid ,
         CASE
-        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
-        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
+        WHEN " . $jointeamtable . ".teamid = 0 THEN t.teamname
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $teamtable . ".teamname
         ELSE ''
         END AS teamname ,
         CASE WHEN  " . $jointeamtable . ".roundselect = 'nothanks' THEN
@@ -337,13 +364,15 @@ class leader_board_Controller
         FROM " . $jointeamtable . "
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
+        LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1
+        LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
         LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid and " . $scorepredictortable . ".userid = " . $userid . "
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
         WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " and " . $jointeamtable . ".userid = " . $userid . " group by teamname ";
 
 
-        $teamselect_sql =$wpdb->get_row("select count(*) as final_multiplier_coun from (SELECT distinct " . $matchscoretable . ".*,
+        $teamselect_sql = $wpdb->get_row("select count(*) as final_multiplier_coun from (SELECT distinct " . $matchscoretable . ".*,
         CASE
         WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
         WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
@@ -364,11 +393,11 @@ class leader_board_Controller
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
             $result_sql .= "AND (teamname LIKE '%" . $search . "%')
-                            OR (teamscore LIKE '%" . $search . "%')";
+                            OR (userscore LIKE '%" . $search . "%')";
         }
         $columns = array(
             0 => 'teamname',
-            1 => 'teamscore',
+            1 => 'userscore',
         );
 
 
@@ -403,10 +432,10 @@ class leader_board_Controller
 
         foreach ($list_data as $row) {
             $temp['teamname'] = $row->teamname;
-            if($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid ){
-                $temp['teamscore'] = $row->userscore  * $finalscoremultiplier; 
-            }else{
-                $temp['teamscore'] = $row->userscore; 
+            if ($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid) {
+                $temp['teamscore'] = $row->userscore  * $finalscoremultiplier;
+            } else {
+                $temp['teamscore'] = $row->userscore;
             }
             $data[] = $temp;
             $id = "";

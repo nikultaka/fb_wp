@@ -8,6 +8,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="scorepredictormodallabel">Add Your Predicted Score</h5>
+				<button type="button" class="btn" style="background-color: #fff; float: right; margin-top: -28px;" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2"><i class="fa fa-times" style="font-size:25px; color:#e0b404"></i></button>
             </div>
             <form onsubmit="return false" method="POST" name="scorepredictorformdata" id="scorepredictorformdata">
                 <div class="modal-body">

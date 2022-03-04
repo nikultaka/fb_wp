@@ -25,6 +25,7 @@ class my_score_Controller
         $leaguetable = $wpdb->prefix . "league";
         $roundtable = $wpdb->prefix . "round";
         $matchtable = $wpdb->prefix . "match";
+        $teamtable = $wpdb->prefix . "team";
         $usertable = $wpdb->prefix . "users";
         $matchscoretable = $wpdb->prefix . "score";
         $jointeamtable = $wpdb->prefix . "jointeam";
@@ -38,8 +39,8 @@ class my_score_Controller
         " . $roundtable . ".rname as roundname," . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
         " . $matchtable . ".id as matchid ,
         CASE
-        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
-        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
+        WHEN " . $jointeamtable . ".teamid = 0 THEN  t.teamname
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $teamtable . ".teamname
         ELSE ''
         END AS teamname ,
         CASE WHEN  " . $jointeamtable . ".roundselect = 'nothanks' THEN
@@ -97,6 +98,8 @@ class my_score_Controller
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $jointeamtable . ".leagueid 
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
+        LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1
+        LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
         LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid and " . $scorepredictortable . ".userid = " . $userid . "
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid

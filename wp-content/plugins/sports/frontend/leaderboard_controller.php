@@ -22,71 +22,6 @@ class leader_board_Controller
         print $s;
     }
 
-    // public function get_leader_board()
-    // {
-    //     global $wpdb;
-    //     $requestData = $_POST;
-    //     $data = array();
-
-    //     $leaguetable = $wpdb->prefix . "league";
-
-    //     $result_sql = "SELECT * FROM " . $leaguetable . " WHERE STATUS = 'active' ";
-
-    //     if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
-    //         $search = $requestData['search']['value'];
-    //         $result_sql .= "AND (name LIKE '%" . $search . "%')";
-    //     }
-    //     $columns = array(
-    //         0 => 'name',
-    //     );
-
-    //     if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
-    //         $order_by = $columns[$requestData['order'][0]['column']];
-    //         $result_sql .= " ORDER BY " . $order_by;
-    //     } else {
-    //         $result_sql .= "ORDER BY id DESC";
-    //     }
-    //     if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
-    //         $result_sql .= " " . $requestData['order'][0]['dir'];
-    //     } else {
-    //         $result_sql .= " DESC ";
-    //     }
-
-    //     $result = $wpdb->get_results($result_sql, OBJECT);
-    //     $totalData = 0;
-    //     $totalFiltered = 0;
-    //     if (count($result) > 0) {
-    //         $totalData = count($result);
-    //         $totalFiltered = count($result);
-    //     }
-    //     // This is for pagination
-    //     if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
-    //         $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
-    //     }
-    //     $list_data = $wpdb->get_results($result_sql, "OBJECT");
-    //     $arr_data = array();
-    //     $arr_data = $result;
-
-    //     foreach ($list_data as $row) {
-    //         $leaderboardlink = home_url("/load-leader-board/?id=$row->id");
-    //         $temp['league'] = $row->name;
-    //         $action =  "<h3 class='card-title'> <a class='btn btn-default' href='$leaderboardlink' type='button'>Load $row->name's Leader Board</a></h3>";
-    //         $temp['action'] = $action;
-    //         $data[] = $temp;
-    //         $id = "";
-    //     }
-
-    //     $json_data = array(
-    //         "draw" => intval($requestData['draw']),
-    //         "recordsTotal" => intval($totalData),
-    //         "recordsFiltered" => intval($totalFiltered),
-    //         "data" => $data,
-    //         "sql" => $result_sql
-    //     );
-
-    //     echo json_encode($json_data);
-    //     exit(0);
-    // }
 
     function load_leader_board()
     {
@@ -213,6 +148,9 @@ class leader_board_Controller
                 $scoreByUserId[$row->userid] += $row->userscore;
             }
         }
+        arsort($scoreByUserId);
+        
+
         $result_sql .= " group by userid";
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {

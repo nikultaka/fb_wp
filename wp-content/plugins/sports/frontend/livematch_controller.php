@@ -478,15 +478,23 @@ class live_match_list_Controller
                 $temp['yourscore'] = $row->userscore;
                 $scoreByUserId[$row->userid] += $row->userscore;
             }
+
         }
+        arsort($scoreByUserId);
+
+
+
         $result_sql .= " group by userid";
 
         $mainresult = $wpdb->get_results($result_sql);
+       
 
         $live_leaderboard_points_string  = '';
         if (count($mainresult) > 0) {
 
-            foreach ($mainresult as $leaderboardpoints) {
+            foreach ($mainresult as  $leaderboardpoints) {
+                
+                $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
                 $live_leaderboard_points_string .= '
         <div class="col-md-4">                
         <div class="containerFFG">
@@ -500,7 +508,10 @@ class live_match_list_Controller
             </div>
             </div>
         </div>';
-            }
+            }  
+            echo '<pre>';
+            print_r($mainresult);
+            die;
         } else {
             $live_leaderboard_points_string .= '
         

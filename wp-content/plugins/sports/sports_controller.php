@@ -997,6 +997,7 @@ class league_controller
             }  
            
         } 
+        arsort($scoreByUserId);
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];

@@ -1,23 +1,27 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <style>
-      form .error {
-            color: #ff0000;
-        }
+    form .error {
+        color: #ff0000;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
 </style>
 
-	<!-- Button trigger modal -->
-    </br></br><button type="button" class="btn btn-primary mt-5" style="float: left;" data-toggle="modal" data-target="#registerteamModal">
-Add Team 
+<!-- Button trigger modal -->
+</br></br><button type="button" class="btn btn-primary mt-5" style="float: left;" data-toggle="modal" data-target="#registerteamModal">
+    Add Team
 </button></br>
 
 
@@ -32,8 +36,8 @@ Add Team
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-				<form onsubmit="return false" method="POST" name="teamformdata"  id="teamformdata" >
-				<input type="hidden" name="action" value="team_controller::insert_team_data">
+                <form onsubmit="return false" method="POST" name="teamformdata" id="teamformdata">
+                    <input type="hidden" name="action" value="team_controller::insert_team_data">
                     <input type="hidden" id="tid" name="tid">
                     <div class="form-group row">
                         <div class="col-sm-3">
@@ -52,10 +56,10 @@ Add Team
                         <div class="col-sm-3">
                             <label for="teamname">Team Name:</label>
                         </div>
-                        <div class="col-sm-7" >
+                        <div class="col-sm-7">
                             <input type="text" style="max-width: 92% !important; " class="form-control" id="teamname" name="teamname" required>
                         </div>
-                    </div>                 
+                    </div>
                     <div class="form-group row">
                         <div class="col-sm-3">
                             <label for="tstatus">Status:</label>
@@ -71,8 +75,7 @@ Add Team
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_modal_btn2"
-                            name="close_modal_btn2">Close</button> 
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2">Close</button>
                         <button type="submit" class="btn btn-primary" id="save_Btn" name="save_Btn">Save</button>
                     </div>
                 </form>
@@ -83,17 +86,18 @@ Add Team
 
 <!-- Modal -->
 
-    </br></br><div class="container-fluid mt-5">
-<table class="table" id="teamdata-table"> 
-		<thead>
-			<!-- <th>ID</th> -->
-			<th>Sport Name</th>
-			<th>Team Name</th>
-			<th>Status</th>
-			<th>Actions</th>
-		</thead>
-</table>
-<div>
-<script type="text/javascript">
-	    var ajaxurl ="<?php echo admin_url('admin-ajax.php')?>";
-</script>
+</br></br>
+<div class="container-fluid mt-5">
+    <table class="table" id="teamdata-table">
+        <thead>
+            <!-- <th>ID</th> -->
+            <th>Sport Name</th>
+            <th>Team Name</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </thead>
+    </table>
+    <div>
+        <script type="text/javascript">
+            var ajaxurl = "<?php echo admin_url('admin-ajax.php') ?>";
+        </script>

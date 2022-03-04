@@ -165,9 +165,8 @@
 	.score112 {
 		float: right;
 		width: 44%;
-		height: 32px;
-		margin-top: -40px;
-		margin-right: 330px;
+		height: 36px;
+		margin-top: -4%;
 		padding: 0px 0px;
 		position: relative;
 	}
@@ -190,9 +189,10 @@
 		height: auto;
 		font-weight: bold;
 		overflow: hidden;
-		color: #000 !important; 
+		color: #000 !important;
 		background-color: #fff;
 	}
+
 	.block2 {
 		box-sizing: border-box;
 		padding: 15px;
@@ -214,15 +214,15 @@
 
 
 	.loaderball {
-	position: fixed;
-	opacity: 1;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(0 0 0 / 0%);
-}
+		position: fixed;
+		opacity: 1;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+		background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(0 0 0 / 0%);
+	}
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -250,7 +250,7 @@
 					<div id="selectteamlistdata">
 					</div>
 				</div>
-				
+
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn" style="background-color: #e0b404;" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2">Close</button>

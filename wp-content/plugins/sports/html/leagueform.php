@@ -19,6 +19,10 @@
     .swal2-container {
         z-index: 99999999999999999999999999999999999;
     }
+
+    .dataTables_filter {
+        display: none;
+    }
 </style>
 
 <!-- Button trigger modal -->
@@ -197,7 +201,7 @@
 <!-- match Modal -->
 <div class="modal fade" id="matchmodal" tabindex="-1" role="dialog" aria-labelledby="matchmodalLabel" aria-hidden="true" style="z-index:99999999999 !important;">
     <div class="modal-dialog modal-xl">
-        <div class="modal-content">
+        <div class="modal-content" style="overflow-y: auto; max-height: 95vh;">
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 id="modal-title" class="modal-title">Add Match</h4>
@@ -247,7 +251,7 @@
                     </div>
                     <br>
                 </form>
-                <div class="modal-footer">
+                <div class="modal-body">
                     <div class="container-fluid mt-3">
                         <table class="table" style="width: 100%; color:#343a40;" id="matchdata-table">
                             <thead>
@@ -260,7 +264,6 @@
                                 <th width="35%">Actions</th>
                             </thead>
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -274,7 +277,7 @@
 
 
 <!-- matchscore Modal -->
-<div class="modal fade" id="matchscoremodal" tabindex="-1" role="dialog" aria-labelledby="matchscoremodalLabel" aria-hidden="true" style="z-index:99999999999">
+<div class="modal fade" id="matchscoremodal" tabindex="-1" role="dialog" aria-labelledby="matchscoremodalLabel" aria-hidden="true" style="z-index:99999999999; margin-left: -17px;">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <!-- Modal Header -->

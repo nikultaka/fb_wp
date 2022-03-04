@@ -529,7 +529,7 @@ function loadmatchscoretable(matchid) {
         var result = data.recoed;
         $("#matchscoremodal").modal("show");
         $("#matchscoreformdata")[0].reset();
-        $("#matchmodal").modal("hide");
+        //$("#matchmodal").modal("hide");
         $("#hmsid").val(result.id);
         $("#team1score").val(result.team1score);
         $("#team2score").val(result.team2score);
@@ -566,7 +566,7 @@ $("#save_Btnmatchscore").click(function () {
               timer: 1500,
             });
             $("#matchscoremodal").modal("hide");
-            // $("#matchmodal").modal("show");
+            //$("#matchmodal").modal("show");
           }
         },
       });

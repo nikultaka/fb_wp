@@ -211,13 +211,25 @@
 	.bg-hover-grass:hover {
 		background-color: #ffcc00;
 	}
+
+
+	.loaderball {
+	position: fixed;
+	opacity: 1;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('../wp-content/plugins/sports/images/5.gif')50% 50% no-repeat rgb(255 255 255 / 20%);
+}
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- <button type="button" class="btn btn-warning" onclick="send_mail_users_for_enddate()" >Send Mail</button> -->
 </br>
 
-
+<div id="loaderball" class="loaderball" style="display: none;"></div>
 
 <div class="row d-grid gap-3">
 	<div id="matchlistdata">
@@ -230,7 +242,8 @@
 	<div class="modal-dialog" role="document" style="width: 1000px;">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="selecteammodallabel">Select Team</h5>
+				<h5 class="modal-title" style="font-size: 25px;" id="selecteammodallabel">Select Team</h5>
+				<button type="button" class="btn" style="background-color: #fff; float: right; margin-top: -28px;" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2"><i class="fa fa-times" style="font-size:25px; color:#e0b404"></i></button>
 			</div>
 			<div class="modal-body">
 				<div id="selectTeamListMainDiv">

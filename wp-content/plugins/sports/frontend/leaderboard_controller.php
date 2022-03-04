@@ -393,11 +393,11 @@ class leader_board_Controller
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
             $result_sql .= "AND (teamname LIKE '%" . $search . "%')
-                            OR (teamscore LIKE '%" . $search . "%')";
+                            OR (userscore LIKE '%" . $search . "%')";
         }
         $columns = array(
             0 => 'teamname',
-            1 => 'teamscore',
+            1 => 'userscore',
         );
 
 

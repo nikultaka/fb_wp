@@ -495,7 +495,7 @@ class live_match_list_Controller
                 <div class="tFFG"><h5>Sportname : ' . $leaderboardpoints->sportname . '</h5></div>
                 <div class="PFFG"><div class="tFFG"><h5>Leaguename : ' . $leaderboardpoints->leaguename . '</h5></div></div>
                 <div class="PFFG"><div class="tFFG"><h5>Username : ' . $leaderboardpoints->username . '</h5></div></div>
-                <div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $scoreByUserId[$row->userid] . '</h5></div></div>
+                <div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $scoreByUserId[$leaderboardpoints->userid] . '</h5></div></div>
                 </div>
             </div>
             </div>

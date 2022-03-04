@@ -1407,11 +1407,10 @@ function load_match_score_details_list(id, uid) {
       { mData: "teamname" },
       { mData: "teamscore" },
     ],
-    order: [[0, "asc"]],
+    order: [[1, "desc"]],
     columnDefs: [
       {
-        targets: [1],
-        orderable: false,
+        searching: false,
       },
     ],
   });
@@ -1451,7 +1450,7 @@ function send_mail_users_score(roundid) {
     datatype: "json",
     data: {
       roundid: roundid,
-      function2call: 'send_mail_users_score'
+      action: "match_list_Controller::send_mail_users_score",
     },
     success: function (responce) {
       var data = JSON.parse(responce);
@@ -1477,12 +1476,15 @@ function load_select_team_model(id) {
         id: id,
         action: "match_list_Controller::get_match_list",
       },
+      beforeSend: function(){
+        $("#loaderball").css('display','');
+      },
       success: function (responce) {
         var data = JSON.parse(responce);
         console.log(data.teamselect_string)
         if (data.status == 1) {
-          console.log(data.teamselect_string)
           $("#selectteamlistdata").html('');
+          $("#loaderball").css('display','none');
           $("#selectteamlistdata").html(data.teamselect_string);
         }
       },
@@ -1508,10 +1510,14 @@ function select_team(tid, id, roundid) {
       id: id,
       action: "match_list_Controller::add_team_selection",
     },
+    beforeSend: function(){
+      $("#loaderball").css('display','');
+    },
     success: function (responce) {
       var data = JSON.parse(responce);
       if (data.status == 1) {
         load_select_team_model(roundid);
+        $("#loaderball").css('display','none');
         Swal.fire("You Selected Team Successfully.");
       }
     },

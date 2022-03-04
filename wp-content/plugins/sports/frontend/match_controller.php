@@ -157,7 +157,7 @@ class match_list_Controller
         $validate_sql = $wpdb->get_results("SELECT * FROM $roundtable WHERE " . $roundtable . ".scoremultiplier ='1' and " . $roundtable . ".scoretype = 'added'");
         if (count($result_sql) > 0) {
             $match_string .= '
-            <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -30px;  margin-left: 135px; font-family: Oswald; "><b>Go Back</b></a></span>
+            <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  float : left; font-family: Oswald; "><b>Go Back</b></a></span>
             <div class="row">
             <div class="score112 kode-bg-color">
 					<span class="kode-halfbg thbg-color"></span>
@@ -174,7 +174,7 @@ class match_list_Controller
 						</center>				
 				</div>
                 </div>
-                <span><a onclick="load_select_team_model(' . $round . ')" class="title btn" style="float: right; background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -50px;  margin-right: 95px; font-family: Oswald; "><b>Select Team</b></a></span><br><br><br>';
+                <span><a onclick="load_select_team_model(' . $round . ')" class="title btn" style="float: right; background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -49px; margin-left: 124px;  float : left;  font-family: Oswald; "><b>Select Team</b></a></span><br><br><br>';
                 } else {
                     $match_string .= '<span class="text23">Super Scorer Round</span>
                 </div>
@@ -182,7 +182,7 @@ class match_list_Controller
                     </div>
                     </div>
                     
-                    <span><a href="' . $singinlink . '" class="title btn" style="float: right; background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -50px;  margin-right: 5px; font-family: Oswald; "><b>Login To SeLect Team</b></a></span><br><br><br>';
+                    <span><a href="' . $singinlink . '" class="title btn" style="float: right; background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -49px; margin-left: 124px;  float : left; font-family: Oswald; "><b>Login To SeLect Team</b></a></span><br><br><br>';
                 }
             } else {
                 $match_string .= '<span class="text23">Score Multiplier : ' . $scoremultiplier . '</span>

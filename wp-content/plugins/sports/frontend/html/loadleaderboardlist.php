@@ -3,6 +3,12 @@
 <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  margin-left: 15px; font-family: Oswald; "><b>Go Back</b></a></span>
 </br></br>
 
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
 <div class="container-fluid mt-5">
     <table class="table" id="loadleaderboardlistdata-table">
         <thead>
@@ -12,7 +18,7 @@
             <th>User Points</th>
             <th>Action</th>
         </thead>
-    </table> 
+    </table></br></br></br>
 </div>
 
 
@@ -28,7 +34,7 @@
                         <th>Team Name</th>
                         <th>Team Score</th>
                     </thead>
-                </table>
+                </table></br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

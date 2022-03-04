@@ -1,6 +1,14 @@
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+
 <?php if ( is_user_logged_in() ) { ?>
 <div class="container-fluid mt-5">
     <h2>Total Points  : <span id="totalScore"></span></h2>
@@ -14,7 +22,7 @@
             <th>Points</th>
             <th>Action</th>
 		</thead>
-</table>
+</table></br></br></br>
 <div>
 
 <script type="text/javascript">

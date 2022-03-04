@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -30px;  margin-left: 1 5px; font-family: Oswald; "><b>Go Back</b></a></span>
+<span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  margin-left: 15px; font-family: Oswald; "><b>Go Back</b></a></span>
 </br></br>
 
 <div class="container-fluid mt-5">

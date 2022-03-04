@@ -51,7 +51,7 @@
   height:100vh;
 }
 </style>
-<span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -30px;  margin-left: 65px; font-family: Oswald; "><b>Go Back</b></a></span>
+<span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  float : left; font-family: Oswald; "><b>Go Back</b></a></span>
 </br></br></br>
 <div class="row d-grid gap-3">
     <div id="roundlistdata" >

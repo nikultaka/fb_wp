@@ -266,7 +266,7 @@ class match_list_Controller
             }
         } else {
             $match_string .= '
-            <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -30px;  margin-left: 135px; font-family: Oswald; "><b>Go Back</b></a></span>
+            <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  float : left; font-family: Oswald; "><b>Go Back</b></a></span></br></br>
             <div class="card-body col-sm-4">
             <h1 class="card-title"> No Matches Found !</h1>
             </div>';

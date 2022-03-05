@@ -171,7 +171,7 @@
                     </div>
                     <br>
                 </form>
-                <div class="modal-footer">
+                <div class="modal-body">
                     <div class="container-fluid mt-3">
                         <table class="table" style="width: 100%; color:#343a40;" id="rounddata-table">
                             <thead>
@@ -187,6 +187,9 @@
                         <div>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2">Close</button>
                 </div>
             </div>
         </div>
@@ -266,6 +269,9 @@
                         </table>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="close_modal_btn2" name="close_modal_btn2">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -277,7 +283,7 @@
 
 
 <!-- matchscore Modal -->
-<div class="modal fade" id="matchscoremodal" tabindex="-1" role="dialog" aria-labelledby="matchscoremodalLabel" aria-hidden="true" style="z-index:99999999999; margin-left: -17px;">
+<div class="modal fade" id="matchscoremodal" tabindex="-1" role="dialog" aria-labelledby="matchscoremodalLabel" aria-hidden="true" style="z-index:99999999999; margin-left: -10px;">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <!-- Modal Header -->

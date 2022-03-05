@@ -444,7 +444,7 @@ function loadmatchtable() {
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [4],
+        targets: [5],
         orderable: false,
       },
     ],

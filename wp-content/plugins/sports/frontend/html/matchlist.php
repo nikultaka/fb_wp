@@ -139,9 +139,10 @@
 		margin: 0 auto;
 		position: absolute;
 		padding: 5px;
-		top: 52px;
+		top: auto;
 		left: 0;
 		right: 0;
+		margin-top: -20px;
 		transition: all 0.3s ease-out 0s;
 	}
 

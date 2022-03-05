@@ -480,21 +480,26 @@ class live_match_list_Controller
             }
 
         }
-        arsort($scoreByUserId);
 
+        // $sortfinalvalue = array();
+        // arsort($scoreByUserId);
+  
 
 
         $result_sql .= " group by userid";
 
         $mainresult = $wpdb->get_results($result_sql);
-       
+
 
         $live_leaderboard_points_string  = '';
         if (count($mainresult) > 0) {
 
             foreach ($mainresult as  $leaderboardpoints) {
-                
                 $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
+            }
+            array_multisort($scoreByUserId, SORT_DESC, $mainresult);
+
+            foreach ($mainresult as  $leaderboardpoints) {
                 $live_leaderboard_points_string .= '
         <div class="col-md-4">                
         <div class="containerFFG">
@@ -503,15 +508,12 @@ class live_match_list_Controller
                 <div class="tFFG"><h5>Sportname : ' . $leaderboardpoints->sportname . '</h5></div>
                 <div class="PFFG"><div class="tFFG"><h5>Leaguename : ' . $leaderboardpoints->leaguename . '</h5></div></div>
                 <div class="PFFG"><div class="tFFG"><h5>Username : ' . $leaderboardpoints->username . '</h5></div></div>
-                <div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $scoreByUserId[$leaderboardpoints->userid] . '</h5></div></div>
+                <div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $leaderboardpoints->finalPoint . '</h5></div></div>
                 </div>
             </div>
             </div>
         </div>';
-            }  
-            echo '<pre>';
-            print_r($mainresult);
-            die;
+            }
         } else {
             $live_leaderboard_points_string .= '
         

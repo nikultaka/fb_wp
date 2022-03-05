@@ -639,7 +639,7 @@ function loadleaderboardtable() {
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [2],
+        targets: [0,1,2],
         orderable: false,
       },
     ],
@@ -1371,7 +1371,7 @@ function load_leader_board_list(id,userid) {
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [2,3],
+        targets: [0,1,2,3],
         orderable: false,
         searching: false,
       },

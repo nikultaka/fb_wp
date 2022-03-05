@@ -148,58 +148,32 @@ class leader_board_Controller
                 $scoreByUserId[$row->userid] += $row->userscore;
             }
         }
-        arsort($scoreByUserId);
-        
 
         $result_sql .= " group by userid";
-
-        if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
-            $search = $requestData['search']['value'];
-            $result_sql .= "AND (id LIKE '%" . $search . "%')
-                            OR (leaguename LIKE '%" . $search . "%')
-                            OR (username LIKE '%" . $search . "%')";
-                            
-        }
-        $columns = array(
-            0 => 'leaguename',
-            1 => 'username',      
-        );
-
-        if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
-            $order_by = $columns[$requestData['order'][0]['column']];
-            $result_sql .= " ORDER BY " . $order_by;
-        } else {
-            $result_sql .= "ORDER BY id DESC";
-        }
-        if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
-            $result_sql .= " " . $requestData['order'][0]['dir'];
-        } else {
-            $result_sql .= " DESC ";
-        }
-
-        $result = $wpdb->get_results($result_sql, OBJECT);
+        $mainresult = $wpdb->get_results($result_sql);
 
         $totalData = 0;
         $totalFiltered = 0;
-        if (count($result) > 0) {
-            $totalData = count($result);
-            $totalFiltered = count($result);
+        if (count($mainresult) > 0) {
+            $totalData = count($mainresult);
+            $totalFiltered = count($mainresult);
         }
 
         // This is for pagination
         if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
             $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
         }
+        $mainresult = $wpdb->get_results($result_sql);
 
+        foreach ($mainresult as  $leaderboardpoints) {
+            $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
+        }
+        array_multisort($scoreByUserId, SORT_DESC, $mainresult);
 
-        $list_data = $wpdb->get_results($result_sql, "OBJECT");
-        $arr_data = array();
-        $arr_data = $result;
-
-        foreach ($list_data as $row) {
+        foreach ($mainresult as $row) {
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
-            $temp['userspoints'] = $scoreByUserId[$row->userid];
+            $temp['userspoints'] = $row->finalPoint;
             $action = "<button  class='btn btn-sm' data-toggle='modal'  id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . "," . $row->userid . ")'>Details</button>";
             $temp['action'] = $action;
             $data[] = $temp;

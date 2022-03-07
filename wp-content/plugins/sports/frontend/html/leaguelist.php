@@ -56,7 +56,7 @@
 		width: 100%;
 		height: 100%;
 		z-index: 9999;
-		background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(0 0 0 / 0%);
+		background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(255 255 255 / 65%);
 	}
 </style>
 <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  float : left; font-family: Oswald; "><b>Go Back</b></a></span>

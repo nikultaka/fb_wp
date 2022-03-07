@@ -51,6 +51,8 @@ class leader_board_Controller
         CASE WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score 
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score ELSE ''
         END AS teamscore,
+        CASE
+        WHEN " . $roundtable . ".iscomplete = 'YES' THEN  
         CASE WHEN  " . $jointeamtable . ".roundselect = 'nothanks' THEN
             CASE WHEN " . $roundtable . ".scoremultiplier = 0 THEN 
                 CASE 
@@ -100,6 +102,8 @@ class leader_board_Controller
         END
         END
         END
+        END 
+        ELSE ''
         END AS userscore
         FROM
             " . $jointeamtable . "
@@ -140,7 +144,7 @@ class leader_board_Controller
         } 
 
         $calculation_sql = $result_sql;
-        $calculation_sql .= " group by " . $jointeamtable . ".id";
+        $calculation_sql .= " group by " . $jointeamtable . ".id HAVING userscore > 0 ";
         $result = $wpdb->get_results($calculation_sql, OBJECT);
         $scoreByUserId = [];
         foreach ($result as $row) {
@@ -172,8 +176,8 @@ class leader_board_Controller
         if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
             $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
         }
-        $mainresult = $wpdb->get_results($result_sql);
 
+        $mainresult = $wpdb->get_results($result_sql);
         foreach ($mainresult as  $leaderboardpoints) {
             $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
         }
@@ -232,6 +236,8 @@ class leader_board_Controller
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $teamtable . ".teamname
         ELSE ''
         END AS teamname ,
+        CASE
+        WHEN " . $roundtable . ".iscomplete = 'YES' THEN 
         CASE WHEN  " . $jointeamtable . ".roundselect = 'nothanks' THEN
             CASE WHEN " . $roundtable . ".scoremultiplier = 0 THEN 
                 CASE 
@@ -281,6 +287,8 @@ class leader_board_Controller
         END
         END
         END
+        END 
+        ELSE ''
         END AS userscore
         FROM " . $jointeamtable . "
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
@@ -290,7 +298,7 @@ class leader_board_Controller
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
         LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid and " . $scorepredictortable . ".userid = " . $userid . "
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
-        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " and " . $jointeamtable . ".userid = " . $userid . " group by teamname ";
+        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " and " . $jointeamtable . ".userid = " . $userid . " group by teamname HAVING userscore > 0 ";
 
 
         $teamselect_sql = "select count(*) as multipliercount,roundid from (SELECT distinct " . $matchscoretable . ".*," . $selectteam . ".roundid as roundid,

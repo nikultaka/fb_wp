@@ -382,6 +382,8 @@ class live_match_list_Controller
         CASE WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score 
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score ELSE ''
         END AS teamscore,
+        CASE
+        WHEN " . $roundtable . ".iscomplete = 'YES' THEN 
         CASE WHEN  " . $jointeamtable . ".roundselect = 'nothanks' THEN
             CASE WHEN " . $roundtable . ".scoremultiplier = 0 THEN 
                 CASE 
@@ -431,6 +433,8 @@ class live_match_list_Controller
         END
         END
         END
+        END 
+        ELSE ''
         END AS userscore
         FROM
             " . $jointeamtable . "
@@ -469,7 +473,7 @@ class live_match_list_Controller
             $ary2[$user->userid][$user->roundid] = $user->roundid;
         }
         $calculation_sql = $result_sql;
-        $calculation_sql .= " group by " . $jointeamtable . ".id";
+        $calculation_sql .= " group by " . $jointeamtable . ".id HAVING userscore > 0 ";
         $result = $wpdb->get_results($calculation_sql, OBJECT);
         $scoreByUserId = [];
         foreach ($result as $row) {

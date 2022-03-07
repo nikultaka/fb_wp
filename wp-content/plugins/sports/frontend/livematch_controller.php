@@ -445,7 +445,7 @@ class live_match_list_Controller
          ";
 
 
-        $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,userid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid,
+        $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,userid,roundid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid," . $selectteam . ".roundid,
          CASE
          WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
          WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
@@ -460,11 +460,13 @@ class live_match_list_Controller
          LEFT JOIN " . $selectteam . " on " . $selectteam . ".matchid = " . $selectteam . ".matchid
          LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $selectteam . ".userid
          HAVING winteams = selectteams) as data
-         group by userid");
+         group by roundid,userid");
 
         $ary = [];
+        $ary2 = [];
         foreach ($teamselect_sql as $user) {
-            $ary[$user->userid] = $user->multipliercount;
+            $ary[$user->userid][$user->roundid] = $user->multipliercount;
+            $ary2[$user->userid][$user->roundid] = $user->roundid;
         }
         $calculation_sql = $result_sql;
         $calculation_sql .= " group by " . $jointeamtable . ".id";
@@ -472,22 +474,20 @@ class live_match_list_Controller
         $scoreByUserId = [];
         foreach ($result as $row) {
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
-                $temp['yourscore'] = $row->userscore;
-                $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid];
+                if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
+                    $temp['yourscore'] = $row->userscore;
+                    $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
+                }else{
+                    $temp['yourscore'] = $row->userscore;
+                    $scoreByUserId[$row->userid] += $row->userscore *1;
+                }
             } else {
                 $temp['yourscore'] = $row->userscore;
                 $scoreByUserId[$row->userid] += $row->userscore;
             }
-
         }
 
-        // $sortfinalvalue = array();
-        // arsort($scoreByUserId);
-  
-
-
         $result_sql .= " group by userid";
-
         $mainresult = $wpdb->get_results($result_sql);
 
 

@@ -238,5 +238,4 @@ $my_score_Controller = new my_score_Controller();
 
 add_action('wp_ajax_nopriv_my_score_Controller::get_my_score', array($my_score_Controller, 'get_my_score'));
 add_action('wp_ajax_my_score_Controller::get_my_score', array($my_score_Controller, 'get_my_score'));
-
 add_shortcode('my_score_list', array($my_score_Controller, 'my_score'));

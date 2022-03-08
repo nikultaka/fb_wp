@@ -473,7 +473,7 @@ class live_match_list_Controller
             $ary2[$user->userid][$user->roundid] = $user->roundid;
         }
         $calculation_sql = $result_sql;
-        $calculation_sql .= " group by " . $jointeamtable . ".id HAVING userscore > 0 ";
+        $calculation_sql .= " group by " . $jointeamtable . ".id    ";
         $result = $wpdb->get_results($calculation_sql, OBJECT);
         $scoreByUserId = [];
         foreach ($result as $row) {
@@ -557,4 +557,4 @@ add_action('wp_ajax_live_match_list_Controller::load_leaderboard_Pointtable', ar
 
 add_shortcode('live_match_list_short_code', array($live_match_list_Controller, 'live_match_list_short_code'));
 add_shortcode('upcoming_match_list_short_code', array($live_match_list_Controller, 'upcoming_match_list_short_code'));
-add_shortcode('live_leaderboard_list_short_code', array($live_match_list_Controller, 'live_leaderboard_list_short_code'));
+add_shortcode('liveLeaderboardListShortCode', array($live_match_list_Controller, 'live_leaderboard_list_short_code'));

@@ -2,15 +2,15 @@
 class leader_board_Controller
 {
 
-    function leader_board()
-    {
-        ob_start();
-        wp_enqueue_script('script', plugins_url('../Script/league_script.js', __FILE__));
-        include(dirname(__FILE__) . "/html/leaderboardlist.php");
-        $s = ob_get_contents();
-        ob_end_clean();
-        print $s;
-    }
+    // function leader_board()
+    // {
+    //     ob_start();
+    //     wp_enqueue_script('script', plugins_url('../Script/league_script.js', __FILE__));
+    //     include(dirname(__FILE__) . "/html/leaderboardlist.php");
+    //     $s = ob_get_contents();
+    //     ob_end_clean();
+    //     print $s;
+    // }
 
     function loadleader_board()
     {
@@ -184,9 +184,14 @@ class leader_board_Controller
         array_multisort($scoreByUserId, SORT_DESC, $mainresult);
 
         foreach ($mainresult as $row) {
+            $statikmg = "Points Will Display After Round Complete";
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
-            $temp['userspoints'] = $row->finalPoint;
+            if($row->finalPoint != ''){
+                $temp['userspoints'] = $row->finalPoint;
+            }else{
+                $temp['userspoints'] = $statikmg;
+            }
             $action = "<button  class='btn btn-sm' data-toggle='modal'  id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . "," . $row->userid . ")'>Details</button>";
             $temp['action'] = $action;
             $data[] = $temp;
@@ -402,9 +407,9 @@ class leader_board_Controller
 
 $leader_board_Controller = new leader_board_Controller();
 
-add_action('wp_ajax_nopriv_leader_board_Controller::get_leader_board', array($leader_board_Controller, 'get_leader_board'));
-add_action('wp_ajax_leader_board_Controller::get_leader_board', array($leader_board_Controller, 'get_leader_board'));
-add_shortcode('leader_board_list', array($leader_board_Controller, 'leader_board'));
+// add_action('wp_ajax_nopriv_leader_board_Controller::get_leader_board', array($leader_board_Controller, 'get_leader_board'));
+// add_action('wp_ajax_leader_board_Controller::get_leader_board', array($leader_board_Controller, 'get_leader_board'));
+// add_shortcode('leader_board_list', array($leader_board_Controller, 'leader_board'));
 
 add_action('wp_ajax_nopriv_leader_board_Controller::load_leader_board', array($leader_board_Controller, 'load_leader_board'));
 add_action('wp_ajax_leader_board_Controller::load_leader_board', array($leader_board_Controller, 'load_leader_board'));

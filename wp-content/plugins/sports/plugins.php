@@ -18,7 +18,7 @@
      */
 
 
-    
+
 
     register_activation_hook(__FILE__, 'sportsCreateTable');
     function sportsCreateTable()
@@ -95,8 +95,8 @@
         `team1score` VARCHAR(50) NOT NULL,
         `team2score` VARCHAR(50) NOT NULL,              
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-        PRIMARY KEY  id (id)) $charset_collate;";   
-        
+        PRIMARY KEY  id (id)) $charset_collate;";
+
 
         $jointeam_table_name = $wpdb->prefix . 'jointeam';
         $charset_collate = $wpdb->get_charset_collate();
@@ -110,7 +110,7 @@
         `teamid` int(11) NOT NULL,
         `roundselect` VARCHAR(50) NOT NULL,         
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-        PRIMARY KEY  id (id)) $charset_collate;"; 
+        PRIMARY KEY  id (id)) $charset_collate;";
 
         $additionalpoints_table_name = $wpdb->prefix . 'additionalpoints';
         $charset_collate = $wpdb->get_charset_collate();
@@ -122,7 +122,7 @@
         `predictorscoremultiplier` INT(50),
         `predictorscoretype` VARCHAR(50),       
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-        PRIMARY KEY  id (id)) $charset_collate;"; 
+        PRIMARY KEY  id (id)) $charset_collate;";
 
         $scorepredictor_table_name = $wpdb->prefix . 'scorepredictor';
         $charset_collate = $wpdb->get_charset_collate();
@@ -133,7 +133,7 @@
         `userid` int(11) NOT NULL,
         `scorepredictor` INT(50) NOT NULL,         
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-        PRIMARY KEY  id (id)) $charset_collate;"; 
+        PRIMARY KEY  id (id)) $charset_collate;";
 
         $Selectteam_table_name = $wpdb->prefix . 'selectteam';
         $charset_collate = $wpdb->get_charset_collate();
@@ -169,7 +169,8 @@
             $wpdb->get_var("SHOW TABLES LIKE '$additionalpoints_table_name'") != $additionalpoints_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$scorepredictor_table_name'") != $scorepredictor_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$Selectteam_table_name'") != $Selectteam_table_name ||
-            $wpdb->get_var("SHOW TABLES LIKE '$team_table_name'") != $team_table_name) {
+            $wpdb->get_var("SHOW TABLES LIKE '$team_table_name'") != $team_table_name
+        ) {
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             require_once(ABSPATH . 'wp-includes/pluggable.php');
             dbDelta($sql);
@@ -182,11 +183,9 @@
             dbDelta($sqlscorepredictor);
             dbDelta($sqlSelectteam);
             dbDelta($sqlteam);
-
         }
     }
-    // include_once("sports_controller.php");
-    // include_once("frontend/league_controller.php");
+
     include_once(dirname(__FILE__) . "/user_Invite_Cron.php");
     include_once(dirname(__FILE__) . "/sports_controller.php");
     include_once(dirname(__FILE__) . "/team_controller.php");
@@ -199,7 +198,14 @@
     include_once(dirname(__FILE__) . "/frontend/livematch_controller.php");
 
 
-    
 
+     /* Sport ShortCode         =  sport_list_short_code   */
+     /* League ShortCode        =  league_list_short_code  */
+     /* Round ShortCode         =  round_list_short_code   */
+     /* Match ShortCode         =  match_list_short_code   */
+     /* My Score ShortCode      =  my_score_list           */
+     /* Leader Board ShortCode  =  load_leader_board_list  */
 
- 
+    /* Home Page Live Match Details ShortCode        =  live_match_list_short_code        */
+    /* Home Page Upcoming Match Details ShortCode    =  upcoming_match_list_short_code    */
+    /* Home Page Live Leader Board Details ShortCode =  live_leaderboard_list_short_code  */

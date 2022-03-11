@@ -55,7 +55,7 @@ function send_mail_users_enddate()
 
 //send_mail_users_enddate();
 
-// add_action('members_invitation_cron', 'send_mail_users_enddate');
+add_action('members_invitation_cron', 'send_mail_users_enddate');
 
 // put this line inside a function, 
 // presumably in response to something the user does

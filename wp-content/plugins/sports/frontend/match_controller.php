@@ -634,7 +634,6 @@ class match_list_Controller
             $headers =  array('Content-Type: text/html; charset=UTF-8', 'From: KICKOFF Sports <nikultaka@palladiumhub.com>', 'Reply-To: ');
 
             $mailData =  wp_mail($match->useremail, $subject, $message, $headers);
-
             //  end of send mail     
         }
 
@@ -644,6 +643,17 @@ class match_list_Controller
         exit();
     }
 }
+
+
+add_action('members_score_cron', 'send_mail_users_score');
+
+// put this line inside a function, 
+// presumably in response to something the user does
+// otherwise it will schedule a new event on every page visit
+wp_schedule_single_event(time() + 86400, 'members_score_cron');
+
+
+
 
 $match_list_Controller = new match_list_Controller();
 

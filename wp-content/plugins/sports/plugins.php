@@ -208,4 +208,4 @@
 
     /* Home Page Live Match Details ShortCode        =  live_match_list_short_code        */
     /* Home Page Upcoming Match Details ShortCode    =  upcoming_match_list_short_code    */
-    /* Home Page Live Leader Board Details ShortCode =  live_leaderboard_list_short_code  */
+    /* Home Page Live Leader Board Details ShortCode =  live_Leaderboard_List_ShortCode   */

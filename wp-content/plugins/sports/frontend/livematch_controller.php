@@ -557,4 +557,4 @@ add_action('wp_ajax_live_match_list_Controller::load_leaderboard_Pointtable', ar
 
 add_shortcode('live_match_list_short_code', array($live_match_list_Controller, 'live_match_list_short_code'));
 add_shortcode('upcoming_match_list_short_code', array($live_match_list_Controller, 'upcoming_match_list_short_code'));
-add_shortcode('liveLeaderboardListShortCode', array($live_match_list_Controller, 'live_leaderboard_list_short_code'));
+add_shortcode('live_Leaderboard_List_ShortCode', array($live_match_list_Controller, 'live_leaderboard_list_short_code'));

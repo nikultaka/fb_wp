@@ -141,7 +141,7 @@ class my_score_Controller
                     $toalScore += $row->userscore * $ary[$row->roundid];
                 }else{
                     $temp['yourscore'] = $row->userscore;
-                    $toalScore += $row->userscore *1;
+                    $toalScore += $row->userscore *0;
                 }
             } else {
                 $temp['yourscore'] = $row->userscore;
@@ -208,7 +208,7 @@ class my_score_Controller
                 if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
                     $temp['yourscore'] = $row->userscore  * $ary[$row->roundid];
                 }else{
-                    $temp['yourscore'] = $row->userscore  *1;
+                    $temp['yourscore'] = $row->userscore  *0;
                 }
             } else {
                 $temp['yourscore'] = $row->userscore;

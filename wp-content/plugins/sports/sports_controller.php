@@ -53,8 +53,9 @@ function league()
     $roundsql = $wpdb->get_results($querym);
 
 
-    wp_enqueue_script('script', plugins_url('/Script/league_script.js', __FILE__));
+    
     include(dirname(__FILE__) . "/html/leagueform.php");
+    wp_enqueue_script('script', plugins_url('/Script/league_script.js', __FILE__));
     $s = ob_get_contents();
     ob_end_clean();
     print $s;
@@ -998,7 +999,7 @@ class league_controller
                     $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
                 }else{
                     $temp['yourscore'] = $row->userscore;
-                    $scoreByUserId[$row->userid] += $row->userscore *1;
+                    $scoreByUserId[$row->userid] += $row->userscore *0;
                 }
             } else {
                 $temp['yourscore'] = $row->userscore;
@@ -1029,6 +1030,7 @@ class league_controller
         array_multisort($scoreByUserId, SORT_DESC, $mainresult);
 
         foreach ($mainresult as $row) {
+            $temp['no'] = "";
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
             $temp['score'] =  $row->finalPoint;

@@ -364,6 +364,7 @@ class live_match_list_Controller
     {
         global $wpdb;
         $leagueId = $_POST['id'];
+        $sporttable = $wpdb->prefix . "sports";
         $leaguetable = $wpdb->prefix . "league";
         $usertable = $wpdb->prefix . "users";
         $jointeamtable = $wpdb->prefix . "jointeam";
@@ -375,6 +376,7 @@ class live_match_list_Controller
 
         $result_sql = "SELECT
         " . $jointeamtable . ".*,
+        " . $sporttable . ".name AS sportname,
         " . $leaguetable . ".name AS leaguename,
         " . $usertable . ".display_name AS username,
         " . $roundtable . ".scoremultiplier AS scoremultiplier,
@@ -439,6 +441,7 @@ class live_match_list_Controller
         FROM
             " . $jointeamtable . "
         LEFT JOIN " . $leaguetable . " ON " . $leaguetable . ".id = " . $jointeamtable . ".leagueid
+        LEFT JOIN " . $sporttable . " ON " . $sporttable . ".id = " . $leaguetable . ".sports
         LEFT JOIN " . $usertable . " ON " . $usertable . ".id = " . $jointeamtable . ".userid
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
         LEFT JOIN " . $matchscoretable . " ON " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
@@ -447,7 +450,6 @@ class live_match_list_Controller
         WHERE
             " . $jointeamtable . ".leagueid = $leagueId   
          ";
-
 
         $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,userid,roundid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid," . $selectteam . ".roundid,
          CASE
@@ -483,7 +485,7 @@ class live_match_list_Controller
                     $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
                 }else{
                     $temp['yourscore'] = $row->userscore;
-                    $scoreByUserId[$row->userid] += $row->userscore *1;
+                    $scoreByUserId[$row->userid] += $row->userscore *0;
                 }
             } else {
                 $temp['yourscore'] = $row->userscore;
@@ -504,6 +506,7 @@ class live_match_list_Controller
             array_multisort($scoreByUserId, SORT_DESC, $mainresult);
 
             foreach ($mainresult as  $leaderboardpoints) {
+                
                 $live_leaderboard_points_string .= '
         <div class="col-md-4">                
         <div class="containerFFG">

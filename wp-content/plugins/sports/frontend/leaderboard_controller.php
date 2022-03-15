@@ -154,7 +154,7 @@ class leader_board_Controller
                     $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
                 }else{
                     $temp['yourscore'] = $row->userscore;
-                    $scoreByUserId[$row->userid] += $row->userscore *1;
+                    $scoreByUserId[$row->userid] += $row->userscore *0;
                 }
             } else {
                 $temp['yourscore'] = $row->userscore;
@@ -184,11 +184,15 @@ class leader_board_Controller
         array_multisort($scoreByUserId, SORT_DESC, $mainresult);
 
         foreach ($mainresult as $row) {
+           
             $statikmg = "Points Will Display After Round Complete";
+            $temp['no'] = "";
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
             if($row->finalPoint != ''){
                 $temp['userspoints'] = $row->finalPoint;
+            }else if($row->finalPoint === 0){
+                $temp['userspoints'] =  $row->finalPoint;
             }else{
                 $temp['userspoints'] = $statikmg;
             }

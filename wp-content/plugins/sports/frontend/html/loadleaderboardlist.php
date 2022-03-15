@@ -12,7 +12,7 @@
 <div class="container-fluid mt-5">
     <table class="table" id="loadleaderboardlistdata-table">
         <thead>
-            <!-- <th>ID</th> -->
+            <th>No</th>
             <th>League Name</th>
             <th>User Name</th>
             <th>User Points</th>

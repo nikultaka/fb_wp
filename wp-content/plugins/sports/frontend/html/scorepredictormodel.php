@@ -1,4 +1,4 @@
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 <style>
     .loaderball {
@@ -16,7 +16,7 @@
 <div id="loaderball" class="loaderball" style="display: none;"></div>
 
 <div class="modal fade" tabindex="-1" role="dialog" data-backdrop="false" id="scorepredictormodal" aria-labelledby="scorepredictormodallabel" aria-hidden="true">
-    <div class="modal-dialog model-sm" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="scorepredictormodallabel">Add Your Predicted Score</h5>

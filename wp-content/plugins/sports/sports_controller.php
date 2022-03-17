@@ -462,24 +462,31 @@ class league_controller
 
         $matchtable = $wpdb->prefix . "match";
         $usertable = $wpdb->prefix . "users";
+        $teamtable = $wpdb->prefix . "team";
         $roundtable = $wpdb->prefix . "round";
         $jointeamtable = $wpdb->prefix . "jointeam";
         $userid = get_current_user_id();
 
 
         $userData_sql = $wpdb->get_results("SELECT id FROM " . $usertable . " ORDER BY id ASC");
-        $matchData_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname FROM " . $matchtable. " LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable. ".round = $updateId  ORDER BY id ASC");
-
-        $joinData_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*," . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
+        $matchData_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname , " . $teamtable . ".teamname as team1name , t.teamname as team2name FROM " . $matchtable. " LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2 LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable. ".round = $updateId  ORDER BY id ASC");
+        $allMatchData_sql = "SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname , " . $teamtable . ".teamname as team1name , t.teamname as team2name FROM " . $matchtable. " LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2 LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable. ".leagueid = $hdnleagueid ORDER BY id ASC";
+        echo '<pre>';
+        print_r($allMatchData_sql);
+        die;
+        $joinData_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*," . $roundtable . ".scoremultiplier as scoremultiplier,
         CASE
-        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
-        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
+        WHEN " . $jointeamtable . ".teamid = 0 THEN  t.teamname
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $teamtable . ".teamname
         ELSE ''
         END AS teamname
         FROM " . $jointeamtable . "
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
-        LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid ");
+        LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
+        LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 
+        LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2");
 
+        $data['allMatchData'] =$allMatchData_sql;
         $data['matchData'] =$matchData_sql;
         $data['joinData'] =$joinData_sql;
         $data['userData'] =$userData_sql;

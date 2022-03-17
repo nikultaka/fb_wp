@@ -186,23 +186,24 @@ $("#save_Btnround").click(function () {
             loadroundtable();
             $("#roundformdata")[0].reset();
 
-            localStorage.removeItem("matchData");
-            localStorage.setItem("matchData", JSON.stringify(data.matchData));
+            // localStorage.removeItem("matchData");
+            // localStorage.setItem("matchData", JSON.stringify(data.matchData));
 
-            localStorage.removeItem("joinData");
-            localStorage.setItem("joinData", JSON.stringify(data.joinData));
+            // localStorage.removeItem("joinData");
+            // localStorage.setItem("joinData", JSON.stringify(data.joinData));
 
-            localStorage.removeItem("userData");
-            localStorage.setItem("userData", JSON.stringify(data.userData));
+            // localStorage.removeItem("userData");
+            // localStorage.setItem("userData", JSON.stringify(data.userData));
           }
         },
       });
     },
   });
 
-  if ($("#hrid").val() != "") {
-    if ($("#iscomplete").is(":checked")) {
+  if ($("#iscomplete").is(":checked")) {
+    if ($("#hrid").val() != "") {
       $roundid = $("#hrid").val();
+      auto_join_team($roundid);
       send_mail_users_score($roundid);
     }
   }
@@ -635,9 +636,11 @@ function loadleaderboardtable() {
         orderable: false,
       },
     ],
-    rowCallback: function (row, data,iDisplayIndex) {
-      $(row).children('td:first-child').html(iDisplayIndex+1);
-  }
+    rowCallback: function (row, data, iDisplayIndex) {
+      $(row)
+        .children("td:first-child")
+        .html(iDisplayIndex + 1);
+    },
   });
 }
 /*************************** 
@@ -1057,7 +1060,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
                   }
                 },
               });
-              return false; 
+              return false;
             } else if (
               roundSelectData.includes(
                 "scorePredictorround".trim().toLowerCase()
@@ -1189,126 +1192,26 @@ end of Join Team
 start of auto join team
  **************************/
 
-function auto_join_team() {
-  /** user **/
-  var userDataArray = JSON.parse(localStorage.getItem("userData"));
-  var matchDataArray = JSON.parse(localStorage.getItem("matchData"));
+function auto_join_team(rid) {
+  $auto = "1";
 
-  var roundselectid = [];
-  matchDataArray.forEach((team) => {
-    var roundselectm = team.round.trim().toLowerCase();
-    roundselectid.push(roundselectm);
+  $.ajax({
+    type: "POST",
+    url: ajaxurl,
+    datatype: "json",
+    data: {
+      auto: "1",
+      rid: rid,
+      action: "match_list_Controller::add_team_join",
+    },
+    success: function (responce) {
+      var data = JSON.parse(responce);
+      if (data.status == 1) {
+      }
+    },
   });
+  return false;
 
-  console.log(roundselectid);
-  var userdata = [];
-  userDataArray.forEach((user) => {
-    var userselect = user.id.trim().toLowerCase();
-    userdata.push(userselect);
-  });
-
-  var joinDataArray = JSON.parse(localStorage.getItem("joinData"));
-  var joinrounduser = [];
-  var joinround = joinDataArray.filter((team) => {
-    return team.roundid === roundselectid[0];
-  });
-  joinround.forEach((round) => {
-    var rounduserselect = round.userid.trim().toLowerCase();
-    joinrounduser.push(rounduserselect);
-  });
-  console.log(joinrounduser);
-  var uid = $(userdata).not(joinrounduser).get();
-  /** /user **/
-
-  /** round **/
-
-  var matchrounds = [];
-  matchDataArray.forEach((team) => {
-    var roundselectm = team.round.trim().toLowerCase();
-    matchrounds.push(roundselectm);
-  });
-  var Newmatchrounds = matchrounds.filter(function (elem, index, self) {
-    return index === self.indexOf(elem);
-  });
-
-  var joinrounds = [];
-  joinDataArray.forEach((round) => {
-    var roundselect = round.roundid.trim().toLowerCase();
-    joinrounds.push(roundselect);
-  });
-
-  var difference = $(Newmatchrounds).not(joinrounds).get();
-  /** /round **/
-
-  /** teamname **/
-  uid.forEach((user) => {
-    difference.forEach((round) => {
-      var matchteamname = [];
-      var matchidjoin = matchDataArray.filter((team) => {
-        return team.round === round;
-      });
-      matchidjoin.forEach((team) => {
-        var allmatchjoin1 = team.team1.trim().toLowerCase();
-        matchteamname.push(allmatchjoin1);
-      });
-      var matchteamname2 = [];
-      var matchidjoin = matchDataArray.filter((team) => {
-        return team.round === round;
-      });
-      matchidjoin.forEach((team) => {
-        var allmatchjoin2 = team.team2.trim().toLowerCase();
-        matchteamname2.push(allmatchjoin2);
-      });
-      var allteamname = matchteamname.concat(matchteamname2);
-
-      var jointeamname = [];
-      joinDataArray.forEach((round) => {
-        var teamselect = round.teamname.trim().toLowerCase();
-        jointeamname.push(teamselect);
-      });
-
-      var differenceteam = $(allteamname).not(jointeamname).get();
-      var teamname = differenceteam[0];
-      /**************/ console.log(teamname);
-      /** /teamname **/
-
-      /** match id **/
-      var matchjoin = [];
-      var matchidjoin = matchDataArray.filter((team) => {
-        return team.team1.trim().toLowerCase() === teamname;
-      });
-      matchidjoin.forEach((team) => {
-        var allmatchjoin = team.id.trim().toLowerCase();
-        matchjoin.push(allmatchjoin);
-      });
-      /**************/ console.log(matchjoin);
-      /** /match id **/
-
-      $roundselect = "nothanks";
-      $id = matchjoin[0];
-      $tid = "1";
-      $uid = user;
-      console.log($uid);
-      $.ajax({
-        type: "POST",
-        url: ajaxurl,
-        datatype: "json",
-        data: {
-          tid: "1",
-          id: matchjoin[0],
-          uid: user,
-          roundselect: "nothanks",
-          action: "match_list_Controller::add_team_join",
-        },
-        success: function (responce) {
-          var data = JSON.parse(responce);
-          if (data.status == 1) {
-          }
-        },
-      });
-      return false;
-    });
-  });
 }
 
 /*************************** 
@@ -1422,23 +1325,23 @@ function load_leader_board_list(id, userid) {
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [0,1, 2, 3, 4],
+        targets: [0, 1, 2, 3, 4],
         orderable: false,
         searching: false,
       },
     ],
-    rowCallback: function (row, data,iDisplayIndex) {
-      $(row).children('td:first-child').html(iDisplayIndex+1);
-  }
-    
+    rowCallback: function (row, data, iDisplayIndex) {
+      $(row)
+        .children("td:first-child")
+        .html(iDisplayIndex + 1);
+    },
   });
 
-//   t.on( 'order.dt search.dt', function () {
-//     t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-//         cell.innerHTML = i+1;
-//     } );
-// } ).draw();
-
+  //   t.on( 'order.dt search.dt', function () {
+  //     t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+  //         cell.innerHTML = i+1;
+  //     } );
+  // } ).draw();
 }
 
 /*************************** 

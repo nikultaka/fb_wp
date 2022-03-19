@@ -364,6 +364,7 @@ class live_match_list_Controller
     {
         global $wpdb;
         $leagueId = $_POST['id'];
+        $sporttable = $wpdb->prefix . "sports";
         $leaguetable = $wpdb->prefix . "league";
         $usertable = $wpdb->prefix . "users";
         $jointeamtable = $wpdb->prefix . "jointeam";
@@ -375,6 +376,7 @@ class live_match_list_Controller
 
         $result_sql = "SELECT
         " . $jointeamtable . ".*,
+        " . $sporttable . ".name AS sportname,
         " . $leaguetable . ".name AS leaguename,
         " . $usertable . ".display_name AS username,
         " . $roundtable . ".scoremultiplier AS scoremultiplier,
@@ -382,6 +384,8 @@ class live_match_list_Controller
         CASE WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score 
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score ELSE ''
         END AS teamscore,
+        CASE
+        WHEN " . $roundtable . ".iscomplete = 'YES' THEN 
         CASE WHEN  " . $jointeamtable . ".roundselect = 'nothanks' THEN
             CASE WHEN " . $roundtable . ".scoremultiplier = 0 THEN 
                 CASE 
@@ -431,10 +435,13 @@ class live_match_list_Controller
         END
         END
         END
+        END 
+        ELSE ''
         END AS userscore
         FROM
             " . $jointeamtable . "
         LEFT JOIN " . $leaguetable . " ON " . $leaguetable . ".id = " . $jointeamtable . ".leagueid
+        LEFT JOIN " . $sporttable . " ON " . $sporttable . ".id = " . $leaguetable . ".sports
         LEFT JOIN " . $usertable . " ON " . $usertable . ".id = " . $jointeamtable . ".userid
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
         LEFT JOIN " . $matchscoretable . " ON " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
@@ -444,8 +451,7 @@ class live_match_list_Controller
             " . $jointeamtable . ".leagueid = $leagueId   
          ";
 
-
-        $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,userid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid,
+        $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,userid,roundid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid," . $selectteam . ".roundid,
          CASE
          WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
          WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
@@ -460,33 +466,47 @@ class live_match_list_Controller
          LEFT JOIN " . $selectteam . " on " . $selectteam . ".matchid = " . $selectteam . ".matchid
          LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $selectteam . ".userid
          HAVING winteams = selectteams) as data
-         group by userid");
+         group by roundid,userid");
 
         $ary = [];
+        $ary2 = [];
         foreach ($teamselect_sql as $user) {
-            $ary[$user->userid] = $user->multipliercount;
+            $ary[$user->userid][$user->roundid] = $user->multipliercount;
+            $ary2[$user->userid][$user->roundid] = $user->roundid;
         }
         $calculation_sql = $result_sql;
-        $calculation_sql .= " group by " . $jointeamtable . ".id";
+        $calculation_sql .= " group by " . $jointeamtable . ".id    ";
         $result = $wpdb->get_results($calculation_sql, OBJECT);
         $scoreByUserId = [];
         foreach ($result as $row) {
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
-                $temp['yourscore'] = $row->userscore;
-                $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid];
+                if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
+                    $temp['yourscore'] = $row->userscore;
+                    $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
+                }else{
+                    $temp['yourscore'] = $row->userscore;
+                    $scoreByUserId[$row->userid] += $row->userscore *0;
+                }
             } else {
                 $temp['yourscore'] = $row->userscore;
                 $scoreByUserId[$row->userid] += $row->userscore;
             }
         }
-        $result_sql .= " group by userid";
 
+        $result_sql .= " group by userid";
         $mainresult = $wpdb->get_results($result_sql);
+
 
         $live_leaderboard_points_string  = '';
         if (count($mainresult) > 0) {
 
-            foreach ($mainresult as $leaderboardpoints) {
+            foreach ($mainresult as  $leaderboardpoints) {
+                $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
+            }
+            array_multisort($scoreByUserId, SORT_DESC, $mainresult);
+
+            foreach ($mainresult as  $leaderboardpoints) {
+                
                 $live_leaderboard_points_string .= '
         <div class="col-md-4">                
         <div class="containerFFG">
@@ -495,7 +515,7 @@ class live_match_list_Controller
                 <div class="tFFG"><h5>Sportname : ' . $leaderboardpoints->sportname . '</h5></div>
                 <div class="PFFG"><div class="tFFG"><h5>Leaguename : ' . $leaderboardpoints->leaguename . '</h5></div></div>
                 <div class="PFFG"><div class="tFFG"><h5>Username : ' . $leaderboardpoints->username . '</h5></div></div>
-                <div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $scoreByUserId[$leaderboardpoints->userid] . '</h5></div></div>
+                <div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $leaderboardpoints->finalPoint . '</h5></div></div>
                 </div>
             </div>
             </div>
@@ -540,4 +560,4 @@ add_action('wp_ajax_live_match_list_Controller::load_leaderboard_Pointtable', ar
 
 add_shortcode('live_match_list_short_code', array($live_match_list_Controller, 'live_match_list_short_code'));
 add_shortcode('upcoming_match_list_short_code', array($live_match_list_Controller, 'upcoming_match_list_short_code'));
-add_shortcode('live_leaderboard_list_short_code', array($live_match_list_Controller, 'live_leaderboard_list_short_code'));
+add_shortcode('live_Leaderboard_List_ShortCode', array($live_match_list_Controller, 'live_leaderboard_list_short_code'));

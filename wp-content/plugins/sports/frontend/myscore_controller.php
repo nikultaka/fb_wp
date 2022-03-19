@@ -106,7 +106,7 @@ class my_score_Controller
         WHERE " . $jointeamtable . ".userid = " . $userid . "";
 
 
-        $teamselect_sql = $wpdb->get_row("select count(*) as final_multiplier_coun from (SELECT distinct " . $matchscoretable . ".*,
+        $teamselect_sql = "select count(*) as multipliercount,roundid,roundid,userid from (SELECT distinct " . $matchscoretable . ".*," . $selectteam . ".roundid as roundid," . $selectteam . ".userid as userid,
         CASE
         WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
         WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
@@ -120,21 +120,36 @@ class my_score_Controller
         FROM " . $matchscoretable . " 
         LEFT JOIN " . $selectteam . " on " . $selectteam . ".matchid = " . $selectteam . ".matchid
         LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $selectteam . ".userid
-        WHERE " . $selectteam . ".userid = $userid HAVING winteams = selectteams) as data");
+        WHERE " . $selectteam . ".userid = $userid HAVING winteams = selectteams) as data
+        group by roundid";
 
-        $finalscoremultiplier = $teamselect_sql->final_multiplier_coun;
-
+        $result = $wpdb->get_results($teamselect_sql, OBJECT);
+        $ary = [];
+        $ary2 = [];
+        foreach ($result as $round) {
+            $ary[$round->roundid] = $round->multipliercount;
+            $ary2[$round->userid][$round->roundid] = $round->roundid; 
+        }
+ 
         $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
         $toalScore = 0;
         foreach ($totalScoreResult as $row) {
+   
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid) {
-                $temp['yourscore'] = $row->userscore;
-                $toalScore += $row->userscore * $finalscoremultiplier;
+                if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
+                    $temp['yourscore'] = $row->userscore;
+                    $toalScore += $row->userscore * $ary[$row->roundid];
+                }else{
+                    $temp['yourscore'] = $row->userscore;
+                    $toalScore += $row->userscore *0;
+                }
             } else {
                 $temp['yourscore'] = $row->userscore;
                 $toalScore += $row->userscore;
-            }
+            }          
         }
+        
+        
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
@@ -190,7 +205,11 @@ class my_score_Controller
             $temp['round'] = $row->roundname;
             $temp['team'] = $row->teamname;
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0  && $row->userid == $userid) {
-                $temp['yourscore'] = $row->userscore  * $finalscoremultiplier;
+                if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
+                    $temp['yourscore'] = $row->userscore  * $ary[$row->roundid];
+                }else{
+                    $temp['yourscore'] = $row->userscore  *0;
+                }
             } else {
                 $temp['yourscore'] = $row->userscore;
             }
@@ -198,16 +217,9 @@ class my_score_Controller
             $temp['action'] = $action;
             $data[] = $temp;
             $id = "";
+     
         }
-        // $a=array($temp['yourscore']);
-        // array_push($a);         
-        // const array = []
-        // let sum = 0;
-
-        // for (let i = 0; i < array.length; i++) {
-        //     sum += array[i];
-        // }
-
+        
         $json_data = array(
             "draw" => intval($requestData['draw']),
             "recordsTotal" => intval($totalData),
@@ -226,5 +238,4 @@ $my_score_Controller = new my_score_Controller();
 
 add_action('wp_ajax_nopriv_my_score_Controller::get_my_score', array($my_score_Controller, 'get_my_score'));
 add_action('wp_ajax_my_score_Controller::get_my_score', array($my_score_Controller, 'get_my_score'));
-
 add_shortcode('my_score_list', array($my_score_Controller, 'my_score'));

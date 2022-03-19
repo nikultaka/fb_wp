@@ -2,15 +2,15 @@
 class leader_board_Controller
 {
 
-    function leader_board()
-    {
-        ob_start();
-        wp_enqueue_script('script', plugins_url('../Script/league_script.js', __FILE__));
-        include(dirname(__FILE__) . "/html/leaderboardlist.php");
-        $s = ob_get_contents();
-        ob_end_clean();
-        print $s;
-    }
+    // function leader_board()
+    // {
+    //     ob_start();
+    //     wp_enqueue_script('script', plugins_url('../Script/league_script.js', __FILE__));
+    //     include(dirname(__FILE__) . "/html/leaderboardlist.php");
+    //     $s = ob_get_contents();
+    //     ob_end_clean();
+    //     print $s;
+    // }
 
     function loadleader_board()
     {
@@ -22,71 +22,6 @@ class leader_board_Controller
         print $s;
     }
 
-    // public function get_leader_board()
-    // {
-    //     global $wpdb;
-    //     $requestData = $_POST;
-    //     $data = array();
-
-    //     $leaguetable = $wpdb->prefix . "league";
-
-    //     $result_sql = "SELECT * FROM " . $leaguetable . " WHERE STATUS = 'active' ";
-
-    //     if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
-    //         $search = $requestData['search']['value'];
-    //         $result_sql .= "AND (name LIKE '%" . $search . "%')";
-    //     }
-    //     $columns = array(
-    //         0 => 'name',
-    //     );
-
-    //     if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
-    //         $order_by = $columns[$requestData['order'][0]['column']];
-    //         $result_sql .= " ORDER BY " . $order_by;
-    //     } else {
-    //         $result_sql .= "ORDER BY id DESC";
-    //     }
-    //     if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
-    //         $result_sql .= " " . $requestData['order'][0]['dir'];
-    //     } else {
-    //         $result_sql .= " DESC ";
-    //     }
-
-    //     $result = $wpdb->get_results($result_sql, OBJECT);
-    //     $totalData = 0;
-    //     $totalFiltered = 0;
-    //     if (count($result) > 0) {
-    //         $totalData = count($result);
-    //         $totalFiltered = count($result);
-    //     }
-    //     // This is for pagination
-    //     if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
-    //         $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
-    //     }
-    //     $list_data = $wpdb->get_results($result_sql, "OBJECT");
-    //     $arr_data = array();
-    //     $arr_data = $result;
-
-    //     foreach ($list_data as $row) {
-    //         $leaderboardlink = home_url("/load-leader-board/?id=$row->id");
-    //         $temp['league'] = $row->name;
-    //         $action =  "<h3 class='card-title'> <a class='btn btn-default' href='$leaderboardlink' type='button'>Load $row->name's Leader Board</a></h3>";
-    //         $temp['action'] = $action;
-    //         $data[] = $temp;
-    //         $id = "";
-    //     }
-
-    //     $json_data = array(
-    //         "draw" => intval($requestData['draw']),
-    //         "recordsTotal" => intval($totalData),
-    //         "recordsFiltered" => intval($totalFiltered),
-    //         "data" => $data,
-    //         "sql" => $result_sql
-    //     );
-
-    //     echo json_encode($json_data);
-    //     exit(0);
-    // }
 
     function load_leader_board()
     {
@@ -116,6 +51,8 @@ class leader_board_Controller
         CASE WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score 
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score ELSE ''
         END AS teamscore,
+        CASE
+        WHEN " . $roundtable . ".iscomplete = 'YES' THEN  
         CASE WHEN  " . $jointeamtable . ".roundselect = 'nothanks' THEN
             CASE WHEN " . $roundtable . ".scoremultiplier = 0 THEN 
                 CASE 
@@ -165,6 +102,8 @@ class leader_board_Controller
         END
         END
         END
+        END 
+        ELSE ''
         END AS userscore
         FROM
             " . $jointeamtable . "
@@ -179,7 +118,7 @@ class leader_board_Controller
          ";
 
 
-        $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,userid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid,
+         $teamselect_sql = "select count(*) as multipliercount,roundid,userid from (SELECT distinct " . $matchscoretable . ".*," . $selectteam . ".roundid as roundid," . $selectteam . ".userid as userid,
          CASE
          WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
          WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
@@ -194,58 +133,43 @@ class leader_board_Controller
          LEFT JOIN " . $selectteam . " on " . $selectteam . ".matchid = " . $selectteam . ".matchid
          LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $selectteam . ".userid
          HAVING winteams = selectteams) as data
-         group by userid");
-
+         group by roundid,userid";
+         
+         $result = $wpdb->get_results($teamselect_sql, OBJECT);
         $ary = [];
-        foreach ($teamselect_sql as $user) {
-            $ary[$user->userid] = $user->multipliercount;
-        }
+        $ary2 = [];
+        foreach ($result as $user) {
+            $ary[$user->userid][$user->roundid] = $user->multipliercount;
+            $ary2[$user->userid][$user->roundid] = $user->roundid; 
+        } 
+
         $calculation_sql = $result_sql;
-        $calculation_sql .= " group by " . $jointeamtable . ".id";
+        $calculation_sql .= " group by " . $jointeamtable . ".id HAVING userscore > 0 ";
         $result = $wpdb->get_results($calculation_sql, OBJECT);
         $scoreByUserId = [];
         foreach ($result as $row) {
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
-                $temp['yourscore'] = $row->userscore;
-                $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid];
+                if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
+                    $temp['yourscore'] = $row->userscore;
+                    $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
+                }else{
+                    $temp['yourscore'] = $row->userscore;
+                    $scoreByUserId[$row->userid] += $row->userscore *0;
+                }
             } else {
                 $temp['yourscore'] = $row->userscore;
                 $scoreByUserId[$row->userid] += $row->userscore;
             }
         }
+    
         $result_sql .= " group by userid";
-
-        if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
-            $search = $requestData['search']['value'];
-            $result_sql .= "AND (id LIKE '%" . $search . "%')
-                            OR (leaguename LIKE '%" . $search . "%')
-                            OR (username LIKE '%" . $search . "%')";
-                            
-        }
-        $columns = array(
-            0 => 'leaguename',
-            1 => 'username',      
-        );
-
-        if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
-            $order_by = $columns[$requestData['order'][0]['column']];
-            $result_sql .= " ORDER BY " . $order_by;
-        } else {
-            $result_sql .= "ORDER BY id DESC";
-        }
-        if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
-            $result_sql .= " " . $requestData['order'][0]['dir'];
-        } else {
-            $result_sql .= " DESC ";
-        }
-
-        $result = $wpdb->get_results($result_sql, OBJECT);
+        $mainresult = $wpdb->get_results($result_sql);
 
         $totalData = 0;
         $totalFiltered = 0;
-        if (count($result) > 0) {
-            $totalData = count($result);
-            $totalFiltered = count($result);
+        if (count($mainresult) > 0) {
+            $totalData = count($mainresult);
+            $totalFiltered = count($mainresult);
         }
 
         // This is for pagination
@@ -253,15 +177,25 @@ class leader_board_Controller
             $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
         }
 
+        $mainresult = $wpdb->get_results($result_sql);
+        foreach ($mainresult as  $leaderboardpoints) {
+            $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
+        }
+        array_multisort($scoreByUserId, SORT_DESC, $mainresult);
 
-        $list_data = $wpdb->get_results($result_sql, "OBJECT");
-        $arr_data = array();
-        $arr_data = $result;
-
-        foreach ($list_data as $row) {
+        foreach ($mainresult as $row) {
+           
+            $statikmg = "Points Will Display After Round Complete";
+            $temp['no'] = "";
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
-            $temp['userspoints'] = $scoreByUserId[$row->userid];
+            if($row->finalPoint != ''){
+                $temp['userspoints'] = $row->finalPoint;
+            }else if($row->finalPoint === 0){
+                $temp['userspoints'] =  $row->finalPoint;
+            }else{
+                $temp['userspoints'] = $statikmg;
+            }
             $action = "<button  class='btn btn-sm' data-toggle='modal'  id='load_match_score_details_list' onclick='load_match_score_details_list(" . $row->leagueid . "," . $row->userid . ")'>Details</button>";
             $temp['action'] = $action;
             $data[] = $temp;
@@ -311,6 +245,8 @@ class leader_board_Controller
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $teamtable . ".teamname
         ELSE ''
         END AS teamname ,
+        CASE
+        WHEN " . $roundtable . ".iscomplete = 'YES' THEN 
         CASE WHEN  " . $jointeamtable . ".roundselect = 'nothanks' THEN
             CASE WHEN " . $roundtable . ".scoremultiplier = 0 THEN 
                 CASE 
@@ -360,6 +296,8 @@ class leader_board_Controller
         END
         END
         END
+        END 
+        ELSE ''
         END AS userscore
         FROM " . $jointeamtable . "
         LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
@@ -369,10 +307,10 @@ class leader_board_Controller
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
         LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid and " . $scorepredictortable . ".userid = " . $userid . "
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
-        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " and " . $jointeamtable . ".userid = " . $userid . " group by teamname ";
+        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " and " . $jointeamtable . ".userid = " . $userid . " group by teamname HAVING userscore > 0 ";
 
 
-        $teamselect_sql = $wpdb->get_row("select count(*) as final_multiplier_coun from (SELECT distinct " . $matchscoretable . ".*,
+        $teamselect_sql = "select count(*) as multipliercount,roundid from (SELECT distinct " . $matchscoretable . ".*," . $selectteam . ".roundid as roundid,
         CASE
         WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
         WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
@@ -386,9 +324,26 @@ class leader_board_Controller
         FROM " . $matchscoretable . " 
         LEFT JOIN " . $selectteam . " on " . $selectteam . ".matchid = " . $selectteam . ".matchid
         LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $selectteam . ".userid
-        WHERE " . $selectteam . ".userid = $userid HAVING winteams = selectteams) as data");
+        WHERE " . $selectteam . ".userid = $userid HAVING winteams = selectteams) as data
+        group by roundid";
 
-        $finalscoremultiplier = $teamselect_sql->final_multiplier_coun;
+        $result = $wpdb->get_results($teamselect_sql, OBJECT);
+        $ary = [];
+        foreach ($result as $round) {
+            $ary[$round->roundid] = $round->multipliercount;
+        }
+
+        $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
+        $toalScore = 0;
+        foreach ($totalScoreResult as $row) {
+            if ($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid) {
+                $temp['yourscore'] = $row->userscore;
+                $toalScore += $row->userscore * $ary[$row->roundid];
+            } else {
+                $temp['yourscore'] = $row->userscore;
+                $toalScore += $row->userscore;
+            }          
+        }
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
@@ -433,7 +388,7 @@ class leader_board_Controller
         foreach ($list_data as $row) {
             $temp['teamname'] = $row->teamname;
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid) {
-                $temp['teamscore'] = $row->userscore  * $finalscoremultiplier;
+                $temp['teamscore'] = $row->userscore  * $ary[$row->roundid];
             } else {
                 $temp['teamscore'] = $row->userscore;
             }
@@ -456,9 +411,9 @@ class leader_board_Controller
 
 $leader_board_Controller = new leader_board_Controller();
 
-add_action('wp_ajax_nopriv_leader_board_Controller::get_leader_board', array($leader_board_Controller, 'get_leader_board'));
-add_action('wp_ajax_leader_board_Controller::get_leader_board', array($leader_board_Controller, 'get_leader_board'));
-add_shortcode('leader_board_list', array($leader_board_Controller, 'leader_board'));
+// add_action('wp_ajax_nopriv_leader_board_Controller::get_leader_board', array($leader_board_Controller, 'get_leader_board'));
+// add_action('wp_ajax_leader_board_Controller::get_leader_board', array($leader_board_Controller, 'get_leader_board'));
+// add_shortcode('leader_board_list', array($leader_board_Controller, 'leader_board'));
 
 add_action('wp_ajax_nopriv_leader_board_Controller::load_leader_board', array($leader_board_Controller, 'load_leader_board'));
 add_action('wp_ajax_leader_board_Controller::load_leader_board', array($leader_board_Controller, 'load_leader_board'));

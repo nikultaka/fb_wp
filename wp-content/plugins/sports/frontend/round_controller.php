@@ -54,6 +54,4 @@ $round_list_Controller = new round_list_Controller();
 
 add_action('wp_ajax_nopriv_round_list_Controller::get_round_list', array($round_list_Controller, 'get_round_list'));
 add_action('wp_ajax_round_list_Controller::get_round_list', array($round_list_Controller, 'get_round_list'));
-
-
 add_shortcode('round_list_short_code', array($round_list_Controller, 'round_list_short_code'));

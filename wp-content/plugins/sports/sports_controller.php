@@ -53,8 +53,9 @@ function league()
     $roundsql = $wpdb->get_results($querym);
 
 
-    wp_enqueue_script('script', plugins_url('/Script/league_script.js', __FILE__));
+    
     include(dirname(__FILE__) . "/html/leagueform.php");
+    wp_enqueue_script('script', plugins_url('/Script/league_script.js', __FILE__));
     $s = ob_get_contents();
     ob_end_clean();
     print $s;
@@ -461,24 +462,31 @@ class league_controller
 
         $matchtable = $wpdb->prefix . "match";
         $usertable = $wpdb->prefix . "users";
+        $teamtable = $wpdb->prefix . "team";
         $roundtable = $wpdb->prefix . "round";
         $jointeamtable = $wpdb->prefix . "jointeam";
         $userid = get_current_user_id();
 
 
         $userData_sql = $wpdb->get_results("SELECT id FROM " . $usertable . " ORDER BY id ASC");
-        $matchData_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname FROM " . $matchtable. " LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable. ".round = $updateId  ORDER BY id ASC");
-
-        $joinData_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*," . $roundtable . ".scoremultiplier as scoremultiplier," . $roundtable . ".scoretype as scoretype,
+        $matchData_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname , " . $teamtable . ".teamname as team1name , t.teamname as team2name FROM " . $matchtable. " LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2 LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable. ".round = $updateId  ORDER BY id ASC");
+        $allMatchData_sql = "SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname , " . $teamtable . ".teamname as team1name , t.teamname as team2name FROM " . $matchtable. " LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2 LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable. ".leagueid = $hdnleagueid ORDER BY id ASC";
+        echo '<pre>';
+        print_r($allMatchData_sql);
+        die;
+        $joinData_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*," . $roundtable . ".scoremultiplier as scoremultiplier,
         CASE
-        WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
-        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchtable . ".team1
+        WHEN " . $jointeamtable . ".teamid = 0 THEN  t.teamname
+        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $teamtable . ".teamname
         ELSE ''
         END AS teamname
         FROM " . $jointeamtable . "
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
-        LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid ");
+        LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
+        LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 
+        LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2");
 
+        $data['allMatchData'] =$allMatchData_sql;
         $data['matchData'] =$matchData_sql;
         $data['joinData'] =$joinData_sql;
         $data['userData'] =$userData_sql;
@@ -962,7 +970,7 @@ class league_controller
          ";
 
 
-         $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,userid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid,
+         $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,roundid,userid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid," . $selectteam . ".roundid,
          CASE
          WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
          WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
@@ -977,11 +985,14 @@ class league_controller
          LEFT JOIN " . $selectteam . " on " . $selectteam . ".matchid = " . $selectteam . ".matchid
          LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $selectteam . ".userid
          HAVING winteams = selectteams) as data
-         group by userid");
+         group by roundid,userid");
         
+     
         $ary = [];
+        $ary2 = [];
         foreach ($teamselect_sql as $user) {
-            $ary[$user->userid] = $user->multipliercount;
+            $ary[$user->userid][$user->roundid] = $user->multipliercount;
+            $ary2[$user->userid][$user->roundid] = $user->roundid;
         }
         $calculation_sql = $result_sql;
         $calculation_sql .= " group by " . $jointeamtable . ".id";
@@ -989,60 +1000,47 @@ class league_controller
         $scoreByUserId = [];
         foreach ($result as $row) {       
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0 ) {
-                $temp['yourscore'] = $row->userscore;
-                $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid];
+
+                if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
+                    $temp['yourscore'] = $row->userscore;
+                    $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
+                }else{
+                    $temp['yourscore'] = $row->userscore;
+                    $scoreByUserId[$row->userid] += $row->userscore *0;
+                }
             } else {
                 $temp['yourscore'] = $row->userscore;
                 $scoreByUserId[$row->userid] += $row->userscore;
-            }  
-           
+            }   
         } 
 
-        if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
-            $search = $requestData['search']['value'];
-            $result_sql .= "AND (id LIKE '%" . $search . "%')
-                            OR (leaguename LIKE '%" . $search . "%')
-                            OR (username LIKE '%" . $search . "%')";
-                            
-        }
-        $columns = array(
-            0 => 'leaguename',
-            1 => 'username',       
-        );
-        $result_sql .= " GROUP BY userid ";
-        if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
-            $order_by = $columns[$requestData['order'][0]['column']];
-            $result_sql .= " ORDER BY " . $order_by;
-        } else {
-            $result_sql .= "ORDER BY id DESC";
-        }
-        if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
-            $result_sql .= " " . $requestData['order'][0]['dir'];
-        } else {
-            $result_sql .= " DESC ";
-        }
+        
+        $result_sql .= " group by userid";
+        $mainresult = $wpdb->get_results($result_sql);
 
-        $result = $wpdb->get_results($result_sql, OBJECT);
         $totalData = 0;
         $totalFiltered = 0;
-        if (count($result) > 0) {
-            $totalData = count($result);
-            $totalFiltered = count($result);
+        if (count($mainresult) > 0) {
+            $totalData = count($mainresult);
+            $totalFiltered = count($mainresult);
         }
+
         // This is for pagination
         if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
             $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
         }
-      
-        $list_data = $wpdb->get_results($result_sql, "OBJECT");
- 
-        $arr_data = array();
-        $arr_data = $result;
+        $mainresult = $wpdb->get_results($result_sql);
 
-        foreach ($list_data as $row) {
+        foreach ($mainresult as  $leaderboardpoints) {
+            $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
+        }
+        array_multisort($scoreByUserId, SORT_DESC, $mainresult);
+
+        foreach ($mainresult as $row) {
+            $temp['no'] = "";
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
-            $temp['score'] =  $scoreByUserId[$row->userid];
+            $temp['score'] =  $row->finalPoint;
             $data[] = $temp;
             $id = "";
         }

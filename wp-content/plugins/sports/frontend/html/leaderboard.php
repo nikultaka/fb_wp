@@ -195,14 +195,24 @@
         font-size: 35px;
         margin: 3px 0px -6px 0px;
     }
+    .loaderball {
+		position: fixed;
+		opacity: 1;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+		background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(255 255 255 / 65%);
+	}
 </style>
 
+<div id="loaderball" class="loaderball" style="display: none;"></div>
 
 <div class="row d-grid gap-3">
     <div id="liveleaderboardlist">
     </div>
 </div>
-
 <div class="row d-grid gap-3">
     <div id="liveleaderboardpoints">
     </div>

@@ -1,10 +1,22 @@
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
+<style>
+    .loaderball {
+		position: fixed;
+		opacity: 1;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+		background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(255 255 255 / 65%);
+	}
+</style>
 
-
+<div id="loaderball" class="loaderball" style="display: none;"></div>
 
 <div class="modal fade" tabindex="-1" role="dialog" data-backdrop="false" id="scorepredictormodal" aria-labelledby="scorepredictormodallabel" aria-hidden="true">
-    <div class="modal-dialog model-sm" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="scorepredictormodallabel">Add Your Predicted Score</h5>

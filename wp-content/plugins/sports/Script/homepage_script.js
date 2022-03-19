@@ -61,9 +61,13 @@ function load_leaderboard_Pointtable(id) {
         id: id,
         action: "live_match_list_Controller::load_leaderboard_Pointtable",
       },
+      beforeSend: function(){
+        $("#loaderball").css('display','');
+      },
       success: function (responce) {
         var data = JSON.parse(responce);
         if (data.status == 1) {
+          $("#loaderball").css('display','none');
           $("#liveleaderboardpoints").empty();
           $("#liveleaderboardpoints").append(data.live_leaderboard_points_string);
         }

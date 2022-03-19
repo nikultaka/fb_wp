@@ -40,7 +40,16 @@
   transition: none;
 }
 
-
+.loaderball {
+		position: fixed;
+		opacity: 1;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+		background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(255 255 255 / 65%);
+	}
 
 .sportbut .body {
   display:grid;
@@ -57,6 +66,7 @@
     <div id="roundlistdata" >
     </div>
 </div>
+<div id="loaderball" class="loaderball" style="display: none;"></div>
 
 
 <script type="text/javascript">

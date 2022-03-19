@@ -55,9 +55,9 @@ function send_mail_users_enddate()
 
 //send_mail_users_enddate();
 
-// add_action('members_invitation_cron', 'send_mail_users_enddate');
+add_action('members_invitation_cron', 'send_mail_users_enddate');
 
 // put this line inside a function, 
 // presumably in response to something the user does
 // otherwise it will schedule a new event on every page visit
-wp_schedule_single_event(time() + 86400, 'members_invitation_cron');
+// wp_schedule_single_event(time() + 86400, 'members_invitation_cron');

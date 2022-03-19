@@ -139,9 +139,10 @@
 		margin: 0 auto;
 		position: absolute;
 		padding: 5px;
-		top: 52px;
+		top: auto;
 		left: 0;
 		right: 0;
+		margin-top: -20px;
 		transition: all 0.3s ease-out 0s;
 	}
 
@@ -221,7 +222,7 @@
 		width: 100%;
 		height: 100%;
 		z-index: 9999;
-		background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(0 0 0 / 0%);
+		background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(255 255 255 / 65%);
 	}
 </style>
 

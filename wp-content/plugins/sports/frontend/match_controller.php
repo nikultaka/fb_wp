@@ -290,64 +290,105 @@ class match_list_Controller
     function add_team_join()
     {
         global $wpdb;
-        if ($_POST['uid'] != "") {
-            $userid = $_POST['uid'];
+
+        if ($_POST['auto'] == "1") {
+
+
+            $rid = $_POST['rid'];
+            $sportstable = $wpdb->prefix . "sports";
+            $leaguetable = $wpdb->prefix . "league";
+            $roundtable = $wpdb->prefix . "round";
+            $matchtable = $wpdb->prefix . "match";
+            $teamtable = $wpdb->prefix . "team";
+            $usertable = $wpdb->prefix . "users";
+            $matchscoretable = $wpdb->prefix . "score";
+            $jointeamtable = $wpdb->prefix . "jointeam";
+            $selectteam = $wpdb->prefix . "selectteam";
+            $additionalpointstable = $wpdb->prefix . "additionalpoints";
+            $scorepredictortable = $wpdb->prefix . "scorepredictor";
+
+
+            $resultnotjoin_sql = $wpdb->get_results("SELECT ID FROM " . $usertable . " where ID NOT IN (SELECT userid  FROM " . $jointeamtable . " where roundid = $rid)");
+            $resultjoin_sql = $wpdb->get_results("SELECT ID FROM " . $usertable . " where ID IN (SELECT userid  FROM " . $jointeamtable . " where roundid = $rid)");
+
+            $joinaryy = [];
+            foreach ($resultjoin_sql as $row) {
+
+                $result3_sql = $wpdb->get_results("SELECT userid, CASE
+                WHEN " . $jointeamtable . ".teamid = 0 THEN  " . $matchtable . ".team2
+                WHEN " . $jointeamtable . ".teamid = 1 THEN  " . $matchtable . ".team1
+                ELSE ''
+                END AS teamid FROM " . $jointeamtable . " 
+                LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid  WHERE userid = $row->ID");               
+
+                foreach ($result3_sql as $data) {
+                    $joinaryy[$data->userid] =  $data->teamid;
+                };
+            } 
+
+            $notjoinaryy = [];
+            $notjoinaryy2 = [];
+
+            foreach ($resultnotjoin_sql as $row) {
+
+                $result2_sql = $wpdb->get_results("SELECT " . $matchtable . ".* ," . $roundtable . ".rname as roundname , " . $teamtable . ".teamname as team1name , t.teamname as team2name FROM " . $matchtable . " 
+                           LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 
+                           LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2 
+                           LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round
+                           LEFT JOIN " . $jointeamtable . " on " . $jointeamtable . ".matchid = " . $matchtable . ".id
+			               where " . $matchtable . ".id NOT IN (SELECT matchid FROM " . $jointeamtable . " WHERE userid = $row->ID)");
+
+                foreach ($result2_sql as $data) {
+                    array_push($notjoinaryy[$data->id], $data->team1);
+                    array_push($notjoinaryy2[$data->id], $data->team2);
+                };
+            }
+   echo '<pre>';
+   print_r($notjoinaryy);
+   die;
+           
+      
         } else {
+
+
             $userid = get_current_user_id();
-        }
+            $teamId = $_POST['tid'];
+            $matchId = $_POST['id'];
+            $auto = "";
+            $roundselect = $_POST['roundselect'];
 
-        $teamId = $_POST['tid'];
-        $matchId = $_POST['id'];
-        $roundselect = $_POST['roundselect'];
+            $result['status'] = 0;
+            $leaguetable = $wpdb->prefix . "league";
+            $matchtable = $wpdb->prefix . "match";
 
-        $result['status'] = 0;
-        $leaguetable = $wpdb->prefix . "league";
-        $matchtable = $wpdb->prefix . "match";
-
-        $result_sql = $wpdb->get_row("SELECT " . $matchtable . ".*," . $leaguetable . ".sports as sportid
+            $result_sql = $wpdb->get_row("SELECT " . $matchtable . ".*," . $leaguetable . ".sports as sportid
         FROM " . $matchtable . " 
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $matchtable . ".leagueid 
         WHERE " . $matchtable . ".id = " . $matchId . " and MSTATUS = 'active'");
 
-        $sportid = $result_sql->sportid;
-        $leagueid = $result_sql->leagueid;
-        $roundid = $result_sql->round;
+            $sportid = $result_sql->sportid;
+            $leagueid = $result_sql->leagueid;
+            $roundid = $result_sql->round;
 
 
-        if ($roundselect == 'jokeround') {
+            if ($roundselect == 'jokeround') {
 
-            $jointeamtable = $wpdb->prefix . "jointeam";
-            $delete_teamsql = $wpdb->query("DELETE  FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".leagueid = $leagueid and " . $jointeamtable . ".roundselect = 'jokeround' 
+                $jointeamtable = $wpdb->prefix . "jointeam";
+                $delete_teamsql = $wpdb->query("DELETE  FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".leagueid = $leagueid and " . $jointeamtable . ".roundselect = 'jokeround' 
             and " . $jointeamtable . ".userid = $userid ");
-            $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".leagueid = $leagueid and " . $jointeamtable . ".roundid = $roundid  and " . $jointeamtable . ".userid = $userid ");
-        } else {
+                $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".leagueid = $leagueid and " . $jointeamtable . ".roundid = $roundid  and " . $jointeamtable . ".userid = $userid ");
+            } else {
 
-            $jointeamtable = $wpdb->prefix . "jointeam";
-            $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".roundid = $roundid and " . $jointeamtable . ".userid = $userid ");
-        }
-        $updateId = $result_teamsql->id;
-        $data['status'] = 0;
-        $data['msg'] = "Error Data Not insert";
+                $jointeamtable = $wpdb->prefix . "jointeam";
+                $result_teamsql = $wpdb->get_row("SELECT " . $jointeamtable . ".id FROM " . $jointeamtable . " WHERE " . $jointeamtable . ".roundid = $roundid and " . $jointeamtable . ".userid = $userid ");
+            }
+            $updateId = $result_teamsql->id;
+            $data['status'] = 0;
+            $data['msg'] = "Error Data Not insert";
 
 
-        if ($updateId == '') {
-            $wpdb->insert($jointeamtable, array(
-                'userid'             => $userid,
-                'sportid'            => $sportid,
-                'leagueid'           => $leagueid,
-                'roundid'            => $roundid,
-                'matchid'            => $matchId,
-                'teamid'             => $teamId,
-                'roundselect'        => $roundselect,
-
-            ));
-
-            $data['status'] = 1;
-            $data['msg'] = "You SELECTED Team Successfully2";
-        } else {
-            $wpdb->update(
-                $jointeamtable,
-                array(
+            if ($updateId == '') {
+                $wpdb->insert($jointeamtable, array(
                     'userid'             => $userid,
                     'sportid'            => $sportid,
                     'leagueid'           => $leagueid,
@@ -355,13 +396,33 @@ class match_list_Controller
                     'matchid'            => $matchId,
                     'teamid'             => $teamId,
                     'roundselect'        => $roundselect,
+                    'auto'               => $auto,
 
-                ),
-                array('id'  => $updateId)
-            );
+                ));
 
-            $data['status'] = 1;
-            $data['msg'] = "You SELECTED Team Successfully2";
+                $data['status'] = 1;
+                $data['msg'] = "You SELECTED Team Successfully2";
+            } else {
+                $wpdb->update(
+                    $jointeamtable,
+                    array(
+                        'userid'             => $userid,
+                        'sportid'            => $sportid,
+                        'leagueid'           => $leagueid,
+                        'roundid'            => $roundid,
+                        'matchid'            => $matchId,
+                        'teamid'             => $teamId,
+                        'roundselect'        => $roundselect,
+                        'auto'               => $auto,
+
+
+                    ),
+                    array('id'  => $updateId)
+                );
+
+                $data['status'] = 1;
+                $data['msg'] = "You SELECTED Team Successfully2";
+            }
         }
 
         echo json_encode($data);
@@ -634,7 +695,6 @@ class match_list_Controller
             $headers =  array('Content-Type: text/html; charset=UTF-8', 'From: KICKOFF Sports <nikultaka@palladiumhub.com>', 'Reply-To: ');
 
             $mailData =  wp_mail($match->useremail, $subject, $message, $headers);
-
             //  end of send mail     
         }
 
@@ -644,6 +704,17 @@ class match_list_Controller
         exit();
     }
 }
+
+
+add_action('members_score_cron', 'send_mail_users_score');
+
+// put this line inside a function, 
+// presumably in response to something the user does
+// otherwise it will schedule a new event on every page visit
+// wp_schedule_single_event(time() + 86400, 'members_score_cron');
+
+
+
 
 $match_list_Controller = new match_list_Controller();
 

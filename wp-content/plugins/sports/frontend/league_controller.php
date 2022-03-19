@@ -1,4 +1,5 @@
 <?php
+
 class league_list_Controller
 {
 
@@ -54,6 +55,4 @@ $league_list_Controller = new league_list_Controller();
 
 add_action('wp_ajax_nopriv_league_list_Controller::get_league_list', array($league_list_Controller, 'get_league_list'));
 add_action('wp_ajax_league_list_Controller::get_league_list', array($league_list_Controller, 'get_league_list'));
-
-
 add_shortcode('league_list_short_code', array($league_list_Controller, 'league_list_short_code'));

@@ -478,6 +478,7 @@ class live_match_list_Controller
          HAVING winteams = selectteams) as data
          group by roundid,userid");
 
+
         $ary = [];
         $ary2 = [];
         foreach ($teamselect_sql as $user) {
@@ -488,20 +489,34 @@ class live_match_list_Controller
         $calculation_sql .= " group by " . $jointeamtable . ".id    ";
         $result = $wpdb->get_results($calculation_sql, OBJECT);
         $scoreByUserId = [];
-        foreach ($result as $row) {
-            if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
-                if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
-                    $temp['yourscore'] = $row->userscore;
-                    $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
-                }else{
-                    $temp['yourscore'] = $row->userscore;
-                    $scoreByUserId[$row->userid] += $row->userscore *0;
+
+
+
+        if(!empty($result)) {
+            foreach ($result as $row) {
+                if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
+                    if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
+                        $temp['yourscore'] = $row->userscore;
+                        if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
+                            $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];    
+                        }
+                    }else{
+                        $temp['yourscore'] = $row->userscore;
+                        if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
+                            $scoreByUserId[$row->userid] += $row->userscore *0;    
+                        }
+                    }
+                } else {
+                    $temp['yourscore'] = $row->userscore;    
+                    if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
+                        $scoreByUserId[$row->userid] += $row->userscore;    
+                    }
                 }
-            } else {
-                $temp['yourscore'] = $row->userscore;
-                $scoreByUserId[$row->userid] += $row->userscore;
-            }
+            }    
         }
+        
+
+
 
         $result_sql .= " group by userid";
         $mainresult = $wpdb->get_results($result_sql);

@@ -378,3 +378,83 @@ Stack trace:
 #4 {main}
   thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/livematch_controller.php on line 201
 
+2022-03-21T11:33:16+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:193
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(193): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 193
+
+2022-03-21T11:33:29+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:193
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(193): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 193
+
+2022-03-21T11:35:23+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:199
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(199): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 199
+
+2022-03-21T11:36:29+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:202
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(202): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 202
+
+2022-03-21T11:36:57+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(205): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+
+2022-03-21T11:37:35+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:207
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(207): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 207
+
+2022-03-21T11:38:30+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:207
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(207): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 207
+
+2022-03-21T11:40:08+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:208
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(208): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 208
+

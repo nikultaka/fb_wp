@@ -160,16 +160,23 @@ class leader_board_Controller
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
                 if ($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != '') {
                     $temp['yourscore'] = $row->userscore;
-                    $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
+                    if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
+                        $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];    
+                    }
                 } else {
                     $temp['yourscore'] = $row->userscore;
-                    $scoreByUserId[$row->userid] += $row->userscore * 0;
+                    if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
+                        $scoreByUserId[$row->userid] += $row->userscore * 0;
+                    }
                 }
             } else {
                 $temp['yourscore'] = $row->userscore;
-                $scoreByUserId[$row->userid] += $row->userscore;
+                if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
+                    $scoreByUserId[$row->userid] += $row->userscore;
+                }
             }
         }
+
 
         $result_sql .= " group by userid";
         $mainresult = $wpdb->get_results($result_sql);
@@ -186,11 +193,23 @@ class leader_board_Controller
             $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
         }
 
+
+
         $mainresult = $wpdb->get_results($result_sql);
-        foreach ($mainresult as  $leaderboardpoints) {
-            $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
+        if(!empty($mainresult)) {
+            foreach ($mainresult as  $leaderboardpoints) {
+                if(!empty($scoreByUserId) && isset($scoreByUserId[$leaderboardpoints->userid])) {
+                    $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];    
+                }
+            }    
         }
-        array_multisort($scoreByUserId, SORT_DESC, $mainresult);
+
+        if(!empty($scoreByUserId)) {
+            array_multisort($scoreByUserId, SORT_DESC, $mainresult);    
+        }
+        //array_multisort( array_column($scoreByUserId,'finalPoint' ),SORT_DESC,$mainresult );
+        //echo json_encode(array('status'=>1));
+        //die;
 
         foreach ($mainresult as $row) {
     

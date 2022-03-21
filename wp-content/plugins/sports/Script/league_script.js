@@ -917,7 +917,7 @@ end of  Score Predict
 start of Join Team
  **************************/
 
-function join_team(tid, id, leagueid, roundid, userid) {
+function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
   var roundSelectDataArray = JSON.parse(
     localStorage.getItem("roundSelectData")
   );
@@ -1038,6 +1038,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
                 data: {
                   tid: tid,
                   id: id,
+                  teamnameid: teamnameid,
                   roundselect: "scorePredictorround",
                   action: "match_list_Controller::add_team_join",
                 },
@@ -1115,6 +1116,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
                 data: {
                   tid: tid,
                   id: id,
+                  teamnameid: teamnameid,
                   roundselect: round.value,
                   action: "match_list_Controller::add_team_join",
                 },
@@ -1147,6 +1149,7 @@ function join_team(tid, id, leagueid, roundid, userid) {
               data: {
                 tid: tid,
                 id: id,
+                teamnameid: teamnameid,
                 roundselect: "nothanks",
                 action: "match_list_Controller::add_team_join",
               },

@@ -217,7 +217,7 @@ class match_list_Controller
                                           <div class="col-md-6">
                                           <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1name . '</b></h3></span>';
                 if (is_user_logged_in()) {
-                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t1id . '_' . $match->id . ' teamname_' . $teamname1 . '"  data-teamname1="' . $match->team1 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="join_team(' . $match->t1id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $userid . ')">';
+                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t1id . '_' . $match->id . ' teamname_' . $teamname1 . '"  data-teamname1="' . $match->team1 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="join_team(' . $match->t1id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $userid . ',' . $teamname1 . ')">';
 
                     if (in_array($teamname1, $allteam)) {
                         $match_string .= 'PREVIOUSLY SELECTED';
@@ -239,7 +239,7 @@ class match_list_Controller
                                   <div class="col-md-6">
                                   <span><span class="text2">Team 2</span><h3 class="title"><b>' . $match->team2name . '</b></h3></span>';
                 if (is_user_logged_in()) {
-                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t2id . '_' . $match->id . ' teamname_' . $teamname2 . '" data-teamname2="' . $match->team2 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="join_team(' . $match->t2id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $userid . ')">';
+                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t2id . '_' . $match->id . ' teamname_' . $teamname2 . '" data-teamname2="' . $match->team2 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="join_team(' . $match->t2id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $userid . ',' . $teamname2 . ')">';
                     if (in_array($teamname2, $allteam)) {
                         $match_string .= 'PREVIOUSLY SELECTED';
                     } else {
@@ -290,67 +290,9 @@ class match_list_Controller
     function add_team_join()
     {
         global $wpdb;
-
-        if ($_POST['auto'] == "1") {
-
-
-            $rid = $_POST['rid'];
-            $sportstable = $wpdb->prefix . "sports";
-            $leaguetable = $wpdb->prefix . "league";
-            $roundtable = $wpdb->prefix . "round";
-            $matchtable = $wpdb->prefix . "match";
-            $teamtable = $wpdb->prefix . "team";
-            $usertable = $wpdb->prefix . "users";
-            $matchscoretable = $wpdb->prefix . "score";
-            $jointeamtable = $wpdb->prefix . "jointeam";
-            $selectteam = $wpdb->prefix . "selectteam";
-            $additionalpointstable = $wpdb->prefix . "additionalpoints";
-            $scorepredictortable = $wpdb->prefix . "scorepredictor";
-
-
-            $resultnotjoin_sql = $wpdb->get_results("SELECT ID FROM " . $usertable . " where ID NOT IN (SELECT userid  FROM " . $jointeamtable . " where roundid = $rid)");
-            $resultjoin_sql = $wpdb->get_results("SELECT ID FROM " . $usertable . " where ID IN (SELECT userid  FROM " . $jointeamtable . " where roundid = $rid)");
-
-            $joinaryy = [];
-            foreach ($resultjoin_sql as $row) {
-
-                $result3_sql = $wpdb->get_results("SELECT userid, CASE
-                WHEN " . $jointeamtable . ".teamid = 0 THEN  " . $matchtable . ".team2
-                WHEN " . $jointeamtable . ".teamid = 1 THEN  " . $matchtable . ".team1
-                ELSE ''
-                END AS teamid FROM " . $jointeamtable . " 
-                LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid  WHERE userid = $row->ID");               
-
-                foreach ($result3_sql as $data) {
-                    $joinaryy[$data->userid] =  $data->teamid;
-                };
-            } 
-
-            $notjoinaryy = [];
-            $notjoinaryy2 = [];
-
-            foreach ($resultnotjoin_sql as $row) {
-
-                $result2_sql = $wpdb->get_results("SELECT " . $matchtable . ".* ," . $roundtable . ".rname as roundname , " . $teamtable . ".teamname as team1name , t.teamname as team2name FROM " . $matchtable . " 
-                           LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 
-                           LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2 
-                           LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round
-                           LEFT JOIN " . $jointeamtable . " on " . $jointeamtable . ".matchid = " . $matchtable . ".id
-			               where " . $matchtable . ".id NOT IN (SELECT matchid FROM " . $jointeamtable . " WHERE userid = $row->ID)");
-
-                foreach ($result2_sql as $data) {
-                    array_push($notjoinaryy[$data->id], $data->team1);
-                    array_push($notjoinaryy2[$data->id], $data->team2);
-                };
-            }
-   echo '<pre>';
-   print_r($notjoinaryy);
-   die;
-           
-      
-        } else {
-
-
+echo '<pre>';
+print_r($_POST);
+die;
             $userid = get_current_user_id();
             $teamId = $_POST['tid'];
             $matchId = $_POST['id'];
@@ -423,7 +365,7 @@ class match_list_Controller
                 $data['status'] = 1;
                 $data['msg'] = "You SELECTED Team Successfully2";
             }
-        }
+        
 
         echo json_encode($data);
         exit;

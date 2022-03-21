@@ -460,36 +460,98 @@ class league_controller
             $data['msg'] = "Round updated successfully";
         }
 
-        $matchtable = $wpdb->prefix . "match";
-        $usertable = $wpdb->prefix . "users";
-        $teamtable = $wpdb->prefix . "team";
-        $roundtable = $wpdb->prefix . "round";
-        $jointeamtable = $wpdb->prefix . "jointeam";
-        $userid = get_current_user_id();
+        if($updateId !='') {
+            $matchtable = $wpdb->prefix . "match";
+            $usertable = $wpdb->prefix . "users";
+            $teamtable = $wpdb->prefix . "team";
+            $roundtable = $wpdb->prefix . "round";
+            $leaguetable = $wpdb->prefix . "league";
+            $jointeamtable = $wpdb->prefix . "jointeam";
+            $userid = get_current_user_id();
 
-        $sql = "select wu.ID from wp_users as wu"; 
-        $userData = $wpdb->get_results($sql);
-        $usersID = array();
-        foreach($userData as $key => $value) {
-            $usersID[] = $value->ID;
-        }
-        $sql = "select * from wp_jointeam where leagueid = ".$hdnleagueid." and roundid = ".$updateId;
-        $currentRo>get_results($sql);
-        $currentRoundUserID = array();
-        foreach ($currentRoundData as $key => $value) {
-            $currentRoundUserID[] = $value->userid;
-        }
-        $notExistUsers = array_diff($usersID,$currentRoundUserID);
-        if(!empty($notExistUsers)) {
-            foreach($notExistUsers as $key => $value) {
-                $sql = "select * from wp_jointeam where leagueid = ".$hdnleagueid." and userid=".$userid;
-                $oldUserData = $wpdb->get_results($sql);
-                if(!empty($oldUserData)) {
-                    
-                }
+            $sql = "select * from ".$matchtable." where round =".$updateId; 
+            $roundTeam = $wpdb->get_results($sql);
+            $roundTeamID = array();
+            $leagueID = '';
+            if(!empty($roundTeam)) {
+                $leagueID = $roundTeam[0]->leagueid;
+                foreach($roundTeam as $key => $value) {
+                    if(!in_array($value->team1,$roundTeamID)) {
+                        $roundTeamID[] = $value->team1;    
+                    }
+                    if(!in_array($value->team2,$roundTeamID)) {
+                        $roundTeamID[] = $value->team2;  
+                    }
+                }    
+            }
+
+            $sql = "select * from ".$leaguetable." where id =".$leagueID; 
+            $leagueData = $wpdb->get_results($sql);
+            $sportID = '';
+            if(!empty($leagueData)) {
+                $sportID = $leagueData[0]->sports;
+            }
+
+            $teamID = array();
+            if(!empty($roundTeamID)) {
+                $roundTeamIDString = implode(",",$roundTeamID);
+                $sql = "select * from ".$teamtable." where id in (".$roundTeamIDString.") order by teamname asc"; 
+                $teamData = $wpdb->get_results($sql);
+                if(!empty($teamData)) {
+                    foreach($teamData as $key => $value) {
+                        $teamID[] = $value->id;
+                    }    
+                }    
+            }
+
+            $sql = "select wu.ID from wp_users as wu"; 
+            $userData = $wpdb->get_results($sql);
+            $usersID = array();
+            foreach($userData as $key => $value) {
+                $usersID[] = $value->ID;
+            }
+            $sql = "select * from wp_jointeam where leagueid = ".$hdnleagueid." and roundid = ".$updateId;
+            $currentRoundData = $wpdb->get_results($sql);
+            $currentRoundUserID = array();
+            foreach ($currentRoundData as $key => $value) {
+                $currentRoundUserID[] = $value->userid;
+            }
+            $notExistUsers = array_diff($usersID,$currentRoundUserID);
+            //echo '<pre>'; print_r($notExistUsers); exit;
+            if(!empty($notExistUsers)) {
+                foreach($notExistUsers as $key => $value) {
+                    $sql = "select * from wp_jointeam where leagueid = ".$hdnleagueid." and userid=".$value;
+                    $oldUserData = $wpdb->get_results($sql);
+                    if(!empty($oldUserData)) {
+                        $existedTeam = array();
+                        foreach($oldUserData as $oldMatchkey => $oldMatchValue) {
+                            $existedTeam[] = $oldMatchValue->teamnameid;
+                        }
+                        $teamDiff = array_diff($teamID,$existedTeam);        
+                    } else {
+                        $teamDiff = $teamID;    
+                    }      
+                    $teamDiff = array_values($teamDiff); 
+                    if(!empty($teamDiff)) {
+                        $teamAutoSelectedID = $teamDiff[0];
+                        $sql = "select * from ".$matchtable." where team1 = ".$teamAutoSelectedID." or team2 = ".$teamAutoSelectedID." and round = ".$updateId." ";
+                        $matchAutoData = $wpdb->get_results($sql);
+                        $autoMatchID = '';
+                        $autoTeamID = '';
+                        //echo '<pre>'; print_r($matchAutoData);
+                        if(!empty($matchAutoData)) {
+                            $autoMatchID = $matchAutoData[0]->id;
+                            if($matchAutoData[0]->team1 == $teamAutoSelectedID) {
+                                $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>1,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
+                            } else { //($matchAutoData[0]->team2 == $teamAutoSelectedID) 
+                                $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>0,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
+                            }
+                            $wpdb->insert($jointeamtable,$joinMatchAuto);   
+                        }
+                    }
+                }    
             }    
         }
-
         $data = array('status'=>1);        
         echo json_encode($data);
         exit;

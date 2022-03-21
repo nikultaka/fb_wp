@@ -160,20 +160,16 @@ class leader_board_Controller
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
                 if ($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != '') {
                     $temp['yourscore'] = $row->userscore;
-                    if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
-                        $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];    
+                   if (isset($ary[$row->userid][$row->roundid])) {
+                        $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
                     }
                 } else {
                     $temp['yourscore'] = $row->userscore;
-                    if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
                         $scoreByUserId[$row->userid] += $row->userscore * 0;
-                    }
                 }
             } else {
                 $temp['yourscore'] = $row->userscore;
-                if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
-                    $scoreByUserId[$row->userid] += $row->userscore;
-                }
+                $scoreByUserId[$row->userid] += $row->userscore;
             }
         }
 
@@ -196,31 +192,36 @@ class leader_board_Controller
 
 
         $mainresult = $wpdb->get_results($result_sql);
-        if(!empty($mainresult)) {
+        if (!empty($mainresult)) {
             foreach ($mainresult as  $leaderboardpoints) {
-                if(!empty($scoreByUserId) && isset($scoreByUserId[$leaderboardpoints->userid])) {
-                    $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];    
+                if (!empty($scoreByUserId) && isset($scoreByUserId[$leaderboardpoints->userid])) {
+                    $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
                 }
-            }    
+            }
         }
 
-        if(!empty($scoreByUserId)) {
-            array_multisort($scoreByUserId, SORT_DESC, $mainresult);    
+        if (!empty($scoreByUserId)) {
+            array_multisort($scoreByUserId, SORT_DESC, $mainresult);
         }
         //array_multisort( array_column($scoreByUserId,'finalPoint' ),SORT_DESC,$mainresult );
         //echo json_encode(array('status'=>1));
         //die;
 
         foreach ($mainresult as $row) {
-    
+
             $statikmg = "Points Will Display After Round Complete";
             $temp['no'] = "";
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
 
             if ($row->auto == 1) {
+                if ($row->userscore == '') {
+                    $temp['userspoints'] = 0;
+                } else {
                     $temp['userspoints'] = $row->userscore;
+                }
             } else {
+              
                 if ($row->finalPoint != '') {
                     $temp['userspoints'] = $row->finalPoint;
                 } else if ($row->finalPoint === 0) {
@@ -233,8 +234,7 @@ class leader_board_Controller
             $temp['action'] = $action;
             $data[] = $temp;
             $id = "";
-        }
-       
+        } 
         $json_data = array(
             "draw" => intval($requestData['draw']),
             "recordsTotal" => intval($totalData),
@@ -430,14 +430,23 @@ class leader_board_Controller
 
         foreach ($list_data as $row) {
             $temp['teamname'] = $row->teamname;
-            if ($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid) {
-                $temp['teamscore'] = $row->userscore  * $ary[$row->roundid];
+            if ($row->auto) {
+                if ($row->userscore == '') {
+                    $temp['teamscore'] = 0;
+                } else {
+                    $temp['teamscore'] = $row->userscore;
+                }
             } else {
-                $temp['teamscore'] = $row->userscore;
+                if ($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid) {
+                    $temp['teamscore'] = $row->userscore  * $ary[$row->roundid];
+                } else {
+                    $temp['teamscore'] = $row->userscore;
+                }
             }
             $data[] = $temp;
             $id = "";
         }
+      
 
         $json_data = array(
             "draw" => intval($requestData['draw']),

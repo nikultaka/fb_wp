@@ -1110,16 +1110,19 @@ class league_controller
         foreach ($mainresult as  $leaderboardpoints) {
             $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
         }
-        array_multisort($scoreByUserId, SORT_DESC, $mainresult);
+        // array_multisort($scoreByUserId, SORT_DESC, $mainresult);
+        array_multisort( array_column( $mainresult, 'finalPoint' ), SORT_DESC, $mainresult );
+
 
         foreach ($mainresult as $row) {
+       
             $temp['no'] = "";
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
             $temp['score'] =  $row->finalPoint;
             $data[] = $temp;
             $id = "";
-        }
+        }    
         
         $json_data = array(
             "draw" => intval($requestData['draw']),

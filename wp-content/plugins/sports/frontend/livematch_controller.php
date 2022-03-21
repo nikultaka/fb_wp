@@ -307,7 +307,7 @@ class live_match_list_Controller
         global $wpdb;
         $leaguetable = $wpdb->prefix . "league";
 
-        $result_sql = $wpdb->get_results("SELECT * FROM " . $leaguetable . " WHERE STATUS = 'active' ORDER BY id DESC LIMIT 5");
+        $result_sql = $wpdb->get_results("SELECT * FROM " . $leaguetable . " WHERE STATUS = 'active' ORDER BY id DESC LIMIT 3");
 
         $live_leaderboard_string  = '';
 
@@ -458,8 +458,7 @@ class live_match_list_Controller
         LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid 
         LEFT JOIN " . $roundtable . " ON " . $roundtable . ".id = " . $jointeamtable . ".roundid
         WHERE
-            " . $jointeamtable . ".leagueid = $leagueId   
-         ";
+            " . $jointeamtable . ".leagueid = $leagueId";
 
         $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,userid,roundid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid," . $selectteam . ".roundid,
          CASE
@@ -497,20 +496,16 @@ class live_match_list_Controller
                 if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
                     if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
                         $temp['yourscore'] = $row->userscore;
-                        if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
+                        if(isset($ary[$row->userid][$row->roundid])) {
                             $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];    
                         }
                     }else{
                         $temp['yourscore'] = $row->userscore;
-                        if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
                             $scoreByUserId[$row->userid] += $row->userscore *0;    
-                        }
                     }
                 } else {
                     $temp['yourscore'] = $row->userscore;    
-                    if(!empty($scoreByUserId) && isset($scoreByUserId[$row->userid])) {
                         $scoreByUserId[$row->userid] += $row->userscore;    
-                    }
                 }
             }    
         }
@@ -530,8 +525,10 @@ class live_match_list_Controller
             }
       
             array_multisort( array_column( $mainresult, 'finalPoint' ), SORT_DESC, $mainresult );
+            array_splice($mainresult,3);
+
             foreach ($mainresult as  $leaderboardpoints) {
-                
+               
                 $live_leaderboard_points_string .= '
         <div class="col-md-4">                
         <div class="containerFFG">
@@ -539,9 +536,13 @@ class live_match_list_Controller
                 <div class="txtFFG">
                 <div class="tFFG"><h5>Sportname : ' . $leaderboardpoints->sportname . '</h5></div>
                 <div class="PFFG"><div class="tFFG"><h5>Leaguename : ' . $leaderboardpoints->leaguename . '</h5></div></div>
-                <div class="PFFG"><div class="tFFG"><h5>Username : ' . $leaderboardpoints->username . '</h5></div></div>
-                <div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $leaderboardpoints->finalPoint . '</h5></div></div>
-                </div>
+                <div class="PFFG"><div class="tFFG"><h5>Username : ' . $leaderboardpoints->username . '</h5></div></div>';
+                if ($leaderboardpoints->auto == 1) {
+                    $live_leaderboard_points_string .= '<div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $leaderboardpoints->userscore . '</h5></div></div>';
+                }else{
+                    $live_leaderboard_points_string .= '<div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $leaderboardpoints->finalPoint . '</h5></div></div>';
+                }
+                $live_leaderboard_points_string .= '</div>
             </div>
             </div>
         </div>';

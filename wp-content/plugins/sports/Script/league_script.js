@@ -1195,33 +1195,6 @@ function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
 
 /*************************** 
 end of Join Team
-start of auto join team
- **************************/
-
-function auto_join_team(rid) {
-  $auto = "1";
-
-  $.ajax({
-    type: "POST",
-    url: ajaxurl,
-    datatype: "json",
-    data: {
-      auto: "1",
-      rid: rid,
-      action: "match_list_Controller::add_team_join",
-    },
-    success: function (responce) {
-      var data = JSON.parse(responce);
-      if (data.status == 1) {
-      }
-    },
-  });
-  return false;
-
-}
-
-/*************************** 
-end of auto join team
 start of My Score
  **************************/
 

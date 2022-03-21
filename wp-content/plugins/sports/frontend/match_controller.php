@@ -287,12 +287,11 @@ class match_list_Controller
         exit();
     }
 
+    
     function add_team_join()
     {
         global $wpdb;
-echo '<pre>';
-print_r($_POST);
-die;
+
             $userid = get_current_user_id();
             $teamId = $_POST['tid'];
             $matchId = $_POST['id'];

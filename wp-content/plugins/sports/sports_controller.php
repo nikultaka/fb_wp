@@ -533,21 +533,27 @@ class league_controller
                     }      
                     $teamDiff = array_values($teamDiff); 
                     if(!empty($teamDiff)) {
+
                         $teamAutoSelectedID = $teamDiff[0];
                         $sql = "select * from ".$matchtable." where team1 = ".$teamAutoSelectedID." or team2 = ".$teamAutoSelectedID." and round = ".$updateId." ";
                         $matchAutoData = $wpdb->get_results($sql);
+                        echo '<pre>';
+                        print_r($matchAutoData);
+                        
                         $autoMatchID = '';
                         $autoTeamID = '';
                         //echo '<pre>'; print_r($matchAutoData);
                         if(!empty($matchAutoData)) {
                             $autoMatchID = $matchAutoData[0]->id;
+                           
+                            
                             if($matchAutoData[0]->team1 == $teamAutoSelectedID) {
                                 $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>1,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
                             } else { //($matchAutoData[0]->team2 == $teamAutoSelectedID) 
                                 $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>0,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
                             }
                             $wpdb->insert($jointeamtable,$joinMatchAuto);   
-                        }
+                        }die;
                     }
                 }    
             }    

@@ -130,6 +130,8 @@ class my_score_Controller
             $ary[$round->roundid] = $round->multipliercount;
             $ary2[$round->userid][$round->roundid] = $round->roundid; 
         }
+
+        echo $result_sql; die;
  
         $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
         $toalScore = 0;

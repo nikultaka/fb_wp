@@ -1082,7 +1082,7 @@ function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
             } else {
               var inputOptions = new Promise((resolve) => {
                 resolve({
-                  jokerYESound:
+                  jokeround:
                     '<h5><strong  style="color:#2e2d2d">YES</strong></h5>',
                   scorePredictorround:
                     '<h5><strong style="color:#2e2d2d">NO</strong></h5>',

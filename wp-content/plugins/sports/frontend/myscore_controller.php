@@ -43,6 +43,15 @@ class my_score_Controller
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $teamtable . ".teamname
         ELSE ''
         END AS teamname ,
+        CASE 
+        WHEN " . $jointeamtable . ".auto = 1 THEN   
+                CASE 
+                    WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * 0) 
+                    WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier) 
+                    WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * 0) 
+                    WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier)
+                END  
+        ELSE 
         CASE WHEN  " . $jointeamtable . ".roundselect = 'nothanks' THEN
             CASE WHEN " . $roundtable . ".scoremultiplier = 0 THEN 
                 CASE 
@@ -92,7 +101,8 @@ class my_score_Controller
         END
         END
         END
-        END AS userscore
+        END
+		END AS userscore
         FROM " . $jointeamtable . " 
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $jointeamtable . ".sportid 
         LEFT JOIN " . $leaguetable . " on " . $leaguetable . ".id = " . $jointeamtable . ".leagueid 
@@ -105,9 +115,6 @@ class my_score_Controller
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
         WHERE " . $jointeamtable . ".userid = " . $userid . "";
 
-// echo '<pre>';
-// print_r($result_sql);
-// die;
         $teamselect_sql = "select count(*) as multipliercount,roundid,roundid,userid from (SELECT distinct " . $matchscoretable . ".*," . $selectteam . ".roundid as roundid," . $selectteam . ".userid as userid,
         CASE
         WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)

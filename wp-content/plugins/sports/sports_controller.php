@@ -536,10 +536,8 @@ class league_controller
 
                         $teamAutoSelectedID = $teamDiff[0];
                         $sql = "select * from ".$matchtable." where (team1 = '".$teamAutoSelectedID."' or team2 = '".$teamAutoSelectedID."') and round = '".$updateId."' ";
-                        //echo $sql; die;
+                        // echo $sql; die;
                         $matchAutoData = $wpdb->get_results($sql);
-                        echo '<pre>';
-                        print_r($matchAutoData);
                         
                         $autoMatchID = '';
                         $autoTeamID = '';         
@@ -554,7 +552,7 @@ class league_controller
                                 $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>0,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
                             }
                             $wpdb->insert($jointeamtable,$joinMatchAuto);   
-                        }die;
+                        }
                     }
                 }    
             }    
@@ -975,6 +973,15 @@ class league_controller
         CASE WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchscoretable . ".team2score 
         WHEN " . $jointeamtable . ".teamid = 1 THEN " . $matchscoretable . ".team1score ELSE ''
         END AS teamscore,
+        CASE 
+        WHEN " . $jointeamtable . ".auto = 1 THEN   
+                CASE 
+                    WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * 0) 
+                    WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team2score * " . $roundtable . ".scoremultiplier) 
+                    WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * 0) 
+                    WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'subtracted' THEN -(" . $matchscoretable . ".team1score * " . $roundtable . ".scoremultiplier)
+                END  
+        ELSE 
         CASE WHEN  " . $jointeamtable . ".roundselect = 'nothanks' THEN
             CASE WHEN " . $roundtable . ".scoremultiplier = 0 THEN 
                 CASE 
@@ -1021,6 +1028,7 @@ class league_controller
         CASE 
             WHEN " . $jointeamtable . ".teamid = 0 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team2score * " . $additionalpointstable . ".jokerscoremultiplier)  
             WHEN " . $jointeamtable . ".teamid = 1 AND " . $roundtable . ".scoretype = 'added' THEN +(" . $matchscoretable . ".team1score * " . $additionalpointstable . ".jokerscoremultiplier) 
+        END
         END
         END
         END
@@ -1112,7 +1120,7 @@ class league_controller
             $data[] = $temp;
             $id = "";
         }
-
+        
         $json_data = array(
             "draw" => intval($requestData['draw']),
             "recordsTotal" => intval($totalData),

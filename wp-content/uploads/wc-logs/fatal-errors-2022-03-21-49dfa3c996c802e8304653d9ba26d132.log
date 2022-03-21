@@ -35,3 +35,12 @@ Stack trace:
 #4 {main}
   thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/livematch_controller.php on line 201
 
+2022-03-21T09:15:51+00:00 CRITICAL Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, stdClass given in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/livematch_controller.php:201
+Stack trace:
+#0 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): live_match_list_Controller->upcoming_match_list()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#2 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#3 /var/www/html/fb_wp/wp-admin/admin-ajax.php(202): do_action()
+#4 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/livematch_controller.php on line 201
+

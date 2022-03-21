@@ -296,6 +296,7 @@ die;
             $userid = get_current_user_id();
             $teamId = $_POST['tid'];
             $matchId = $_POST['id'];
+            $teamnameid = $_POST['teamnameid'];
             $auto = "";
             $roundselect = $_POST['roundselect'];
 
@@ -338,6 +339,7 @@ die;
                     'matchid'            => $matchId,
                     'teamid'             => $teamId,
                     'roundselect'        => $roundselect,
+                    'teamnameid'         => $teamnameid,
                     'auto'               => $auto,
 
                 ));
@@ -355,6 +357,7 @@ die;
                         'matchid'            => $matchId,
                         'teamid'             => $teamId,
                         'roundselect'        => $roundselect,
+                        'teamnameid'         => $teamnameid,
                         'auto'               => $auto,
 
 

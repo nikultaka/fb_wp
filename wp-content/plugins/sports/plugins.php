@@ -108,6 +108,7 @@
         `roundid` int(11) NOT NULL,
         `matchid` int(11) NOT NULL,
         `teamid` int(11) NOT NULL,
+        `teamnameid` int(11) NOT NULL,
         `auto` int(1),
         `roundselect` VARCHAR(50) NOT NULL,         
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,

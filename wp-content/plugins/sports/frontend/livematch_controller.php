@@ -513,8 +513,8 @@ class live_match_list_Controller
             foreach ($mainresult as  $leaderboardpoints) {
                 $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
             }
-            array_multisort($scoreByUserId, SORT_DESC, $mainresult);
-
+      
+            array_multisort( array_column( $mainresult, 'finalPoint' ), SORT_DESC, $mainresult );
             foreach ($mainresult as  $leaderboardpoints) {
                 
                 $live_leaderboard_points_string .= '

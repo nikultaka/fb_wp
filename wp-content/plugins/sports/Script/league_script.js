@@ -177,6 +177,8 @@ $("#save_Btnround").click(function () {
               showConfirmButton: false,
               timer: 1500,
             });
+
+            send_mail_users_score($("#hrid").val());
             $("#rname").val("");
             $("#scoremultiplier").val("");
             $("#hrid").val("");
@@ -200,13 +202,14 @@ $("#save_Btnround").click(function () {
     },
   });
 
-  if ($("#iscomplete").is(":checked")) {
+  /*if ($("#iscomplete").is(":checked")) {
     if ($("#hrid").val() != "") {
       $roundid = $("#hrid").val();
       auto_join_team($roundid);
       send_mail_users_score($roundid);
     }
-  }
+  }*/
+
 });
 
 function loadroundtable() {

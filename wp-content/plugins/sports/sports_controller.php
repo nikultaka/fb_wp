@@ -467,31 +467,30 @@ class league_controller
         $jointeamtable = $wpdb->prefix . "jointeam";
         $userid = get_current_user_id();
 
+        $sql = "select wu.ID from wp_users as wu"; 
+        $userData = $wpdb->get_results($sql);
+        $usersID = array();
+        foreach($userData as $key => $value) {
+            $usersID[] = $value->ID;
+        }
+        $sql = "select * from wp_jointeam where leagueid = ".$hdnleagueid." and roundid = ".$updateId;
+        $currentRo>get_results($sql);
+        $currentRoundUserID = array();
+        foreach ($currentRoundData as $key => $value) {
+            $currentRoundUserID[] = $value->userid;
+        }
+        $notExistUsers = array_diff($usersID,$currentRoundUserID);
+        if(!empty($notExistUsers)) {
+            foreach($notExistUsers as $key => $value) {
+                $sql = "select * from wp_jointeam where leagueid = ".$hdnleagueid." and userid=".$userid;
+                $oldUserData = $wpdb->get_results($sql);
+                if(!empty($oldUserData)) {
+                    
+                }
+            }    
+        }
 
-        $userData_sql = $wpdb->get_results("SELECT id FROM " . $usertable . " ORDER BY id ASC");
-        $matchData_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname , " . $teamtable . ".teamname as team1name , t.teamname as team2name FROM " . $matchtable. " LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2 LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable. ".round = $updateId  ORDER BY id ASC");
-        $allMatchData_sql = "SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname , " . $teamtable . ".teamname as team1name , t.teamname as team2name FROM " . $matchtable. " LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2 LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $matchtable . ".round WHERE " . $matchtable. ".leagueid = $hdnleagueid ORDER BY id ASC";
-        echo '<pre>';
-        print_r($allMatchData_sql);
-        die;
-        $joinData_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*," . $roundtable . ".scoremultiplier as scoremultiplier,
-        CASE
-        WHEN " . $jointeamtable . ".teamid = 0 THEN  t.teamname
-        WHEN " . $jointeamtable . ".teamid = 1 THEN " . $teamtable . ".teamname
-        ELSE ''
-        END AS teamname
-        FROM " . $jointeamtable . "
-        LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid
-        LEFT JOIN " . $roundtable . " on " . $roundtable . ".id = " . $jointeamtable . ".roundid 
-        LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1 
-        LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2");
-
-        $data['allMatchData'] =$allMatchData_sql;
-        $data['matchData'] =$matchData_sql;
-        $data['joinData'] =$joinData_sql;
-        $data['userData'] =$userData_sql;
-
-
+        $data = array('status'=>1);        
         echo json_encode($data);
         exit;
     }

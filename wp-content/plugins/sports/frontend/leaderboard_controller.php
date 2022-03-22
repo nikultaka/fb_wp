@@ -190,7 +190,6 @@ class leader_board_Controller
         }
 
 
-
         $mainresult = $wpdb->get_results($result_sql);
         if (!empty($mainresult)) {
             foreach ($mainresult as  $leaderboardpoints) {
@@ -376,15 +375,21 @@ class leader_board_Controller
             $ary[$round->roundid] = $round->multipliercount;
         }
 
+
         $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
         $toalScore = 0;
+        $temp = array();
         foreach ($totalScoreResult as $row) {
-            if ($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid) {
+            if ($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid && is_numeric($row->userscore)) {
                 $temp['yourscore'] = $row->userscore;
-                $toalScore += $row->userscore * $ary[$row->roundid];
+                if(isset($ary[$row->roundid])) {
+                    $toalScore += $row->userscore * $ary[$row->roundid];    
+                }
             } else {
-                $temp['yourscore'] = $row->userscore;
-                $toalScore += $row->userscore;
+                if(is_numeric($row->userscore)) {
+                    $temp['yourscore'] = $row->userscore;
+                    $toalScore+=$row->userscore;    
+                }
             }
         }
 
@@ -428,19 +433,20 @@ class leader_board_Controller
         $arr_data = array();
         $arr_data = $result;
 
+        $temp['teamscore'] = 0;
         foreach ($list_data as $row) {
             $temp['teamname'] = $row->teamname;
-            if ($row->auto) {
-                if ($row->userscore == '') {
-                    $temp['teamscore'] = 0;
-                } else {
+            if ($row->auto == '1' && is_numeric($row->userscore)) {
                     $temp['teamscore'] = $row->userscore;
-                }
             } else {
                 if ($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid) {
-                    $temp['teamscore'] = $row->userscore  * $ary[$row->roundid];
+                    if(isset($ary[$row->roundid]) && is_numeric($row->userscore)) {
+                        $temp['teamscore'] = $row->userscore  * $ary[$row->roundid];
+                    }
                 } else {
-                    $temp['teamscore'] = $row->userscore;
+                    if(is_numeric($row->userscore)) {
+                        $temp['teamscore'] = $row->userscore;    
+                    }
                 }
             }
             $data[] = $temp;
@@ -457,7 +463,7 @@ class leader_board_Controller
         );
 
         echo json_encode($json_data);
-        exit(0);
+        die;
     }
 }
 

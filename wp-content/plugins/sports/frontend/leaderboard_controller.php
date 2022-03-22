@@ -160,9 +160,9 @@ class leader_board_Controller
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
                 if ($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != '') {
                     $temp['yourscore'] = $row->userscore;
-                   if (isset($ary[$row->userid][$row->roundid])) {
+                    if(isset($ary[$row->userid][$row->roundid])) {
                         $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
-                    }
+                    } 
                 } else {
                     $temp['yourscore'] = $row->userscore;
                         $scoreByUserId[$row->userid] += $row->userscore * 0;
@@ -195,16 +195,21 @@ class leader_board_Controller
             foreach ($mainresult as  $leaderboardpoints) {
                 if (isset($scoreByUserId[$leaderboardpoints->userid])) {
                     $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
+                } else {
+                    $leaderboardpoints->finalPoint = 0;
                 }
             }
         }
 
-        if (!empty($scoreByUserId)) {
-            array_multisort($scoreByUserId, SORT_DESC, $mainresult);
-        }
-        //array_multisort( array_column($scoreByUserId,'finalPoint' ),SORT_DESC,$mainresult );
-        //echo json_encode(array('status'=>1));
-        //die;
+        $mainresult = json_decode(json_encode($mainresult),true);
+
+        usort($mainresult, function($a,$b){return $b['finalPoint']-$a['finalPoint'];});
+        // if (!empty($scoreByUserId)) {
+        //     array_multisort($scoreByUserId, SORT_DESC, $mainresult);
+        // }
+
+        //echo '<pre>'; print_r($scoreByUserId); exit;
+        $mainresult = json_decode(json_encode($mainresult), FALSE);
 
         foreach ($mainresult as $row) {
 

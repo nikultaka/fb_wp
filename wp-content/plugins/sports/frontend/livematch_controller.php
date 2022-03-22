@@ -521,7 +521,11 @@ class live_match_list_Controller
         if (count($mainresult) > 0) {
 
             foreach ($mainresult as  $leaderboardpoints) {
+            if(isset($scoreByUserId[$leaderboardpoints->userid])){
                 $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
+            } else {
+                $leaderboardpoints->finalPoint = 0;
+            }
             }
       
             array_multisort( array_column( $mainresult, 'finalPoint' ), SORT_DESC, $mainresult );
@@ -536,13 +540,9 @@ class live_match_list_Controller
                 <div class="txtFFG">
                 <div class="tFFG"><h5>Sportname : ' . $leaderboardpoints->sportname . '</h5></div>
                 <div class="PFFG"><div class="tFFG"><h5>Leaguename : ' . $leaderboardpoints->leaguename . '</h5></div></div>
-                <div class="PFFG"><div class="tFFG"><h5>Username : ' . $leaderboardpoints->username . '</h5></div></div>';
-                if ($leaderboardpoints->auto == 1) {
-                    $live_leaderboard_points_string .= '<div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $leaderboardpoints->userscore . '</h5></div></div>';
-                }else{
-                    $live_leaderboard_points_string .= '<div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $leaderboardpoints->finalPoint . '</h5></div></div>';
-                }
-                $live_leaderboard_points_string .= '</div>
+                <div class="PFFG"><div class="tFFG"><h5>Username : ' . $leaderboardpoints->username . '</h5></div></div>
+                <div class="PFFG"><div class="tFFG"><h5>Final Points : ' . $leaderboardpoints->finalPoint . '</h5></div></div>
+                </div>
             </div>
             </div>
         </div>';

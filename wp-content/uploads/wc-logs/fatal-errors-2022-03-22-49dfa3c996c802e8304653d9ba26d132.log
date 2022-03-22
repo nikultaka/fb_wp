@@ -261,3 +261,223 @@ Stack trace:
 #5 {main}
   thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 204
 
+2022-03-22T05:32:08+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:203
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(203): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 203
+
+2022-03-22T05:33:27+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(205): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+
+2022-03-22T05:36:52+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:203
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(203): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 203
+
+2022-03-22T05:41:32+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(205): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+
+2022-03-22T05:41:58+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:207
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(207): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 207
+
+2022-03-22T05:44:24+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:207
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(207): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 207
+
+2022-03-22T05:45:13+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(205): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+
+2022-03-22T05:49:04+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 [internal function]: leader_board_Controller->{closure}()
+#1 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(206): usort()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#3 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#4 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#5 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#6 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+
+2022-03-22T05:49:38+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 [internal function]: leader_board_Controller->{closure}()
+#1 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(206): usort()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#3 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#4 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#5 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#6 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+
+2022-03-22T05:49:49+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 [internal function]: leader_board_Controller->{closure}()
+#1 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(206): usort()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#3 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#4 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#5 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#6 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+
+2022-03-22T05:51:36+00:00 CRITICAL Uncaught Error: Call to undefined function aasort() in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#2 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#3 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#4 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+
+2022-03-22T05:51:46+00:00 CRITICAL Uncaught Error: Call to undefined function aasort() in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#2 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#3 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#4 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+
+2022-03-22T05:52:31+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:263
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(205): leader_board_Controller->aasort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 263
+
+2022-03-22T05:52:48+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:263
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(205): leader_board_Controller->aasort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 263
+
+2022-03-22T05:53:52+00:00 CRITICAL Uncaught Error: leader_board_Controller::aasort(): Argument #1 ($array) cannot be passed by reference in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#2 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#3 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#4 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+
+2022-03-22T05:54:27+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:263
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(205): leader_board_Controller->aasort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 263
+
+2022-03-22T05:54:37+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:263
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(205): leader_board_Controller->aasort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 263
+
+2022-03-22T05:55:12+00:00 CRITICAL Uncaught ValueError: Array sizes are inconsistent in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:207
+Stack trace:
+#0 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(207): array_multisort()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#3 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#4 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#5 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 207
+
+2022-03-22T05:56:54+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:204
+Stack trace:
+#0 [internal function]: leader_board_Controller->{closure}()
+#1 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(204): usort()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#3 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#4 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#5 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#6 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 204
+
+2022-03-22T05:57:18+00:00 CRITICAL Uncaught Error: usort(): Argument #1 ($array) cannot be passed by reference in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:204
+Stack trace:
+#0 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#2 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#3 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#4 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 204
+
+2022-03-22T05:57:34+00:00 CRITICAL Uncaught Error: usort(): Argument #1 ($array) cannot be passed by reference in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:204
+Stack trace:
+#0 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#1 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#2 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#3 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#4 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 204
+
+2022-03-22T06:03:19+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php:205
+Stack trace:
+#0 [internal function]: leader_board_Controller->{closure}()
+#1 /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php(205): usort()
+#2 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(303): leader_board_Controller->load_leader_board()
+#3 /var/www/html/fb_wp/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters()
+#4 /var/www/html/fb_wp/wp-includes/plugin.php(470): WP_Hook->do_action()
+#5 /var/www/html/fb_wp/wp-admin/admin-ajax.php(187): do_action()
+#6 {main}
+  thrown in /var/www/html/fb_wp/wp-content/plugins/sports/frontend/leaderboard_controller.php on line 205
+

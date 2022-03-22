@@ -194,7 +194,7 @@ class leader_board_Controller
         $mainresult = $wpdb->get_results($result_sql);
         if (!empty($mainresult)) {
             foreach ($mainresult as  $leaderboardpoints) {
-                if (!empty($scoreByUserId) && isset($scoreByUserId[$leaderboardpoints->userid])) {
+                if (isset($scoreByUserId[$leaderboardpoints->userid])) {
                     $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
                 }
             }

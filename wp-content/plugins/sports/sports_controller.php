@@ -460,7 +460,7 @@ class league_controller
             $data['msg'] = "Round updated successfully";
         }
 
-        if($updateId !='') {
+        if($updateId !='' && $iscomplete == 'YES') {  
             $matchtable = $wpdb->prefix . "match";
             $usertable = $wpdb->prefix . "users";
             $teamtable = $wpdb->prefix . "team";

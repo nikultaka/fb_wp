@@ -209,7 +209,7 @@
 	}
 
 	.bg-hover-grass:hover {
-		background-color: #003e00;
+		background-color: #195d10;
 		color: #fff !important;
 	}
 

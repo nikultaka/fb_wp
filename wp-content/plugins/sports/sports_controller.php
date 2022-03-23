@@ -504,13 +504,13 @@ class league_controller
                 }    
             }
 
-            $sql = "select wu.ID from wp_users as wu"; 
+            $sql = "select wu.ID from " . $usertable . " as wu"; 
             $userData = $wpdb->get_results($sql);
             $usersID = array();
             foreach($userData as $key => $value) {
                 $usersID[] = $value->ID;
             }
-            $sql = "select * from wp_jointeam where leagueid = ".$hdnleagueid." and roundid = ".$updateId;
+            $sql = "select * from " . $jointeamtable . " where leagueid = ".$hdnleagueid." and roundid = ".$updateId;
             $currentRoundData = $wpdb->get_results($sql);
             $currentRoundUserID = array();
             foreach ($currentRoundData as $key => $value) {
@@ -520,7 +520,7 @@ class league_controller
             //echo '<pre>'; print_r($notExistUsers); exit;
             if(!empty($notExistUsers)) {
                 foreach($notExistUsers as $key => $value) {
-                    $sql = "select * from wp_jointeam where leagueid = ".$hdnleagueid." and userid=".$value;
+                    $sql = "select * from " . $jointeamtable . " where leagueid = ".$hdnleagueid." and userid=".$value;
                     $oldUserData = $wpdb->get_results($sql);
                     if(!empty($oldUserData)) {
                         $existedTeam = array();

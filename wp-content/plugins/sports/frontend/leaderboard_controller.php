@@ -154,7 +154,6 @@ class leader_board_Controller
 
         $calculation_sql = $result_sql;
         $calculation_sql .= " group by " . $jointeamtable . ".id";
-
         $result = $wpdb->get_results($calculation_sql, OBJECT);
         $scoreByUserId = [];
         foreach ($result as $row) {

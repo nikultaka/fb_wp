@@ -1039,7 +1039,7 @@ class league_controller
         LEFT JOIN " . $usertable . " ON " . $usertable . ".id = " . $jointeamtable . ".userid
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
         LEFT JOIN " . $matchscoretable . " ON " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
-        LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid 
+        LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid and " . $jointeamtable . ".userid = " . $scorepredictortable . ".userid
         LEFT JOIN " . $roundtable . " ON " . $roundtable . ".id = " . $jointeamtable . ".roundid
         WHERE
             " . $jointeamtable . ".leagueid = $lbhdnleagueid   

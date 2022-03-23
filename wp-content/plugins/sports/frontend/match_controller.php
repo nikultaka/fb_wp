@@ -106,11 +106,10 @@ class match_list_Controller
                 $team1 = strtoupper($team->team1name);
                 $team2 = strtoupper($team->team2name);
 
-                $teamselect_string .= '<div class="block2 col-md-3 ">
-                <div class="block bg-hover-grass">';
+                $teamselect_string .= '<div class="block2 col-md-3 ">';
                 /*START*/ //////////////////
                 if ($team->scoremultiplier == 0 && $team->scoretype == 'added') {
-                    $teamselect_string .= '<center><a class=" pointer " data-dateteam="' . $team->enddate . '" id="matchteam-' . $team->id . '" onclick="select_team(' . $team->t1id . ',' . $team->id . ',' . $round . ')">';
+                    $teamselect_string .= '<center><div class="block bg-hover-grass pointer " onclick="select_team(' . $team->t1id . ',' . $team->id . ',' . $round . ')"><a class=" pointer " style="color: #ffcc00;"  data-dateteam="' . $team->enddate . '" id="matchteam-' . $team->id . '" >';
                     // echo '<pre>';
                     // print_r($team->selectteamid);
 
@@ -125,11 +124,10 @@ class match_list_Controller
                 }
                 /*END*/ //////////////////
                 $teamselect_string .= '</div>
-                <span style="font-size: 25px; color: #24890d;" ><center><b><I>V<span style="font-size: 35px; color: #ffcc00;"><b><I>/</b></I></span>S</I></b><center></span>
-                <div class="block bg-hover-grass">';
+                <span><center><img alt="" src="' . plugins_url('sports/images/5.png') . '"><center></span>';
                 /*START*/ //////////////////
                 if ($team->scoremultiplier == 0 && $team->scoretype == 'added') {
-                    $teamselect_string .= '<center><a class="pointer" data-dateteam="' . $team->enddate . '" id="matchteam-' . $team->id . '" onclick="select_team(' . $team->t2id . ',' . $team->id . ',' . $round . ')">';
+                    $teamselect_string .= '<center><div class="block bg-hover-grass pointer" onclick="select_team(' . $team->t2id . ',' . $team->id . ',' . $round . ')" ><a class="pointer" style="color: #ffcc00;" data-dateteam="' . $team->enddate . '" id="matchteam-' . $team->id . '">';
                     if (
                         $team->selectteamid != '' && $team->selectteamid == 0
                     ) {
@@ -141,8 +139,6 @@ class match_list_Controller
                 }
                 /*END*/ //////////////////
                 $teamselect_string .= '</div>
-            <span style="color: #24890d;" ><center>---------------------------------<center></span>
-            
             </div>
             ';
             }

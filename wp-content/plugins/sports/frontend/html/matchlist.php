@@ -181,36 +181,36 @@
 
 	.block {
 		box-sizing: border-box;
-		border: 2px solid #eee;
+		border: 2px solid #ffcc00;
 		padding: 10px 0px 10px 0px;
 		font-size: 15px;
-		border-radius: 5px;
-		margin: 0px;
-		width: 292px;
+		border-radius: 4px;
+		margin: -3px;
+		width: 240px;
 		height: auto;
 		font-weight: bold;
 		overflow: hidden;
-		color: #000 !important;
-		background-color: #fff;
+		color: #ffcc00 !important;
+		background-color: #24890d;
 	}
 
 	.block2 {
 		box-sizing: border-box;
-		padding: 15px;
-		width: 322px;
+		padding: 0px;
+		width: 290px;
 		border: 0px solid;
 		overflow: hidden;
 		color: #656D78;
 		background-color: #fff;
-	}
-
-	.block:hover {
-		color: #fff;
-		border-color: transparent;
+		border: 2px solid #ffcc00;
+		border-radius: 5px;
+		margin: 15px;
+		background-color: #24890d;
 	}
 
 	.bg-hover-grass:hover {
-		background-color: #ffcc00;
+		background-color: #003e00;
+		color: #fff !important;
 	}
 
 

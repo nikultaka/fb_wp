@@ -447,7 +447,6 @@ class leader_board_Controller
                 }
             }
 
-
             $data[] = $temp;
             $id = "";
         }
@@ -463,7 +462,7 @@ class leader_board_Controller
         );
 
         echo json_encode($json_data);
-        die;
+        exit(0);
     }
 }
 

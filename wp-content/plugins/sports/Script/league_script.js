@@ -178,7 +178,7 @@ $("#save_Btnround").click(function () {
               timer: 1500,
             });
 
-            send_mail_users_score($("#hrid").val());
+            // send_mail_users_score($("#hrid").val());
             $("#rname").val("");
             $("#scoremultiplier").val("");
             $("#hrid").val("");
@@ -205,7 +205,6 @@ $("#save_Btnround").click(function () {
   /*if ($("#iscomplete").is(":checked")) {
     if ($("#hrid").val() != "") {
       $roundid = $("#hrid").val();
-      auto_join_team($roundid);
       send_mail_users_score($roundid);
     }
   }*/
@@ -298,11 +297,6 @@ function editround_record(id) {
         $("#scoremultiplier").val(result.scoremultiplier);
         $("#scoretype").val(result.scoretype);
         $("#rstatus").val(result.rstatus);
-        if (result.iscomplete == "YES") {
-          $("#iscomplete").prop("checked", true);
-        } else {
-          $("#iscomplete").prop("checked", false);
-        }
         loadroundtable();
       }
     },
@@ -820,6 +814,9 @@ function match_list(id) {
         localStorage.removeItem("validateData");
         localStorage.setItem("validateData", JSON.stringify(data.validateData));
 
+        localStorage.removeItem("teamname_by_round_Data");
+        localStorage.setItem("teamname_by_round_Data", JSON.stringify(data.teamname_by_round_Data));
+
         $("#matchlistdata").html(data.match_string);
       }
     },
@@ -920,7 +917,21 @@ end of  Score Predict
 start of Join Team
  **************************/
 
-function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
+function join_team(tid, id, leagueid, roundid, scoremultiplier, userid, teamnameid) {
+
+
+
+  var teamname_by_round_array = JSON.parse(localStorage.getItem("teamname_by_round_Data"));
+  var teamname_by_round = [];
+  teamname_by_round_array.forEach((uniq) => {
+    var idselect = uniq.team1;
+    var idselect2 = uniq.team2;
+    teamname_by_round.push(idselect);
+    teamname_by_round.push(idselect2);
+  });
+
+  var matchscoretype = $("#match-" + id).attr("data-scoretype");
+
   var roundSelectDataArray = JSON.parse(
     localStorage.getItem("roundSelectData")
   );
@@ -976,6 +987,7 @@ function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
     allteamname.push(allteamnamelg);
   });
 
+
   var joinround = roundSelectDataArray.filter((team) => {
     return (
       team.leagueid === leagueidstr &&
@@ -991,6 +1003,225 @@ function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
     teamname = $(".team_" + tid + "_" + id).attr("data-teamname2");
   }
   var teamnamestr = teamname.toString();
+
+
+
+
+if (teamname_by_round.every(elem => allteamname.includes(elem))) {
+
+  var matchDate = $("#match-" + id).attr("data-date");
+
+  var dt = new Date();
+  var currenttime =
+    dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+  var currentDate = $.datepicker.formatDate("yy-mm-dd", new Date());
+  var current = currentDate + " " + currenttime;
+
+  if (matchDate > current) {
+    // $(".team_" + tid + "_" + id).html("PREVIOUSLY SELECTED");
+    Swal.fire({
+      title: "<h3>Are You Sure Want To Select This Team !</h3>",
+      text: "If you already selected team, Then this team will override it",
+      icon: "info",
+      showCancelButton: true,
+      width: "450px",
+      confirmButtonColor: "#24890d",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, select it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        if(scoremultiplier == 1 && matchscoretype == "added"){
+
+          console.log("roundSelectData")
+          console.log(roundSelectData)
+
+          console.log("jrSelectData")
+          console.log(jrSelectData)
+
+          console.log("leagueidstr")
+          console.log(leagueidstr)
+
+          console.log("sprSelectData")
+          console.log(sprSelectData)
+
+          console.log("roundidstr")
+          console.log(roundidstr)
+
+
+          if (roundSelectData.includes("jokeround".trim().toLowerCase()) && jrSelectData.includes(leagueidstr)) {
+
+            console.log("hii1")
+            load_score_predicter_model(id, tid);
+            $roundselect = "scorePredictorround";
+            $.ajax({
+              type: "POST",
+              url: ajaxurl,
+              datatype: "json",
+              data: {
+                tid: tid,
+                id: id,
+                teamnameid: teamnameid,
+                roundselect: "scorePredictorround",
+                action: "match_list_Controller::add_team_join",
+              },
+              beforeSend: function () {
+                $("#loaderball").css("display", "");
+              },
+              success: function (responce) {
+                var data = JSON.parse(responce);
+                if (data.status == 1) {
+                  match_list(roundid);
+                  $("#loaderball").css("display", "none");
+                  Swal.fire("You Selected Team Successfully.");
+                  $(".match-" + id).html("SELECT");
+                  $(".team_" + tid + "_" + id).html("SELECTED");
+                  joinround.forEach((round) => {
+                    $(".teamname_" + round.teamname).html(
+                      "PREVIOUSLY SELECTED"
+                    );
+                  });
+                }
+              },
+            });
+            return false;
+
+          } else if (roundSelectData.includes("scorePredictorround".trim().toLowerCase()) && sprSelectData.includes(roundidstr)) {
+
+            console.log("hiii2");
+            var inputOptions = new Promise((resolve) => {
+              resolve({
+                jokeround:
+                  '<h5><strong  style="color:#2e2d2d">YES</strong></h5>',
+                scorePredictorround:
+                  '<h5><strong style="color:#2e2d2d">NO</strong></h5>',
+              });
+            });
+
+          } else {
+
+            console.log("hiii3");
+            var inputOptions = new Promise((resolve) => {
+              resolve({
+                jokeround:
+                  '<h5><strong  style="color:#2e2d2d">YES</strong></h5>',
+                scorePredictorround:
+                  '<h5><strong style="color:#2e2d2d">NO</strong></h5>',
+              });
+            });
+            
+          }
+
+          const { value: round } = Swal.fire({
+            title:
+              '<h2 style="color:#0a4a03">Want To Select Joker Round ?<h2>',
+            input: "radio",
+            icon: "question",
+            width: "450px",
+            confirmButtonColor: "#0a4a03",
+            iconColor: "#54595F",
+            confirmButtonText: "select it!",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            inputOptions: inputOptions,
+            inputValidator: (value) => {
+              if (!value) {
+                return "You need to choose something!";
+              }
+              if (value == "scorePredictorround") {
+                load_score_predicter_model(id, tid);
+              }
+            },
+          }).then((round) => {
+
+            console.log("hiii4");
+            $roundselect = round.value;
+            $.ajax({
+              type: "POST",
+              url: ajaxurl,
+              datatype: "json",
+              data: {
+                tid: tid,
+                id: id,
+                teamnameid: teamnameid,
+                roundselect: round.value,
+                action: "match_list_Controller::add_team_join",
+              },
+              beforeSend: function () {
+                $("#loaderball").css("display", "");
+              },
+              success: function (responce) {
+                var data = JSON.parse(responce);
+                if (data.status == 1) {
+                  match_list(roundid);
+                  $("#loaderball").css("display", "none");
+                  Swal.fire("You Selected Team Successfully.");
+                  $(".match-" + id).html("SELECT");
+                  $(".team_" + tid + "_" + id).html("SELECTED");
+                  joinround.forEach((round) => {
+                    $(".teamname_" + round.teamname).html(
+                      "PREVIOUSLY SELECTED"
+                    );
+                  });
+                }
+              },
+            });
+          });
+
+        }else{
+
+          console.log("hiii5");
+          $roundselect = "nothanks";
+          $.ajax({
+            type: "POST",
+            url: ajaxurl,
+            datatype: "json",
+            data: {
+              tid: tid,
+              id: id,
+              teamnameid: teamnameid,
+              roundselect: "nothanks",
+              action: "match_list_Controller::add_team_join",
+            },
+            beforeSend: function () {
+              $("#loaderball").css("display", "");
+            },
+            success: function (responce) {
+              var data = JSON.parse(responce);
+              if (data.status == 1) {
+                match_list(roundid);
+                $("#loaderball").css("display", "none");
+                Swal.fire("You Selected Team Successfully.");
+                $(".match-" + id).html("SELECT");
+                $(".team_" + tid + "_" + id).html("SELECTED");
+                joinround.forEach((round) => {
+                  $(".teamname_" + round.teamname).html(
+                    "PREVIOUSLY SELECTED"
+                  );
+                });
+              }
+            },
+          });
+          
+        }
+
+      }
+    });
+  } else {
+    Swal.fire({
+      title: "You Can Not select This Team !",
+      text: "Date Is Over To select Or Change Team.",
+      icon: "error",
+      showCancelButton: false,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ok",
+    });
+
+  }
+  
+}else{
+
   if (allteamname.includes(teamnamestr)) {
     Swal.fire({
       title: "You Can Not Select This Team",
@@ -1023,6 +1254,7 @@ function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
         confirmButtonText: "Yes, select it!",
       }).then((result) => {
         if (result.isConfirmed) {
+
           if (uniqidselect.includes(roundidstr)) {
             console.log(roundSelectData);
             console.log(jrSelectData);
@@ -1144,6 +1376,7 @@ function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
               });
             });
           } else {
+
             $roundselect = "nothanks";
             $.ajax({
               type: "POST",
@@ -1162,6 +1395,9 @@ function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
               success: function (responce) {
                 var data = JSON.parse(responce);
                 if (data.status == 1) {
+                  if (scoremultiplier == 0 && matchscoretype == "added") {
+                    load_select_team_model(roundid);
+                  }
                   match_list(roundid);
                   $("#loaderball").css("display", "none");
                   Swal.fire("You Selected Team Successfully.");
@@ -1176,6 +1412,7 @@ function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
               },
             });
           }
+          
         }
       });
     } else {
@@ -1190,7 +1427,10 @@ function join_team(tid, id, leagueid, roundid, userid, teamnameid) {
       });
     }
   }
-  return false;
+  
+}
+return false;
+
 }
 
 /*************************** 
@@ -1425,7 +1665,6 @@ function load_select_team_model(id) {
     },
     success: function (responce) {
       var data = JSON.parse(responce);
-      console.log(data.teamselect_string);
       if (data.status == 1) {
         $("#selectteamlistdata").html("");
         $("#loaderball").css("display", "none");

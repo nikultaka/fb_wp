@@ -40,7 +40,7 @@ function sports()
 }
 
 function league()
-{
+{ 
     ob_start();
     global $wpdb;
     $sportstable = $wpdb->prefix . "sports";
@@ -485,6 +485,14 @@ class league_controller
                 }    
             }
 
+            $sql = "select * from " . $jointeamtable . " where leagueid = ".$hdnleagueid." and roundid != ".$updateId;
+            $currentleaguematchData = $wpdb->get_results($sql);
+            $currentleaguematch = array();
+            foreach ($currentleaguematchData as $key => $value) {
+                $currentleaguematch[] = $value->teamnameid;
+            }            
+    
+
             $sql = "select * from ".$leaguetable." where id =".$leagueID; 
             $leagueData = $wpdb->get_results($sql);
             $sportID = '';
@@ -515,7 +523,7 @@ class league_controller
             $currentRoundUserID = array();
             foreach ($currentRoundData as $key => $value) {
                 $currentRoundUserID[] = $value->userid;
-            }
+            }            
             $notExistUsers = array_diff($usersID,$currentRoundUserID);
             //echo '<pre>'; print_r($notExistUsers); exit;
             if(!empty($notExistUsers)) {
@@ -532,27 +540,48 @@ class league_controller
                         $teamDiff = $teamID;    
                     }      
                     $teamDiff = array_values($teamDiff); 
-                    if(!empty($teamDiff)) {
 
-                        $teamAutoSelectedID = $teamDiff[0];
-                        $sql = "select * from ".$matchtable." where (team1 = '".$teamAutoSelectedID."' or team2 = '".$teamAutoSelectedID."') and round = '".$updateId."' ";
-                        // echo $sql; die;
-                        $matchAutoData = $wpdb->get_results($sql);
-                        
-                        $autoMatchID = '';
-                        $autoTeamID = '';         
-                        //echo '<pre>'; print_r($matchAutoData);
-                        if(!empty($matchAutoData)) {
-                            $autoMatchID = $matchAutoData[0]->id;
-                           
-                            
-                            if($matchAutoData[0]->team1 == $teamAutoSelectedID) {
-                                $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>1,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
-                            } else { //($matchAutoData[0]->team2 == $teamAutoSelectedID) 
-                                $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>0,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
+
+                    $containsAllValues = !array_diff($roundTeamID, $currentleaguematch);
+                    if(!empty($containsAllValues)) {
+                        if($containsAllValues == 1) {
+                          
+                            $teamAutoSelectedID = $teamID[0];
+                            $sql = "select * from ".$matchtable." where (team1 = '".$teamAutoSelectedID."' or team2 = '".$teamAutoSelectedID."') and round = '".$updateId."' ";
+                            $matchAutoData = $wpdb->get_results($sql);
+                            $autoMatchID = '';   
+                            if(!empty($matchAutoData)) {
+                                $autoMatchID = $matchAutoData[0]->id;
+                               
+                                if($matchAutoData[0]->team1 == $teamAutoSelectedID) {
+                                    $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>1,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
+                                } else { 
+                                    $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>0,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
+                                }
+                                $wpdb->insert($jointeamtable,$joinMatchAuto);   
                             }
-                            $wpdb->insert($jointeamtable,$joinMatchAuto);   
                         }
+                    }else{
+
+                        if(!empty($teamDiff)) {
+
+                            $teamAutoSelectedID = $teamDiff[0];
+                            $sql = "select * from ".$matchtable." where (team1 = '".$teamAutoSelectedID."' or team2 = '".$teamAutoSelectedID."') and round = '".$updateId."' ";
+                            $matchAutoData = $wpdb->get_results($sql);
+                            
+                            $autoMatchID = '';         
+                            if(!empty($matchAutoData)) {
+                                $autoMatchID = $matchAutoData[0]->id;
+                               
+                                if($matchAutoData[0]->team1 == $teamAutoSelectedID) {
+                                    $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>1,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
+                                } else { //($matchAutoData[0]->team2 == $teamAutoSelectedID) 
+                                    $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>0,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
+                                }
+                                $wpdb->insert($jointeamtable,$joinMatchAuto);   
+                            }
+                        }
+
                     }
                 }    
             }    

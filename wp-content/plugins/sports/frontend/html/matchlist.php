@@ -8,13 +8,13 @@
 	}
 
 	.serviceBox .service-icon {
-		width: 78px;
-		height: 78px;
+		width: 50px;
+		height: 50px;
 		border-radius: 3px;
 		background: #58c333;
 		margin: 0 auto;
 		position: absolute;
-		top: -34px;
+		top: -24px;
 		left: 0;
 		right: 0;
 		z-index: 1;
@@ -28,12 +28,12 @@
 
 	.serviceBox .service-icon span {
 		display: inline-block;
-		width: 60px;
-		height: 60px;
-		line-height: 60px;
+		width: 38px;
+		height: 38px;
+		line-height: 30px;
 		border-radius: 3px;
 		background: #24890d;
-		font-size: 30px;
+		font-size: 22px;
 		color: #fff;
 		margin: auto;
 		position: absolute;
@@ -58,7 +58,7 @@
 		border: 1px solid #fff;
 		border-radius: 25px;
 		padding: 45px 15px;
-		padding-top: 55px;
+		padding-top: 30px;
 		position: relative;
 		margin: 5px auto;
 		height: auto;
@@ -67,13 +67,13 @@
 	.serviceBox .service-content:before {
 		content: "";
 		display: block;
-		width: 80px;
-		height: 80px;
+		width: 50px;
+		height: 50px;
 		border: 1px solid #e7e7e7;
 		border-radius: 3px;
 		margin: 0 auto;
 		position: absolute;
-		top: -37px;
+		top: -27px;
 		left: 0;
 		right: 0;
 		z-index: -1;
@@ -165,6 +165,7 @@
 
 	.score112 {
 		float: right;
+		border-radius: 8px;
 		width: 44%;
 		height: 36px;
 		margin-top: -4%;
@@ -172,10 +173,36 @@
 		position: relative;
 	}
 
+	.score113 {
+		float: right;
+		width: 50%;
+		height: auto;
+		margin-top: -5%;
+		margin-right: -15px;
+		padding: 0px 0px;
+		position: relative;
+		border-radius: 15px;
+	}
+
 	.text23 {
 		color: #fff;
 		font-size: 22px;
 		font-family: oswald;
+	}
+
+	.text114 {
+		color: #ffcc00;
+		font-size: 18px;
+		font-family: oswald;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+
+	.text113 {
+		color: #fff;
+		font-size: 14px;
+		font-family: Arial, Helvetica, sans-serif;
+		text-transform: uppercase;
 	}
 
 

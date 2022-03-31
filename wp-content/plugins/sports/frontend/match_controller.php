@@ -109,6 +109,10 @@ class match_list_Controller
         $scoremultiplier = $result2_sql[0]->scoremultiplier;
         $scoretype = $result2_sql[0]->scoretype;
         $round = $result2_sql[0]->round;
+        $roundname = $result2_sql[0]->roundname;
+        $leaguename = $result2_sql[0]->leaguename;
+        $sportname = $result2_sql[0]->sportname;
+
         $type = ucfirst($scoretype);
 
         if (count($result2_sql) > 0) {
@@ -164,11 +168,14 @@ class match_list_Controller
 
         $validate_sql = $wpdb->get_results("SELECT * FROM $roundtable WHERE " . $roundtable . ".scoremultiplier ='1' and " . $roundtable . ".scoretype = 'added'");
         if (count($result_sql) > 0) {
+
+
+
             $match_string .= '
             <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  float : left; font-family: Oswald; "><b>Go Back</b></a></span>
             <div class="row">
             <div class="score112 kode-bg-color">
-					<span class="kode-halfbg thbg-color"></span>
+					<span class="kode-halfbg thbg-color" style="border-radius: 0px 8px 8px 0px;"></span>
 						<center>
 							<div class="col-md-6">
                             <span class="text23">Score Type : ' . $type . '</span>
@@ -199,6 +206,20 @@ class match_list_Controller
 				</div>
                 </div><br><br><br>';
             }
+
+            $match_string .= '
+<div class="score113 kode-bg-color">
+        <center>
+
+        <span class="kode-subtitle col-sm-4" style="border-radius: 15px 0px 0px 15px; background-color: #195d10; padding: 3px !important;"><span class="text113">sport</span><h3 class="text114">'. $sportname .'</h3></span>
+        <span class="kode-subtitle col-sm-4" style="background-color: #003e00; padding: 3px !important;"><span class="text113">League</span><h3 class="text114">'. $leaguename .'</h3></span>
+        <span class="kode-subtitle col-sm-4" style="border-radius: 0px 15px 15px 0px; background-color: #0a2506; padding: 3px !important;"><span class="text113">Round</span><h3 class="text114">'. $roundname .'</h3></span>
+
+        </center>				
+</div><br><br><br>';
+
+
+
             foreach ($result_sql as $match) {
 
                 $teamname1 = strtolower($match->team1);
@@ -217,12 +238,9 @@ class match_list_Controller
                     $match_string .= '<span><a data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="load_score_predicter_model(' . $match->id . ',' . $match->teamid . ')" class="title btn" style="float:right; background-color: #ffcc00; color: #24890d; font-size: 13px; margin-top:-50px; font-family: Oswald; "><b>Predict Score</b></a></span>';
                 }
                 if ($match->roundselect == 'jokeround') {
-                    $match_string .= '<span><h3 class="title" style="float:right; color: #ffcc00; margin-top:-50px; font-family: Oswald; "><b>Joker Round</b></h3></span>';
+                    $match_string .= '<span><h3 class="title" style="float:right; color: #ffc107; margin-top:-50px; font-family: Oswald; "><b>Joker Round</b></h3></span>';
                 }
-                $match_string .= ' <span class="kode-subtitle col-sm-4"><span class="text2">sport</span><h3 class="text">' . $match->sportname . '</h3></span>
-                                          <span class="kode-subtitle col-sm-4 "><span class="text2">League</span><h3 class="text">' . $match->leaguename . '</h3></span>
-                                          <span class="kode-subtitle col-sm-4"><span class="text2">Round</span><h3 class="text">' . $match->roundname . '</h3></span>
-                                          <div class="col-md-6">
+                $match_string .= '<div class="col-md-6">
                                           <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1name . '</b></h3></span>';
                 if (is_user_logged_in()) {
                     $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t1id . '_' . $match->id . ' teamname_' . $teamname1 . '"  data-teamname1="' . $match->team1 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" data-scoretype="' . $match->scoretype . '" onclick="join_team(' . $match->t1id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $match->scoremultiplier . ',' . $userid . ',' . $teamname1 . ')">';
@@ -230,12 +248,12 @@ class match_list_Controller
                     $containsAllValues = !array_diff($allteam_by_array, $allteam);
                     if ($containsAllValues == 1 && $containsAllValues != '') {
 
-                            if ($match->teamid != '' && $match->teamid == 1) {
-                                $match_string .= 'SELECTED';
-                            } else {
-                                $match_string .= 'SELECT';
-                            }
-                        
+                        if ($match->teamid != '' && $match->teamid == 1) {
+                            $match_string .= 'SELECTED';
+                        } else {
+                            $match_string .= 'SELECT';
+                        }
+
 
                         // $match_string .= 'SELECT';
                     } else {
@@ -267,13 +285,13 @@ class match_list_Controller
                     $containsAllValues = !array_diff($allteam_by_array, $allteam);
                     if ($containsAllValues == 1 && $containsAllValues != '') {
 
-                            if (
-                                $match->teamid != '' && $match->teamid == 0
-                            ) {
-                                $match_string .= 'SELECTED';
-                            } else {
-                                $match_string .= 'SELECT';
-                            }
+                        if (
+                            $match->teamid != '' && $match->teamid == 0
+                        ) {
+                            $match_string .= 'SELECTED';
+                        } else {
+                            $match_string .= 'SELECT';
+                        }
 
                         // $match_string .= 'SELECT';
                     } else {
@@ -289,7 +307,6 @@ class match_list_Controller
                                 $match_string .= 'SELECT';
                             }
                         }
-
                     }
                     $match_string .= '</a>';
                 } else {

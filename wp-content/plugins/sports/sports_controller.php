@@ -1,6 +1,7 @@
 <?php
 add_action('admin_menu', 'sports_admin_menu');
 
+
 function sports_admin_menu()
 {
     add_menu_page(
@@ -40,7 +41,7 @@ function sports()
 }
 
 function league()
-{ 
+{
     ob_start();
     global $wpdb;
     $sportstable = $wpdb->prefix . "sports";
@@ -53,7 +54,7 @@ function league()
     $roundsql = $wpdb->get_results($querym);
 
 
-    
+
     include(dirname(__FILE__) . "/html/leagueform.php");
     wp_enqueue_script('script', plugins_url('/Script/league_script.js', __FILE__));
     $s = ob_get_contents();
@@ -415,20 +416,20 @@ class league_controller
         $data['status'] = 0;
         $data['msg'] = "Error Data Not insert";
         $checkedvalue = $_POST['iscomplete'];
-      
+
         $rname = $_POST['rname'];
         $scoremultiplier = $_POST['scoremultiplier'];
         $scoretype = $_POST['scoretype'];
-        $rstatus = $_POST['rstatus'];       
+        $rstatus = $_POST['rstatus'];
         $hdnleagueid = $_POST['hdnleagueid'];
 
-        if($checkedvalue == 'YES'){
+        if ($checkedvalue == 'YES') {
             $iscomplete = 'YES';
-        }else{
+        } else {
             $iscomplete = 'NO';
         };
 
-        $roundtable = $wpdb->prefix . "round";       
+        $roundtable = $wpdb->prefix . "round";
         if ($updateId == '') {
             $wpdb->insert($roundtable, array(
                 'rname'             => $rname,
@@ -456,11 +457,11 @@ class league_controller
                 array('id'  => $updateId)
             );
 
-            $data['status'] = 1;            
+            $data['status'] = 1;
             $data['msg'] = "Round updated successfully";
         }
 
-        if($updateId !='' && $iscomplete == 'YES') {  
+        if ($updateId != '' && $iscomplete == 'YES') {
             $matchtable = $wpdb->prefix . "match";
             $usertable = $wpdb->prefix . "users";
             $teamtable = $wpdb->prefix . "team";
@@ -469,124 +470,123 @@ class league_controller
             $jointeamtable = $wpdb->prefix . "jointeam";
             $userid = get_current_user_id();
 
-            $sql = "select * from ".$matchtable." where round =".$updateId; 
+            $sql = "select * from " . $matchtable . " where round =" . $updateId;
             $roundTeam = $wpdb->get_results($sql);
             $roundTeamID = array();
             $leagueID = '';
-            if(!empty($roundTeam)) {
+            if (!empty($roundTeam)) {
                 $leagueID = $roundTeam[0]->leagueid;
-                foreach($roundTeam as $key => $value) {
-                    if(!in_array($value->team1,$roundTeamID)) {
-                        $roundTeamID[] = $value->team1;    
+                foreach ($roundTeam as $key => $value) {
+                    if (!in_array($value->team1, $roundTeamID)) {
+                        $roundTeamID[] = $value->team1;
                     }
-                    if(!in_array($value->team2,$roundTeamID)) {
-                        $roundTeamID[] = $value->team2;  
+                    if (!in_array($value->team2, $roundTeamID)) {
+                        $roundTeamID[] = $value->team2;
                     }
-                }    
+                }
             }
 
-            $sql = "select * from " . $jointeamtable . " where leagueid = ".$hdnleagueid." and roundid != ".$updateId;
+            $sql = "select * from " . $jointeamtable . " where leagueid = " . $hdnleagueid . " and roundid != " . $updateId;
             $currentleaguematchData = $wpdb->get_results($sql);
             $currentleaguematch = array();
             foreach ($currentleaguematchData as $key => $value) {
                 $currentleaguematch[] = $value->teamnameid;
-            }            
-    
+            }
 
-            $sql = "select * from ".$leaguetable." where id =".$leagueID; 
+
+            $sql = "select * from " . $leaguetable . " where id =" . $leagueID;
             $leagueData = $wpdb->get_results($sql);
             $sportID = '';
-            if(!empty($leagueData)) {
+            if (!empty($leagueData)) {
                 $sportID = $leagueData[0]->sports;
             }
 
             $teamID = array();
-            if(!empty($roundTeamID)) {
-                $roundTeamIDString = implode(",",$roundTeamID);
-                $sql = "select * from ".$teamtable." where id in (".$roundTeamIDString.") order by teamname asc"; 
+            if (!empty($roundTeamID)) {
+                $roundTeamIDString = implode(",", $roundTeamID);
+                $sql = "select * from " . $teamtable . " where id in (" . $roundTeamIDString . ") order by teamname asc";
                 $teamData = $wpdb->get_results($sql);
-                if(!empty($teamData)) {
-                    foreach($teamData as $key => $value) {
+                if (!empty($teamData)) {
+                    foreach ($teamData as $key => $value) {
                         $teamID[] = $value->id;
-                    }    
-                }    
+                    }
+                }
             }
 
-            $sql = "select wu.ID from " . $usertable . " as wu"; 
+            $sql = "select wu.ID from " . $usertable . " as wu";
             $userData = $wpdb->get_results($sql);
             $usersID = array();
-            foreach($userData as $key => $value) {
+            foreach ($userData as $key => $value) {
                 $usersID[] = $value->ID;
             }
-            $sql = "select * from " . $jointeamtable . " where leagueid = ".$hdnleagueid." and roundid = ".$updateId;
+            $sql = "select * from " . $jointeamtable . " where leagueid = " . $hdnleagueid . " and roundid = " . $updateId;
             $currentRoundData = $wpdb->get_results($sql);
             $currentRoundUserID = array();
             foreach ($currentRoundData as $key => $value) {
                 $currentRoundUserID[] = $value->userid;
-            }            
-            $notExistUsers = array_diff($usersID,$currentRoundUserID);
+            }
+            $notExistUsers = array_diff($usersID, $currentRoundUserID);
             //echo '<pre>'; print_r($notExistUsers); exit;
-            if(!empty($notExistUsers)) {
-                foreach($notExistUsers as $key => $value) {
-                    $sql = "select * from " . $jointeamtable . " where leagueid = ".$hdnleagueid." and userid=".$value;
+            if (!empty($notExistUsers)) {
+                foreach ($notExistUsers as $key => $value) {
+                    $sql = "select * from " . $jointeamtable . " where leagueid = " . $hdnleagueid . " and userid=" . $value;
                     $oldUserData = $wpdb->get_results($sql);
-                    if(!empty($oldUserData)) {
+                    if (!empty($oldUserData)) {
                         $existedTeam = array();
-                        foreach($oldUserData as $oldMatchkey => $oldMatchValue) {
+                        foreach ($oldUserData as $oldMatchkey => $oldMatchValue) {
                             $existedTeam[] = $oldMatchValue->teamnameid;
                         }
-                        $teamDiff = array_diff($teamID,$existedTeam);        
+                        $teamDiff = array_diff($teamID, $existedTeam);
                     } else {
-                        $teamDiff = $teamID;    
-                    }      
-                    $teamDiff = array_values($teamDiff); 
+                        $teamDiff = $teamID;
+                    }
+                    $teamDiff = array_values($teamDiff);
 
 
                     $containsAllValues = !array_diff($roundTeamID, $currentleaguematch);
-                    if(!empty($containsAllValues)) {
-                        if($containsAllValues == 1) {
-                          
+                    if (!empty($containsAllValues)) {
+                        if ($containsAllValues == 1) {
+
                             $teamAutoSelectedID = $teamID[0];
-                            $sql = "select * from ".$matchtable." where (team1 = '".$teamAutoSelectedID."' or team2 = '".$teamAutoSelectedID."') and round = '".$updateId."' ";
+                            $sql = "select * from " . $matchtable . " where (team1 = '" . $teamAutoSelectedID . "' or team2 = '" . $teamAutoSelectedID . "') and round = '" . $updateId . "' ";
                             $matchAutoData = $wpdb->get_results($sql);
-                            $autoMatchID = '';   
-                            if(!empty($matchAutoData)) {
+                            $autoMatchID = '';
+                            if (!empty($matchAutoData)) {
                                 $autoMatchID = $matchAutoData[0]->id;
-                               
-                                if($matchAutoData[0]->team1 == $teamAutoSelectedID) {
-                                    $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>1,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
-                                } else { 
-                                    $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>0,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
+
+                                if ($matchAutoData[0]->team1 == $teamAutoSelectedID) {
+                                    $joinMatchAuto = array('userid' => $value, 'sportid' => $sportID, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 1, 'teamnameid' => $teamAutoSelectedID, 'roundselect' => 'nothanks', 'auto' => 1);
+                                } else {
+                                    $joinMatchAuto = array('userid' => $value, 'sportid' => $sportID, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 0, 'teamnameid' => $teamAutoSelectedID, 'roundselect' => 'nothanks', 'auto' => 1);
                                 }
-                                $wpdb->insert($jointeamtable,$joinMatchAuto);   
+                                $wpdb->insert($jointeamtable, $joinMatchAuto);
                             }
                         }
-                    }else{
+                    } else {
 
-                        if(!empty($teamDiff)) {
+                        if (!empty($teamDiff)) {
 
                             $teamAutoSelectedID = $teamDiff[0];
-                            $sql = "select * from ".$matchtable." where (team1 = '".$teamAutoSelectedID."' or team2 = '".$teamAutoSelectedID."') and round = '".$updateId."' ";
+                            $sql = "select * from " . $matchtable . " where (team1 = '" . $teamAutoSelectedID . "' or team2 = '" . $teamAutoSelectedID . "') and round = '" . $updateId . "' ";
                             $matchAutoData = $wpdb->get_results($sql);
-                            
-                            $autoMatchID = '';         
-                            if(!empty($matchAutoData)) {
+
+                            $autoMatchID = '';
+                            if (!empty($matchAutoData)) {
                                 $autoMatchID = $matchAutoData[0]->id;
-                               
-                                if($matchAutoData[0]->team1 == $teamAutoSelectedID) {
-                                    $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>1,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
+
+                                if ($matchAutoData[0]->team1 == $teamAutoSelectedID) {
+                                    $joinMatchAuto = array('userid' => $value, 'sportid' => $sportID, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 1, 'teamnameid' => $teamAutoSelectedID, 'roundselect' => 'nothanks', 'auto' => 1);
                                 } else { //($matchAutoData[0]->team2 == $teamAutoSelectedID) 
-                                    $joinMatchAuto = array('userid'=>$value,'sportid'=>$sportID,'leagueid'=>$leagueID,'roundid'=>$updateId,'matchid'=>$autoMatchID,'teamid'=>0,'teamnameid'=>$teamAutoSelectedID,'roundselect'=>'nothanks','auto'=>1);
+                                    $joinMatchAuto = array('userid' => $value, 'sportid' => $sportID, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 0, 'teamnameid' => $teamAutoSelectedID, 'roundselect' => 'nothanks', 'auto' => 1);
                                 }
-                                $wpdb->insert($jointeamtable,$joinMatchAuto);   
+                                $wpdb->insert($jointeamtable, $joinMatchAuto);
                             }
                         }
-
                     }
-                }    
-            }    
+                }
+            }
         }
-        $data = array('status'=>1);        
+        $data = array('status' => 1);
         echo json_encode($data);
         exit;
     }
@@ -829,13 +829,13 @@ class league_controller
             $id = "";
         }
 
-        $resultRound = "SELECT * FROM " . $roundtable . " where leagueid = " . $hdnleagueid ." AND RSTATUS = 'active' ORDER BY id ASC";
+        $resultRound = "SELECT * FROM " . $roundtable . " where leagueid = " . $hdnleagueid . " AND RSTATUS = 'active' ORDER BY id ASC";
         $roundData = $wpdb->get_results($resultRound, "OBJECT");
 
         $all_sql = $wpdb->get_row("SELECT sports FROM $leaguetable WHERE id = $hdnleagueid");
         $sportid = $all_sql->sports;
         $resultteam = "SELECT * FROM " . $teamtable . " WHERE sportid = $sportid AND TSTATUS = 'active'  ORDER BY id ASC";
-        
+
         $teamData = $wpdb->get_results($resultteam, "OBJECT");
         $json_data = array(
             "draw" => intval($requestData['draw']),
@@ -871,7 +871,7 @@ class league_controller
         }
         echo json_encode($result);
         exit();
-    }    
+    }
     function delete_all_matchdata($matchid)
     {
         global $wpdb;
@@ -885,7 +885,7 @@ class league_controller
         $wpdb->delete($selectteam, array('matchid' => $matchid));
         return true;
     }
- 
+
     function editmatch_record()
     {
         global $wpdb;
@@ -1075,7 +1075,7 @@ class league_controller
          ";
 
 
-         $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,roundid,userid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid," . $selectteam . ".roundid,
+        $teamselect_sql = $wpdb->get_results("select count(*) as multipliercount,roundid,userid from (SELECT  " . $matchscoretable . ".*," . $selectteam . ".userid," . $selectteam . ".roundid,
          CASE
          WHEN " . $matchscoretable . ".team1score > " . $matchscoretable . ".team2score THEN concat('1_'," . $matchscoretable . ".matchid)
          WHEN " . $matchscoretable . ".team2score > " . $matchscoretable . ".team1score THEN concat('0_'," . $matchscoretable . ".matchid)
@@ -1091,8 +1091,8 @@ class league_controller
          LEFT JOIN " . $usertable . " on " . $usertable . ".id = " . $selectteam . ".userid
          HAVING winteams = selectteams) as data
          group by roundid,userid");
-        
-     
+
+
         $ary = [];
         $ary2 = [];
         foreach ($teamselect_sql as $user) {
@@ -1103,23 +1103,23 @@ class league_controller
         $calculation_sql .= " group by " . $jointeamtable . ".id";
         $result = $wpdb->get_results($calculation_sql, OBJECT);
         $scoreByUserId = [];
-        foreach ($result as $row) {       
-            if ($row->scoretype == 'added' && $row->scoremultiplier == 0 ) {
+        foreach ($result as $row) {
+            if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
 
-                if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
+                if ($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != '') {
                     $temp['yourscore'] = $row->userscore;
                     $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
-                }else{
+                } else {
                     $temp['yourscore'] = $row->userscore;
-                    $scoreByUserId[$row->userid] += $row->userscore *0;
+                    $scoreByUserId[$row->userid] += $row->userscore * 0;
                 }
             } else {
                 $temp['yourscore'] = $row->userscore;
                 $scoreByUserId[$row->userid] += $row->userscore;
-            }   
-        } 
+            }
+        }
 
-        
+
         $result_sql .= " group by userid";
         $mainresult = $wpdb->get_results($result_sql);
 
@@ -1140,19 +1140,19 @@ class league_controller
             $leaderboardpoints->finalPoint = $scoreByUserId[$leaderboardpoints->userid];
         }
         // array_multisort($scoreByUserId, SORT_DESC, $mainresult);
-        array_multisort( array_column( $mainresult, 'finalPoint' ), SORT_DESC, $mainresult );
+        array_multisort(array_column($mainresult, 'finalPoint'), SORT_DESC, $mainresult);
 
 
         foreach ($mainresult as $row) {
-       
+
             $temp['no'] = "";
             $temp['leaguename'] = $row->leaguename;
             $temp['username'] = $row->username;
             $temp['score'] =  $row->finalPoint;
             $data[] = $temp;
             $id = "";
-        }    
-        
+        }
+
         $json_data = array(
             "draw" => intval($requestData['draw']),
             "recordsTotal" => intval($totalData),
@@ -1166,73 +1166,72 @@ class league_controller
     }
 
     /*********** End leaderboard  ****************************************************************************************************/
-     /*********** Start additionalpoints  ****************************************************************************************************/
+    /*********** Start additionalpoints  ****************************************************************************************************/
 
-     function additionalpointsinsert_data()
-     {
-         global $wpdb;
-         $updateId = $_POST['hapid'];   
-         $data['status'] = 0;
-         $data['msg'] = "Error Data Not insert";
- 
-         $jokerscoremultiplier = $_POST['jokerscoremultiplier'];
-         $jokerscoretype = $_POST['jokerscoretype'];
-         $predictorscoremultiplier = $_POST['predictorscoremultiplier'];
-         $predictorscoretype = $_POST['predictorscoretype'];
-         $hdnapid = $_POST['hdnapid'];
- 
-         $additionalpointstable = $wpdb->prefix . "additionalpoints";
- 
-         if ($updateId == '') {
-             $wpdb->insert($additionalpointstable, array(
-                 'jokerscoremultiplier'       => $jokerscoremultiplier,
-                 'jokerscoretype'             => $jokerscoretype,
-                 'predictorscoremultiplier'   => $predictorscoremultiplier,
-                 'predictorscoretype'         => $predictorscoretype,
-                 'leagueid'                   => $hdnapid,
+    function additionalpointsinsert_data()
+    {
+        global $wpdb;
+        $updateId = $_POST['hapid'];
+        $data['status'] = 0;
+        $data['msg'] = "Error Data Not insert";
 
-             ));
- 
-             $data['status'] = 1;
-             $data['msg'] = "Additional Points added successfully";
-         } else {
-             $wpdb->update(
-                 $additionalpointstable,
-                 array(
+        $jokerscoremultiplier = $_POST['jokerscoremultiplier'];
+        $jokerscoretype = $_POST['jokerscoretype'];
+        $predictorscoremultiplier = $_POST['predictorscoremultiplier'];
+        $predictorscoretype = $_POST['predictorscoretype'];
+        $hdnapid = $_POST['hdnapid'];
+
+        $additionalpointstable = $wpdb->prefix . "additionalpoints";
+
+        if ($updateId == '') {
+            $wpdb->insert($additionalpointstable, array(
+                'jokerscoremultiplier'       => $jokerscoremultiplier,
+                'jokerscoretype'             => $jokerscoretype,
+                'predictorscoremultiplier'   => $predictorscoremultiplier,
+                'predictorscoretype'         => $predictorscoretype,
+                'leagueid'                   => $hdnapid,
+
+            ));
+
+            $data['status'] = 1;
+            $data['msg'] = "Additional Points added successfully";
+        } else {
+            $wpdb->update(
+                $additionalpointstable,
+                array(
                     'jokerscoremultiplier'       => $jokerscoremultiplier,
                     'jokerscoretype'             => $jokerscoretype,
                     'predictorscoremultiplier'   => $predictorscoremultiplier,
                     'predictorscoretype'         => $predictorscoretype,
                     'leagueid'                   => $hdnapid,
-                 ),
-                 array('id'  => $updateId)
-             );
- 
-             $data['status'] = 1;
-             $data['msg'] = "Additional Points updated successfully";
-         }
- 
-         echo  json_encode($data);
-         exit;
-     }
- 
-     function loadadditionalpoints_Datatable()
-     {
-         global $wpdb;
-         $leagueid = $_POST['id'];
-         $additionalpointstable = $wpdb->prefix . "additionalpoints";
+                ),
+                array('id'  => $updateId)
+            );
 
-         $result_sql = $wpdb->get_results("SELECT " . $additionalpointstable . ".* 
+            $data['status'] = 1;
+            $data['msg'] = "Additional Points updated successfully";
+        }
+
+        echo  json_encode($data);
+        exit;
+    }
+
+    function loadadditionalpoints_Datatable()
+    {
+        global $wpdb;
+        $leagueid = $_POST['id'];
+        $additionalpointstable = $wpdb->prefix . "additionalpoints";
+
+        $result_sql = $wpdb->get_results("SELECT " . $additionalpointstable . ".* 
          FROM " . $additionalpointstable . " WHERE " . $additionalpointstable . ".leagueid = " . $leagueid . "  ");
-      
-         $result['status'] = 1;
-         $result['recoed'] = $result_sql[0];
-         echo json_encode($result);
-         exit();
-     } 
- 
-     /***********  additionalpoints  ****************************************************************************************************/
- 
+
+        $result['status'] = 1;
+        $result['recoed'] = $result_sql[0];
+        echo json_encode($result);
+        exit();
+    }
+
+    /***********  additionalpoints  ****************************************************************************************************/
 }
 
 $league_controller = new league_controller();

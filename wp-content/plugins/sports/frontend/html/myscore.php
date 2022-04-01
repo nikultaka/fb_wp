@@ -34,7 +34,7 @@
 </script>
        
 
-<?php }else{ $singinlink = home_url('my-account/');  ?>
+<?php }else{ $singinlink = home_url('login/');  ?>
     <h1>You Are Not Log-In,</h1>
     <h1>Log-In To View Your Score.</h1>
     <a class="btn btn-lg"  style="background-color: #24890d !important; color: white !important;" <?php echo "href='$singinlink'" ?> role="button">Log-In</a></br></br></br>

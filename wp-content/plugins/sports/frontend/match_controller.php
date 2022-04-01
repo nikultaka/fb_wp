@@ -182,7 +182,7 @@ class match_list_Controller
 							</div>
 							<div class="col-md-6">';
             if ($scoremultiplier == 0 && $scoretype == 'added') {
-                $singinlink = home_url('my-account/');
+                $singinlink = home_url('login/');
                 if (is_user_logged_in()) {
                     $match_string .= '<span class="text23">Super Scorer Round</span>
             </div>
@@ -272,7 +272,7 @@ class match_list_Controller
 
                     $match_string .= '</a>';
                 } else {
-                    $singinlink = home_url('my-account/');
+                    $singinlink = home_url('login/');
                     $match_string .= '<a  href="' . $singinlink . '" class="read-more pointer" title="Join Team" data-toggle="tooltip">SELECT</a>';
                 }
 
@@ -310,7 +310,7 @@ class match_list_Controller
                     }
                     $match_string .= '</a>';
                 } else {
-                    $singinlink = home_url('my-account/');
+                    $singinlink = home_url('login/');
                     $match_string .= '<a  href="' . $singinlink . '" class="read-more pointer" title="Join Team" data-toggle="tooltip">SELECT</a>';
                 }
 

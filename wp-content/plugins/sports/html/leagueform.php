@@ -23,6 +23,8 @@
     .dataTables_filter {
         display: none;
     }
+
+
 </style>
 
 <!-- Button trigger modal -->

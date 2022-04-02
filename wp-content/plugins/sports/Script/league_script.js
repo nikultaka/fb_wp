@@ -1460,15 +1460,13 @@ function my_score_list() {
       // { mData: "id" },
       { mData: "sport" },
       { mData: "league" },
-      { mData: "round" },
-      { mData: "team" },
       { mData: "yourscore" },
       { mData: "action" },
     ],
     order: [[0, "asc"]],
     columnDefs: [
       {
-        targets: [5],
+        targets: [2,3],
         orderable: false,
       },
     ],
@@ -1588,10 +1586,11 @@ function load_match_score_details_list(id, uid) {
     },
     aoColumns: [
       // { mData: "id" },
+      { mData: "roundname" },
       { mData: "teamname" },
       { mData: "teamscore" },
     ],
-    order: [[1, "desc"]],
+    order: [[2, "desc"]],
     columnDefs: [
       {
         searching: false,

@@ -17,8 +17,6 @@
 			<!-- <th>ID</th> -->
 			<th>Sport</th>
 			<th>League</th>
-			<th>Round</th>
-            <th>Team</th>
             <th>Points</th>
             <th>Action</th>
 		</thead>

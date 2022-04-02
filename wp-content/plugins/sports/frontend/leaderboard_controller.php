@@ -387,12 +387,14 @@ class leader_board_Controller
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
-            $result_sql .= "AND (teamname LIKE '%" . $search . "%')
+            $result_sql .= "AND (roundname LIKE '%" . $search . "%')
+                            OR (teamname LIKE '%" . $search . "%')
                             OR (userscore LIKE '%" . $search . "%')";
         }
         $columns = array(
-            0 => 'teamname',
-            1 => 'userscore',
+            0 => 'roundname',
+            1 => 'teamname',
+            2 => 'userscore',
         );
 
 
@@ -427,6 +429,8 @@ class leader_board_Controller
 
         $temp['teamscore'] = 0;
         foreach ($list_data as $row) {
+
+            $temp['roundname'] = $row->roundname;
             $temp['teamname'] = $row->teamname;
 
             if ($row->auto == '1' && is_numeric($row->userscore)) {

@@ -31,6 +31,7 @@
             <div class="modal-body">
                 <table class="table" id="loadmatchscoredetails-table">
                     <thead>
+                        <th>Round Name</th>
                         <th>Team Name</th>
                         <th>Team Score</th>
                     </thead>

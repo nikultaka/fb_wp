@@ -137,7 +137,7 @@ class my_score_Controller
         $ary2 = [];
         foreach ($result as $round) {
             $ary[$round->roundid] = $round->multipliercount;
-            $ary2[$round->userid][$round->roundid] = $round->roundid; 
+            $ary2[$round->roundid] = $round->roundid; 
         }
  
         $totalScoreResult = $wpdb->get_results($result_sql, OBJECT);
@@ -145,7 +145,7 @@ class my_score_Controller
         foreach ($totalScoreResult as $row) {
    
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0 && $row->userid == $userid) {
-                if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
+                if($row->roundid == $ary2[$row->roundid] && $ary2[$row->roundid] != ''){
                     $temp['yourscore'] = $row->userscore;
                     $toalScore += $row->userscore * $ary[$row->roundid];
                 }else{
@@ -158,30 +158,50 @@ class my_score_Controller
             }          
         }
         
-        
+
+        $calculation_sql = $result_sql;
+        $calculation_sql .= " group by " . $jointeamtable . ".id";
+        $result = $wpdb->get_results($calculation_sql, OBJECT);
+        $scoreByleagueId = [];
+        foreach ($result as $row) {
+
+            if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
+                if ($row->roundid == $ary2[$row->roundid] && $ary2[$row->roundid] != '') {
+
+                    $temp['yourscore'] = $row->userscore;
+                    
+                    if(isset($ary[$row->roundid])) {
+                        $scoreByleagueId[$row->leagueid] += $row->userscore * $ary[$row->roundid];
+                    } 
+                } else {
+                    $temp['yourscore'] = $row->userscore;
+                        $scoreByleagueId[$row->leagueid] += $row->userscore * 0;
+                }
+            } else {
+                $temp['yourscore'] = $row->userscore;
+                $scoreByleagueId[$row->leagueid] += $row->userscore;
+            }
+
+        } 
 
         if (isset($requestData['search']['value']) && $requestData['search']['value'] != '') {
             $search = $requestData['search']['value'];
             $result_sql .= "AND (a.sportname LIKE '%" . $search . "%')
                         OR (a.leaguename LIKE '%" . $search . "%')
-                        OR (a.roundname LIKE '%" . $search . "%')
-                        OR (a.teamname LIKE '%" . $search . "%')
                         OR (a.userscore LIKE '%" . $search . "%')";
         }
         $columns = array(
             0 => 'sportname',
             1 => 'leaguename',
-            2 => 'roundname',
-            3 => 'teamname',
-            4 => 'userscore',
+            2 => 'userscore',
 
         );
 
         if (isset($requestData['order'][0]['column']) && $requestData['order'][0]['column'] != '') {
             $order_by = $columns[$requestData['order'][0]['column']];
-            $result_sql .= " group by id ORDER BY " . $order_by;
+            $result_sql .= " group by leagueid ORDER BY " . $order_by;
         } else {
-            $result_sql .= " group by id ORDER BY a.id DESC";
+            $result_sql .= " group by leagueid ORDER BY id DESC";
         }
         if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
             $result_sql .= " " . $requestData['order'][0]['dir'];
@@ -206,22 +226,38 @@ class my_score_Controller
         $arr_data = array();
         $arr_data = $result;
 
-        foreach ($list_data as $row) {
+
+
+$mainresult = $wpdb->get_results($result_sql);
+
+if (!empty($mainresult)) {
+    foreach ($mainresult as  $leaderboardpoints) {
+        if (isset($scoreByleagueId[$leaderboardpoints->leagueid])) {
+            $leaderboardpoints->finalPoint = $scoreByleagueId[$leaderboardpoints->leagueid];
+        } else {
+            $leaderboardpoints->finalPoint = 0;
+        }
+    }
+}
+
+
+        foreach ($mainresult as $row) {
 
             $leaderboardlink = home_url("/load-leader-board/?id=$row->leagueid&userid=$row->userid");
             $temp['sport'] = $row->sportname;
             $temp['league'] = $row->leaguename;
-            $temp['round'] = $row->roundname;
-            $temp['team'] = $row->teamname;
-            if ($row->scoretype == 'added' && $row->scoremultiplier == 0  && $row->userid == $userid) {
-                if($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != ''){
-                    $temp['yourscore'] = $row->userscore  * $ary[$row->roundid];
-                }else{
-                    $temp['yourscore'] = $row->userscore  *0;
-                }
+            // $temp['yourscore'] = $row->leaguename;
+
+
+            if ($row->finalPoint != '') {
+                $temp['yourscore'] = $row->finalPoint;
+            } else if ($row->finalPoint === 0) {
+                $temp['yourscore'] =  0;
             } else {
-                $temp['yourscore'] = $row->userscore;
+                $temp['yourscore'] = 0;
             }
+
+
             $action = "<a class='btn btn-default ' style='background-color: #24890d; color: #fff;' href='$leaderboardlink' type='button'>Leader Board</a>";
             $temp['action'] = $action;
             $data[] = $temp;

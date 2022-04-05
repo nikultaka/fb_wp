@@ -30,9 +30,9 @@
                     <input type="hidden" id="hspfid" name="hspfid">
 
                     <div class="row">
-                        <div class="col-md-4">   
+                        <div class="col-md-5">   
                             <label for="name">
-                                <h3><b>Predict Your Score :</b></h3>
+                                <h3><b>Predict Your Teams Score:</b></h3>
                             </label>
                         </div>
                         <div class="col-md-7">

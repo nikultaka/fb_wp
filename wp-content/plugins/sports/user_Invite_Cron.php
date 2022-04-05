@@ -14,12 +14,12 @@ function send_mail_users_enddate()
     $jointeamtable = $wpdb->prefix . "jointeam";
     $teamtable = $wpdb->prefix . "team";
 
-    $attime = date("Y-m-d", strtotime('-1 day')); //current_time('Y-m-d H:i:s');
-
-    $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*, " . $teamtable . ".teamname as team1name , t.teamname as team2name FROM " . $matchtable . "
+        $attime = date("Y-m-d H:i:s", strtotime('-1 day')); //current_time('Y-m-d H:i:s');
+    
+        $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*, " . $teamtable . ".teamname as team1name , t.teamname as team2name , " . $matchtable . ".enddate - INTERVAL 4 HOUR as sendtime FROM " . $matchtable . "
         LEFT JOIN " . $teamtable . " on " . $teamtable . ".id = " . $matchtable . ".team1
         LEFT JOIN " . $teamtable . " as t on t.id = " . $matchtable . ".team2 
-        WHERE   MSTATUS = 'active' AND  date(" . $matchtable . ".enddate) <= '$attime' ORDER BY " . $matchtable . ".enddate");
+        WHERE   MSTATUS = 'active' HAVING sendtime <= '$attime' ORDER BY  " . $matchtable . ".enddate");
 
     //echo '<pre>'; print_r($user_sql); exit;
 
@@ -43,6 +43,7 @@ function send_mail_users_enddate()
             $headers =  array('Content-Type: text/html; charset=UTF-8', 'From: KICKOFF Sports <nikultaka@palladiumhub.com>', 'Reply-To: ');
             $mailData =  wp_mail($user->user_email, $subject, $message, $headers);
             //  end of send mail
+            
         }
     }
 

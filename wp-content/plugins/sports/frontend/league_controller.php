@@ -36,7 +36,7 @@ class league_list_Controller
          
         }else{
             $league_string .='<div class="card-body col-sm-4">
-            <h1 class="card-title"> No Leagues Found !</h1>
+            <h1 class="card-title"> No Competitions Found !</h1>
             </div>';
         }
        

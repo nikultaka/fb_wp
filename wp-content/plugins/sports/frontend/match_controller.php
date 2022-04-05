@@ -173,7 +173,7 @@ class match_list_Controller
 
             $match_string .= '
             <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  float : left; font-family: Oswald; "><b>Go Back</b></a></span>
-            <div class="row">
+            <div class="row"    >
             <div class="score112 kode-bg-color">
 					<span class="kode-halfbg thbg-color" style="border-radius: 0px 8px 8px 0px;"></span>
 						<center>
@@ -238,7 +238,7 @@ class match_list_Controller
                     $match_string .= '<span><a data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="load_score_predicter_model(' . $match->id . ',' . $match->teamid . ')" class="title btn" style="float:right; background-color: #ffcc00; color: #24890d; font-size: 13px; margin-top:-50px; font-family: Oswald; "><b>Predict Score</b></a></span>';
                 }
                 if ($match->roundselect == 'jokeround') {
-                    $match_string .= '<span><h3 class="title" style="float:right; color: #ffc107; margin-top:-50px; font-family: Oswald; "><b>Joker Round</b></h3></span>';
+                    $match_string .= '<span><h3 class="title" style="float:right; color: #ffc107; text-shadow: 1px 1px 0px #248911; margin-top:-50px; font-family: Oswald; "><b>Joker Round</b></h3></span>';
                 }
                 $match_string .= '<div class="col-md-6">
                                           <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1name . '</b></h3></span>';

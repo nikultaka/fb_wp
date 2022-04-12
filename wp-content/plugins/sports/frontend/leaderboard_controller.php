@@ -402,8 +402,9 @@ class leader_board_Controller
             $order_by = $columns[$requestData['order'][0]['column']];
             $result_sql .= " ORDER BY " . $order_by;
         } else {
-            $result_sql .= "ORDER BY id DESC";
+            $result_sql .= "ORDER BY " . $jointeamtable . ".roundid DESC";
         }
+        
         if (isset($requestData['order'][0]['dir']) && $requestData['order'][0]['dir'] != '') {
             $result_sql .= " " . $requestData['order'][0]['dir'];
         } else {

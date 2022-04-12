@@ -172,12 +172,12 @@ class match_list_Controller
 
 
             $match_string .= '
-            <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  float : left; font-family: Oswald; "><b>Go Back</b></a></span>
-            <div class="row"    >
+            <div class="maindiv123" ><span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  float : left; font-family: Oswald; "><b>Go Back</b></a></span>
+            <div class="row">
             <div class="score112 kode-bg-color">
 					<span class="kode-halfbg thbg-color" style="border-radius: 0px 8px 8px 0px;"></span>
 						<center>
-							<div class="col-md-6">
+							<div class="col-md-6 text24">
                             <span class="text23">Score Type : ' . $type . '</span>
 							</div>
 							<div class="col-md-6">';
@@ -189,7 +189,7 @@ class match_list_Controller
 						</center>				
 				</div>
                 </div>
-                <span><a onclick="load_select_team_model(' . $round . ')" class="title btn" style="float: right; background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -49px; margin-left: 124px;  float : left;  font-family: Oswald; "><b>Select Team</b></a></span><br><br><br>';
+                <span><a onclick="load_select_team_model(' . $round . ')" class="title buttonselect btn" style="float: right; background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -49px; margin-left: 124px;  float : left;  font-family: Oswald; "><b>Select Team</b></a></span><br><br><br>';
                 } else {
                     $match_string .= '<span class="text23">Super Scorer Round</span>
                 </div>
@@ -197,7 +197,7 @@ class match_list_Controller
                     </div>
                     </div>
                     
-                    <span><a href="' . $singinlink . '" class="title btn" style="float: right; background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -49px; margin-left: 124px;  float : left; font-family: Oswald; "><b>Login To SeLect Team</b></a></span><br><br><br>';
+                    <span><a href="' . $singinlink . '" class="title buttonselect2 btn" style="float: right; background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -49px; margin-left: 124px;  float : left; font-family: Oswald; "><b>Login To SeLect Team</b></a></span><br><br><br>';
                 }
             } else {
                 $match_string .= '<span class="text23">Score Multiplier : ' . $scoremultiplier . '</span>
@@ -208,15 +208,17 @@ class match_list_Controller
             }
 
             $match_string .= '
-<div class="score113 kode-bg-color">
+        <div class="score113 kode-bg-color">
         <center>
 
-        <span class="kode-subtitle col-sm-4" style="border-radius: 15px 0px 0px 15px; background-color: #195d10; padding: 3px !important;"><span class="text113">sport</span><h3 class="text114">'. $sportname .'</h3></span>
-        <span class="kode-subtitle col-sm-4" style="background-color: #003e00; padding: 3px !important;"><span class="text113">League</span><h3 class="text114">'. $leaguename .'</h3></span>
-        <span class="kode-subtitle col-sm-4" style="border-radius: 0px 15px 15px 0px; background-color: #0a2506; padding: 3px !important;"><span class="text113">Round</span><h3 class="text114">'. $roundname .'</h3></span>
+        <span class="kode-subtitle infotab col-sm-4" style="border-radius: 15px 0px 0px 15px; background-color: #195d10; padding: 3px !important;"><span class="text113">sport</span><h3 class="text114">' . $sportname . '</h3></span>
+        <span class="kode-subtitle infotab infotab2  col-sm-4" style="background-color: #003e00; padding: 3px !important;"><span class="text113">League</span><h3 class="text114">' . $leaguename . '</h3></span>
+        <span class="kode-subtitle infotab col-sm-4" style="border-radius: 0px 15px 15px 0px; background-color: #0a2506; padding: 3px !important;"><span class="text113">Round</span><h3 class="text114">' . $roundname . '</h3></span>
 
         </center>				
-</div><br><br><br>';
+        </div>
+        </div>
+        <br><br><br>';
 
 
 
@@ -228,17 +230,17 @@ class match_list_Controller
                 // if ($userid == $match->datauserid || $match->datauserid == '') {
                 $match_string .= ' 
                                
-                <div class="col-md-4 col-sm-4 col-xsx-4" style="padding-right: 5px;  padding-left: 5px;">
+                <div class="col-md-4 col-sm-4 col-xsx-4 servicediv1" style="padding-right: 5px;  padding-left: 5px;">
                                         <div class="serviceBox">
                                           <div class="service-icon">
                                             <span><i class="fa fa-trophy"></i></span>
                                           </div>
                                         <div class="row service-content">';
                 if ($match->roundselect == 'scorePredictorround') {
-                    $match_string .= '<span><a data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="load_score_predicter_model(' . $match->id . ',' . $match->teamid . ')" class="title btn" style="float:right; background-color: #ffcc00; color: #24890d; font-size: 13px; margin-top:-50px; font-family: Oswald; "><b>Predict Score</b></a></span>';
+                    $match_string .= '<span><a data-date="' . $match->enddate . '" id="match-' . $match->id . '" onclick="load_score_predicter_model(' . $match->id . ',' . $match->teamid . ')" class="title12 title  btn" style="float:right; background-color: #ffcc00; color: #24890d; font-size: 13px; margin-top:-50px; font-family: Oswald; "><b>Predict Score</b></a></span>';
                 }
                 if ($match->roundselect == 'jokeround') {
-                    $match_string .= '<span><h3 class="title" style="float:right; color: #ffc107; text-shadow: 1px 1px 0px #248911; margin-top:-50px; font-family: Oswald; "><b>Joker Round</b></h3></span>';
+                    $match_string .= '<span><h3 class="title123 title" style="float:right; color: #ffc107; text-shadow: 1px 1px 0px #248911; margin-top:-50px; font-family: Oswald; "><b>Joker Round</b></h3></span>';
                 }
                 $match_string .= '<div class="col-md-6">
                                           <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1name . '</b></h3></span>';
@@ -277,7 +279,7 @@ class match_list_Controller
                 }
 
                 $match_string .= '</div>
-                                  <div class="col-md-6">
+                                  <div class="col-md-6 team2scl">
                                   <span><span class="text2">Team 2</span><h3 class="title"><b>' . $match->team2name . '</b></h3></span>';
                 if (is_user_logged_in()) {
                     $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t2id . '_' . $match->id . ' teamname_' . $teamname2 . '" data-teamname2="' . $match->team2 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" data-scoretype="' . $match->scoretype . '" onclick="join_team(' . $match->t2id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $match->scoremultiplier . ',' . $userid . ',' . $teamname2 . ')">';
@@ -321,6 +323,7 @@ class match_list_Controller
                                       </div>';
                 // }
             }
+            $match_string .= '</br></br></br></br>';
         } else {
             $match_string .= '
             <span><a  onclick="history.back()" class="title btn" style="background-color: #ffcc00; color: #24890d; font-size: 25px; margin-top: -4%;  float : left; font-family: Oswald; "><b>Go Back</b></a></span></br></br>
@@ -686,12 +689,12 @@ class match_list_Controller
 
         foreach ($mainresult as $match) {
             //   send mail
-            $subject = "Earn Points Now";
-            $message = '<p>';
-            $message .= 'Dear <b>' . $match->username . ',</b>';
-            $message .= '<h3>You Select <h3><b><h2>' . $match->teamname . '</h2></b> In <b><h2>' . $match->roundname . '</h2></b>';
-            $message .= '<h3>Your Score In This Round Is <b><h2>' . $scoreByUserId[$match->userid] . '</h2></b>';
-            $message .= 'Thanks From <i>Kick Off</i>';
+            $subject = '<h1>Scores Are In…</h1>';
+            $message = '<h2>Hi <b>' . $match->username . ',</b></h2>';
+            $message .= '<h3>The scores are in for this week’s round of the Ups & Downs Tipping competition.</h3>';
+            $message .= '<h2>To check your score, visit  https://tiptopia.com.au/ or <a href="https://tiptopia.com.au/">Click Here</a>.</h2>';
+            $message .= '<h2>Regards.</h2>';
+            $message .= '<h3>The Tip Topia Team</h3>';
             $message .= '</p>';
             $headers =  array('Content-Type: text/html; charset=UTF-8', 'From: KICKOFF Sports <nikultaka@palladiumhub.com>', 'Reply-To: ');
 

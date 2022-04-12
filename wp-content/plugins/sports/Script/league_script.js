@@ -1439,8 +1439,10 @@ start of My Score
  **************************/
 
 function my_score_list() {
+
   $("#myscoredata-table").dataTable({
     paging: true,
+    responsive: true,
     pageLength: 10,
     bProcessing: true,
     serverSide: true,
@@ -1570,6 +1572,7 @@ function load_match_score_details_list(id, uid) {
   $("#matchscoredetailsmodal").modal("show");
   $("#loadmatchscoredetails-table").dataTable({
     paging: true,
+    responsive: true,
     pageLength: 10,
     bProcessing: true,
     serverSide: true,
@@ -1590,7 +1593,7 @@ function load_match_score_details_list(id, uid) {
       { mData: "teamname" },
       { mData: "teamscore" },
     ],
-    order: [[2, "desc"]],
+    order: [[0, "ASC"]],
     columnDefs: [
       {
         searching: false,

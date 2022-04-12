@@ -28,22 +28,18 @@ function send_mail_users_enddate()
         foreach ($user_sql as $user) {
             //   send mail
         
-            $subject = "Earn Points Now";
-            $email = 'nikultaka@palladiumhub.com';
-            $message = '<p>';
-            $message .= 'Dear <b>' . $user->display_name . ',</b>';
-            $message .= '<h3>Match Between Big Teams Starts Soon at <h3></b><h2>' . $match->enddate . '</h2></b> ';
-            $message .= '<br>';
-            $message .= '<b><h1>' . $match->team1name . '</h1><h3> VS </h3><h1>' . $match->team2name . '</b></h1>';
-            $message .= '<br>';
-            $message .= '<h4>Select Your Favourite Team & Earn Points Now,</h4>';
-            $message .= 'Thanks From <i>Kick Off</i>';
-            $message .= '</p>';
-
+            $subject = '<h1>There’s Still Time…</h1>';
+            $message = '<h2>Hi<b>' . $user->display_name . ',</b></h2>';
+            $message .= '<h3>Just in case you haven’t placed your selection for this week’s round of the Ups & Downs Tipping competition, there’s still time.</h3>';
+            $message .= '<h2>To make your selection visit  https://tiptopia.com.au/ or <a href="https://tiptopia.com.au/">Click Here</a>.</h2>';
+            $message .= '<h3>Good Luck.</h3>';
+            $message .= '<h3>The Tip Topia Team</h3>';
+            $message .= '<p>';
             $headers =  array('Content-Type: text/html; charset=UTF-8', 'From: KICKOFF Sports <nikultaka@palladiumhub.com>', 'Reply-To: ');
+            
             $mailData =  wp_mail($user->user_email, $subject, $message, $headers);
             //  end of send mail
-            
+
         }
     }
 

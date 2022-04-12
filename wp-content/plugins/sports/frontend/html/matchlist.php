@@ -88,6 +88,7 @@
 		font-size: 16px;
 		font-weight: 500;
 		color: #fff;
+		height: auto;
 		text-transform: uppercase;
 		margin: 0 0 25px 0;
 		position: relative;
@@ -252,54 +253,275 @@
 		background: url('../wp-content/plugins/sports/images/6.gif')50% 50% no-repeat rgb(255 255 255 / 65%);
 	}
 
-	@media only screen and (min-width: 600px) {
-  /* For tablets: */
-  .col-s-1 {width: 8.33%;}
-  .col-s-2 {width: 16.66%;}
-  .col-s-3 {width: 25%;}
-  .col-s-4 {width: 33.33%;}
-  .col-s-5 {width: 41.66%;}
-  .col-s-6 {width: 50%;}
-  .col-s-7 {width: 58.33%;}
-  .col-s-8 {width: 66.66%;}
-  .col-s-9 {width: 75%;}
-  .col-s-10 {width: 83.33%;}
-  .col-s-11 {width: 91.66%;}
-  .col-s-12 {width: 100%;}
-}
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
-}
+	@media only screen and (max-width: 1200px) {
 
+		.row {
+			margin-right: 15px !important;
+			margin-left: 15px !important;
+		}
+
+		.score112 {
+			width: 40% !important;
+			height: 25px;
+		}
+
+		.text24 {
+			float: left !important;
+		}
+
+		.text23 {
+			font-size: 15px !important;
+		}
+
+		.score113 {
+			width: 100% !important;
+			margin-right: 0px !important;
+			height: auto;
+		}
+
+		.text113 {
+			font-size: 12px !important;
+		}
+
+		.text114 {
+			font-size: 15px !important;
+		}
+
+		.serviceBox .service-content {
+			padding-top: 30px !important;
+			padding: 40px 10px;
+		}
+
+		.matchlistdata span .title {
+			font-size: 15px !important;
+		}
+
+		.buttonselect {
+			margin-top: -44px !important;
+			margin-left: 90px !important;
+		}
+
+
+		.buttonselect2 {
+			margin-top: -36px !important;
+			margin-left: 88px !important;
+		}
+
+	}
+
+	@media only screen and (max-width: 990px) {
+
+		.team2scl {
+			margin-top: 50px !important;
+		}
+
+		.serviceBox .read-more {
+			width: 80% !important;
+			font-size: 12px;
+			border-radius: 5% !important;
+		}
+
+		.serviceBox .title {
+			font-size: 15px;
+			height: auto;
+		}
+
+		.matchlistdata span .title123 {
+			font-size: 13px !important;
+		}
+
+		.matchlistdata span .title12 {
+			font-size: 6px !important;
+		}
+
+		.buttonselect {
+			margin-top: -35px !important;
+		}
+
+		.selecteammodal {
+			width: 770px !important;
+		}
+
+	}
+
+	@media only screen and (max-width: 775px) {
+
+		.score112 {
+			width: 50% !important;
+			height: 25px;
+		}
+
+		.score113 {
+			background-color: #fff !important;
+			margin-right: 0px !important;
+		}
+
+		.infotab {
+			width: 30% !important;
+			height: auto;
+		}
+
+		.matchlistdata span .title123 {
+			font-size: 11px !important;
+		}
+
+		.matchlistdata span .title12 {
+			font-size: 6px !important;
+		}
+
+		.selecteammodal {
+			width: 550px !important;
+		}
+
+	}
+
+	@media only screen and (max-width: 485px) {
+		.infotab2 {
+			/* top: 22px; */
+		}
+
+		.score113 {
+			margin-top: -45px;
+			margin-right: 0px !important;
+
+		}
+	}
+
+
+	@media only screen and (max-width: 600px) {
+
+		.serviceBox .service-content {
+			padding-top: 40px !important;
+		}
+
+		.selecteammodal {
+			width: auto;
+		}
+
+		.maindiv123 {
+			margin-top: -49px !important;
+		}
+
+		.row {
+			margin-right: 15px !important;
+			margin-left: 15px !important;
+		}
+
+		.score112 {
+			width: 100% !important;
+			height: auto;
+			margin-top: 15px;
+		}
+
+		.score113 {
+			margin-top: -50px;
+			margin-right: 0px !important;
+		}
+
+		.infotab {
+			width: 90% !important;
+			height: auto;
+			border-radius: 15px 15px 15px 15px !important;
+			margin: 5px;
+
+		}
+
+		.buttonselect {
+			margin-top: -72px !important;
+		}
+
+		.buttonselect2 {
+			margin-top: -72px !important;
+			margin-left: 88px !important;
+		}
+
+		.text24 {
+			float: left !important;
+			height: auto;
+		}
+
+		.text23 {
+			font-size: 15px !important;
+			/* margin-left: -5px; */
+		}
+
+		.text113 {
+			font-size: 12px !important;
+		}
+
+		.text114 {
+			font-size: 15px !important;
+		}
+
+		.team2scl {
+			margin-top: 50px !important;
+		}
+
+		.serviceBox .read-more {
+			width: 80% !important;
+			font-size: 12px;
+			border-radius: 5% !important;
+		}
+
+		.matchlistdata span .title123 {
+			font-size: 11px !important;
+		}
+
+		.matchlistdata span .title12 {
+			font-size: 6px !important;
+		}
+
+
+		.serviceBox .title {
+			font-size: 15px;
+			height: auto;
+		}
+
+		.serviceBox {
+			padding-top: 0px !important;
+			padding: 0px 10px;
+			top: 100px;
+		}
+
+		.selecteammodal {
+			width: auto !important;
+		}
+
+
+	}
+
+	@media only screen and (max-width: 370px) {
+
+		.block2 {
+			width: auto !important;
+		}
+
+	}
+
+	@media only screen and (max-width: 335px) {
+		.text23 {
+			font-size: 13px !important;
+		}
+	}
 </style>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- <button type="button" class="btn btn-warning" onclick="send_mail_users_for_enddate()" >Send Mail</button> -->
 </br>
 
 <div id="loaderball" class="loaderball" style="display: none;"></div>
 
 <div class="row d-grid gap-3">
-	<div id="matchlistdata">
+	<div id="matchlistdata" class="matchlistdata">
 	</div></br></br>
 </div>
 
 
 
 <div class="modal fade" tabindex="-1" role="dialog" data-backdrop="false" id="selecteammodal" aria-labelledby="selecteammodallabel" aria-hidden="true">
-	<div class="modal-dialog" role="document" style="width: 1000px;">
+	<div class="modal-dialog selecteammodal" role="document" style="width: 1000px;">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" style="font-size: 25px;" id="selecteammodallabel">Select Winning Team In Each Game</h5>

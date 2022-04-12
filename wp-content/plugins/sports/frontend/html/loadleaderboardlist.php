@@ -9,7 +9,7 @@
     }
 </style>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5" style="overflow: auto;">
     <table class="table" id="loadleaderboardlistdata-table">
         <thead>
             <th>No</th>

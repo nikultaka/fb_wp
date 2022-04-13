@@ -10,7 +10,7 @@
 </style>
 
 <div class="container-fluid mt-5" style="overflow: auto;">
-    <table class="table" id="loadleaderboardlistdata-table">
+    <table class="table" id="loadleaderboardlistdata-table" style="width: 1092px !important;">
         <thead>
             <th>No</th>
             <th>League Name</th>
@@ -29,7 +29,7 @@
                 <h3 class="modal-title" id="matchscoredetailslabel">Score Details</h3>
             </div>
             <div class="modal-body">
-                <table class="table" id="loadmatchscoredetails-table">
+                <table class="table" id="loadmatchscoredetails-table" >
                     <thead>
                         <th>Round Name</th>
                         <th>Team Name</th>

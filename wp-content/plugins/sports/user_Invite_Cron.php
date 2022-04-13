@@ -34,6 +34,7 @@ function send_mail_users_enddate()
             $message .= '<h2>To make your selection visit  https://tiptopia.com.au/ or <a href="https://tiptopia.com.au/">Click Here</a>.</h2>';
             $message .= '<h3>Good Luck.</h3>';
             $message .= '<h3>The Tip Topia Team</h3>';
+            $message .= '<p><img style="width:200px;" alt="" src="https://tiptopia.com.au/wp-content/uploads/2022/04/Screen-Shot-2022-04-01-at-4.20.43-pm.png">';
             $message .= '<p>';
             $headers =  array('Content-Type: text/html; charset=UTF-8', 'From: KICKOFF Sports <nikultaka@palladiumhub.com>', 'Reply-To: ');
             

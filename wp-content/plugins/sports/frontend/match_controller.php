@@ -689,12 +689,13 @@ class match_list_Controller
 
         foreach ($mainresult as $match) {
             //   send mail
-            $subject = '<h1>Scores Are In…</h1>';
-            $message = '<h2>Hi <b>' . $match->username . ',</b></h2>';
-            $message .= '<h3>The scores are in for this week’s round of the Ups & Downs Tipping competition.</h3>';
-            $message .= '<h2>To check your score, visit  https://tiptopia.com.au/ or <a href="https://tiptopia.com.au/">Click Here</a>.</h2>';
+            $subject = 'Scores Are In…  ';
+            $message = '<h1>Hi <b>' . $match->username . ',</b></h1>';
+            $message .= '<h2>The scores are in for this week’s round of the Ups & Downs Tipping competition,</h2>';
+            $message .= '<h2>To check your score, visit  https://tiptopia.com.au/ or <a href="https://tiptopia.com.au/">Click Here</a>,</h2>';
             $message .= '<h2>Regards.</h2>';
-            $message .= '<h3>The Tip Topia Team</h3>';
+            $message .= '<h2>The Tip Topia Team</h2>';
+            $message .= '<p><img style="width:200px;" alt="" src="https://tiptopia.com.au/wp-content/uploads/2022/04/Screen-Shot-2022-04-01-at-4.20.43-pm.png">';
             $message .= '</p>';
             $headers =  array('Content-Type: text/html; charset=UTF-8', 'From: KICKOFF Sports <nikultaka@palladiumhub.com>', 'Reply-To: ');
 

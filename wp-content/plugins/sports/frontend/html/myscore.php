@@ -26,7 +26,7 @@
 <?php if (is_user_logged_in()) { ?>
     <div class="container-fluid mt-5" style="overflow: auto;">
         <h2>Total Points : <span id="totalScore"></span></h2>
-        <table class="table" id="myscoredata-table">
+        <table class="table" id="myscoredata-table" style="width: 1092px !important;">
             <thead>
                 <!-- <th>ID</th> -->
                 <th>Sport</th>

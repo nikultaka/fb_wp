@@ -45,6 +45,7 @@ class match_list_Controller
         WHERE " . $matchtable . ".round = " . $matchId . "  and MSTATUS = 'active' group by id  ");
         $match_string  = '';
 
+
         $roundselect_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*,
         CASE
         WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
@@ -53,7 +54,6 @@ class match_list_Controller
         END AS teamname
         FROM " . $jointeamtable . "
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid WHERE " . $jointeamtable . ".userid = $userid ");
-
 
 
 

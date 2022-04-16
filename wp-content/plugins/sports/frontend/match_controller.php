@@ -26,11 +26,12 @@ class match_list_Controller
         $roundtable = $wpdb->prefix . "round";
         $jointeamtable = $wpdb->prefix . "jointeam";
         $selectteamtable = $wpdb->prefix . "selectteam";
-
         $userid = get_current_user_id();
 
         $all_sql = $wpdb->get_results("SELECT leagueid FROM $matchtable WHERE round = '$matchId'");
         $leagueId = $all_sql[0]->leagueid;
+
+        $teamsel = $this->check_team_join($leagueId);
 
         $result_sql = $wpdb->get_results("SELECT " . $matchtable . ".*," . $roundtable . ".rname as roundname," . $leaguetable . ".name as leaguename ," . $jointeamtable . ".roundselect as roundselect,           
         " . $sportstable . ".name as sportname,  " . $teamtable . ".teamname as team1name , t.teamname as team2name,
@@ -57,8 +58,6 @@ class match_list_Controller
         FROM " . $jointeamtable . "
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid WHERE " . $jointeamtable . ".userid = $userid ");
 
-
-
         $teamname_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*,
         CASE
         WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
@@ -68,23 +67,7 @@ class match_list_Controller
         FROM " . $jointeamtable . "
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid WHERE " . $jointeamtable . ".userid = $userid AND " . $matchtable . ".round != $matchId ");
 
-        $allteam = array();
-        foreach ($teamname_sql as $row) {
-            array_push($allteam, $row->teamname);
-        }
-        $allteam = array_map('strtolower', $allteam);
-
         $teamname_by_round_sql = $wpdb->get_results("SELECT * FROM " . $matchtable . " WHERE " . $matchtable . ".round = $matchId ");
-        $allteam_by_array = array();
-        foreach ($teamname_by_round_sql as $row) {
-            array_push($allteam_by_array, $row->team1);
-            array_push($allteam_by_array, $row->team2);
-        }
-        $allteam_by_array = array_map('strtolower', $allteam_by_array);
-
-        // echo '<pre>';
-        // print_r($allteam_by_array);
-        // die;
 
         $teamname2_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".*,
         CASE
@@ -94,27 +77,6 @@ class match_list_Controller
         END AS teamname
         FROM " . $jointeamtable . "
         LEFT JOIN " . $matchtable . " on " . $matchtable . ".id = " . $jointeamtable . ".matchid WHERE " . $jointeamtable . ".userid = $userid AND " . $matchtable . ".round != $matchId AND " . $jointeamtable . ".leagueid = $leagueId");
-        
-        $allteambyleague = array();
-        foreach ($teamname2_sql as $row) {
-            array_push($allteambyleague, $row->teamname);
-        }
-        $allteambyleague = array_map('strtolower', $allteambyleague);
-
-        $count_val = [];
-        foreach($allteambyleague as $val){
-          $count_val[$val]++;
-        }
-
-        $selectedteam1 = [];
-        foreach ($count_val as $key => $value) {
-          if($value%2==1){
-            array_push($selectedteam1, $key);
-          }    
-        }
-
-        $unique = array_unique($allteambyleague);
-        $duplicates = array_diff_assoc($allteambyleague, $unique);
 
         $team_sql = $wpdb->get_results("SELECT " . $jointeamtable . ".leagueid, " . $jointeamtable . ".roundid,   CASE
         WHEN " . $jointeamtable . ".teamid = 0 THEN " . $matchtable . ".team2
@@ -139,6 +101,92 @@ class match_list_Controller
         LEFT JOIN " . $selectteamtable . " on " . $selectteamtable . ".matchid = " . $matchtable . ".id and " . $selectteamtable . ".userid = " . $userid . "
         LEFT JOIN " . $sportstable . " on " . $sportstable . ".id = " . $leaguetable . ".sports 
         WHERE " . $matchtable . ".round = " . $matchId . "  and MSTATUS = 'active' group by id ");
+
+        //**** TEAM SELECT CHECK ****//
+
+        $totalTeam = $wpdb->get_results("select * from " . $wpdb->prefix . "match where leagueid = " . $leagueId . "");
+        $uniqueTeam = array();
+        if (!empty($totalTeam)) {
+            foreach ($totalTeam as $key => $value) {
+                if (!in_array($value->team1, $uniqueTeam)) {
+                    $uniqueTeam[] = $value->team1;
+                }
+                if (!in_array($value->team2, $uniqueTeam)) {
+                    $uniqueTeam[] = $value->team2;
+                }
+            }
+        }
+
+        $joinedTeam = $wpdb->get_results("select * from " . $wpdb->prefix . "jointeam where leagueid = " . $leagueId . " AND " . $jointeamtable . ".userid = $userid order by id ASC");
+        $joinedTeamID = array();
+        $numberOfRoundComplete = 0;
+        if (!empty($joinedTeam)) {
+            foreach ($joinedTeam as $key => $value) {
+                if (!in_array($value->teamnameid, $joinedTeamID)) {
+                    $joinedTeamID[] = $value->teamnameid;
+                }
+                $teamDiff = array_diff($uniqueTeam, $joinedTeamID);
+                if (!empty($teamDiff)) {
+                } else {
+                    $joinedTeamID = array();
+                    $numberOfRoundComplete += 1;
+                }
+            }
+        }
+        $notJoinedTeam = array_diff($uniqueTeam, $joinedTeamID);
+        $joinedTeam = $joinedTeamID;
+
+        $currentLeagueData = $wpdb->get_results("select * from " . $wpdb->prefix . "jointeam where leagueid = " . $leagueId . "  AND " . $jointeamtable . ".userid = $userid order by id ASC");
+        $currentLeagueTeamID = array();
+        $selectedTeam = array();
+        if (!empty($currentLeagueData)) {
+            foreach ($currentLeagueData as $key => $value) {
+                if (!in_array($value->roundid, $currentLeagueTeamID)) {
+                    $currentLeagueTeamID[] = $value->roundid;
+                    $totalselectedTeam = $wpdb->get_results("select * from " . $wpdb->prefix . "match where round = " . $value->roundid . "");                    
+                    if (!empty($totalselectedTeam)) {
+                        foreach ($totalselectedTeam as $key => $value) {
+                            if (!in_array($value->team1, $selectedTeam)) {
+                                $selectedTeam[] = $value->team1;
+                            }
+                            if (!in_array($value->team2, $selectedTeam)) {
+                                $selectedTeam[] = $value->team2;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        $allteambyleague = array();
+        if (!empty($teamname2_sql)) {
+            foreach ($teamname2_sql as $row) {
+                array_push($allteambyleague, $row->teamname);
+            }
+            $allteambyleague = array_map('strtolower', $allteambyleague);
+        }
+
+        $allteam_by_array = array();
+        if (!empty($teamname_by_round_sql)) {
+            foreach ($teamname_by_round_sql as $row) {
+                array_push($allteam_by_array, $row->team1);
+                array_push($allteam_by_array, $row->team2);
+            }
+            $allteam_by_array = array_map('strtolower', $allteam_by_array);
+        }
+
+        $allteam = array();
+        if (!empty($teamname_sql)) {
+            foreach ($teamname_sql as $row) {
+                array_push($allteam, $row->teamname);
+            }
+            $allteam = array_map('strtolower', $allteam);
+        }
+        //**** /TEAM SELECT CHECK ****//
+        //**** TEAM SELECT MODEL STRING ****//
+
 
         $scoremultiplier = $result2_sql[0]->scoremultiplier;
         $scoretype = $result2_sql[0]->scoretype;
@@ -196,9 +244,8 @@ class match_list_Controller
             // $teamselect_string .= ''; 
         }
 
-
-        ///////////////////////////////////////////////////////
-
+        //**** /TEAM SELECT MODEL STRING ****//
+        //**** MATCH STRING ****//
 
         $validate_sql = $wpdb->get_results("SELECT * FROM $roundtable WHERE " . $roundtable . ".scoremultiplier ='1' and " . $roundtable . ".scoretype = 'added'");
         if (count($result_sql) > 0) {
@@ -254,8 +301,6 @@ class match_list_Controller
         </div>
         <br><br><br>';
 
-
-
             foreach ($result_sql as $match) {
 
                 $teamname1 = strtolower($match->team1);
@@ -279,56 +324,54 @@ class match_list_Controller
                 $match_string .= '<div class="col-md-6">
                                           <span><span class="text2">Team 1</span><h3 class="title"><b>' . $match->team1name . '</b></h3></span>';
                 if (is_user_logged_in()) {
-                    
 
                     $containsAllValues = !array_diff($allteam_by_array, $allteam);
                     if ($containsAllValues == 1 && $containsAllValues != '') {
 
-                        $containsAllValues2 = !array_diff($allteam_by_array, $duplicates);
-                        $lableString = '';
-                        $previousSelectedType = 0;
-                        if($containsAllValues2 == 1 && $containsAllValues2 != ''){
+                        if ($match->teamid != '' && $match->teamid == 1) {
+                            $lableString = 'SELECTED';
+                        } else {
 
-                            if ($match->teamid != '' && $match->teamid == 1) {
-                                $lableString= 'SELECTED';
-                            } else {
-                                if (in_array($teamname1, $selectedteam1)){
+                            if(in_array($round, $currentLeagueTeamID)){
+                                if(in_array($teamname1, $notJoinedTeam) /* && */ ){ ///* nikul bhai *////
+                                    $lableString = 'SELECT';
+                                    $previousSelectedType = 0;
+                                }else if (in_array($teamname1, $selectedTeam)) {
+                                    $lableString = 'PREVIOUSLY SELECTED';
                                     $previousSelectedType = 1;
-                                    $lableString= 'PREVIOUSLY SELECTED';
-                                }else{
-                                    $lableString= 'SELECT';
+                                }else {
+                                    $lableString = 'SELECT';
+                                    $previousSelectedType = 0;
+                                }
+
+                            }else{
+                                if (in_array($teamname1, $joinedTeam)) {
+                                    $lableString = 'PREVIOUSLY SELECTED';
+                                    $previousSelectedType = 1;
+                                }else {
+                                    $lableString = 'SELECT';
+                                    $previousSelectedType = 0;
                                 }
                             }
-                        }else{
 
-                            if ($match->teamid != '' && $match->teamid == 1) {
-                                $lableString= 'SELECTED';
-                            } else {
-                                if (in_array($teamname1, $selectedteam1)){
-                                    $lableString= 'SELECT';
-                                }else{
-                                    $previousSelectedType = 1;
-                                    $lableString= 'PREVIOUSLY SELECTED';
-                                }
-                            }
                         }
+
                         // $match_string .= 'SELECT';
                     } else {
 
                         if (in_array($teamname1, $allteam)) {
                             $previousSelectedType = 1;
-                            $lableString= 'PREVIOUSLY SELECTED';
+                            $lableString = 'PREVIOUSLY SELECTED';
                         } else {
                             if ($match->teamid != '' && $match->teamid == 1) {
-                                $lableString= 'SELECTED';
+                                $lableString = 'SELECTED';
                             } else {
-                                $lableString= 'SELECT';
+                                $lableString = 'SELECT';
                             }
                         }
                     }
-
-                    $onClickString = 'onclick="join_team(' . $match->t1id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $match->scoremultiplier . ',' . $userid . ',' . $teamname1 . ', '.$previousSelectedType.')"'; 
-                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t1id . '_' . $match->id . ' teamname_' . $teamname1 . '"  data-teamname1="' . $match->team1 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" data-scoretype="' . $match->scoretype . '" '.$onClickString.' >'.$lableString;
+                    $onClickString = 'onclick="join_team(' . $match->t1id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $match->scoremultiplier . ',' . $userid . ',' . $teamname1 . ', ' . $previousSelectedType . ')"';
+                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t1id . '_' . $match->id . ' teamname_' . $teamname1 . '"  data-teamname1="' . $match->team1 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" data-scoretype="' . $match->scoretype . '" ' . $onClickString . ' >' . $lableString;
                     $match_string .= '</a>';
                 } else {
                     $singinlink = home_url('login/');
@@ -339,53 +382,57 @@ class match_list_Controller
                                   <div class="col-md-6 team2scl">
                                   <span><span class="text2">Team 2</span><h3 class="title"><b>' . $match->team2name . '</b></h3></span>';
                 if (is_user_logged_in()) {
-                    $onClickString = 'onclick="join_team(' . $match->t2id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $match->scoremultiplier . ',' . $userid . ',' . $teamname2 . ', '.$previousSelectedType.')"'; 
-                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t2id . '_' . $match->id . ' teamname_' . $teamname2 . '" data-teamname2="' . $match->team2 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" data-scoretype="' . $match->scoretype . '" '.$onClickString.'>'.$lableString;
 
+                    $lableString2 = '';
                     $containsAllValues = !array_diff($allteam_by_array, $allteam);
                     if ($containsAllValues == 1 && $containsAllValues != '') {
 
-                        $containsAllValues2 = !array_diff($allteam_by_array, $duplicates);
-                        if($containsAllValues2 == 1 && $containsAllValues2 != ''){
+                        if ($match->teamid != '' && $match->teamid == 0) {
+                            $lableString2 = 'SELECTED';
+                        } else {
 
-                            if ($match->teamid != '' && $match->teamid == 0) {
-                                $lableString= 'SELECTED';
-                            } else {
-                                if (in_array($teamname2, $selectedteam1)){
-                                    $lableString= 'PREVIOUSLY SELECTED';
-                                }else{
-                                    $lableString= 'SELECT';
+                            if(in_array($round, $currentLeagueTeamID)){
+
+                                if(in_array($teamname2, $notJoinedTeam) /* && */ ){ ///* nikul bhai *////
+                                    $lableString2 = 'SELECT';
+                                    $previousSelectedType2 = 0;
+                                }else if (in_array($teamname2, $selectedTeam)) {
+                                    $lableString2 = 'PREVIOUSLY SELECTED';
+                                    $previousSelectedType2 = 1;
+                                }else {
+                                    $lableString2 = 'SELECT';
+                                    $previousSelectedType2 = 0;
                                 }
-                            }
-                        }else{
 
-                            if ($match->teamid != '' && $match->teamid == 0) {
-                                $lableString= 'SELECTED';
-                            } else {
-                                if (in_array($teamname2, $selectedteam1)){
-                                    $lableString= 'SELECT';
+                            }else{
+                                if (in_array($teamname2, $joinedTeam)) {
+                                    $lableString2 = 'PREVIOUSLY SELECTED';
+                                    $previousSelectedType2 = 1;
                                 }else{
-                                    $lableString= 'PREVIOUSLY SELECTED';
+                                    $lableString2 = 'SELECT';
+                                    $previousSelectedType2 = 0;
                                 }
                             }
                         }
 
-
-                        // $lableString= 'SELECT';
+                        // $lableString2= 'SELECT';
                     } else {
 
                         if (in_array($teamname2, $allteam)) {
-                            $lableString= 'PREVIOUSLY SELECTED';
+                            $lableString2 = 'PREVIOUSLY SELECTED';
+                            $previousSelectedType2 = 1;
                         } else {
                             if (
                                 $match->teamid != '' && $match->teamid == 0
                             ) {
-                                $lableString= 'SELECTED';
+                                $lableString2 = 'SELECTED';
                             } else {
-                                $lableString= 'SELECT';
+                                $lableString2 = 'SELECT';
                             }
                         }
                     }
+                    $onClickString = 'onclick="join_team(' . $match->t2id . ',' . $match->id . ',' . $match->leagueid . ',' . $match->round . ',' . $match->scoremultiplier . ',' . $userid . ',' . $teamname2 . ', ' . $previousSelectedType2 . ')"';
+                    $match_string .= '<a class="read-more pointer match-' . $match->id . ' team_' . $match->t2id . '_' . $match->id . ' teamname_' . $teamname2 . '" data-teamname2="' . $match->team2 . '" data-date="' . $match->enddate . '" id="match-' . $match->id . '" data-scoretype="' . $match->scoretype . '" ' . $onClickString . '>' . $lableString2;
                     $match_string .= '</a>';
                 } else {
                     $singinlink = home_url('login/');
@@ -408,7 +455,8 @@ class match_list_Controller
             </div>';
         }
 
-        /////////////////////////////////
+        //**** /MATCH STRING ****//
+
 
 
         if ($result_sql > 0) {
@@ -785,52 +833,17 @@ class match_list_Controller
         exit();
     }
 
-    function joinTeamCheck() {
+    function check_team_join($leagueId){
+
         global $wpdb;
-        $totalTeam = $wpdb->get_results("select * from ".$wpdb->prefix."match where leagueid = 4");
-        $uniqueTeam = array();
-        if(!empty($totalTeam)) {
-            foreach($totalTeam as $key => $value) {
-                if(!in_array($value->team1,$uniqueTeam)) {
-                    $uniqueTeam[] = $value->team1;
-                }
-                if(!in_array($value->team2,$uniqueTeam)) {
-                    $uniqueTeam[] = $value->team2;
-                }
-            }
-        }
-
-        $joinedTeam = $wpdb->get_results("select * from ".$wpdb->prefix."jointeam where leagueid = 4 order by id ASC");
-        $joinedTeamID = array();
-        $numberOfRoundComplete = 0;
-        if(!empty($joinedTeam)) {
-            foreach($joinedTeam as $key => $value) {
-                if(!in_array($value->teamnameid,$joinedTeamID)) {
-                    $joinedTeamID[] = $value->teamnameid;
-                }
-                $teamDiff = array_diff($uniqueTeam,$joinedTeamID);
-                if(!empty($teamDiff)) {
-                    
-                } else {
-                    $joinedTeamID = array();
-                    $numberOfRoundComplete+=1;
-                }
-            }
-        }
-        $notJoinedTeam = array_diff($uniqueTeam,$joinedTeamID);
-        $joinedTeam = $joinedTeamID;
-
         $currentRoundID  = (isset($_REQUEST['id']) && $_REQUEST['id'] >0) ? $_REQUEST['id'] : '';         
-        $currentRoundData = $wpdb->get_results("select * from ".$wpdb->prefix."jointeam where leagueid = 4 and roundid = ".$currentRoundID." order by id ASC");
-
+        $currentRoundData = $wpdb->get_results("select * from ".$wpdb->prefix."jointeam where leagueid = ".$leagueId." and roundid = ".$currentRoundID." order by id ASC");
         $currentRoundTeamID = '';
+        $teamselectcheck = '';
         if(!empty($currentRoundData)) {
             $currentRoundTeamID = $currentRoundData[0]->teamnameid;
-            if(in_array($currentRoundTeamID,$joinedTeam)) {
-                return json_encode(array());
-            }
+                return $currentRoundTeamID;
         }
-
     }
 }
 

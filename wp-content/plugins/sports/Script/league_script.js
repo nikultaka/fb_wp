@@ -1019,8 +1019,11 @@ function join_team(
 
   if (teamname_by_round.every((elem) => allteamname.includes(elem))) {
     /////////*1/////////
-    
-      if (allteamname.includes("" + teamnameid + "") ||  previouslySelected == 1) {
+    console.log("previouslySelected")
+    console.log(previouslySelected)
+    console.log("previouslySelected")
+
+      if (previouslySelected == 1 && previouslySelected != '' && previouslySelected != null) {
         Swal.fire({
           title: "You Can Not Select This Team",
           text: "You Already Selected This Team In Another Round",
@@ -1221,6 +1224,7 @@ function join_team(
     //////////1//////////
   } else {
     if (allteamname.includes(teamnamestr)) {
+      console.log("first2")
       Swal.fire({
         title: "You Can Not Select This Team",
         text: "You Already Selected This Team In Another Round",

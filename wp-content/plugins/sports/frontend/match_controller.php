@@ -333,7 +333,7 @@ class match_list_Controller
                         } else {
 
                             if(in_array($round, $currentLeagueTeamID)){
-                                if(in_array($teamname1, $notJoinedTeam) /* && */ ){ ///* nikul bhai *////
+                                if(in_array($teamname1, $notJoinedTeam)){ ///* nikul bhai *////
                                     $lableString = 'SELECT';
                                     $previousSelectedType = 0;
                                 }else if (in_array($teamname1, $selectedTeam)) {
@@ -393,7 +393,7 @@ class match_list_Controller
 
                             if(in_array($round, $currentLeagueTeamID)){
 
-                                if(in_array($teamname2, $notJoinedTeam) /* && */ ){ ///* nikul bhai *////
+                                if(in_array($teamname2, $notJoinedTeam)){ ///* nikul bhai *////
                                     $lableString2 = 'SELECT';
                                     $previousSelectedType2 = 0;
                                 }else if (in_array($teamname2, $selectedTeam)) {
@@ -836,14 +836,29 @@ class match_list_Controller
     function check_team_join($leagueId){
 
         global $wpdb;
-        $currentRoundID  = (isset($_REQUEST['id']) && $_REQUEST['id'] >0) ? $_REQUEST['id'] : '';         
-        $currentRoundData = $wpdb->get_results("select * from ".$wpdb->prefix."jointeam where leagueid = ".$leagueId." and roundid = ".$currentRoundID." order by id ASC");
-        $currentRoundTeamID = '';
-        $teamselectcheck = '';
-        if(!empty($currentRoundData)) {
-            $currentRoundTeamID = $currentRoundData[0]->teamnameid;
-                return $currentRoundTeamID;
+        // $currentRoundID  = (isset($_REQUEST['id']) && $_REQUEST['id'] >0) ? $_REQUEST['id'] : '';     
+        // $currentRoundTeamID = '';    
+
+        $allRoundData = $wpdb->get_results("select * from ".$wpdb->prefix."match where leagueid = ".$leagueId." Group By round order by id ASC");
+        $joinRoundData = $wpdb->get_results("select * from ".$wpdb->prefix."jointeam where leagueid = ".$leagueId."  order by id ASC");
+
+        $joinmatchRound = array();
+        if(!empty($joinRoundData)) {
+            foreach ($joinRoundData as $row) {
+                array_push($joinmatchRound, $row->roundid);
+            }
         }
+
+        $allmatchRound = array();
+        if(!empty($allRoundData)) {
+            foreach ($allRoundData as $row) {
+                array_push($allmatchRound, $row->round);
+            }
+        }
+
+        $containsAllValues = array_diff($joinmatchRound, $allmatchRound);
+
+
     }
 }
 

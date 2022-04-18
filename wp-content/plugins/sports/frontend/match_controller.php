@@ -441,7 +441,7 @@ class match_list_Controller
                             $lableString = 'SELECTED';
                             $previousSelectedType = 0; 
                         }
-                        if(in_array($teamname1, $joinedUnjoinedData['not_joined_team']) && $maxid < 0  ) { 
+                        if(in_array($teamname1, $joinedUnjoinedData['not_joined_team'])) { 
                             $lableString = 'SELECT';
                             $previousSelectedType = 0;
                         } else if ( (in_array($teamname1, $joinedUnjoinedData['joined_team']) && in_array($teamname1, $allteam)) || $maxid > 0  )  {

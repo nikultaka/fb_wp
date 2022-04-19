@@ -452,24 +452,6 @@ class match_list_Controller
                             }
                         }
                     }
-
-                    // if ($containsAllValues == 1 && $containsAllValues != '') {
-                    //     if ($match->teamid != '' && $match->teamid == 1) {
-                    //         $lableString = 'SELECTED';
-                    //         $previousSelectedType = 0; 
-                    //     } else if(in_array($teamname1, $joinedUnjoinedData['not_joined_team']) && !in_array($match->round, $RoundDiff)) { 
-                    //         $lableString = 'SELECT';
-                    //         $previousSelectedType = 0;
-                    //     } else if ( (in_array($teamname1, $joinedUnjoinedData['joined_team']) && in_array($teamname1, $allteambyround)))  {
-                    //         $lableString = 'PREVIOUSLY SELECTED';
-                    //         $previousSelectedType = 1;
-                    //     }                           
-                    // } 
-
-
-
-
-
                     else {
                         if(isset($joinedUnjoinedData['completed_round_match']) && empty($joinedUnjoinedData['completed_round_match'])) {
                             $lableString = 'SELECT';
@@ -522,23 +504,6 @@ class match_list_Controller
                             }
                         }
                     }
-
-                    // if ($containsAllValues == 1 && $containsAllValues != '') {
-                    //     if ($match->teamid != '' && $match->teamid == 0) {
-                    //         $lableString = 'SELECTED';
-                    //         $previousSelectedType = 0; 
-                    //     }else if(in_array($teamname2, $joinedUnjoinedData['not_joined_team']) && !in_array($match->round, $RoundDiff)) { 
-                    //         $lableString = 'SELECT';
-                    //         $previousSelectedType = 0;
-                    //     } else if ( (in_array($teamname2, $joinedUnjoinedData['joined_team']) && in_array($teamname2, $allteambyround)) || $maxid > 0 )  {
-                    //         $lableString = 'PREVIOUSLY SELECTED';
-                    //         $previousSelectedType = 1;
-                    //     }
-                    // } 
-
-
-
-
                     else {
                         if(isset($joinedUnjoinedData['completed_round_match']) && empty($joinedUnjoinedData['completed_round_match'])) {
                             $lableString = 'SELECT';    

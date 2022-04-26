@@ -48,11 +48,10 @@ function league()
     $query = "SELECT * FROM " . $sportstable . " WHERE STATUS = 'active'";
     $pagessql = $wpdb->get_results($query);
 
-    $roundtable = $wpdb->prefix . "round";
-    $leagueid = $_GET['id'];
-    $querym = "SELECT * FROM " . $roundtable . " WHERE leagueid=" . $leagueid . " AND RSTATUS = 'active'";
-    $roundsql = $wpdb->get_results($querym);
-
+    // $roundtable = $wpdb->prefix . "round";
+    // $leagueid = $_GET['id'];
+    // $querym = "SELECT * FROM " . $roundtable . " WHERE leagueid=" . $leagueid . " AND RSTATUS = 'active'";
+    // $roundsql = $wpdb->get_results($querym);
 
 
     include(dirname(__FILE__) . "/html/leagueform.php");

@@ -25,6 +25,8 @@ class leader_board_Controller
 
     function load_leader_board()
     {
+
+    
         global $wpdb;
         $requestData = $_POST;
         $leagueId = $_POST['id'];
@@ -144,6 +146,7 @@ class leader_board_Controller
          HAVING winteams = selectteams) as data
          group by roundid,userid";
 
+    
         $result = $wpdb->get_results($teamselect_sql, OBJECT);
         $ary = [];
         $ary2 = [];
@@ -156,26 +159,35 @@ class leader_board_Controller
         $calculation_sql .= " group by " . $jointeamtable . ".id";
         $result = $wpdb->get_results($calculation_sql, OBJECT);
         $scoreByUserId = [];
-        foreach ($result as $row) {
 
+        foreach ($result as $row) {
             if ($row->scoretype == 'added' && $row->scoremultiplier == 0) {
+          
                 if ($row->roundid == $ary2[$row->userid][$row->roundid] && $ary2[$row->userid][$row->roundid] != '') {
+
+                    if(isset($row->userscore)){
+
                     $temp['yourscore'] = $row->userscore;
                     if(isset($ary[$row->userid][$row->roundid])) {
                         $scoreByUserId[$row->userid] += $row->userscore * $ary[$row->userid][$row->roundid];
                     } 
+                }
                 } else {
+                    if(isset($row->userscore)){
                     $temp['yourscore'] = $row->userscore;
                         $scoreByUserId[$row->userid] += $row->userscore * 0;
+                    }
                 }
             } else {
-                $temp['yourscore'] = $row->userscore;
-                $scoreByUserId[$row->userid] += $row->userscore;
+                if(isset($row->userscore)){
+                    $temp['yourscore'] = $row->userscore;
+                    $scoreByUserId[$row->userid] += $row->userscore;
+                }
             }
             
         }
 
-
+  
         $result_sql .= " group by userid";
         $mainresult = $wpdb->get_results($result_sql);
 
@@ -341,7 +353,7 @@ class leader_board_Controller
         LEFT JOIN " . $matchscoretable . " on " . $matchscoretable . ".matchid = " . $jointeamtable . ".matchid
         LEFT JOIN " . $scorepredictortable . " on " . $scorepredictortable . ".matchid = " . $jointeamtable . ".matchid and " . $scorepredictortable . ".userid = " . $userid . "
         LEFT JOIN " . $additionalpointstable . " ON " . $additionalpointstable . ".leagueid = " . $jointeamtable . ".leagueid
-        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " and " . $jointeamtable . ".userid = " . $userid . " ";
+        WHERE " . $jointeamtable . ".leagueid = " . $leagueId . " and " . $jointeamtable . ".userid = " . $userid . "  AND " . $roundtable . ".iscomplete = 'YES' ";
 
         $teamselect_sql = "select count(*) as multipliercount,roundid,roundid,userid from (SELECT distinct " . $matchscoretable . ".*," . $selectteam . ".roundid as roundid," . $selectteam . ".userid as userid,
         CASE
@@ -445,7 +457,11 @@ class leader_board_Controller
                             $temp['teamscore'] = "~"; 
                         }
                     } else {
-                        $temp['teamscore'] = $row->userscore  * 0;
+                        if($row->userscore == null && $row->userscore == ''){
+                            $temp['teamscore'] = "~";
+                        }else{
+                            $temp['teamscore'] = $row->userscore  * 0;
+                        }
                     }
                 } else {
                     if(is_numeric($row->userscore)) {

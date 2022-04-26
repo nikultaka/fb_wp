@@ -184,7 +184,9 @@ $("#save_Btnround").click(function () {
             $("#hrid").val("");
             $("#scoretype").val("");
             $("#rstatus").val("");
-            $("#iscomplete").prop("checked", false);
+            // $("#iscomplete").prop("checked", false);
+            $("#iscomplete").attr("checked", false); // Unchecks it
+
             loadroundtable();
             $("#roundformdata")[0].reset();
 
@@ -295,6 +297,12 @@ function editround_record(id) {
         $("#rname").val(result.rname);
         $("#scoremultiplier").val(result.scoremultiplier);
         $("#scoretype").val(result.scoretype);
+
+        if(result.iscomplete == "YES"){
+        $("#iscomplete").attr("checked", true); // checks it
+        }else{
+        $("#iscomplete").attr("checked", false); // Unchecks it
+        }
         $("#rstatus").val(result.rstatus);
         loadroundtable();
       }

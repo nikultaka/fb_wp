@@ -189,19 +189,19 @@ class leader_board_Controller
 
   
         $result_sql .= " group by userid";
-        $mainresult = $wpdb->get_results($result_sql);
+        // $mainresult = $wpdb->get_results($result_sql);
 
-        $totalData = 0;
-        $totalFiltered = 0;
-        if (count($mainresult) > 0) {
-            $totalData = count($mainresult);
-            $totalFiltered = count($mainresult);
-        }
+        // $totalData = 0;
+        // $totalFiltered = 0;
+        // if (count($mainresult) > 0) {
+        //     $totalData = count($mainresult);
+        //     $totalFiltered = count($mainresult);
+        // }
 
-        // This is for pagination
-        if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
-            $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
-        }
+        // // This is for pagination
+        // if (isset($requestData['start']) && $requestData['start'] != '' && isset($requestData['length']) && $requestData['length'] != '') {
+        //     $result_sql .= " LIMIT " . $requestData['start'] . "," . $requestData['length'];
+        // }
 
         $mainresult = $wpdb->get_results($result_sql);
         if (!empty($mainresult)) {
@@ -240,8 +240,8 @@ class leader_board_Controller
         }
         $json_data = array(
             "draw" => intval($requestData['draw']),
-            "recordsTotal" => intval($totalData),
-            "recordsFiltered" => intval($totalFiltered),
+            // "recordsTotal" => intval($totalData),
+            // "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
             "sql" => $result_sql
         );

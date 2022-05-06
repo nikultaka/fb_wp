@@ -752,7 +752,7 @@ class match_list_Controller
 
     function send_mail_users_score()
     {
-
+        die;
         global $wpdb;
 
         $mainresult['status'] = 0;

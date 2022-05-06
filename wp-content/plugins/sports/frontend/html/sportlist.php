@@ -4,7 +4,7 @@
   --slant: 0.7em;   /* control the slanted corners */
   --color: #195d10 ; /* the color */
   
-  font-size: 35px;
+  font-size: x-large;
   padding: 0.4em 1.2em;
   border: 3px solid;
   cursor: pointer;

@@ -6,6 +6,7 @@ require_once($path.'wp-load.php');
 
 function send_mail_users_enddate()
 {
+    die;
     global $wpdb;
 
     $result['status'] = 0;

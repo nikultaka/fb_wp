@@ -319,7 +319,6 @@ class match_list_Controller
         return $teamselect_string;
     }
 
-
     public function get_match_list()
     {
         global $wpdb;

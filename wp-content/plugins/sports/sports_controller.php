@@ -532,40 +532,34 @@ class league_controller
 
                     $sql = "select * from " . $jointeamtable . " where leagueid = " . $hdnleagueid . " and userid=" . $value;
                     $oldUserData = $wpdb->get_results($sql);
-                     
+
                     if (!empty($oldUserData)) {
                         $existedTeam = array();
+                        $existedRound = array();
                         foreach ($oldUserData as $oldMatchkey => $oldMatchValue) {
                             $existedTeam[] = $oldMatchValue->teamnameid;
+                            $existedRound[] = $oldMatchValue->roundid;
                         }
                         $teamDiff = array_diff($teamID, $existedTeam);
-                        $jointeamDiff = !array_diff($teamID, $existedTeam);
-// echo '<pre>';
-// print_r($teamDiff);
-// die;
-
-                        if ($jointeamDiff == 1) {
-
-                            $teamDiff=0;
-
-                        }  
-
                     } else {
                         $teamDiff = $teamID;
                     }
                     $teamDiff = array_values($teamDiff);
-
+                    echo '<pre>';
+                    print_r($teamDiff);
+                    // die;
                     $containsAllValues = !array_diff($roundTeamID, $currentleaguematch);
 
                     if (!empty($containsAllValues)) {
 
                         if ($containsAllValues == 1) {
 
-                            $teamAutoSelectedID = $teamID[0];
-
-                            // echo '<pre>';
-                            // print_r($teamAutoSelectedID);
-
+                                $teamAutoSelectedID = $teamDiff[0];
+        
+                            echo '<pre>';
+                            print_r('if');
+                            print_r($teamAutoSelectedID);
+                            // die;
                             $sql = "select * from " . $matchtable . " where (team1 = '" . $teamAutoSelectedID . "' or team2 = '" . $teamAutoSelectedID . "') and round = '" . $updateId . "' ";
                             $matchAutoData = $wpdb->get_results($sql);
                             $autoMatchID = '';
@@ -584,6 +578,10 @@ class league_controller
                         if (!empty($teamDiff)) {
 
                             $teamAutoSelectedID = $teamDiff[0];
+                            echo '<pre>';
+                            print_r('else');
+                            print_r($teamAutoSelectedID);
+                            // die;
                             $sql = "select * from " . $matchtable . " where (team1 = '" . $teamAutoSelectedID . "' or team2 = '" . $teamAutoSelectedID . "') and round = '" . $updateId . "' ";
                             $matchAutoData = $wpdb->get_results($sql);
 

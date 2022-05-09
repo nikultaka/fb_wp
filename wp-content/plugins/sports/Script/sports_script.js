@@ -67,7 +67,7 @@ $(document).ready(function () {
             ],
             "order": [[0, "asc"]],
             "columnDefs": [{
-                "targets": [1],
+                "targets": [2],
                 "orderable": false
             }]
         });

@@ -466,6 +466,7 @@ class league_controller
             $roundtable = $wpdb->prefix . "round";
             $leaguetable = $wpdb->prefix . "league";
             $jointeamtable = $wpdb->prefix . "jointeam";
+            $autojointeamtable = $wpdb->prefix . "autojointeam";
             $userid = get_current_user_id();
 
             $sql = "select * from " . $matchtable . " where round =" . $updateId;
@@ -525,41 +526,116 @@ class league_controller
             }
             $notExistUsers = array_diff($usersID, $currentRoundUserID);
 
-            // echo '<pre>'; print_r($notExistUsers); die;
             if (!empty($notExistUsers)) {
 
                 foreach ($notExistUsers as $key => $value) {
+
+
+
+
 
                     $sql = "select * from " . $jointeamtable . " where leagueid = " . $hdnleagueid . " and userid=" . $value;
                     $oldUserData = $wpdb->get_results($sql);
 
                     if (!empty($oldUserData)) {
                         $existedTeam = array();
-                        $existedRound = array();
                         foreach ($oldUserData as $oldMatchkey => $oldMatchValue) {
                             $existedTeam[] = $oldMatchValue->teamnameid;
-                            $existedRound[] = $oldMatchValue->roundid;
                         }
+
+                        // $teamDiff = array_diff($teamID, $existedTeam);
+
+
+                        // $teamDiff2 = array_filter(array_count_values($existedTeam), function ($v) {
+                        //     return $v > 1;
+                        // });
+
+
+                        // $Team = array();
+                        // foreach ($teamDiff2 as $key => $Value) {
+                        //     $Team = $Value;
+                        // }
+                        // echo '<pre>';
+                        // print_r($teamDiff);
+                        // die;
+
+
+
+
+
+
+
+
+
                         $teamDiff = array_diff($teamID, $existedTeam);
+
+                        // $counts = array_count_values($existedTeam);
+                        // $duplicate_title  = array_filter($existedTeam, function ($value) use ($counts) {
+                        //     return $counts[$value] > 1;
+                        // });
+
+                        // $duplicate_teams = $duplicate_title;
+                        // echo '<pre>';
+                        // print_r($duplicate_teams);
+                        // $teamDiff = array_diff($teamID, $duplicate_teams);
+                        // echo '<pre>';
+                        // print_r($teamDiff);
+                        // die;
+
+
+                        if (!empty($teamDiff)) {
+                            echo '<pre>';
+                            print_r("if");
+                            $teamDiff = array_values($teamDiff);
+
+                        } else {
+                            echo '<pre>';
+                            print_r("else");
+                            $teamDiff = $teamID;
+                        }
+
+
+
+
+    
+
+
+
+
+
+
+
+
+                        echo '<pre>';
+                        print_r($teamDiff);
+                        // die;
                     } else {
                         $teamDiff = $teamID;
                     }
                     $teamDiff = array_values($teamDiff);
-                    echo '<pre>';
-                    print_r($teamDiff);
+
+                    // echo '<pre>';
+                    // print_r($teamDiff);
                     // die;
+
+
+
+
+
+
+
+
+
+
+
                     $containsAllValues = !array_diff($roundTeamID, $currentleaguematch);
 
                     if (!empty($containsAllValues)) {
 
                         if ($containsAllValues == 1) {
 
-                                $teamAutoSelectedID = $teamDiff[0];
-        
-                            echo '<pre>';
-                            print_r('if');
-                            print_r($teamAutoSelectedID);
-                            // die;
+                            $teamAutoSelectedID = $teamDiff[0];
+
                             $sql = "select * from " . $matchtable . " where (team1 = '" . $teamAutoSelectedID . "' or team2 = '" . $teamAutoSelectedID . "') and round = '" . $updateId . "' ";
                             $matchAutoData = $wpdb->get_results($sql);
                             $autoMatchID = '';
@@ -572,16 +648,21 @@ class league_controller
                                     $joinMatchAuto = array('userid' => $value, 'sportid' => $sportID, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 0, 'teamnameid' => $teamAutoSelectedID, 'roundselect' => 'nothanks', 'auto' => 1);
                                 }
                                 $wpdb->insert($jointeamtable, $joinMatchAuto);
+
+
+                                if ($matchAutoData[0]->team1 == $teamAutoSelectedID) {
+                                    $autojoinMatchAuto = array('userid' => $value, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 1, 'teamnameid' => $teamAutoSelectedID);
+                                } else {
+                                    $autojoinMatchAuto = array('userid' => $value, 'sportid' => $sportID, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 0, 'teamnameid' => $teamAutoSelectedID);
+                                }
+                                $wpdb->insert($autojointeamtable, $autojoinMatchAuto);
                             }
                         }
                     } else {
                         if (!empty($teamDiff)) {
 
                             $teamAutoSelectedID = $teamDiff[0];
-                            echo '<pre>';
-                            print_r('else');
-                            print_r($teamAutoSelectedID);
-                            // die;
+
                             $sql = "select * from " . $matchtable . " where (team1 = '" . $teamAutoSelectedID . "' or team2 = '" . $teamAutoSelectedID . "') and round = '" . $updateId . "' ";
                             $matchAutoData = $wpdb->get_results($sql);
 
@@ -591,10 +672,18 @@ class league_controller
 
                                 if ($matchAutoData[0]->team1 == $teamAutoSelectedID) {
                                     $joinMatchAuto = array('userid' => $value, 'sportid' => $sportID, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 1, 'teamnameid' => $teamAutoSelectedID, 'roundselect' => 'nothanks', 'auto' => 1);
-                                } else { //($matchAutoData[0]->team2 == $teamAutoSelectedID) 
+                                } else { 
                                     $joinMatchAuto = array('userid' => $value, 'sportid' => $sportID, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 0, 'teamnameid' => $teamAutoSelectedID, 'roundselect' => 'nothanks', 'auto' => 1);
                                 }
                                 $wpdb->insert($jointeamtable, $joinMatchAuto);
+
+
+                                if ($matchAutoData[0]->team1 == $teamAutoSelectedID) {
+                                    $autojoinMatchAuto = array('userid' => $value, 'sportid' => $sportID, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 1, 'teamnameid' => $teamAutoSelectedID);
+                                } else { 
+                                    $autojoinMatchAuto = array('userid' => $value, 'sportid' => $sportID, 'leagueid' => $leagueID, 'roundid' => $updateId, 'matchid' => $autoMatchID, 'teamid' => 0, 'teamnameid' => $teamAutoSelectedID);
+                                }
+                                $wpdb->insert($autojointeamtable, $autojoinMatchAuto);
                             }
                         }
                     }

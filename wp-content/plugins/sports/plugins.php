@@ -160,6 +160,19 @@
         `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
         PRIMARY KEY  id (id)) $charset_collate;";
 
+        $autojointeam_table_name = $wpdb->prefix . 'autojointeam';
+        $charset_collate = $wpdb->get_charset_collate();
+        $sqlautojointeam = "CREATE TABLE `$autojointeam_table_name` (
+        `id` int(11) NOT NULL auto_increment,
+        `userid` int(11) NOT NULL,
+        `leagueid` int(11) NOT NULL,
+        `roundid` int(11) NOT NULL,
+        `matchid` int(11) NOT NULL,
+        `teamid` int(11) NOT NULL,  
+        `teamnameid` int(11) NOT NULL,        
+        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+        PRIMARY KEY  id (id)) $charset_collate;";
+
 
         if (
             $wpdb->get_var("SHOW TABLES LIKE '$sports_table_name'") != $sports_table_name ||
@@ -171,7 +184,8 @@
             $wpdb->get_var("SHOW TABLES LIKE '$additionalpoints_table_name'") != $additionalpoints_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$scorepredictor_table_name'") != $scorepredictor_table_name ||
             $wpdb->get_var("SHOW TABLES LIKE '$Selectteam_table_name'") != $Selectteam_table_name ||
-            $wpdb->get_var("SHOW TABLES LIKE '$team_table_name'") != $team_table_name
+            $wpdb->get_var("SHOW TABLES LIKE '$team_table_name'") != $team_table_name ||
+            $wpdb->get_var("SHOW TABLES LIKE '$autojointeam_table_name'") != $autojointeam_table_name
         ) {
             require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             require_once(ABSPATH . 'wp-includes/pluggable.php');
@@ -185,6 +199,8 @@
             dbDelta($sqlscorepredictor);
             dbDelta($sqlSelectteam);
             dbDelta($sqlteam);
+            dbDelta($sqlautojointeam);
+
         }
     }
 

@@ -34,6 +34,8 @@
         global $scorepredictor_table_name;
         global $Selectteam_table_name;
         global $team_table_name;
+        global $autojointeam_table_name;
+
 
 
         $sports_table_name = $wpdb->prefix . 'sports';

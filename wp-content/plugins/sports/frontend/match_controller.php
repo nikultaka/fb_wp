@@ -561,6 +561,7 @@ class match_list_Controller
         $result['status'] = 0;
         $leaguetable = $wpdb->prefix . "league";
         $matchtable = $wpdb->prefix . "match";
+        $autojointeamtable = $wpdb->prefix . "autojointeam";
 
         $result_sql = $wpdb->get_row("SELECT " . $matchtable . ".*," . $leaguetable . ".sports as sportid
         FROM " . $matchtable . " 
@@ -588,6 +589,30 @@ class match_list_Controller
         $data['msg'] = "Error Data Not insert";
 
         if ($updateId == '') {
+            $wpdb->insert($autojointeamtable, array(
+                'userid'             => $userid,
+                'leagueid'           => $leagueid,
+                'roundid'            => $roundid,
+                'matchid'            => $matchId,
+                'teamid'             => $teamId,
+                'teamnameid'         => $teamnameid,
+            ));
+        } else {
+            $wpdb->update(
+                $autojointeamtable,
+                array(
+                    'userid'             => $userid,
+                    'leagueid'           => $leagueid,
+                    'roundid'            => $roundid,
+                    'matchid'            => $matchId,
+                    'teamid'             => $teamId,
+                    'teamnameid'         => $teamnameid,
+                ),
+                array('id'  => $updateId)
+            );
+        }
+
+        if ($updateId == '') {
             $wpdb->insert($jointeamtable, array(
                 'userid'             => $userid,
                 'sportid'            => $sportid,
@@ -598,7 +623,6 @@ class match_list_Controller
                 'roundselect'        => $roundselect,
                 'teamnameid'         => $teamnameid,
                 'auto'               => $auto,
-
             ));
 
             $data['status'] = 1;
@@ -616,8 +640,6 @@ class match_list_Controller
                     'roundselect'        => $roundselect,
                     'teamnameid'         => $teamnameid,
                     'auto'               => $auto,
-
-
                 ),
                 array('id'  => $updateId)
             );
@@ -625,7 +647,6 @@ class match_list_Controller
             $data['status'] = 1;
             $data['msg'] = "You SELECTED Team Successfully2";
         }
-
 
         echo json_encode($data);
         exit;
